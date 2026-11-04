@@ -54,7 +54,7 @@ describe('Chantier 16 — Sécurité & Guardrails Support Back-Office', () => {
     it('autorise uniquement un compte interne Passness (isPlatformAdmin = true)', async () => {
       const admin = {
         id: 'user-support-admin',
-        email: 'ops@uttily.com',
+        email: 'ops@passness.com',
         isPlatformAdmin: true,
         oidcSubject: 'sub_support_admin',
         emailVerified: true,

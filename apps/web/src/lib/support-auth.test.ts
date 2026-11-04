@@ -43,7 +43,7 @@ describe('requireSupportPlatformAdmin (Garde Support Back-Office)', () => {
   it('succède et retourne le contexte si l’utilisateur est isPlatformAdmin = true', async () => {
     const adminUser = {
       id: userId,
-      email: 'support@uttily.com',
+      email: 'support@passness.com',
       oidcSubject: 'sub_support_admin',
       emailVerified: true,
       isPlatformAdmin: true,

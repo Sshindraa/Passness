@@ -69,7 +69,7 @@ describe.skipIf(isSkipped)(
       const adminUser = firstRow(
         await rawSql<{ id: string; email: string }[]>`
         INSERT INTO users (email, display_name, is_platform_admin)
-        VALUES (${`admin-${suffix}@uttily.com`}, 'Support Agent', true)
+        VALUES (${`admin-${suffix}@passness.com`}, 'Support Agent', true)
         RETURNING id, email
       `,
       );

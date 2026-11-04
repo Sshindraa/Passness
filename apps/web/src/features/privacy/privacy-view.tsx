@@ -556,8 +556,8 @@ export function PrivacyView({ locale, requests }: PrivacyViewProps): React.React
               {fr
                 ? 'Pour toute question relative à vos données, contactez notre DPO à :'
                 : 'For inquiries regarding your personal data, contact our DPO at:'}{' '}
-              <a href="mailto:privacy@uttily.com" className={styles.link}>
-                privacy@uttily.com
+              <a href="mailto:privacy@passness.com" className={styles.link}>
+                privacy@passness.com
               </a>
               {' · '}
               <a href={`/${locale}/privacy`} className={styles.link}>

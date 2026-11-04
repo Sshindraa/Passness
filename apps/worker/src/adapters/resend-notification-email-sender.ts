@@ -134,6 +134,6 @@ export function createResendNotificationEmailSenderFromEnv(): ResendNotification
   const fromEmail =
     process.env['RESEND_FROM_EMAIL'] ??
     process.env['EMAIL_FROM'] ??
-    'Passness <notifications@uttily.com>';
+    'Passness <notifications@passness.com>';
   return new ResendNotificationEmailSender({ apiKey, fromEmail });
 }

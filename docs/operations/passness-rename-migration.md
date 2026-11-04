@@ -9,7 +9,7 @@ persistées. Les renommer dans le code sans migrer la ressource casserait stagin
 
 | Identifiant conservé | Où | Pourquoi | Condition pour renommer |
 | --- | --- | --- | --- |
-| `uttily.com`, `app.uttily.fr`, adresses `@uttily.com` | pages légales, e-mails, `.env.example`, docs | domaine et boîtes de réception ; `passness.com` n'est vérifié que chez Resend (envoi) | DNS web + boîtes de réception `passness.com` créés, redirections en place |
+| `https://uttily.com`, `app.uttily.com`, `app.uttily.fr` (URLs du site) | e-mails, tests, `email-brand.ts`, docs | URL publique de l'application ; `passness.com` n'héberge pas encore le site (parking IONOS) | application déployée et servie sur `passness.com`, redirections depuis `uttily.com` |
 | `uttily-staging.vercel.app`, projet Vercel `uttily-staging` | `wrangler.toml`, docs | URL et projet Vercel réels | projet Vercel renommé, puis cible du cron mise à jour |
 | `uttily-staging-cron`, `uttily_staging_cron_*` | `wrangler.toml`, User-Agent, logs | Worker Cloudflare déployé ; alertes éventuelles sur ces événements | nouveau Worker déployé, ancien supprimé |
 | `uttily-worker-staging`, `uttily-worker:staging-*`, `/opt/uttily`, `systemd/uttily-worker.service` | docs | conteneur, image et chemins du VPS partagé | validation explicite, fenêtre de maintenance |
@@ -24,8 +24,9 @@ persistées. Les renommer dans le code sans migrer la ressource casserait stagin
 
 ## Ordre recommandé hors dépôt
 
-1. Domaine : DNS web + boîtes (`support@`, `privacy@`, `contact@`, `dpo@`, `hello@`, `ops@`) sur
-   `passness.com`, redirections depuis `uttily.com`, puis remplacement dans le code.
+1. Domaine : adresses `@passness.com` faites (Cloudflare Email Routing, PR de remplacement dans le
+   code). Reste le site : DNS web `passness.com`, redirections depuis `uttily.com`, puis remplacement
+   des URLs dans le code.
 2. Stripe : mettre à jour l'URL du webhook plateforme (`…/api/webhooks/stripe/platform`) avant de
    changer de domaine public, puis vérifier la signature en staging.
 3. Vercel : renommer le projet staging, ajuster `CRON_TARGET_URL`, redéployer le Worker cron.
