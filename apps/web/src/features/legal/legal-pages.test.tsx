@@ -89,7 +89,7 @@ describe('Pages légales et contractuelles (21-L1)', () => {
       const html = renderToStaticMarkup(element);
 
       expect(html).toContain('Politique de Confidentialité et Protection des Données');
-      expect(html).toContain('privacy@uttily.com');
+      expect(html).toContain('privacy@passness.com');
       expect(html).toContain('Clerk Inc.');
       expect(html).toContain('Stripe Payments Europe Ltd');
       expect(html).toContain('Neon Inc.');

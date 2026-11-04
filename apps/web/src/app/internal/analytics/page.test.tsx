@@ -47,7 +47,7 @@ const PRO_USER = {
 /** Compte interne Passness : seul profil autorisé. */
 const INTERNAL_ADMIN = {
   id: 'user-passness-ops',
-  email: 'ops@uttily.com',
+  email: 'ops@passness.com',
   isPlatformAdmin: true,
   oidcSubject: 'sub_passness_ops',
   emailVerified: true,

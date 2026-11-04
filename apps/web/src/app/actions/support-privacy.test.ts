@@ -47,7 +47,7 @@ vi.mock('next/cache', () => ({
 describe('Support Privacy Server Actions', () => {
   const adminUser = {
     id: 'admin-1111-2222-3333-444444444444',
-    email: 'dpo@uttily.com',
+    email: 'dpo@passness.com',
     isPlatformAdmin: true,
     oidcSubject: 'sub_admin',
     emailVerified: true,

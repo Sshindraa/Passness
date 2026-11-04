@@ -31,7 +31,7 @@ describe('getEmailBrandConfig', () => {
   it('conserve un secours explicite uniquement hors production', () => {
     expect(getEmailBrandConfig({ NODE_ENV: 'test' })).toEqual({
       publicAppUrl: 'https://uttily.com',
-      supportEmail: 'support@uttily.com',
+      supportEmail: 'support@passness.com',
     });
   });
 
@@ -47,6 +47,6 @@ describe('getEmailBrandConfig', () => {
 
     expect(html).toContain('href="https://staging.passness.example"');
     expect(html).toContain('mailto:help@staging.passness.example');
-    expect(html).not.toContain('support@uttily.com');
+    expect(html).not.toContain('support@passness.com');
   });
 });

@@ -30,13 +30,13 @@ function fakeLiveEnv(): Record<string, string> {
     CRON_SECRET: 'b'.repeat(44),
     PUBLIC_SEARCH_CURSOR_SECRET: 'c'.repeat(44),
     PUBLIC_APP_URL: 'https://app.uttily.com',
-    SUPPORT_EMAIL: 'support@app.uttily.com',
+    SUPPORT_EMAIL: 'support@app.passness.com',
     R2_ACCOUNT_ID: 'fake_account_id',
     R2_ACCESS_KEY_ID: 'fake_access_key',
     R2_SECRET_ACCESS_KEY: 'fake_secret_key',
     R2_BUCKET_NAME: 'uttily-production-documents',
     RESEND_API_KEY: 're_fake_api_key_for_testing',
-    RESEND_FROM_EMAIL: 'Passness <noreply@uttily.com>',
+    RESEND_FROM_EMAIL: 'Passness <noreply@passness.com>',
     RESEND_BOOKING_CONFIRMED_TEMPLATE_ID: 'tmpl_fake_booking_confirmed',
   };
 }

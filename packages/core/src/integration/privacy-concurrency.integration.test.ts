@@ -54,7 +54,7 @@ describe('Lot 21-P1A — Concurrence, Invariants & Clôture RGPD (Integration)',
     const [adminUser] = await dbA
       .insert(users)
       .values({
-        email: `admin-${Date.now()}-${Math.random().toString(36).slice(2)}@uttily.com`,
+        email: `admin-${Date.now()}-${Math.random().toString(36).slice(2)}@passness.com`,
         displayName: 'Admin DPO',
         isPlatformAdmin: true,
       })

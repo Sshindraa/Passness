@@ -51,7 +51,7 @@ export default async function PrivacyPage({
             <p>
               Pour toute question relative à la gestion de vos données ou pour exercer vos droits,
               vous pouvez contacter notre délégué à la protection des données par email à :{' '}
-              <a href="mailto:privacy@uttily.com">privacy@uttily.com</a>.
+              <a href="mailto:privacy@passness.com">privacy@passness.com</a>.
             </p>
           </section>
 
@@ -185,9 +185,9 @@ export default async function PrivacyPage({
             </ul>
             <p>
               Vous pouvez exercer ces droits en écrivant à{' '}
-              <a href="mailto:privacy@uttily.com">privacy@uttily.com</a>. Si vous estimez que vos
-              droits ne sont pas respectés, vous avez le droit d’introduire une réclamation auprès
-              de la Commission Nationale de l’Informatique et des Libertés (CNIL).
+              <a href="mailto:privacy@passness.com">privacy@passness.com</a>. Si vous estimez que
+              vos droits ne sont pas respectés, vous avez le droit d’introduire une réclamation
+              auprès de la Commission Nationale de l’Informatique et des Libertés (CNIL).
             </p>
           </section>
         </>
@@ -202,7 +202,7 @@ export default async function PrivacyPage({
             <p>
               For any inquiries regarding personal data processing or to exercise your rights, you
               may contact our Data Protection Officer at:{' '}
-              <a href="mailto:privacy@uttily.com">privacy@uttily.com</a>.
+              <a href="mailto:privacy@passness.com">privacy@passness.com</a>.
             </p>
           </section>
 
@@ -313,8 +313,9 @@ export default async function PrivacyPage({
             </ul>
             <p>
               To exercise your rights, contact us at{' '}
-              <a href="mailto:privacy@uttily.com">privacy@uttily.com</a>. You also have the right to
-              lodge a complaint with the relevant data protection authority (CNIL in France).
+              <a href="mailto:privacy@passness.com">privacy@passness.com</a>. You also have the
+              right to lodge a complaint with the relevant data protection authority (CNIL in
+              France).
             </p>
           </section>
         </>

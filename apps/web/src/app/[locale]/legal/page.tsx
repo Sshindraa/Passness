@@ -56,7 +56,7 @@ export default async function LegalNoticePage({
               </li>
               <li>
                 <strong>Courrier électronique :</strong>{' '}
-                <a href="mailto:contact@uttily.com">contact@uttily.com</a>
+                <a href="mailto:contact@passness.com">contact@passness.com</a>
               </li>
               <li>
                 <strong>Directeur de la publication :</strong> La présidence d’Passness SAS
@@ -157,7 +157,7 @@ export default async function LegalNoticePage({
               </li>
               <li>
                 <strong>Contact email:</strong>{' '}
-                <a href="mailto:contact@uttily.com">contact@uttily.com</a>
+                <a href="mailto:contact@passness.com">contact@passness.com</a>
               </li>
               <li>
                 <strong>Publication Director:</strong> The Presidency of Passness SAS

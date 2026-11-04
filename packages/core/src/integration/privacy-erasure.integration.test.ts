@@ -79,7 +79,7 @@ describe('Lot 21-P2: Privacy Erasure & Probatory Seal (PostgreSQL Integration)',
     const [admin] = await db
       .insert(users)
       .values({
-        email: `admin-${suffix}@uttily.com`,
+        email: `admin-${suffix}@passness.com`,
         displayName: `Admin ${suffix}`,
         isPlatformAdmin: true,
       })
