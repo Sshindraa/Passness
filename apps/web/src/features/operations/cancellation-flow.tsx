@@ -5,7 +5,7 @@ import {
   previewBookingCancellationAction,
   cancelConfirmedBookingAction,
 } from '@/app/actions/cancellations';
-import type { CancellationActorReason, CancellationPreviewResult } from '@uttily/core';
+import type { CancellationActorReason, CancellationPreviewResult } from '@passness/core';
 import styles from './booking-detail.module.css';
 
 interface CancellationFlowProps {

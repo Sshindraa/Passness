@@ -23,7 +23,7 @@ avant utilisation. Les anciennes baselines `origin/main = ...` sont historiques.
 | `C2B-01` | Merchant / settlement | `FIN-001`, `LEGAL-007` | Finance + juridique | `APPROVED` ✅ | Destination charge `PLATFORM` validée pour le pilote commercial. | Validé le 2026-09-04. | Non |
 | `C2B-02` | Frais marketplace | `FIN-002` | Finance + porteur produit | `APPROVED` ✅ | Modèle `split-13-7-v1` (ADR-029/030) formellement validé pour le LIVE. | Validé le 2026-09-04. | Non |
 | `C2B-03` | Statut fiscal / TVA | `FIN-003` | Expert-comptable + juridique | `APPROVED` ✅ | Statut `NOT_APPLICABLE` (franchise art. 293 B CGI) validé pour le pilote. | Validé le 2026-09-04. | Non |
-| `C2B-04` | Émetteur de facture & mentions obligatoires | `FIN-004` | Expert-comptable + juridique | `APPROVED` ✅ | Mentions intermédiation Uttily SAS et vendeur loueur (Lot 21-F1) validées. | Validé le 2026-09-04. | Non |
+| `C2B-04` | Émetteur de facture & mentions obligatoires | `FIN-004` | Expert-comptable + juridique | `APPROVED` ✅ | Mentions intermédiation Passness SAS et vendeur loueur (Lot 21-F1) validées. | Validé le 2026-09-04. | Non |
 | `C2B-05` | Reçus / factures / documents financiers | `FIN-004`, `FIN-005` | Finance + juridique | `APPROVED` ✅ | Reçu acquitté et décompte commission déterministes (Lot 21-F1) validés. | Validé le 2026-09-04. | Non |
 | `C2B-06` | Exécution et communication des refunds | `FIN-006`, `LEGAL-005` | Finance + juridique | `APPROVED` ✅ | 100 % automatique Stripe, partiels sous contrôle manuel sous 5 jours ouvrés. | Validé le 2026-09-04. | Non |
 | `C2B-07` | Amendements financiers / mentions | `LEGAL-006`, `FIN-005`, `FIN-006` | Juridique + finance | `APPROVED` ✅ | Régime des avenants/amendements (ADR-023/ADR-030) validé. | Validé le 2026-09-04. | Non |

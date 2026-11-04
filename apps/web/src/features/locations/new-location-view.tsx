@@ -1,4 +1,4 @@
-import { Button, Card, LinkButton, PageHeader } from '@uttily/ui';
+import { Button, Card, LinkButton, PageHeader } from '@passness/ui';
 import { LocationFormFields } from './location-form-fields';
 
 export interface NewLocationViewProps {

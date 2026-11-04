@@ -97,7 +97,7 @@ export default defineConfig({
   },
   projects: [...publicProjects, ...authenticatedProjects],
   webServer: {
-    command: `pnpm --filter @uttily/web exec next dev --hostname 0.0.0.0 --port ${testPort}`,
+    command: `pnpm --filter @passness/web exec next dev --hostname 0.0.0.0 --port ${testPort}`,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120000,

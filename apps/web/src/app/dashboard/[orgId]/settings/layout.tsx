@@ -2,8 +2,8 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { getMembership, requireMembership } from '@uttily/core';
-import { PageHeader } from '@uttily/ui';
+import { getMembership, requireMembership } from '@passness/core';
+import { PageHeader } from '@passness/ui';
 
 export default async function SettingsLayout({
   children,

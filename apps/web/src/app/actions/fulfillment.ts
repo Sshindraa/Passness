@@ -30,8 +30,8 @@ import {
   declareBookingUnreturnedLost,
   type DeclareBookingUnreturnedLostResult,
   FulfillmentError,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 import type { ParsedFailure } from './parsers';
 
 const MAX_NOTES_LENGTH = 5000;

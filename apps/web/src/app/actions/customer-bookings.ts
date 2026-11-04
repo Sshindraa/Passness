@@ -4,14 +4,14 @@ import { revalidatePath } from 'next/cache';
 import { and, eq } from 'drizzle-orm';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { bookings } from '@uttily/database';
+import { bookings } from '@passness/database';
 import {
   cancelConfirmedBooking,
   previewBookingCancellation,
   CatalogError,
   type CancellationPreviewResult,
   type CancelConfirmedBookingResult,
-} from '@uttily/core';
+} from '@passness/core';
 
 export type CustomerActionResult<T> =
   { ok: true; data: T } | { ok: false; error: string; message: string };

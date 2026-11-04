@@ -1,7 +1,7 @@
 import { and, eq } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
-import type { DbExecutor } from '@uttily/database';
-import { bookings, locations, payments } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
+import { bookings, locations, payments } from '@passness/database';
 import { CatalogError } from '../catalog/errors';
 import { calculateSplitCancellationRefund, parseMarketplaceFeeSnapshot } from '../marketplace-fees';
 import type { MarketplaceFeeDeltaSnapshot } from '../marketplace-fees/types';

@@ -1,4 +1,4 @@
-# Sora — interface Uttily
+# Sora — interface Passness
 
 Source : https://www.fontshare.com/fonts/sora (consulté le 2026-08-31).
 Feuille source : https://api.fontshare.com/v2/css?f[]=sora@1&display=swap

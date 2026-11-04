@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createPrivacyRequest } from './create-privacy-request';
-import type { DbExecutor } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
 
 const { writeAuditEntryMock } = vi.hoisted(() => ({
   writeAuditEntryMock: vi.fn(),

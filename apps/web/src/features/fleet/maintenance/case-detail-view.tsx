@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import type { MaintenanceCaseSummary } from '@uttily/core';
+import type { MaintenanceCaseSummary } from '@passness/core';
 import { formatDateTimeInTimeZone } from '@/lib/operations-helpers';
 import { getInventoryConditionPresentation } from '@/lib/status-presentation';
-import type { InventoryCondition } from '@uttily/contracts';
-import { PageHeader, Card, Badge } from '@uttily/ui';
+import type { InventoryCondition } from '@passness/contracts';
+import { PageHeader, Card, Badge } from '@passness/ui';
 import { ResolveMaintenanceModal } from './case-detail/resolve-maintenance-modal';
 import { getCategoryPresentation } from '@/features/equipment/category-presentation';
 

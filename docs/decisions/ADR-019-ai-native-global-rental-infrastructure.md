@@ -1,15 +1,15 @@
-# ADR-019 — Uttily comme infrastructure mondiale de location compatible avec l'ère des agents IA
+# ADR-019 — Passness comme infrastructure mondiale de location compatible avec l'ère des agents IA
 
 - **Statut** : Accepted — direction stratégique, implémentation progressive
 - **Date** : 2026-08-07
-- **Décideur produit** : Porteur produit Uttily
+- **Décideur produit** : Porteur produit Passness
 - **Relie à** : ADR-001, ADR-002, ADR-003, ADR-011, ADR-012, ADR-013, ADR-017,
   ADR-018 ; `docs/product/business-plan.md` ;
   `docs/product/long-term-vision.md`
 
 ## 1. Contexte
 
-Le socle Uttily couvre les fonctions indispensables d'une plateforme de
+Le socle Passness couvre les fonctions indispensables d'une plateforme de
 location : catalogue, exemplaires physiques, disponibilité, prix, réservation,
 paiement, retrait, retour, documents et maintenance.
 
@@ -25,7 +25,7 @@ rechercher ou de réaliser un checkout rend insuffisante une stratégie reposant
 uniquement sur le site Web. En parallèle, l'identité numérique des produits, la
 traçabilité, la réparation et la circularité prennent une importance croissante.
 
-Uttily doit choisir une direction qui reste pertinente même si les modèles
+Passness doit choisir une direction qui reste pertinente même si les modèles
 d'intelligence artificielle, les interfaces et les fournisseurs actuels sont
 remplacés.
 
@@ -33,7 +33,7 @@ remplacés.
 
 ### Option A — Marketplace principalement grand public
 
-Uttily concentre l'investissement sur l'acquisition client et la comparaison
+Passness concentre l'investissement sur l'acquisition client et la comparaison
 d'offres.
 
 Avantages : proposition simple, potentiel de marque grand public.
@@ -43,7 +43,7 @@ fort coût d'acquisition et différenciation fragile.
 
 ### Option B — SaaS métier pour loueurs
 
-Uttily devient principalement le logiciel quotidien des professionnels.
+Passness devient principalement le logiciel quotidien des professionnels.
 
 Avantages : valeur directe, revenus récurrents et intégration profonde.
 
@@ -52,7 +52,7 @@ parmi d'autres.
 
 ### Option C — Infrastructure mondiale de l'accès au matériel
 
-Uttily combine progressivement :
+Passness combine progressivement :
 
 - OS loueur ;
 - marketplace ;
@@ -69,7 +69,7 @@ matière de confiance, interopérabilité et gouvernance des données.
 
 ## 3. Décision
 
-Uttily retient l'**option C**.
+Passness retient l'**option C**.
 
 La séquence obligatoire est :
 
@@ -87,7 +87,7 @@ horizons futurs.
 
 ### Autorité déterministe
 
-PostgreSQL et les use cases Uttily restent l'autorité pour :
+PostgreSQL et les use cases Passness restent l'autorité pour :
 
 - disponibilité et allocation ;
 - autorisations et multi-tenant ;
@@ -135,7 +135,7 @@ pas des dépendances verrouillées.
 
 Les identifiants stables et le futur passeport des exemplaires doivent pouvoir
 s'aligner avec des standards ouverts tels que GS1 Digital Link ou les exigences
-applicables de Digital Product Passport, sans attribuer aujourd'hui à Uttily une
+applicables de Digital Product Passport, sans attribuer aujourd'hui à Passness une
 obligation réglementaire non confirmée.
 
 ## 5. Capacités stratégiques
@@ -161,7 +161,7 @@ contrôlées par le loueur.
 ### Agent-ready Commerce
 
 Les futures interfaces partenaires ou agents réutilisent les mêmes use cases
-sécurisés que l'interface Uttily. Elles utilisent des identifiants publics,
+sécurisés que l'interface Passness. Elles utilisent des identifiants publics,
 contrats versionnés, holds et mutations idempotentes. Un paiement ou une
 réservation exige toujours les autorisations et confirmations prévues.
 

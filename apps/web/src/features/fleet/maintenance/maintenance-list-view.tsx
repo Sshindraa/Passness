@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import type { MaintenanceCaseSummary } from '@uttily/core';
+import type { MaintenanceCaseSummary } from '@passness/core';
 import { formatDateTimeInTimeZone } from '@/lib/operations-helpers';
 import { getCategoryPresentation } from '@/features/equipment/category-presentation';
-import { PageHeader, Card, Badge, LinkButton } from '@uttily/ui';
+import { PageHeader, Card, Badge, LinkButton } from '@passness/ui';
 
 export interface MaintenanceListViewProps {
   organizationId: string;

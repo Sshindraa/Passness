@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { NotificationSupportListItem } from '@uttily/core';
+import type { NotificationSupportListItem } from '@passness/core';
 import { NotificationActionButtons } from './notifications-action-buttons';
 import styles from './notifications-support.module.css';
 

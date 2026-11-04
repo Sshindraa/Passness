@@ -9,7 +9,7 @@
 import {
   resolveAnalyticsEnvironmentFromProcessEnv,
   type ResolvedAnalyticsEnvironment,
-} from '@uttily/core';
+} from '@passness/core';
 
 let cached: ResolvedAnalyticsEnvironment | null = null;
 

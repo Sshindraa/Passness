@@ -9,7 +9,7 @@ import {
   getOrganizationById,
   getMerchantFinanceOverview,
   getProfessionalVerification,
-} from '@uttily/core';
+} from '@passness/core';
 import type { ReactElement } from 'react';
 import { requireFulfillmentOperatorOf } from '@/lib/fulfillment-auth';
 import { DashboardCockpit, type DashboardTask } from '@/features/dashboard';

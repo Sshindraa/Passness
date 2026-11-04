@@ -1,4 +1,4 @@
-import type { PublicSearchDestinationOption } from '@uttily/core';
+import type { PublicSearchDestinationOption } from '@passness/core';
 
 const MAX_SUGGESTIONS = 8;
 

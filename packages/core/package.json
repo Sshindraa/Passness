@@ -1,5 +1,5 @@
 {
-  "name": "@uttily/core",
+  "name": "@passness/core",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -22,8 +22,8 @@
     "build": "tsc --noEmit"
   },
   "dependencies": {
-    "@uttily/contracts": "workspace:*",
-    "@uttily/database": "workspace:*",
+    "@passness/contracts": "workspace:*",
+    "@passness/database": "workspace:*",
     "drizzle-orm": "^0.36.0",
     "stripe": "22.3.2"
   },

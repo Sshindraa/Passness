@@ -2,7 +2,7 @@
 
 ## Symptôme
 
-Stripe indique un paiement réussi mais la réservation Uttily n'est pas
+Stripe indique un paiement réussi mais la réservation Passness n'est pas
 `CONFIRMED`, ou le client reste bloqué après paiement.
 
 ## Diagnostic

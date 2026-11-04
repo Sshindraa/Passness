@@ -15,7 +15,7 @@ mentionnées dans les archives de préparation sont historiques.
 
 ## Résumé exécutif
 
-Le MVP Uttily est **fonctionnellement implémenté**. Lot 7 est terminé : G7I (validation
+Le MVP Passness est **fonctionnellement implémenté**. Lot 7 est terminé : G7I (validation
 transversale) est fusionné et validé sur `main` ; G7M C1–C5 (amendements financiers et
 suppléments) est fusionné et validé ; le pont recherche publique → checkout est fusionné.
 La CI post-merge (15 jobs parallèles) est verte en qualité, tests et build.

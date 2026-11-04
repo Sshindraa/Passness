@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import type { CustomerBookingDetail, CustomerBookingStatus } from '@uttily/core';
-import { Card, Badge, PageHeader } from '@uttily/ui';
-import type { BadgeTone } from '@uttily/ui';
+import type { CustomerBookingDetail, CustomerBookingStatus } from '@passness/core';
+import { Card, Badge, PageHeader } from '@passness/ui';
+import type { BadgeTone } from '@passness/ui';
 import { CustomerCancellationModal } from './cancellation-modal';
 import { getAccountCopy, type AccountCopy } from '@/lib/account-copy';
 import { getIntlLocale } from '@/lib/locale';

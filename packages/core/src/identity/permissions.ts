@@ -130,12 +130,12 @@ export const MEMBER_INVITERS: readonly MembershipRole[] = CAPABILITY_MATRIX['tea
 export const ROLE_MANAGERS: readonly MembershipRole[] = CAPABILITY_MATRIX['team.changeRole'];
 
 /**
- * Vérifie qu'un utilisateur est admin Uttily (is_platform_admin).
+ * Vérifie qu'un utilisateur est admin Passness (is_platform_admin).
  * Les actions admin sont distinctes des rôles d'organisation (invariant §3).
  */
 export function requirePlatformAdmin(user: AuthenticatedUser): void {
   if (!user.isPlatformAdmin) {
-    throw new AuthorizationError('Action réservée à l\u2019administrateur Uttily.');
+    throw new AuthorizationError('Action réservée à l\u2019administrateur Passness.');
   }
 }
 

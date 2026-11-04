@@ -8,7 +8,7 @@ import { Dialog } from './dialog';
 import { Field } from './field';
 import { Icon } from './icon';
 
-describe('@uttily/ui primitives', () => {
+describe('@passness/ui primitives', () => {
   it('renders the decorative globe icon through the shared icon API', () => {
     const html = renderToStaticMarkup(<Icon name="globe" size={20} />);
     expect(html).toContain('aria-hidden="true"');

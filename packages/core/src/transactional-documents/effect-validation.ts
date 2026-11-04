@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Validation pure des invariants d'un ensemble d'effets outbox
+ * @passness/core — Validation pure des invariants d'un ensemble d'effets outbox
  * (G5D Round 4, ADR-013 §11).
  *
  * Fonction PURE partagée entre Phase A et Phase C. Aucune dépendance SQL, aucun

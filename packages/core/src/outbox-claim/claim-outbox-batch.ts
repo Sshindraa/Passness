@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Revendication générique d'un batch d'événements outbox (G5D, ADR-013 §7).
+ * @passness/core — Revendication générique d'un batch d'événements outbox (G5D, ADR-013 §7).
  *
  * Module commun partagé entre le worker de compensation (ADR-010 §13) et le
  * worker de documents transactionnels (ADR-013 §7).
@@ -16,7 +16,7 @@
  */
 
 import { sql, type SQL } from 'drizzle-orm';
-import type { DatabaseTransaction } from '@uttily/database';
+import type { DatabaseTransaction } from '@passness/database';
 import { LEASE_INTERVAL, MAX_ATTEMPTS, validateBatchLimit } from './scheduling';
 import type { KnownHandlerSelection } from './handler-selection';
 import { validateHandlerSelection } from './handler-selection';

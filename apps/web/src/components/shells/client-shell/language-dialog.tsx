@@ -1,6 +1,6 @@
 'use client';
 
-import { Dialog, Icon, LinkButton } from '@uttily/ui';
+import { Dialog, Icon, LinkButton } from '@passness/ui';
 import type { AppLocale } from '@/lib/locale';
 import styles from './language-dialog.module.css';
 
@@ -50,8 +50,8 @@ export function LanguageDialog({
     >
       <p className={styles.description}>
         {fr
-          ? 'Choisissez la langue d’affichage d’Uttily.'
-          : 'Choose your display language for Uttily.'}
+          ? 'Choisissez la langue d’affichage d’Passness.'
+          : 'Choose your display language for Passness.'}
       </p>
 
       <div className={styles.languagesList} role="list">
@@ -111,4 +111,3 @@ export function LanguageDialog({
     </Dialog>
   );
 }
-

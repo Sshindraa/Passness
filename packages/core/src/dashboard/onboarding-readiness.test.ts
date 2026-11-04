@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { getOrganizationOnboardingReadiness } from './onboarding-readiness';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 
 describe('Organization Onboarding Readiness (Pure Unit & Schema Contract)', () => {
   it('structure la réponse avec exactement 7 jalons et les clés attendues', async () => {

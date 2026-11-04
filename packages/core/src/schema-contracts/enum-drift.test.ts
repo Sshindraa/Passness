@@ -13,7 +13,7 @@ import {
   paymentStatus,
   refundStatus,
   pricingPlanType,
-} from '@uttily/database';
+} from '@passness/database';
 import {
   BOOKING_STATUSES,
   INVENTORY_CONDITIONS,
@@ -28,16 +28,16 @@ import {
   PAYMENT_STATUSES,
   REFUND_STATUSES,
   PRICING_PLAN_TYPES,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 
 /**
  * Test de non-dérive des contrats client-safe (Chantier 17).
  *
- * Garantit que les types et listes partagés dans `@uttily/contracts` (utilisables
+ * Garantit que les types et listes partagés dans `@passness/contracts` (utilisables
  * côté client sans dépendance à Drizzle ni à la DB) correspondent strictement
- * aux `enumValues` déclarés dans le schéma PostgreSQL autoritaire de `@uttily/database`.
+ * aux `enumValues` déclarés dans le schéma PostgreSQL autoritaire de `@passness/database`.
  */
-describe('Non-dérive des enums entre @uttily/database et @uttily/contracts', () => {
+describe('Non-dérive des enums entre @passness/database et @passness/contracts', () => {
   it('bookingStatus correspond exactement à BOOKING_STATUSES', () => {
     expect([...BOOKING_STATUSES]).toEqual([...bookingStatus.enumValues]);
   });

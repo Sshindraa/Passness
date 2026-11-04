@@ -13,7 +13,7 @@ de publication déjà attachées à `bike`.
 
 ## Décision
 
-Uttily expose quatre filtres précis sous la famille `bike` :
+Passness expose quatre filtres précis sous la famille `bike` :
 
 | Slug | Libellé français | Libellé anglais |
 | --- | --- | --- |
@@ -24,7 +24,7 @@ Uttily expose quatre filtres précis sous la famille `bike` :
 
 Le produit conserve la catégorie commerciale `bike`. Le sous-type est porté
 par l'attribut de variante JSONB `attributes.subtype`, avec une valeur issue du
-registre fermé de `@uttily/contracts`. Aucun slug de catégorie enfant, aucune
+registre fermé de `@passness/contracts`. Aucun slug de catégorie enfant, aucune
 migration de catégorie et aucune nouvelle famille commerciale ne sont ajoutés.
 
 La recherche publique accepte `bikeSubtype`, l'inclut dans l'empreinte du

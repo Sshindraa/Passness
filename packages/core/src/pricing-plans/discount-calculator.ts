@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Sélection et application des paliers de réduction multi-jours.
  * Pas de cumul : seul le meilleur palier applicable est utilisé.

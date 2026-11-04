@@ -1,5 +1,5 @@
 /**
- * @uttily/core — LIVE Readiness Checker (Chantier 20-A).
+ * @passness/core — LIVE Readiness Checker (Chantier 20-A).
  *
  * Vérifie la présence et la cohérence des variables d'environnement
  * nécessaires au passage LIVE.

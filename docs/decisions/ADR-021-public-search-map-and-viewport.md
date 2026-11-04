@@ -2,7 +2,7 @@
 
 - **Statut** : Accepted
 - **Date** : 2026-08-09
-- **Décideurs** : Porteur produit Uttily, engineering
+- **Décideurs** : Porteur produit Passness, engineering
 - **Relie à** : ADR-017, ADR-018, ADR-020 ; G7D-A ; G7E-A
 
 > **Note de révision (2026-08-27)** : ADR-027 autorise pour G8B-2D des

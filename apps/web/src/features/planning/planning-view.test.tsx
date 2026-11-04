@@ -4,7 +4,7 @@ import type {
   OperationalItemCalendar,
   OperationalPlanning,
   OperationalPlanningEvent,
-} from '@uttily/core';
+} from '@passness/core';
 import { getPlanningFleetDayStatus, PlanningView } from './planning-view';
 
 vi.mock('next/navigation', () => ({

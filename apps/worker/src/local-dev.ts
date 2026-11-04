@@ -1,4 +1,4 @@
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { fileURLToPath } from 'node:url';
 
 const LOCAL_DATABASE_URL = 'postgresql://uttily:uttily@127.0.0.1:5432/uttily';
@@ -66,7 +66,11 @@ export async function runLocalWorker(environment = process.env) {
     { createDatabase },
     { FakeDeterministicDocumentRenderer, FakeTransactionalEmailSender, InMemoryObjectStorage },
     { createWorkerDependenciesForTesting, runWorkerLoop },
-  ] = await Promise.all([import('@uttily/database'), import('@uttily/core'), import('./index.js')]);
+  ] = await Promise.all([
+    import('@passness/database'),
+    import('@passness/core'),
+    import('./index.js'),
+  ]);
   const controller = new AbortController();
   const onSignal = () => controller.abort();
   let db: DatabaseClient | undefined;

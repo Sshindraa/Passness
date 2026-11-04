@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
 import { and, eq, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { inventoryBlocks, inventoryItems, locations, lockOrganization } from '@uttily/database';
-import { isActionErrorCode, type ActionErrorCode } from '@uttily/contracts';
+import type { DatabaseClient } from '@passness/database';
+import { inventoryBlocks, inventoryItems, locations, lockOrganization } from '@passness/database';
+import { isActionErrorCode, type ActionErrorCode } from '@passness/contracts';
 import { LocalToUtcError, localDateTimeStringToUtc } from '../pricing-plans/local-to-utc';
 import { CatalogError } from '../catalog/errors';
 import { AuthorizationError } from '../identity/permissions';

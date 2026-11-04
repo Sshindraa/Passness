@@ -1,4 +1,4 @@
-import type { UnifiedBike } from '@uttily/core';
+import type { UnifiedBike } from '@passness/core';
 import { IdentityDrawer } from './identity-drawer';
 import { getCategoryDisplayLabel } from '@/features/equipment/category-presentation';
 import styles from './components.module.css';

@@ -56,7 +56,7 @@ const LOCAL_DEMO_LOCATIONS = [
 ];
 
 export function isLocalSeedEnvironment(environment = process.env) {
-  return environment?.UTTILY_LOCAL_DEV === '1' && environment?.NODE_ENV === 'development';
+  return environment?.PASSNESS_LOCAL_DEV === '1' && environment?.NODE_ENV === 'development';
 }
 
 export function assertLocalSeedEnvironment(environment = process.env) {
@@ -654,7 +654,7 @@ async function ensurePricingPlan(tx, organizationId, variantId, locationId) {
 }
 
 async function applyLocalDemoSeed(tx) {
-  await tx`SELECT pg_advisory_xact_lock(hashtextextended('uttily-local-demo-seed', 0))`;
+  await tx`SELECT pg_advisory_xact_lock(hashtextextended('passness-local-demo-seed', 0))`;
 
   await ensureCountry(tx);
   for (const destination of LOCAL_DEMO_DESTINATIONS) {

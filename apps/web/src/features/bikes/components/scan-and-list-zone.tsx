@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useTransition, type DragEvent, type ChangeEvent } from 'react';
-import type { EquipmentEnrichmentProposal } from '@uttily/intelligence';
+import type { EquipmentEnrichmentProposal } from '@passness/intelligence';
 import { scanEquipmentPhotoAction } from '@/app/actions/equipment-scan';
 import styles from './scan-and-list-zone.module.css';
 

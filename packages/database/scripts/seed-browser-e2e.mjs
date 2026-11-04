@@ -30,8 +30,10 @@ const E2E_PHOTOS = [
 export function assertBrowserE2ESeedEnvironment(environment = process.env) {
   assertLocalSeedEnvironment(environment);
   const isCi = environment.CI === '1' || environment.CI === 'true';
-  if (!isCi || environment.UTTILY_BROWSER_E2E !== '1') {
-    throw new Error('Le seed browser E2E exige CI et le marqueur UTTILY_BROWSER_E2E=1 explicites.');
+  if (!isCi || environment.PASSNESS_BROWSER_E2E !== '1') {
+    throw new Error(
+      'Le seed browser E2E exige CI et le marqueur PASSNESS_BROWSER_E2E=1 explicites.',
+    );
   }
 }
 
@@ -42,7 +44,7 @@ async function seedBrowserE2E() {
   const sql = postgres(resolveLocalDatabaseUrl(), { max: 1 });
   try {
     await sql.begin(async (tx) => {
-      await tx`SELECT pg_advisory_xact_lock(hashtextextended('uttily-local-demo-seed', 0))`;
+      await tx`SELECT pg_advisory_xact_lock(hashtextextended('passness-local-demo-seed', 0))`;
 
       const products = await tx`
         SELECT p."id", p."organization_id"

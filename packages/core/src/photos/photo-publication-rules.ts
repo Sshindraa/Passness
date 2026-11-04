@@ -1,4 +1,4 @@
-import { REQUIRED_BIKE_PHOTO_SLOTS, type RequiredBikePhotoSlot } from '@uttily/contracts';
+import { REQUIRED_BIKE_PHOTO_SLOTS, type RequiredBikePhotoSlot } from '@passness/contracts';
 
 export { REQUIRED_BIKE_PHOTO_SLOTS };
 

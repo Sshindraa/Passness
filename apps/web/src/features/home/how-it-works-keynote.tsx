@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { Icon } from '@uttily/ui';
+import { Icon } from '@passness/ui';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import styles from './how-it-works-keynote.module.css';
 
@@ -142,7 +142,11 @@ export function HowItWorksKeynote({ locale }: HowItWorksKeynoteProps): React.Rea
         onBlur={() => setIsPaused(false)}
       >
         {/* Left: Interactive Keynote Step Switcher */}
-        <div className={styles.stepList} role="tablist" aria-label={fr ? 'Étapes de réservation' : 'Booking steps'}>
+        <div
+          className={styles.stepList}
+          role="tablist"
+          aria-label={fr ? 'Étapes de réservation' : 'Booking steps'}
+        >
           {STEPS.map((step, index) => {
             const isActive = index === activeStep;
             return (
@@ -194,9 +198,7 @@ export function HowItWorksKeynote({ locale }: HowItWorksKeynoteProps): React.Rea
               <span className={styles.screenPulse} aria-hidden="true" />
               <span>{currentStepData.screenBadge[locale]}</span>
             </div>
-            <span className={styles.screenStepIndicator}>
-              {currentStepData.number} / 03
-            </span>
+            <span className={styles.screenStepIndicator}>{currentStepData.number} / 03</span>
           </div>
 
           {/* Dynamic slide body */}
@@ -205,7 +207,9 @@ export function HowItWorksKeynote({ locale }: HowItWorksKeynoteProps): React.Rea
               <div className={styles.locatorCard}>
                 <div className={styles.spotHeader}>
                   <h3 className={styles.spotTitle}>
-                    {fr ? 'Chamonix-Mont-Blanc · Station Village' : 'Chamonix-Mont-Blanc · Resort Village'}
+                    {fr
+                      ? 'Chamonix-Mont-Blanc · Station Village'
+                      : 'Chamonix-Mont-Blanc · Resort Village'}
                   </h3>
                   <span className={styles.spotDistanceBadge}>
                     <Icon name="pin" size={14} />
@@ -218,7 +222,9 @@ export function HowItWorksKeynote({ locale }: HowItWorksKeynoteProps): React.Rea
                       {fr ? 'Atelier partenaire' : 'Partner workshop'}
                     </span>
                     <span className={styles.spotInfoValue}>
-                      {fr ? 'Chamonix Pro Rental · Certifié Uttily' : 'Chamonix Pro Rental · Certified'}
+                      {fr
+                        ? 'Chamonix Pro Rental · Certifié Passness'
+                        : 'Chamonix Pro Rental · Certified'}
                     </span>
                   </div>
                   <div className={styles.spotInfoItem}>
@@ -235,7 +241,9 @@ export function HowItWorksKeynote({ locale }: HowItWorksKeynoteProps): React.Rea
                   </span>
                   <span className={styles.guaranteePill}>
                     <Icon name="check" size={14} />
-                    <span>{fr ? 'Accès direct pistes & sentiers' : 'Direct trail & slope access'}</span>
+                    <span>
+                      {fr ? 'Accès direct pistes & sentiers' : 'Direct trail & slope access'}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -255,7 +263,9 @@ export function HowItWorksKeynote({ locale }: HowItWorksKeynoteProps): React.Rea
                 <div className={styles.chronoDisplay}>
                   <span className={styles.chronoTime}>14:59</span>
                   <div className={styles.chronoText}>
-                    <strong>{fr ? 'Hold temporaire garanti.' : 'Guaranteed temporary hold.'}</strong>
+                    <strong>
+                      {fr ? 'Hold temporaire garanti.' : 'Guaranteed temporary hold.'}
+                    </strong>
                     <br />
                     <span>
                       {fr
@@ -283,7 +293,11 @@ export function HowItWorksKeynote({ locale }: HowItWorksKeynoteProps): React.Rea
                   <span>
                     <strong>{fr ? 'Fiche atelier réglages' : 'Workshop setup profile'}</strong>
                   </span>
-                  <span>{fr ? 'Taille 1m82 · Poids 74kg · Niveau Expert' : 'Height 1.82m · Weight 74kg · Expert'}</span>
+                  <span>
+                    {fr
+                      ? 'Taille 1m82 · Poids 74kg · Niveau Expert'
+                      : 'Height 1.82m · Weight 74kg · Expert'}
+                  </span>
                 </div>
                 <div className={styles.checklist}>
                   <div className={styles.checkItem}>
@@ -323,7 +337,7 @@ export function HowItWorksKeynote({ locale }: HowItWorksKeynoteProps): React.Rea
 
           {/* Screen footer */}
           <div className={styles.screenFooter}>
-            <span>{fr ? 'Garantie d’engagement Uttily' : 'Uttily standard guarantee'}</span>
+            <span>{fr ? 'Garantie d’engagement Passness' : 'Passness standard guarantee'}</span>
             <span>{fr ? 'Prêt à l’usage dès l’arrivée' : 'Ready to use on arrival'}</span>
           </div>
         </div>

@@ -26,7 +26,7 @@ test('toutes les références de scripts des manifests existent', () => {
 });
 
 test('signale une référence de script manquante', () => {
-  const fixtureRoot = mkdtempSync(join(tmpdir(), 'uttily-script-check-'));
+  const fixtureRoot = mkdtempSync(join(tmpdir(), 'passness-script-check-'));
   try {
     mkdirSync(join(fixtureRoot, 'apps'));
     mkdirSync(join(fixtureRoot, 'packages'));

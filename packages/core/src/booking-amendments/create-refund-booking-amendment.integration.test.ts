@@ -5,13 +5,13 @@ import {
   createDatabase,
   assertLocalhost,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import { createRefundBookingAmendment } from './create-refund-booking-amendment';
 import { getEffectiveBooking } from './get-effective-booking';
 import type { AuthenticatedUser } from '../identity/types';
-import { parseBookingAmendedV1Event, parseRefundRequestedV1Event } from '@uttily/contracts';
+import { parseBookingAmendedV1Event, parseRefundRequestedV1Event } from '@passness/contracts';
 
-const TEST_DB_NAME = 'uttily_test_g7m_b2b1_refund';
+const TEST_DB_NAME = 'passness_test_g7m_b2b1_refund';
 const shouldSkip = !process.env.DATABASE_URL && process.env.CI !== '1' && process.env.CI !== 'true';
 
 describe.skipIf(shouldSkip)('createRefundBookingAmendment — intégration PostgreSQL', () => {

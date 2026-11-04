@@ -1,4 +1,4 @@
-# Switzer — Uttily hero
+# Switzer — Passness hero
 
 Source: https://www.fontshare.com/fonts/switzer
 

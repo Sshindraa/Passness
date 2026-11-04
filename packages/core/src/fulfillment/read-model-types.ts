@@ -3,7 +3,7 @@ import type { ConditionReportPhase } from './report-types';
 import type { InventoryCondition, InventoryStatus } from '../catalog/types';
 
 /**
- * @uttily/core — Types des read models opérationnels fulfillment (G4A).
+ * @passness/core — Types des read models opérationnels fulfillment (G4A).
  *
  * Aucun champ financier, Stripe, terms snapshot ou payload JSON n'est exposé.
  * L'email du client n'apparaît que sur la fiche détaillée (nécessaire au retrait).

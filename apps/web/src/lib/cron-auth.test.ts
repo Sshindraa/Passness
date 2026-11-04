@@ -4,7 +4,7 @@ import { verifyCronSecret } from './cron-auth';
 /**
  * Chantier 18-A — Authentification partagée des endpoints cron.
  *
- * Convention Uttily : secret partagé `CRON_SECRET` en Bearer, refus
+ * Convention Passness : secret partagé `CRON_SECRET` en Bearer, refus
  * fail-closed si le secret est absent, comparaison à temps constant.
  */
 
@@ -13,7 +13,7 @@ const ORIGINAL = process.env.CRON_SECRET;
 function requestWith(header?: string): Request {
   const headers = new Headers();
   if (header !== undefined) headers.set('Authorization', header);
-  return new Request('https://uttily.test/api/cron/x', { method: 'GET', headers });
+  return new Request('https://passness.test/api/cron/x', { method: 'GET', headers });
 }
 
 describe('18-A — verifyCronSecret', () => {

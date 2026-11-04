@@ -15,7 +15,7 @@ import { runMigrations, assertLocalhost } from '../src/index';
  * Le suivi Drizzle Kit s'appuie sur la table `__drizzle_migrations`.
  */
 
-const TEST_DB_NAME = 'uttily_test_migrate';
+const TEST_DB_NAME = 'passness_test_migrate';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 
@@ -226,7 +226,7 @@ describe.skipIf(shouldSkipIntegrationTests())('runMigrations — base vierge via
 describe.skipIf(shouldSkipIntegrationTests())(
   'backfill 0025 — échec sur correspondance absente ou ambiguë',
   () => {
-    const BACKFILL_TEST_DB_PREFIX = 'uttily_test_backfill';
+    const BACKFILL_TEST_DB_PREFIX = 'passness_test_backfill';
 
     async function createTestDb(
       dbSuffix: string,

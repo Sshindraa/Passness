@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Résolution de la tentative depuis un webhook (Lot 5, ADR-010 §10.1).
+ * @passness/core — Résolution de la tentative depuis un webhook (Lot 5, ADR-010 §10.1).
  *
  * Retrouve la tentative de paiement par `provider_payment_intent_id` ou, si le
  * webhook précède la transaction B, par `payment_attempt_id` dans les metadata
@@ -14,7 +14,7 @@ import {
   paymentAttempts,
   payments,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import type { PaymentIntentEventData, ResolvedAttempt } from './types';
 import { WebhookHandlerError } from './errors';
 

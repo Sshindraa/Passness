@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { runMigrations, assertLocalhost, createDatabase } from '@uttily/database';
+import { runMigrations, assertLocalhost, createDatabase } from '@passness/database';
 import { PostgresPhotoPublicationGate } from './postgres-publication-gate';
 import { PublicSearchError } from '../public-search/errors';
 
@@ -20,7 +20,7 @@ import { PublicSearchError } from '../public-search/errors';
  * - Entrée vide → Set vide sans SQL.
  */
 
-const TEST_DB_NAME = 'uttily_test_g7f_gate';
+const TEST_DB_NAME = 'passness_test_g7f_gate';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 
@@ -357,7 +357,7 @@ describe.skipIf(shouldSkipIntegrationTests())('PostgresPhotoPublicationGate', ()
   it('fail-closed : panne DB → erreur PUBLICATION_GATE_UNAVAILABLE', async () => {
     if (!testUrl) return;
     // Créer un client qui pointe vers une base inexistante.
-    const badUrl = testUrl.replace(TEST_DB_NAME, 'uttily_nonexistent_db');
+    const badUrl = testUrl.replace(TEST_DB_NAME, 'passness_nonexistent_db');
     const db = createDatabase(badUrl);
     try {
       const gate = new PostgresPhotoPublicationGate();

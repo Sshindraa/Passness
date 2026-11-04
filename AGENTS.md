@@ -1,8 +1,8 @@
-# Uttily — Instructions pour les agents de développement
+# Passness — Instructions pour les agents de développement
 
 ## Mission produit
 
-Uttily est une plateforme B2B2C de location d'équipements. Le premier marché cible est constitué de **loueurs professionnels**. Le MVP doit permettre une réservation réelle d'un équipement physiquement disponible dans une destination précise.
+Passness est une plateforme B2B2C de location d'équipements. Le premier marché cible est constitué de **loueurs professionnels**. Le MVP doit permettre une réservation réelle d'un équipement physiquement disponible dans une destination précise.
 
 Avant toute tâche, lire dans cet ordre :
 
@@ -27,7 +27,7 @@ Pour les frais marketplace, lire [`docs/operations/marketplace-fees-current-stat
 - Monolithe modulaire TypeScript au départ.
 - Next.js full-stack ; pas d'API NestJS avant qu'un besoin explicite ne le justifie.
 - PostgreSQL + PostGIS est l'autorité transactionnelle.
-- Les loueurs sont des organisations ; Uttily est la source de vérité des rôles et permissions.
+- Les loueurs sont des organisations ; Passness est la source de vérité des rôles et permissions.
 - Loueurs professionnels uniquement dans le MVP.
 - Un panier ne contient les produits que d'un seul loueur.
 - Chaque réservation porte sur des exemplaires physiques alloués immédiatement.

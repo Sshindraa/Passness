@@ -1,5 +1,5 @@
 import { and, eq, isNull, count, sql, inArray } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   organizations,
   locations,
@@ -10,7 +10,7 @@ import {
   pricingPlans,
   inventoryItems,
   organizationPaymentAccounts,
-} from '@uttily/database';
+} from '@passness/database';
 
 export type ReadinessMilestoneKey =
   'ORGANIZATION' | 'LOCATION' | 'PRIMARY_PRODUCT' | 'PHOTOS' | 'PRICING' | 'INVENTORY' | 'PAYMENTS';

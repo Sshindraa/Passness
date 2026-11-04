@@ -1,6 +1,6 @@
 import { and, asc, eq, inArray, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { bookingItems, inventoryItems, locations } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { bookingItems, inventoryItems, locations } from '@passness/database';
 import { isValidTimeZone } from '../identity/time-zone';
 import { toLocalParts } from '../pricing-plans/time-utils';
 import { FulfillmentError } from './fulfillment-errors';

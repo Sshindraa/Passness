@@ -156,7 +156,7 @@ describe('permissions', () => {
   });
 
   describe('requirePlatformAdmin', () => {
-    it('accepte un admin Uttily', () => {
+    it('accepte un admin Passness', () => {
       expect(() => requirePlatformAdmin(user(true))).not.toThrow();
     });
     it('rejette un utilisateur standard', () => {

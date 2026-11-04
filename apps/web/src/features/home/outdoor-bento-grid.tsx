@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Icon } from '@uttily/ui';
+import { Icon } from '@passness/ui';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import styles from './outdoor-bento-grid.module.css';
 
@@ -136,10 +136,7 @@ export function OutdoorBentoGrid({ locale }: OutdoorBentoGridProps): React.React
   const fr = locale === 'fr';
 
   return (
-    <section
-      className={styles.section}
-      aria-labelledby="outdoor-bento-title"
-    >
+    <section className={styles.section} aria-labelledby="outdoor-bento-title">
       <ScrollReveal className={styles.header} delay={0} offset={16}>
         <div className={styles.eyebrow}>
           <span className={styles.eyebrowDot} aria-hidden="true" />
@@ -182,12 +179,17 @@ export function OutdoorBentoGrid({ locale }: OutdoorBentoGridProps): React.React
                     src={spot.imageSrc}
                     alt={spot.imageAlt[locale]}
                     fill
-                    sizes={isHero ? '(max-width: 1024px) 100vw, 60vw' : '(max-width: 1024px) 100vw, 40vw'}
+                    sizes={
+                      isHero ? '(max-width: 1024px) 100vw, 60vw' : '(max-width: 1024px) 100vw, 40vw'
+                    }
                     className={styles.image}
                     priority={isHero === true}
                   />
                 </div>
-                <div className={isHero ? styles.overlayHero : styles.overlaySecondary} aria-hidden="true" />
+                <div
+                  className={isHero ? styles.overlayHero : styles.overlaySecondary}
+                  aria-hidden="true"
+                />
 
                 <div className={styles.cardTop}>
                   <div className={styles.badgeGroup}>
@@ -204,7 +206,10 @@ export function OutdoorBentoGrid({ locale }: OutdoorBentoGridProps): React.React
                   <h3 className={styles.cardTitle}>{spot.title[locale]}</h3>
                   <p className={styles.cardDescription}>{spot.description[locale]}</p>
 
-                  <div className={styles.cardTags} aria-label={fr ? 'Points d’intérêt' : 'Highlights'}>
+                  <div
+                    className={styles.cardTags}
+                    aria-label={fr ? 'Points d’intérêt' : 'Highlights'}
+                  >
                     {spot.tags.map((tag) => (
                       <span key={tag} className={styles.tag}>
                         {tag}

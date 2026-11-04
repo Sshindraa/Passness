@@ -22,7 +22,7 @@ function baseTaxConfig(overrides: Partial<TaxConfig> = {}): TaxConfig {
     status: 'NOT_APPLICABLE',
     amountMinor: null,
     rateBps: null,
-    invoiceIssuer: 'Uttily SAS',
+    invoiceIssuer: 'Passness SAS',
     ...overrides,
   };
 }

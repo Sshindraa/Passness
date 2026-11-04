@@ -1,4 +1,4 @@
-import { listPaymentsSupport } from '@uttily/core';
+import { listPaymentsSupport } from '@passness/core';
 import { PaymentsSupportView } from '@/features/internal';
 import { requireSupportPlatformAdmin } from '@/lib/support-auth';
 

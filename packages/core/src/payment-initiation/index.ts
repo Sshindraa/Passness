@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Payment Initiation (Lot 5, ADR-010 §7).
+ * @passness/core — Module Payment Initiation (Lot 5, ADR-010 §7).
  *
  * Use case d'initiation de paiement : convertit un brouillon HELD en
  * PAYMENT_PROCESSING, crée un payment + payment_attempt, appelle le provider

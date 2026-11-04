@@ -101,7 +101,7 @@ async function seedRows(sql: postgres.Sql, split: boolean): Promise<SeededRows> 
 }
 
 describe.skipIf(shouldSkip)('migration 0049 — preuve PostgreSQL ciblée', () => {
-  const databaseName = `uttily_test_split_marketplace_fees_${process.pid}_${Date.now()}`;
+  const databaseName = `passness_test_split_marketplace_fees_${process.pid}_${Date.now()}`;
   let testUrl: string | null = null;
   let sql: postgres.Sql | null = null;
 

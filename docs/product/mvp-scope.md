@@ -18,7 +18,7 @@ périmètre. La taxonomie et les statuts d'activation sont définis par
 - **Client** : recherche, réserve, paie, récupère et restitue.
 - **Propriétaire** : configure son entreprise et pilote son activité.
 - **Employé** : prépare, remet, réceptionne et contrôle les équipements.
-- **Administrateur Uttily** : assistance, contrôle et gestion des incidents.
+- **Administrateur Passness** : assistance, contrôle et gestion des incidents.
 
 ## Inclus dans le MVP
 

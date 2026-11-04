@@ -1,13 +1,13 @@
 /**
- * @uttily/worker — Tests unitaires de runWorkerLoop (G5F).
+ * @passness/worker — Tests unitaires de runWorkerLoop (G5F).
  *
  * Tests déterministes utilisant des fake timers (vi.useFakeTimers) et un mock
  * de `runWorkerCycle` via vi.mock. Aucune DB réelle n'est nécessaire.
  */
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
-import type { DocumentRenderer, ObjectStorage, TransactionalEmailSender } from '@uttily/core';
+import type { DatabaseClient } from '@passness/database';
+import type { DocumentRenderer, ObjectStorage, TransactionalEmailSender } from '@passness/core';
 
 import { runWorkerCycle } from './worker-cycle.js';
 import { runWorkerLoop, WorkerConfigurationError } from './index.js';

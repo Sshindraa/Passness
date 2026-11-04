@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Tests du harness de smoke (G5H-C2C-B4 round 3).
+ * @passness/worker — Tests du harness de smoke (G5H-C2C-B4 round 3).
  *
  * Ces tests spawnent le harness `scripts/smoke-built-worker.mjs` comme un
  * child process et vérifient :
@@ -116,7 +116,7 @@ describe('Smoke harness', () => {
   });
 
   it('harness échoue proprement quand le bundle est absent (exit 2)', async () => {
-    const nonexistentBundle = `/tmp/uttily-nonexistent-${Date.now()}.js`;
+    const nonexistentBundle = `/tmp/passness-nonexistent-${Date.now()}.js`;
     const result = await runHarness([`--bundle=${nonexistentBundle}`], 10_000);
 
     expect(result.exitCode).toBe(2);

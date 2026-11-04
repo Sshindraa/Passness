@@ -9,8 +9,8 @@ import {
   getCounterAvailableItems,
   type CounterAvailableItem,
   type CreateCounterBookingResult,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 
 export interface GetCounterAvailableItemsInput {
   organizationId: string;

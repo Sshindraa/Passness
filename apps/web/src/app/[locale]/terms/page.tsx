@@ -12,11 +12,11 @@ export async function generateMetadata({ params }: TermsPageProps): Promise<Meta
   const fr = locale === 'fr';
   return {
     title: fr
-      ? 'Conditions Générales d’Utilisation (CGU) · Uttily'
-      : 'Terms of Service (ToS) · Uttily',
+      ? 'Conditions Générales d’Utilisation (CGU) · Passness'
+      : 'Terms of Service (ToS) · Passness',
     description: fr
-      ? 'Conditions générales d’utilisation de la plateforme de location d’équipements outdoor Uttily.'
-      : 'Terms of service of the Uttily outdoor equipment rental marketplace platform.',
+      ? 'Conditions générales d’utilisation de la plateforme de location d’équipements outdoor Passness.'
+      : 'Terms of service of the Passness outdoor equipment rental marketplace platform.',
   };
 }
 
@@ -39,23 +39,23 @@ export default async function TermsPage({ params }: TermsPageProps): Promise<Rea
       {fr ? (
         <>
           <section>
-            <h2>1. Objet et rôle d’Uttily</h2>
+            <h2>1. Objet et rôle d’Passness</h2>
             <p>
               Les présentes Conditions Générales d’Utilisation (ci-après les « <strong>CGU</strong>{' '}
               ») définissent les règles d’accès et d’utilisation de la plateforme web éditée par
-              Uttily SAS (ci-après « <strong>Uttily</strong> »).
+              Passness SAS (ci-après « <strong>Passness</strong> »).
             </p>
             <p>
-              Uttily exploite une plateforme technique d’intermédiation B2B2C mettant en relation
+              Passness exploite une plateforme technique d’intermédiation B2B2C mettant en relation
               des utilisateurs (« <strong>Locataires</strong> » ou « <strong>Clients</strong> »)
               avec des professionnels indépendants de la location d’équipements outdoor («{' '}
               <strong>Loueurs</strong> »).
             </p>
             <div className="callout">
               <p>
-                <strong>Important :</strong> Uttily agit exclusivement en qualité d’opérateur de
+                <strong>Important :</strong> Passness agit exclusivement en qualité d’opérateur de
                 plateforme technique en ligne (au sens de l’article L. 111-7 du Code de la
-                consommation). Uttily n’est pas propriétaire des équipements mis en location, ne
+                consommation). Passness n’est pas propriétaire des équipements mis en location, ne
                 définit pas les stocks physiques et n’est pas partie au contrat de location conclu
                 directement entre le Locataire et le Loueur.
               </p>
@@ -93,7 +93,7 @@ export default async function TermsPage({ params }: TermsPageProps): Promise<Rea
 
           <section>
             <h2>4. Obligations de l’utilisateur</h2>
-            <p>En utilisant Uttily, l’utilisateur s’engage à :</p>
+            <p>En utilisant Passness, l’utilisateur s’engage à :</p>
             <ul>
               <li>Fournir des informations véridiques, exactes et à jour ;</li>
               <li>
@@ -114,9 +114,9 @@ export default async function TermsPage({ params }: TermsPageProps): Promise<Rea
           <section>
             <h2>5. Propriété intellectuelle</h2>
             <p>
-              L’ensemble des éléments composant la plateforme Uttily (marques, logos, graphismes,
+              L’ensemble des éléments composant la plateforme Passness (marques, logos, graphismes,
               textes, code source, interfaces utilisateur et design system) sont la propriété
-              exclusive d’Uttily SAS et sont protégés par le Code de la propriété intellectuelle.
+              exclusive d’Passness SAS et sont protégés par le Code de la propriété intellectuelle.
               Toute reproduction ou extraction non autorisée est strictement interdite.
             </p>
           </section>
@@ -124,12 +124,12 @@ export default async function TermsPage({ params }: TermsPageProps): Promise<Rea
           <section>
             <h2>6. Responsabilité et disponibilité de la plateforme</h2>
             <p>
-              Uttily met en œuvre tous les moyens raisonnables pour assurer la disponibilité
+              Passness met en œuvre tous les moyens raisonnables pour assurer la disponibilité
               continue de ses services 24h/24 et 7j/7. Toutefois, l’accès peut être temporairement
               suspendu pour des raisons de maintenance technique, d’évolution ou de force majeure.
             </p>
             <p>
-              Uttily ne saurait être tenue responsable des manquements imputables au Loueur
+              Passness ne saurait être tenue responsable des manquements imputables au Loueur
               partenaire (ex. retard de préparation, défaut de matériel au comptoir) ou au
               Locataire, ni des dommages indirects résultant de l’utilisation de la plateforme.
             </p>
@@ -138,7 +138,7 @@ export default async function TermsPage({ params }: TermsPageProps): Promise<Rea
           <section>
             <h2>7. Modification des conditions et droit applicable</h2>
             <p>
-              Uttily se réserve le droit de modifier les présentes CGU à tout moment. La version
+              Passness se réserve le droit de modifier les présentes CGU à tout moment. La version
               applicable est la version <strong>v1</strong>, en vigueur à la date de réservation.
             </p>
             <p>
@@ -152,21 +152,21 @@ export default async function TermsPage({ params }: TermsPageProps): Promise<Rea
       ) : (
         <>
           <section>
-            <h2>1. Purpose and Role of Uttily</h2>
+            <h2>1. Purpose and Role of Passness</h2>
             <p>
               These Terms of Service (the “<strong>Terms</strong>”) govern access to and use of the
-              web platform operated by Uttily SAS (“<strong>Uttily</strong>”).
+              web platform operated by Passness SAS (“<strong>Passness</strong>”).
             </p>
             <p>
-              Uttily operates a B2B2C technical marketplace connecting customers (“
+              Passness operates a B2B2C technical marketplace connecting customers (“
               <strong>Renters</strong>” or “<strong>Users</strong>”) with independent professional
               outdoor equipment rental businesses (“<strong>Partners</strong>” or “
               <strong>Rental Operators</strong>”).
             </p>
             <div className="callout">
               <p>
-                <strong>Important:</strong> Uttily acts solely as an online technical intermediary
-                platform. Uttily does not own the equipment listed for rental, does not manage
+                <strong>Important:</strong> Passness acts solely as an online technical intermediary
+                platform. Passness does not own the equipment listed for rental, does not manage
                 physical inventories, and is not a party to the rental agreement entered into
                 directly between the Renter and the Partner.
               </p>
@@ -202,7 +202,7 @@ export default async function TermsPage({ params }: TermsPageProps): Promise<Rea
 
           <section>
             <h2>4. User Obligations</h2>
-            <p>By using Uttily, users agree to:</p>
+            <p>By using Passness, users agree to:</p>
             <ul>
               <li>Provide accurate, truthful, and up-to-date personal details;</li>
               <li>
@@ -220,8 +220,8 @@ export default async function TermsPage({ params }: TermsPageProps): Promise<Rea
           <section>
             <h2>5. Intellectual Property</h2>
             <p>
-              All components of the Uttily platform (trademarks, logos, visuals, texts, source code,
-              UI components, and design system) are the exclusive property of Uttily SAS and
+              All components of the Passness platform (trademarks, logos, visuals, texts, source
+              code, UI components, and design system) are the exclusive property of Passness SAS and
               protected by intellectual property law. Unauthorized copying or extraction is
               prohibited.
             </p>
@@ -230,11 +230,11 @@ export default async function TermsPage({ params }: TermsPageProps): Promise<Rea
           <section>
             <h2>6. Liability and Platform Availability</h2>
             <p>
-              Uttily endeavors to maintain uninterrupted service availability. However, service may
-              be briefly paused for scheduled maintenance or unforeseen operational incidents.
+              Passness endeavors to maintain uninterrupted service availability. However, service
+              may be briefly paused for scheduled maintenance or unforeseen operational incidents.
             </p>
             <p>
-              Uttily cannot be held liable for breaches or defaults attributable to the Partner
+              Passness cannot be held liable for breaches or defaults attributable to the Partner
               (such as on-site gear condition) or the Renter, nor for indirect damages resulting
               from platform usage.
             </p>

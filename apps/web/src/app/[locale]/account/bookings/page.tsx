@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { listCustomerBookings } from '@uttily/core';
+import { listCustomerBookings } from '@passness/core';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import { BookingsListView } from '@/features/bookings';

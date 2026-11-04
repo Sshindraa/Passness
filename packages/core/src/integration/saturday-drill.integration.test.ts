@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { randomUUID } from 'node:crypto';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -636,7 +636,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
 
       // Vérification des mentions légales obligatoires dans le décompte officiel
       expect(statementCsv).toContain('DÉCOMPTE OFFICIEL DE COMMISSIONS ET REVERSEMENTS');
-      expect(statementCsv).toContain('Uttily SAS · Capital 10 000 € · SIREN 987 654 321');
+      expect(statementCsv).toContain('Passness SAS · Capital 10 000 € · SIREN 987 654 321');
       expect(statementCsv).toContain('Alpes Cycles Pro (SAS)');
       expect(statementCsv).toContain('SIRET/SIREN : 84920485900012');
       expect(statementCsv).toContain('N° TVA Intracommunautaire : FR12849204859');

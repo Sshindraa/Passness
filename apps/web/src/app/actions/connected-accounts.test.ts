@@ -6,8 +6,8 @@ import {
   organizationMemberships,
   organizationPaymentAccounts,
   assertLocalhost,
-} from '@uttily/database';
-import type { DatabaseClient } from '@uttily/database';
+} from '@passness/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   createOrganizationForUser,
   provisionUserFromOidc,
@@ -15,7 +15,7 @@ import {
   ConnectedAccountError,
   AuthorizationError,
   type AuthenticatedUser,
-} from '@uttily/core';
+} from '@passness/core';
 import { eq, sql } from 'drizzle-orm';
 
 // ---------------------------------------------------------------------------

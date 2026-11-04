@@ -5,7 +5,7 @@
 
 ## Décision
 
-Au démarrage d'un paiement, Uttily attribue les exemplaires physiques et crée un hold temporaire. Un paiement confirmé convertit ce hold en réservation.
+Au démarrage d'un paiement, Passness attribue les exemplaires physiques et crée un hold temporaire. Un paiement confirmé convertit ce hold en réservation.
 
 ## Raisons
 

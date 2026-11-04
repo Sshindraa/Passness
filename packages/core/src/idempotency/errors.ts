@@ -1,4 +1,4 @@
-import type { ActionErrorCode, FieldErrors } from '@uttily/contracts';
+import type { ActionErrorCode, FieldErrors } from '@passness/contracts';
 
 /**
  * Erreur métier typée pour le domaine idempotence.

@@ -10,7 +10,7 @@ import type {
   PreviewBookingAmendmentSuccess,
   ConfirmBookingAmendmentSuccess,
   NeutralAmendmentIntent,
-} from '@uttily/core';
+} from '@passness/core';
 import { buildPreviewBookingAmendmentInput } from './build-preview-input';
 import { AmendmentPreviewResult, formatEuros } from './amendment-preview-result';
 

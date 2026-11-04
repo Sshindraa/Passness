@@ -1,5 +1,5 @@
 /**
- * @uttily/contracts — Contrats des événements REFUND_REQUESTED (v1 et v2).
+ * @passness/contracts — Contrats des événements REFUND_REQUESTED (v1 et v2).
  *
  * Événement source pour la demande de remboursement asynchrone :
  * - v1 : amendements de réservation (ADR-023).

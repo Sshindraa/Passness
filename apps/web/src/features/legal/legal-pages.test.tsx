@@ -47,7 +47,7 @@ describe('Pages légales et contractuelles (21-L1)', () => {
 
       expect(html).toContain('Conditions Générales d’Utilisation de la Plateforme');
       expect(html).toContain('Version v1');
-      expect(html).toContain('Objet et rôle d’Uttily');
+      expect(html).toContain('Objet et rôle d’Passness');
       expect(html).toContain('Code de la consommation');
     });
 
@@ -56,7 +56,7 @@ describe('Pages légales et contractuelles (21-L1)', () => {
       const html = renderToStaticMarkup(element);
 
       expect(html).toContain('Platform Terms of Service');
-      expect(html).toContain('Purpose and Role of Uttily');
+      expect(html).toContain('Purpose and Role of Passness');
     });
   });
 
@@ -71,7 +71,7 @@ describe('Pages légales et contractuelles (21-L1)', () => {
       const html = renderToStaticMarkup(element);
 
       expect(html).toContain('Conditions Générales de Location d’Équipements');
-      expect(html).toContain('frais de service client Uttily');
+      expect(html).toContain('frais de service client Passness');
       expect(html).toContain('Substitution d’urgence');
       expect(html).toContain('FLEXIBLE');
       expect(html).toContain('MODERATE');
@@ -107,7 +107,7 @@ describe('Pages légales et contractuelles (21-L1)', () => {
       const html = renderToStaticMarkup(element);
 
       expect(html).toContain('Mentions Légales');
-      expect(html).toContain('Uttily SAS');
+      expect(html).toContain('Passness SAS');
       expect(html).toContain('Vercel Inc.');
       expect(html).toContain('Neon Inc.');
       expect(html).toContain('Stripe Payments Europe, Ltd.');

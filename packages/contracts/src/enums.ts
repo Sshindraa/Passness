@@ -1,5 +1,5 @@
 /**
- * @uttily/contracts — Enums client-safe partagés (Chantier 17).
+ * @passness/contracts — Enums client-safe partagés (Chantier 17).
  *
  * Ces constantes et types représentent les valeurs métier fermées sans
  * dépendance à drizzle-orm, pg, ou PostgreSQL.

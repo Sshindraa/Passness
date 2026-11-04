@@ -34,7 +34,7 @@ describe('HowItWorksKeynote component', () => {
     expect(html).toContain('role="tabpanel"');
 
     // Negative assertions from brand guidelines
-    expect(html).not.toContain('Comment fonctionne Uttily');
+    expect(html).not.toContain('Comment fonctionne Passness');
     expect(html).not.toContain('Simple et transparent');
     expect(html).not.toContain('Louer sans friction');
   });
@@ -55,6 +55,6 @@ describe('HowItWorksKeynote component', () => {
     expect(html).toContain('Hit the trails &amp; slopes');
     expect(html).toContain('Gear inspected and tuned to your rider profile.');
 
-    expect(html).not.toContain('How Uttily works');
+    expect(html).not.toContain('How Passness works');
   });
 });

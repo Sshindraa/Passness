@@ -75,7 +75,7 @@ Net location : ${formatEur(data.merchantNetAmountMinor)}
 
 Le matériel a été bloqué dans votre planning opérationnel. Préparez l'équipement pour le départ du client.
 
-L'équipe Uttily
+L'équipe Passness
 `;
 
   return {

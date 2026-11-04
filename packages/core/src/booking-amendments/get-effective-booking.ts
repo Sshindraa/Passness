@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Projection canonique getEffectiveBooking (G7M-B1, ADR-023 §4.1, §11.1).
+ * @passness/core — Projection canonique getEffectiveBooking (G7M-B1, ADR-023 §4.1, §11.1).
  *
  * L'unique autorité de lecture pour l'état effectif d'une réservation :
  *
@@ -20,7 +20,7 @@
  */
 
 import { and, asc, eq, inArray, ne, sum } from 'drizzle-orm';
-import type { DbExecutor } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
 import {
   amendmentPayments,
   bookings,
@@ -32,7 +32,7 @@ import {
   inventoryBlocks,
   payments,
   refunds,
-} from '@uttily/database';
+} from '@passness/database';
 import { EffectiveBookingError } from './errors';
 import { parseMarketplaceFeeSnapshot } from '../marketplace-fees';
 import type {
@@ -64,7 +64,7 @@ function assertUuid(value: string, field: string): void {
  * les cinq montants pour diagnostic (aucune PII ni donnée provider).
  *
  * Exporté uniquement pour les tests unitaires colocalisés — non exposé
- * depuis le barrel public @uttily/core.
+ * depuis le barrel public @passness/core.
  */
 export function assertFinancialInvariant(
   grossCollected: number,
@@ -153,7 +153,7 @@ export function normalizeAggregateAmount(raw: number | string | null, context: s
  * Ne retourne jamais NaN ou un snapshot partiel silencieux.
  *
  * Exporté uniquement pour les tests unitaires colocalisés — non exposé
- * depuis le barrel public @uttily/core.
+ * depuis le barrel public @passness/core.
  */
 export function parseFinancialSnapshot(raw: unknown, context: string): FinancialSnapshot {
   if (typeof raw !== 'object' || raw === null || Array.isArray(raw)) {

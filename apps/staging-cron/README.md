@@ -7,7 +7,7 @@ l'application Vercel staging, avec le même `CRON_SECRET` partagé.
 ## Développement et déploiement
 
 ```bash
-pnpm --filter @uttily/staging-cron test
+pnpm --filter @passness/staging-cron test
 pnpm dlx wrangler login
 pnpm dlx wrangler secret put CRON_SECRET --config apps/staging-cron/wrangler.toml
 pnpm dlx wrangler deploy --config apps/staging-cron/wrangler.toml

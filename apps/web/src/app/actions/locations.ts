@@ -18,7 +18,7 @@ import {
   type CreateLocationInput,
   type UpdateLocationInput,
   type UpsertScheduleExceptionInput,
-} from '@uttily/core';
+} from '@passness/core';
 
 async function requireLocationManager(organizationId: string) {
   const user = await getAuthenticatedUser();

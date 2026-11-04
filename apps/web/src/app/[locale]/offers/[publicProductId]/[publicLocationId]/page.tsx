@@ -3,7 +3,7 @@ import {
   FIRST_PILOT_PRICING_POLICY,
   getPublicOfferDetails,
   PostgresPhotoPublicationGate,
-} from '@uttily/core';
+} from '@passness/core';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import type { PublicUiLocale } from '@/lib/public-search';

@@ -5,7 +5,7 @@ import {
   shouldSkipIntegrationTests,
   type IntegrationTestContext,
 } from './setup';
-import { createDatabase, users } from '@uttily/database';
+import { createDatabase, users } from '@passness/database';
 import {
   createOrganizationForUser,
   listOrganizationsForUser,
@@ -93,7 +93,7 @@ beforeEach(async () => {
     organizationMemberships,
     organizations,
     users,
-  } = await import('@uttily/database');
+  } = await import('@passness/database');
   await db.delete(notifications);
   await db.delete(organizationInvitations);
   await db.delete(locationOpeningHours);
@@ -238,7 +238,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Identity integration — multi-te
     expect(verified.invitationId).toBe(invitation.id);
 
     // 2. Vérification de l'invitation en base PostgreSQL
-    const { organizationInvitations, notifications } = await import('@uttily/database');
+    const { organizationInvitations, notifications } = await import('@passness/database');
     const [invitationRow] = await db
       .select()
       .from(organizationInvitations)
@@ -561,7 +561,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Identity integration — multi-te
       legalName: 'Concurrent Owners Org',
     });
     // Ajoute owner2 comme OWNER via une membership directe.
-    const { organizationMemberships } = await import('@uttily/database');
+    const { organizationMemberships } = await import('@passness/database');
     await db.insert(organizationMemberships).values({
       organizationId: organization.id,
       userId: owner2.id,
@@ -600,7 +600,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Identity integration — multi-te
     const { organization } = await createOrganizationForUser(db, owner1, {
       legalName: 'Concurrent Remove Org',
     });
-    const { organizationMemberships } = await import('@uttily/database');
+    const { organizationMemberships } = await import('@passness/database');
     await db.insert(organizationMemberships).values({
       organizationId: organization.id,
       userId: owner2.id,

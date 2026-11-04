@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Moteur de tarification flexible déterministe (read-only quote).
  * Architecture : moteur pur (computeQuote) séparé du chargement DB (loadPricingContext).

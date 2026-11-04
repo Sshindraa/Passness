@@ -14,8 +14,8 @@ vi.mock('@/lib/finances-auth', () => ({
   requireFinancialViewerOf: requireFinancialViewerOfMock,
 }));
 
-vi.mock('@uttily/core', async () => {
-  const actual = await vi.importActual<Record<string, unknown>>('@uttily/core');
+vi.mock('@passness/core', async () => {
+  const actual = await vi.importActual<Record<string, unknown>>('@passness/core');
   return {
     ...actual,
     getMerchantFinanceOverview: getMerchantFinanceOverviewMock,
@@ -91,7 +91,7 @@ describe('GET /api/dashboard/[orgId]/finances/statement', () => {
 
     expect(response.status).toBe(200);
     expect(response.headers.get('Content-Type')).toContain('text/csv');
-    expect(response.headers.get('Content-Disposition')).toContain('decompte-commissions-uttily');
+    expect(response.headers.get('Content-Disposition')).toContain('decompte-commissions-passness');
     const text = await response.text();
     expect(text).toContain('DÉCOMPTE OFFICIEL');
   });

@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Tests unitaires du collecteur de métriques (G5F).
+ * @passness/worker — Tests unitaires du collecteur de métriques (G5F).
  */
 
 import { describe, it, expect, beforeEach } from 'vitest';

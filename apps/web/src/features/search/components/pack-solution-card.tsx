@@ -1,6 +1,6 @@
 'use client';
 
-import type { RankedPackCandidate, SolvedPackCandidate } from '@uttily/core';
+import type { RankedPackCandidate, SolvedPackCandidate } from '@passness/core';
 import styles from './pack-solution-card.module.css';
 
 export interface PackSolutionCardProps {

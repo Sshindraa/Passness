@@ -1,6 +1,6 @@
-# Uttily
+# Passness
 
-Uttily est une plateforme fermée de location d'équipements outdoor destinée
+Passness est une plateforme fermée de location d'équipements outdoor destinée
 d'abord aux loueurs professionnels : catalogue, stock physique, disponibilité,
 réservation, paiement et opérations de retrait/retour. Son périmètre commercial
 est limité aux quatre univers définis dans la [taxonomie canonique](docs/product/equipment-taxonomy.md).
@@ -79,7 +79,7 @@ Pour les parcours authentifiés et les écrans qui lisent la base, utiliser
 `pnpm dev:full` afin de démarrer PostgreSQL et d'appliquer automatiquement toutes
 les migrations avant le Web.
 
-Le restore drill exige explicitement `UTTILY_RECOVERY_DRILL=1`, refuse
+Le restore drill exige explicitement `PASSNESS_RECOVERY_DRILL=1`, refuse
 `NODE_ENV=production` et n'accepte qu'une URL PostgreSQL locale. Il crée puis
 supprime uniquement ses bases éphémères générées ; il ne restaure jamais une
 base d'environnement partagé ou réelle.
@@ -88,8 +88,8 @@ La boucle normale de développement est `pnpm test` ou `pnpm check:fast`.
 Elle exclut explicitement les intégrations PostgreSQL, les parcours E2E et les
 tests de reproductibilité PDF. Les suites Vitest complètes sont disponibles
 localement avec `pnpm test:full`, mais les parcours spécialisés restent séparés
-(`pnpm --filter @uttily/web test:browser`, `pnpm test:recovery` et
-`pnpm --filter @uttily/worker smoke:verify`). Ces contrôles restent obligatoires
+(`pnpm --filter @passness/web test:browser`, `pnpm test:recovery` et
+`pnpm --filter @passness/worker smoke:verify`). Ces contrôles restent obligatoires
 dans la matrice CI ou la validation finale selon leur prérequis. Une modification
 ciblée peut aussi être validée directement avec le script `test:fast` du package
 concerné.
@@ -143,7 +143,7 @@ n'est pas implémentée.
 Les migrations sont automatiques, mais `pnpm dev:full` sans `--seed` ne crée
 aucune donnée métier : après migration, la base reste inchangée. La fixture
 `pnpm db:seed` (ou `pnpm dev:full -- --seed`) est strictement locale/dev-only.
-Le seed est fail-closed : il refuse toute exécution si `UTTILY_LOCAL_DEV` n'est
+Le seed est fail-closed : il refuse toute exécution si `PASSNESS_LOCAL_DEV` n'est
 pas exactement `1` ou si `NODE_ENV` vaut `production`. `pnpm db:seed` fournit
 explicitement ce marqueur, et `dev:full -- --seed` l'injecte dans son
 environnement enfant ; aucun de ces chemins ne révèle l'URL de base ou un secret.
@@ -187,7 +187,7 @@ sont également neutralisées par une chaîne vide dans l'environnement enfant ;
 cela empêche Next.js de les recharger depuis `apps/web/.env.local`. Le worker
 fake et le Web local ne reçoivent aucun credential R2/Resend effectif.
 `dev:full` injecte aussi `PUBLIC_SEARCH_CURSOR_SECRET` avec la valeur fixe
-`uttily-local-dev-public-search-cursor-v1`, une valeur dev/test uniquement et non
+`passness-local-dev-public-search-cursor-v1`, une valeur dev/test uniquement et non
 sensible, qui ne doit jamais être réutilisée en staging ou production. Il force
 `ALLOWED_ORIGINS` à une chaîne vide dans l'environnement enfant : aucune valeur
 héritée ni valeur de `apps/web/.env.local` ne peut ainsi réintroduire des origins

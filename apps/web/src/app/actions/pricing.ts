@@ -10,8 +10,8 @@ import {
   MVP_ORGANIZATION_CURRENCY,
   type PricingPlanSummary,
   type SaveDailyPricingPlanDraftInput,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 
 interface ParsedPricingDraft {
   input: SaveDailyPricingPlanDraftInput;

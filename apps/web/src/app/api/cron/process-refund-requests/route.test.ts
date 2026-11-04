@@ -1,14 +1,14 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import postgres from 'postgres';
-import { createDatabase, runMigrations, assertLocalhost } from '@uttily/database';
-import type { DatabaseClient } from '@uttily/database';
+import { createDatabase, runMigrations, assertLocalhost } from '@passness/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   FakeStripeAdapter,
   PaymentProviderError,
   type CreateRefundParams,
   type RefundResult,
   type StripeEnvironment,
-} from '@uttily/core';
+} from '@passness/core';
 import { sql } from 'drizzle-orm';
 
 let testDb: DatabaseClient | null = null;
@@ -77,7 +77,7 @@ interface Fixture {
 }
 
 const DATABASE_URL = process.env.DATABASE_URL;
-const TEST_DB_NAME = 'uttily_test_cron_refund_requests';
+const TEST_DB_NAME = 'passness_test_cron_refund_requests';
 const CRON_SECRET = 'route-test-cron-secret';
 const shouldRun = Boolean(DATABASE_URL) && process.env.SKIP_INTEGRATION_TESTS !== '1';
 

@@ -1,5 +1,9 @@
-import type { PublicSearchCategoryOption } from '@uttily/core';
-import { BIKE_SUBTYPE_DEFINITIONS, getBikeSubtypeLabel, type BikeSubtype } from '@uttily/contracts';
+import type { PublicSearchCategoryOption } from '@passness/core';
+import {
+  BIKE_SUBTYPE_DEFINITIONS,
+  getBikeSubtypeLabel,
+  type BikeSubtype,
+} from '@passness/contracts';
 import { normalizeDestinationQuery } from '@/lib/destination-suggestions';
 import { getPublicCategoryLabel } from '@/lib/public-search-labels';
 import type { SearchLocale } from './search-state';

@@ -15,7 +15,7 @@ export interface BookingConfirmedCustomerData {
 }
 
 export function renderBookingConfirmedCustomer(data: BookingConfirmedCustomerData): RenderedEmail {
-  const subject = `Confirmation de votre réservation Uttily — ${data.productName}`;
+  const subject = `Confirmation de votre réservation Passness — ${data.productName}`;
   const greeting = data.customerName ? `Bonjour ${escapeHtml(data.customerName)},` : 'Bonjour,';
 
   const contentHtml = `
@@ -63,7 +63,7 @@ Montant payé : ${formatEur(data.totalAmountMinor)}
 
 Présentez-vous au point de retrait avec une pièce d'identité à l'heure convenue.
 
-L'équipe Uttily
+L'équipe Passness
 `;
 
   return {

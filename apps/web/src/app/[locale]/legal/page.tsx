@@ -11,10 +11,10 @@ export async function generateMetadata({ params }: LegalNoticePageProps): Promis
   const { locale } = await params;
   const fr = locale === 'fr';
   return {
-    title: fr ? 'Mentions Légales · Uttily' : 'Legal Notice · Uttily',
+    title: fr ? 'Mentions Légales · Passness' : 'Legal Notice · Passness',
     description: fr
-      ? 'Mentions légales obligatoires, éditeur et hébergeurs de la plateforme Uttily.'
-      : 'Mandatory legal notices, publisher and host details for the Uttily platform.',
+      ? 'Mentions légales obligatoires, éditeur et hébergeurs de la plateforme Passness.'
+      : 'Mandatory legal notices, publisher and host details for the Passness platform.',
   };
 }
 
@@ -39,11 +39,11 @@ export default async function LegalNoticePage({
           <section>
             <h2>1. Éditeur de la plateforme</h2>
             <p>
-              Le site et la plateforme <strong>Uttily</strong> sont édités par la société :
+              Le site et la plateforme <strong>Passness</strong> sont édités par la société :
             </p>
             <ul>
               <li>
-                <strong>Dénomination sociale :</strong> Uttily SAS
+                <strong>Dénomination sociale :</strong> Passness SAS
               </li>
               <li>
                 <strong>Forme juridique :</strong> Société par Actions Simplifiée (SAS)
@@ -59,7 +59,7 @@ export default async function LegalNoticePage({
                 <a href="mailto:contact@uttily.com">contact@uttily.com</a>
               </li>
               <li>
-                <strong>Directeur de la publication :</strong> La présidence d’Uttily SAS
+                <strong>Directeur de la publication :</strong> La présidence d’Passness SAS
               </li>
             </ul>
           </section>
@@ -123,13 +123,13 @@ export default async function LegalNoticePage({
           <section>
             <h2>5. Propriété intellectuelle</h2>
             <p>
-              La marque <strong>Uttily</strong>, les logos, graphismes, iconographies, éléments de
+              La marque <strong>Passness</strong>, les logos, graphismes, iconographies, éléments de
               design et codes informatiques de la plateforme constituent des œuvres de l’esprit
               protégées par les dispositions du Code de la propriété intellectuelle.
             </p>
             <p>
               Toute reproduction, représentation, modification ou exploitation totale ou partielle
-              du site sans l’autorisation écrite préalable d’Uttily SAS est constitutive de
+              du site sans l’autorisation écrite préalable d’Passness SAS est constitutive de
               contrefaçon.
             </p>
           </section>
@@ -139,11 +139,11 @@ export default async function LegalNoticePage({
           <section>
             <h2>1. Platform Publisher</h2>
             <p>
-              The <strong>Uttily</strong> platform and website are published by:
+              The <strong>Passness</strong> platform and website are published by:
             </p>
             <ul>
               <li>
-                <strong>Company name:</strong> Uttily SAS
+                <strong>Company name:</strong> Passness SAS
               </li>
               <li>
                 <strong>Legal structure:</strong> Simplified Joint-Stock Company (Société par
@@ -160,7 +160,7 @@ export default async function LegalNoticePage({
                 <a href="mailto:contact@uttily.com">contact@uttily.com</a>
               </li>
               <li>
-                <strong>Publication Director:</strong> The Presidency of Uttily SAS
+                <strong>Publication Director:</strong> The Presidency of Passness SAS
               </li>
             </ul>
           </section>
@@ -224,12 +224,12 @@ export default async function LegalNoticePage({
           <section>
             <h2>5. Intellectual Property</h2>
             <p>
-              The <strong>Uttily</strong> brand, logos, graphic assets, interface components, and
+              The <strong>Passness</strong> brand, logos, graphic assets, interface components, and
               software source code are protected under intellectual property law.
             </p>
             <p>
               Any unauthorized reproduction or exploitation without prior written consent from
-              Uttily SAS constitutes an infringement.
+              Passness SAS constitutes an infringement.
             </p>
           </section>
         </>

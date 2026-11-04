@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import type { InventorySummary, MaintenanceCaseSummary } from '@uttily/core';
+import type { InventorySummary, MaintenanceCaseSummary } from '@passness/core';
 import { FleetListView } from './fleet-list-view';
 import { MaintenanceListView } from './maintenance/maintenance-list-view';
 import { MaintenanceCaseDetailView } from './maintenance/case-detail-view';

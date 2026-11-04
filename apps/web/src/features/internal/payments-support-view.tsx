@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { PaymentSupportListItem } from '@uttily/core';
+import type { PaymentSupportListItem } from '@passness/core';
 import { ReconcilePaymentButton } from './reconcile-payment-button';
 import styles from './payments-support.module.css';
 

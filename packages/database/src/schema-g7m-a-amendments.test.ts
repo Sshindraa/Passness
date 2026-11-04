@@ -15,7 +15,7 @@ import { runMigrations, assertLocalhost } from '../src/index';
  * skip si pas DATABASE_URL en local.
  */
 
-const TEST_DB_NAME = 'uttily_test_g7m_a';
+const TEST_DB_NAME = 'passness_test_g7m_a';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 
@@ -3392,7 +3392,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Schéma G7M-A — contraintes Pos
 describe.skipIf(shouldSkipIntegrationTests())(
   'Schéma G7M-A — montée de version réelle 0035 → 0036',
   () => {
-    const UPGRADE_DB_NAME = 'uttily_test_g7m_a_upgrade';
+    const UPGRADE_DB_NAME = 'passness_test_g7m_a_upgrade';
     let upgradeUrl: string | null = null;
 
     beforeAll(async () => {

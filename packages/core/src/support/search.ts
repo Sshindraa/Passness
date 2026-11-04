@@ -1,5 +1,5 @@
 import { desc, eq, ilike, or, sql } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
 import {
   bookings,
   locations,
@@ -8,7 +8,7 @@ import {
   payments,
   refunds,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import type { SupportSearchItem, SupportSearchResult } from './types';
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -18,7 +18,7 @@ export interface SearchSupportOptions {
 }
 
 /**
- * Moteur de recherche globale pour le back-office Uttily.
+ * Moteur de recherche globale pour le back-office Passness.
  * Recherche multi-entités rapide et tolérante (UUID, email, nom, slug, référence).
  */
 export async function searchSupport(
@@ -250,10 +250,10 @@ export async function searchSupport(
     id: r.id,
     entityType: 'USER',
     title: r.displayName || r.email,
-    subtitle: `Email: ${r.email}${r.isPlatformAdmin ? ' • [Admin Uttily]' : ''}`,
+    subtitle: `Email: ${r.email}${r.isPlatformAdmin ? ' • [Admin Passness]' : ''}`,
     url: `/internal?query=${encodeURIComponent(r.email)}`,
     badge: r.isPlatformAdmin
-      ? { label: 'Admin Uttily', variant: 'warning' }
+      ? { label: 'Admin Passness', variant: 'warning' }
       : { label: 'Utilisateur', variant: 'default' },
     metadata: { email: r.email, isPlatformAdmin: r.isPlatformAdmin },
   }));

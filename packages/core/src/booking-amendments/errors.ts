@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Erreurs typées pour la projection d'amendements (G7M-B1).
+ * @passness/core — Erreurs typées pour la projection d'amendements (G7M-B1).
  *
  * Pattern identique à FulfillmentError : codes fermés, pas de string matching,
  * catchable par les Server Actions pour mapping ActionResult.

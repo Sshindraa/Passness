@@ -14,7 +14,7 @@ import {
   bookings,
   organizationPaymentAccounts,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import type { PaymentIntentEventData, ResolvedAmendmentAttempt } from './types';
 import { WebhookHandlerError } from './errors';
 

@@ -5,7 +5,7 @@ import {
   shouldSkipIntegrationTests,
   type IntegrationTestContext,
 } from './setup';
-import { createDatabase, users, privacyRequests, auditLog } from '@uttily/database';
+import { createDatabase, users, privacyRequests, auditLog } from '@passness/database';
 import {
   startPrivacyRequestReview,
   flagPrivacyRequestIdentityCheck,

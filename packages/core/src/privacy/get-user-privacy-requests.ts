@@ -1,6 +1,6 @@
 import { eq, desc } from 'drizzle-orm';
-import type { DbExecutor } from '@uttily/database';
-import { privacyRequests } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
+import { privacyRequests } from '@passness/database';
 import type { PrivacyRequestSummary } from './types';
 
 /**

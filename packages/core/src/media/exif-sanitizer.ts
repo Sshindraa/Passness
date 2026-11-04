@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Sanitisation et expurgation des métadonnées EXIF (ADR-042).
+ * @passness/core — Sanitisation et expurgation des métadonnées EXIF (ADR-042).
  *
  * Supprime les segments d'en-tête sensibles (APP1 Exif/XMP, GPS, commentaires)
  * d'un buffer JPEG sans modifier les pixels ni la qualité de l'image.

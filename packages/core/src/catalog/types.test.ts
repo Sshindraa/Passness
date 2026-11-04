@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { inventoryCondition } from '@uttily/database';
+import { inventoryCondition } from '@passness/database';
 import { INVENTORY_CONDITIONS } from './types';
 
 describe('INVENTORY_CONDITIONS — garde de dérive', () => {

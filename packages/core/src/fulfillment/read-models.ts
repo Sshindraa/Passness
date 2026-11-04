@@ -1,5 +1,5 @@
 import { and, asc, count, eq, gte, inArray, isNotNull, lte, max, or, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookings,
   bookingItems,
@@ -10,7 +10,7 @@ import {
   inventoryItems,
   locations,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import { FulfillmentError } from './fulfillment-errors';
 import { isBookingStatus } from './fulfillment-shared';
 import type { BookingStatus } from './types';
@@ -25,7 +25,7 @@ import type {
 } from './read-model-types';
 
 /**
- * @uttily/core — Read models opérationnels fulfillment (G4A).
+ * @passness/core — Read models opérationnels fulfillment (G4A).
  *
  * Aucun champ financier, Stripe, terms snapshot ou payload JSON n'est exposé.
  * L'email du client n'apparaît que sur la fiche détaillée (nécessaire au retrait).

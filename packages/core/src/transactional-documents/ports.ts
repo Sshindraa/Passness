@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Ports d'infrastructure pour les documents transactionnels
+ * @passness/core — Ports d'infrastructure pour les documents transactionnels
  * (Lot 6 G5B, ADR-013).
  *
  * Les ports sont définis indépendamment des fournisseurs. Ils seront implémentés

@@ -20,7 +20,7 @@ import {
   renderReturnReminderCustomer,
 } from './templates';
 import { renderNotificationRecord } from './load-notification-data';
-import type { DbExecutor, NotificationRecord } from '@uttily/database';
+import type { DbExecutor, NotificationRecord } from '@passness/database';
 
 describe('Notifications — Idempotency Keys', () => {
   const bookingId = '00000000-0000-0000-0000-000000000001';

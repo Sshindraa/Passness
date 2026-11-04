@@ -279,7 +279,7 @@ Verdict exact :
 - **Postmark** : NON COMPATIBLE nativement. Aucune clé d'idempotence fournisseur.
 - **Amazon SES** : NON COMPATIBLE nativement. Aucune clé d'idempotence fournisseur.
 
-Comparaison avec le backoff Uttily : `MAX_ATTEMPTS = 5`, backoff exponentiel 30 s → 480 s
+Comparaison avec le backoff Passness : `MAX_ATTEMPTS = 5`, backoff exponentiel 30 s → 480 s
 (`packages/core/src/outbox-claim/scheduling.ts`). En fonctionnement normal, les 5 tentatives
 s'achèvent en ~15 min, bien sous 24 h. Le risque n'apparaît qu'en cas d'**indisponibilité prolongée
 du worker** (> 24 h) — panne VPS, OOM, dépendance bloquée — entre l'acceptation Resend et le commit
@@ -430,15 +430,15 @@ Principaux coûts variables :
 
 Propositions (à valider, NON appliquées) :
 
-- Utilisateur système dédié `uttily-worker` (pas root, pas l'utilisateur `deploy` partagé avec
+- Utilisateur système dédié `passness-worker` (pas root, pas l'utilisateur `deploy` partagé avec
   sokar/goldbot).
 - Exécution : recommander **Docker Compose** (voir comparaison ci-dessous).
 - Politique de redémarrage : `restart: unless-stopped` (Docker) ou `Restart=on-failure` avec
   `RestartSec=5s` (systemd).
 - Secrets hors dépôt : variables d'environnement injectées via un fichier `.env` propriétaire
-  `uttily-worker` (chmod 600, owner uttily-worker), jamais dans le dépôt Git. Idéalement un secret
+  `passness-worker` (chmod 600, owner passness-worker), jamais dans le dépôt Git. Idéalement un secret
   manager (Doppler, Infisical, ou Vault) à terme.
-- Permissions minimales : l'utilisateur `uttily-worker` ne peut lire que ses propres fichiers ; pas
+- Permissions minimales : l'utilisateur `passness-worker` ne peut lire que ses propres fichiers ; pas
   d'accès aux autres projets.
 - **Connexion Neon TLS** : `sslmode=verify-full` avec root CA Neon si compatible avec le driver
   `postgres`/Drizzle ; sinon `sslmode=require` minimum.
@@ -488,10 +488,10 @@ Deux architectures réseau (à valider, NON appliquées) :
 - Mises à jour : `unattended-upgrades` déjà actif sur les deux VPS (sécurité) ; ne pas appliquer
   manuellement.
 - Sauvegarde de la configuration : versionner `docker-compose.worker.yml` et
-  `systemd/uttily-worker.service` dans un dépôt privé (pas dans le dépôt public Uttily) ; secrets à
+  `systemd/uttily-worker.service` dans un dépôt privé (pas dans le dépôt public Passness) ; secrets à
   part.
 - Procédure de rollback : garder l'image Docker N-1 taguée ; `docker compose up -d --no-deps
-  uttily-worker` avec la version précédente ; le worker est idempotent (outbox), un rollback
+  passness-worker` avec la version précédente ; le worker est idempotent (outbox), un rollback
   n'entraîne pas de perte d'effets.
 - Déploiement sans interruption : pour un seul worker, un redémarrage court (graceful shutdown
   SIGTERM déjà implémenté) est acceptable ; pas de blue/green nécessaire au MVP.

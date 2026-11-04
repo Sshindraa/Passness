@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Failure codes normalisés pour le worker (G5F, ADR-013).
+ * @passness/worker — Failure codes normalisés pour le worker (G5F, ADR-013).
  *
  * Union fermée correspondant exactement aux 8 codes publics de l'enum
  * PostgreSQL `document_processing_failure_code`. Aucune valeur inconnue

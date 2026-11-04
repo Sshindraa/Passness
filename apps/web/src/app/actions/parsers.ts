@@ -5,7 +5,7 @@ import {
   type UpdateProductInput,
   type UpdateVariantInput,
   type UpdateInventoryItemInput,
-} from '@uttily/core';
+} from '@passness/core';
 
 export interface ParsedFailure {
   fieldErrors: Record<string, string>;

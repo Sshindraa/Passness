@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { MouseEventHandler } from 'react';
 
-export function UttilyBrand({
+export function PassnessBrand({
   href,
   ariaLabel,
   className,
@@ -28,7 +28,7 @@ export function UttilyBrand({
   return (
     <Link {...linkProps} aria-label={ariaLabel}>
       <Image
-        src="/images/brand/uttily-logo.svg"
+        src="/images/brand/passness-logo.svg"
         alt=""
         width={40}
         height={40}
@@ -36,7 +36,7 @@ export function UttilyBrand({
         priority={priority}
       />
       <span>
-        uttily
+        passness
         {suffix ? (
           <>
             {' '}

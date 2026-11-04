@@ -1,5 +1,5 @@
 import { eq, inArray } from 'drizzle-orm';
-import type { DbExecutor } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
 import {
   users,
   bookings,
@@ -8,7 +8,7 @@ import {
   products,
   productVariants,
   categories,
-} from '@uttily/database';
+} from '@passness/database';
 import type { Article20PortableData } from './types';
 
 /**

@@ -7,9 +7,9 @@ import {
   getBikeSubtypeLabel,
   normalizeBikeSubtype,
   type BikeSubtype,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 import Link from 'next/link';
-import type { EquipmentEnrichmentProposal } from '@uttily/intelligence';
+import type { EquipmentEnrichmentProposal } from '@passness/intelligence';
 import { createFirstEquipmentDraftAction } from '@/app/actions/products';
 import {
   getCategoryDisplayLabel,
@@ -369,7 +369,7 @@ export function NewBikeForm({ organizationId, categories }: NewBikeFormProps): R
           <div className={styles.proTipCard}>
             <div className={styles.proTipHeader}>
               <span aria-hidden="true">💡</span>
-              <span>Conseil Pro Uttily</span>
+              <span>Conseil Pro Passness</span>
             </div>
             <p className={styles.proTipText}>
               Les équipements dont le nom commercial inclut la marque et le modèle précis génèrent{' '}

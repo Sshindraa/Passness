@@ -5,8 +5,8 @@ import {
   runMigrations,
   organizationMemberships,
   assertLocalhost,
-} from '@uttily/database';
-import type { DatabaseClient } from '@uttily/database';
+} from '@passness/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   createOrganizationForUser,
   createLocation,
@@ -19,7 +19,7 @@ import {
   createInventoryItem,
   listMovements,
   type AuthenticatedUser,
-} from '@uttily/core';
+} from '@passness/core';
 import { eq, sql } from 'drizzle-orm';
 
 // ---------------------------------------------------------------------------
@@ -77,7 +77,7 @@ const { createInventoryItemAction, transferInventoryItemAction, retireInventoryI
 // ---------------------------------------------------------------------------
 
 const isCi = process.env.CI === '1' || process.env.CI === 'true';
-const TEST_DB_NAME = 'uttily_test_actions';
+const TEST_DB_NAME = 'passness_test_actions';
 
 /**
  * Détermine si les tests d'intégration PostgreSQL doivent être skippés.
@@ -244,7 +244,7 @@ async function addMember(
 
 async function getCategoryId(slug = 'surf'): Promise<string> {
   if (!testDb) throw new Error('db not initialized');
-  const { categories } = await import('@uttily/database');
+  const { categories } = await import('@passness/database');
   const [cat] = await testDb.select().from(categories).where(eq(categories.slug, slug)).limit(1);
   if (!cat) throw new Error(`Catégorie seed "${slug}" introuvable.`);
   return cat.id;

@@ -5,8 +5,8 @@ import {
   requireMembership,
   ROLE_MANAGERS,
   type AuthenticatedUser,
-} from '@uttily/core';
-import type { DatabaseClient } from '@uttily/database';
+} from '@passness/core';
+import type { DatabaseClient } from '@passness/database';
 
 export interface FinancialViewerContext {
   user: AuthenticatedUser;

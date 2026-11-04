@@ -1,5 +1,5 @@
 /**
- * @uttily/contracts — Contrat de l'événement BOOKING_CONFIRMED.v1.
+ * @passness/contracts — Contrat de l'événement BOOKING_CONFIRMED.v1.
  *
  * Événement source du flux documentaire (ADR-013). Inséré dans outbox_events
  * par apply-booking-confirmation.ts lors de la transaction atomique de

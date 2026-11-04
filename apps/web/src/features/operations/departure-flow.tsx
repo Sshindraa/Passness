@@ -7,7 +7,7 @@ import {
   pickupBookingAction,
   prepareBookingAction,
 } from '@/app/actions/fulfillment';
-import { Button } from '@uttily/ui';
+import { Button } from '@passness/ui';
 import { FlowDrawer } from './flow-drawer';
 
 interface DepartureFlowProps {

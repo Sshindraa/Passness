@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { getMembership, requireMembership, listLocations, LOCATION_MANAGERS } from '@uttily/core';
+import { getMembership, requireMembership, listLocations, LOCATION_MANAGERS } from '@passness/core';
 import { LocationsListView } from '@/features/locations';
 
 export default async function LocationsListPage({

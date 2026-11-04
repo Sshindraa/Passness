@@ -1,9 +1,9 @@
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { requireAmendmentManagerOf } from './amendment-auth';
 import * as auth from './auth';
 import * as dbMod from './db';
-import * as core from '@uttily/core';
+import * as core from '@passness/core';
 
 vi.mock('./auth', () => ({
   getAuthenticatedUser: vi.fn(),
@@ -13,8 +13,8 @@ vi.mock('./db', () => ({
   getDb: vi.fn(),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     getMembership: vi.fn(),

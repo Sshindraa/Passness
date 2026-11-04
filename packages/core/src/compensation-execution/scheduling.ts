@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Constantes et validation de planification (Phase 8, ADR-010 §13).
+ * @passness/core — Constantes et validation de planification (Phase 8, ADR-010 §13).
  *
  * Re-exporte les constantes partagées du module commun outbox-claim (G5D,
  * ADR-013 §7) pour préserver la compatibilité ascendante du module

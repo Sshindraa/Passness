@@ -1,5 +1,5 @@
-import type { PhotoSlotType } from '@uttily/contracts';
-import { PHOTO_SLOT_TYPES } from '@uttily/contracts';
+import type { PhotoSlotType } from '@passness/contracts';
+import { PHOTO_SLOT_TYPES } from '@passness/contracts';
 import type { PhotoQualityAssessment } from '../schemas/photo-coach-schema';
 
 export interface AnalyzePhotoInput {

@@ -7,7 +7,7 @@ const TEST_ORGANIZATION_SLUG = 'test-org-dev';
 
 export function isBrowserE2eEnvironment(environment = process.env) {
   return (
-    environment?.UTTILY_BROWSER_E2E === '1' &&
+    environment?.PASSNESS_BROWSER_E2E === '1' &&
     environment?.NODE_ENV !== 'production' &&
     typeof environment?.E2E_CLERK_USER_EMAIL === 'string' &&
     environment.E2E_CLERK_USER_EMAIL.trim().length > 0
@@ -17,7 +17,7 @@ export function isBrowserE2eEnvironment(environment = process.env) {
 export function assertBrowserE2eEnvironment(environment = process.env) {
   if (!isBrowserE2eEnvironment(environment)) {
     throw new Error(
-      'Le fixture membership E2E exige UTTILY_BROWSER_E2E=1, un environnement non production et E2E_CLERK_USER_EMAIL.',
+      'Le fixture membership E2E exige PASSNESS_BROWSER_E2E=1, un environnement non production et E2E_CLERK_USER_EMAIL.',
     );
   }
 

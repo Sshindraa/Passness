@@ -10,8 +10,8 @@ import { assertLocalhost, runMigrations } from '../src/index';
  * métier de retry.
  */
 
-const TEST_DB_NAME = 'uttily_test_g7m_c4s';
-const UPGRADE_DB_NAME = 'uttily_test_g7m_c4s_upgrade';
+const TEST_DB_NAME = 'passness_test_g7m_c4s';
+const UPGRADE_DB_NAME = 'passness_test_g7m_c4s_upgrade';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Fake déterministe en mémoire pour TransactionalEmailSender
+ * @passness/core — Fake déterministe en mémoire pour TransactionalEmailSender
  * (G5H-C2B, ADR-013 §13.4).
  *
  * NE JAMAIS utiliser en production. Fake en mémoire pour tests uniquement.

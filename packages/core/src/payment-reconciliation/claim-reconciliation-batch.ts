@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Revendication d'un batch de réconciliation (Phase 7A, ADR-010 §12).
+ * @passness/core — Revendication d'un batch de réconciliation (Phase 7A, ADR-010 §12).
  *
  * Transaction PostgreSQL courte qui sélectionne les tentatives non-terminales
  * dont l'échéance de réconciliation est atteinte, les verrouille avec
@@ -10,7 +10,7 @@
  */
 
 import { sql } from 'drizzle-orm';
-import { type DatabaseClient } from '@uttily/database';
+import { type DatabaseClient } from '@passness/database';
 import type { StripeEnvironment } from '../payments/types';
 import { LEASE_INTERVAL } from './scheduling';
 import type { ClaimedAttempt } from './types';

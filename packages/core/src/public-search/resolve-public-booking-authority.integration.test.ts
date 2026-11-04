@@ -5,12 +5,12 @@ import {
   createDatabase,
   runMigrations,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import { resolvePublicBookingAuthority } from './resolve-public-booking-authority';
 import type { PublicProductPublicationGate } from './types';
 
 const sourceUrl = process.env.DATABASE_URL;
-const testDatabase = `uttily_test_auth_resolver_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+const testDatabase = `passness_test_auth_resolver_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 const shouldSkip = !sourceUrl && process.env.CI !== '1' && process.env.CI !== 'true';
 
 describe.skipIf(shouldSkip)('resolvePublicBookingAuthority — intégration PostgreSQL', () => {

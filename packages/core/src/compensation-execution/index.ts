@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Compensation Execution (Phase 8, ADR-010 §13).
+ * @passness/core — Module Compensation Execution (Phase 8, ADR-010 §13).
  *
  * Worker d'exécution des compensations. Consomme les événements
  * `PAYMENT_COMPENSATION_REQUESTED` de l'outbox, appelle Stripe `createRefund`

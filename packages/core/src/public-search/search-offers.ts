@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Public Search (G7E-B).
+ * @passness/core — Module Public Search (G7E-B).
  *
  * Use case : searchPublicOffers(db, input).
  *
@@ -77,8 +77,8 @@
  */
 
 import { eq, inArray, sql } from 'drizzle-orm';
-import { isBikeSubtype, type BikeSubtype } from '@uttily/contracts';
-import type { DatabaseClient } from '@uttily/database';
+import { isBikeSubtype, type BikeSubtype } from '@passness/contracts';
+import type { DatabaseClient } from '@passness/database';
 import {
   categories,
   countries,
@@ -89,7 +89,7 @@ import {
   multiDayDiscountTiers,
   pricingPlanTranslations,
   pricingPlanWindows,
-} from '@uttily/database';
+} from '@passness/database';
 import type {
   Candidate,
   PricingContext,

@@ -1,7 +1,12 @@
 import { and, eq, gte, inArray, lte, or, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
-import type { DatabaseClient } from '@uttily/database';
-import { bookings, notifications, organizationInvitations, organizations } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import {
+  bookings,
+  notifications,
+  organizationInvitations,
+  organizations,
+} from '@passness/database';
 import { renderNotificationRecord } from './load-notification-data';
 import { RESEND_IDEMPOTENCY_WINDOW_MS } from './provider-idempotency-window';
 import {

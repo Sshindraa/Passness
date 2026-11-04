@@ -4,7 +4,7 @@ import type {
   RankedPackCandidate,
   SolvedPackCandidate,
   SolvedPackAlternatives,
-} from '@uttily/core';
+} from '@passness/core';
 import styles from './pack-alternatives-section.module.css';
 
 export interface PackAlternativesSectionProps {

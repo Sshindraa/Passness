@@ -209,7 +209,7 @@ describe('FakeDeterministicDocumentRenderer', () => {
   it('contentType technique explicite', async () => {
     const renderer = new FakeDeterministicDocumentRenderer();
     const r = await renderer.render('booking-confirmation-technical-v1', makeValidSnapshot());
-    expect(r.contentType).toBe('application/vnd.uttily.test-document+json');
+    expect(r.contentType).toBe('application/vnd.passness.test-document+json');
   });
 
   it('FAKE_TEMPLATE_KEYS contient exactement 3 cles techniques', () => {

@@ -14,7 +14,7 @@ export default async function InternalLayout({
     if (err instanceof Error && err.message === 'UNAUTHENTICATED') {
       redirect('/sign-in');
     }
-    // Fail-closed pour les utilisateurs non-admin Uttily
+    // Fail-closed pour les utilisateurs non-admin Passness
     return <SupportShell accessDenied />;
   }
 

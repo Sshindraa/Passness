@@ -1,4 +1,4 @@
-import type { UnifiedBike } from '@uttily/core';
+import type { UnifiedBike } from '@passness/core';
 import { PhotoCoachLauncher } from './photo-coach-launcher';
 import styles from './components.module.css';
 

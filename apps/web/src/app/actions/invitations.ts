@@ -13,7 +13,7 @@ import {
   expireDueInvitations,
   DEFAULT_INVITATION_TTL_SECONDS,
   type MembershipRole,
-} from '@uttily/core';
+} from '@passness/core';
 
 export async function createInvitationAction(
   organizationId: string,
@@ -78,7 +78,7 @@ export async function expireInvitationsAction(): Promise<number> {
   const user = await getAuthenticatedUser();
   if (!user) throw new Error('Non authentifié.');
   const db = getDb();
-  // Action réservée à l'admin Uttily ou au worker dans une version future.
-  if (!user.isPlatformAdmin) throw new Error('Action réservée à l\u2019admin Uttily.');
+  // Action réservée à l'admin Passness ou au worker dans une version future.
+  if (!user.isPlatformAdmin) throw new Error('Action réservée à l\u2019admin Passness.');
   return expireDueInvitations(db);
 }

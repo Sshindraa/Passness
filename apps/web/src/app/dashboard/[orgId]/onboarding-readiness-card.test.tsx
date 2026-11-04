@@ -2,7 +2,7 @@ import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { OnboardingReadinessCard } from '@/features/dashboard/components/onboarding-readiness-card';
-import type { OrganizationOnboardingReadiness } from '@uttily/core';
+import type { OrganizationOnboardingReadiness } from '@passness/core';
 
 describe('OnboardingReadinessCard Component (Chantier 6 - 4 Étapes Unifiées)', () => {
   const sampleReadiness: OrganizationOnboardingReadiness = {
@@ -35,7 +35,7 @@ describe('OnboardingReadinessCard Component (Chantier 6 - 4 Étapes Unifiées)',
       />,
     );
 
-    expect(html).toContain('Créer ma boutique Uttily');
+    expect(html).toContain('Créer ma boutique Passness');
     expect(html).toContain('① Mon activité');
     expect(html).toContain('② Ma boutique');
     expect(html).toContain('③ Mon premier équipement');

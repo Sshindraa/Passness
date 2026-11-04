@@ -22,7 +22,7 @@ import { runMigrations, assertLocalhost } from '../src/index';
  * skip si pas DATABASE_URL en local.
  */
 
-const TEST_DB_NAME = 'uttily_test_audit_log';
+const TEST_DB_NAME = 'passness_test_audit_log';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 
@@ -744,8 +744,8 @@ describe.skipIf(shouldSkipIntegrationTests())('Rejeu — idempotence', () => {
 // ─────────────────────────────────────────────────────────────────────────────
 
 describe.skipIf(shouldSkipIntegrationTests())('Migration 0029 → 0030 avec données', () => {
-  const MIGRATION_TEST_DB = 'uttily_test_audit_log_migration';
-  const ROLLBACK_TEST_DB = 'uttily_test_audit_log_rollback';
+  const MIGRATION_TEST_DB = 'passness_test_audit_log_migration';
+  const ROLLBACK_TEST_DB = 'passness_test_audit_log_rollback';
   let migrationTestUrl: string | null = null;
   let rollbackTestUrl: string | null = null;
   let migrationAdminSql: ReturnType<typeof postgres> | null = null;

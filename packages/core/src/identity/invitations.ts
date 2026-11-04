@@ -1,13 +1,13 @@
 import { createHash, createHmac, randomUUID } from 'node:crypto';
 import { and, eq, lt } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   notifications,
   organizationInvitations,
   organizationMemberships,
   organizations,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import type { AuthenticatedUser, InvitationInput, MembershipRole } from './types';
 import { AuthorizationError, can, canInviteRole } from './permissions';
 
@@ -229,7 +229,7 @@ export async function createInvitation(
           status: 'PENDING',
           idempotencyKey: `invitation:${row.id}`,
           metadata: {
-            organizationName: org?.publicDisplayName ?? org?.legalName ?? 'Uttily',
+            organizationName: org?.publicDisplayName ?? org?.legalName ?? 'Passness',
             roleName: roleLabels[input.role] ?? input.role,
             invitationId: row.id,
           },
@@ -373,7 +373,7 @@ export async function acceptInvitation(
       throw new AuthorizationError('Cette invitation est destinée à un autre email.');
     }
 
-    // L'utilisateur doit exister dans la base Uttily.
+    // L'utilisateur doit exister dans la base Passness.
     const [u] = await tx.select().from(users).where(eq(users.id, user.id)).limit(1);
     if (!u) {
       throw new AuthorizationError('Utilisateur inconnu.');

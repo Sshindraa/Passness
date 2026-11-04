@@ -2,7 +2,7 @@
 
 ## 1. Contexte et Objectif Produit
 
-Ce lot établit et durcit le pont transactionnel direct entre le moteur de recherche publique Uttily et le tunnel de réservation/checkout initial :
+Ce lot établit et durcit le pont transactionnel direct entre le moteur de recherche publique Passness et le tunnel de réservation/checkout initial :
 
 ```
 Recherche publique (/[locale]/search)
@@ -50,14 +50,14 @@ Recherche publique (/[locale]/search)
 
 ## 3. Matrice des Preuves de Tests
 
-### 3.1 Base de données & Migration (`@uttily/database`)
+### 3.1 Base de données & Migration (`@passness/database`)
 - `src/schema-product-variants-public-id.test.ts` : **4/4 tests PostgreSQL passés**
   - Application de la migration 0038 après les 37 migrations antérieures.
   - Génération automatique d'UUIDs publics uniques et distincts des IDs internes.
   - Rejet des mutations de `public_id` par le trigger d'immutabilité.
   - Upgrade réel 0037 → 0038 avec backfill des variantes existantes, vérification du hash Drizzle et idempotence du rejeu.
 
-### 3.2 Core (`@uttily/core`)
+### 3.2 Core (`@passness/core`)
 - `src/public-search/get-public-offer-details.test.ts` : **4/4 tests unitaires passés**
 - `src/public-search/get-public-offer-details.integration.test.ts` : **13/13 tests PostgreSQL passés**
   - Test de sentinelles : prouve l'absence absolue de tout ID interne, SKU suffix ou attribut JSON dans le read model.
@@ -66,7 +66,7 @@ Recherche publique (/[locale]/search)
 - `src/public-search/resolve-public-booking-authority.integration.test.ts` : **10/10 tests PostgreSQL passés**
   - Résolution autoritaire nominale et rejets fail-closed.
 
-### 3.3 Application Web (`@uttily/web`)
+### 3.3 Application Web (`@passness/web`)
 - `src/app/actions/bookings.test.ts` : **6/6 tests unitaires passés**
   - Validation des entrées, authentification, résolution d'autorité, assainissement des messages et sentinelles d'erreur.
 - `src/app/actions/bookings.integration.test.ts` : **4/4 tests PostgreSQL passés**

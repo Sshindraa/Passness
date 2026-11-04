@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getBookingSupportDetails, SupportBookingNotFoundError } from '@uttily/core';
+import { getBookingSupportDetails, SupportBookingNotFoundError } from '@passness/core';
 import { BookingSupportView } from '@/features/internal';
 import { requireSupportPlatformAdmin } from '@/lib/support-auth';
 

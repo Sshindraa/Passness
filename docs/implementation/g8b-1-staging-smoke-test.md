@@ -8,7 +8,7 @@
 
 - Déploiement Web courant : `uttily-staging`, domaine
   `https://uttily-staging.vercel.app`, commit de merge `cebc640`.
-- Base Neon `Uttily-dev/staging` : migrations `0040` à `0049` appliquées dans
+- Base Neon `Passness-dev/staging` : migrations `0040` à `0049` appliquées dans
   l’ordre, journal Drizzle à 49 entrées.
 - Vérification publique : recherche Annecy du 10 au 11 juin 2030 fonctionnelle,
   une offre retournée, puis page de l’offre accessible avec photos, horaires et
@@ -50,7 +50,7 @@
 ## Parcours exécuté
 
 1. Connexion Clerk TEST au dashboard staging.
-2. Ouverture du produit `Kayak Lac d’Annecy` dans l'organisation `Uttily Demo
+2. Ouverture du produit `Kayak Lac d’Annecy` dans l'organisation `Passness Demo
    Rental`.
 3. Sélection d'une image PNG synthétique de test, 1200×900 pixels.
 4. Upload depuis l'interface Photos du produit.

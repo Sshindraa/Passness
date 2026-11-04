@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { saveDailyPricingPlanDraft } from './management';
 import { FlexiblePricingError } from './errors';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 
 describe('Pricing Plans Management — Validation et règles métier', () => {
   it('rejette un montant négatif ou égal à zéro', async () => {

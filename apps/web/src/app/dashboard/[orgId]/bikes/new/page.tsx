@@ -1,4 +1,4 @@
-import { listCommerciallyActiveCategories } from '@uttily/core';
+import { listCommerciallyActiveCategories } from '@passness/core';
 import { requireCatalogManagerOf } from '@/lib/catalog-auth';
 import { NewBikeForm } from '@/features/bikes';
 

@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { runMigrations, assertLocalhost, createDatabase } from '@uttily/database';
+import { runMigrations, assertLocalhost, createDatabase } from '@passness/database';
 import { deleteProductPhoto } from './delete-product-photo';
 import { PhotoError } from './errors';
 
@@ -17,7 +17,7 @@ import { PhotoError } from './errors';
  * - Multi-tenant : photo d'une autre org → PHOTO_NOT_FOUND.
  */
 
-const TEST_DB_NAME = 'uttily_test_g7f_delete';
+const TEST_DB_NAME = 'passness_test_g7f_delete';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

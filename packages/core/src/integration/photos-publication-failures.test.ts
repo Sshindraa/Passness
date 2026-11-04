@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { runMigrations, assertLocalhost, createDatabase } from '@uttily/database';
+import { runMigrations, assertLocalhost, createDatabase } from '@passness/database';
 import {
   collectPublicationFailures,
   archiveProduct,
@@ -17,7 +17,7 @@ import {
  * - 3 photos dont doublons → échec (checksums distincts < 3).
  */
 
-const TEST_DB_NAME = 'uttily_test_g7f_collect';
+const TEST_DB_NAME = 'passness_test_g7f_collect';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

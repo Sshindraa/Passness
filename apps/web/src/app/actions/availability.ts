@@ -16,8 +16,8 @@ import {
   type UpdateRecurringManualBlockSeriesInput,
   type RecurringManualBlockSeriesMutationResult,
   type ReleaseRecurringManualBlockOccurrenceResult,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 import { requireCatalogManagerOf } from '@/lib/catalog-auth';
 import { runAction } from '@/lib/action-mapper';
 import { isValidUuid } from '@/lib/validation';

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — G7I Lot 7 security sentinel tests.
+ * @passness/core — G7I Lot 7 security sentinel tests.
  *
  * Tests sentinelles garantissant qu'aucun secret (client_secret, données de
  * carte) ni détail SQL/provider n'apparaît dans les erreurs fermées exposées

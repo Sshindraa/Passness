@@ -1,4 +1,4 @@
-import { getOperationalItemCalendar, getOperationalPlanning, listLocations } from '@uttily/core';
+import { getOperationalItemCalendar, getOperationalPlanning, listLocations } from '@passness/core';
 import { requireFulfillmentOperatorOf } from '@/lib/fulfillment-auth';
 import { isValidUuid } from '@/lib/operations-helpers';
 import { PlanningView } from '@/features/planning';

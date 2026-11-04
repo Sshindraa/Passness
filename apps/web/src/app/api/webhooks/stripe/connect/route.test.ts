@@ -19,8 +19,8 @@ import { createHash } from 'node:crypto';
 
 const mockHandleWebhook = vi.fn();
 
-vi.mock('@uttily/core', async (importActual) => {
-  const actual = await importActual<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importActual) => {
+  const actual = await importActual<typeof import('@passness/core')>();
   return {
     ...actual,
     handleWebhook: (...args: unknown[]) => mockHandleWebhook(...args),

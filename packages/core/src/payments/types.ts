@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Payments (Lot 5, ADR-010 §3, §5, §14).
+ * @passness/core — Module Payments (Lot 5, ADR-010 §3, §5, §14).
  *
  * Contrat du provider de paiement (port). Aucun import du SDK Stripe :
  * l'implémentation est injectable. Les montants sont des entiers en unités
@@ -71,7 +71,7 @@ export interface AmendmentPaymentMetadata {
   protocol_version: 'booking-amendment-payment-v1';
 }
 
-/** Union fermée des metadata PaymentIntent Uttily. */
+/** Union fermée des metadata PaymentIntent Passness. */
 export type PaymentMetadata = InitialPaymentMetadata | AmendmentPaymentMetadata;
 
 /**
@@ -110,7 +110,7 @@ export interface RefundResult {
   currency: string;
 }
 
-/** Metadata minimale et fermée attachée aux refunds Uttily. */
+/** Metadata minimale et fermée attachée aux refunds Passness. */
 export interface RefundMetadata {
   refund_id: string;
   organization_id: string;
@@ -141,7 +141,7 @@ export interface CreateRefundParams {
   reverseTransfer: boolean;
   /** Rembourser la commission de plateforme. */
   refundApplicationFee: boolean;
-  /** Metadata Uttily du refund, omise pour les flux historiques non tagués. */
+  /** Metadata Passness du refund, omise pour les flux historiques non tagués. */
   metadata?: RefundMetadata;
 }
 

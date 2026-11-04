@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { PaymentProviderError } from '../payments/errors';
 import { claimRefundRequestBatch } from './claim-refund-request-batch';
 import { RefundRequestError } from './errors';

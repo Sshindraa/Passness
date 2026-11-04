@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Extraction des données d'un PaymentIntent depuis un webhook
+ * @passness/core — Extraction des données d'un PaymentIntent depuis un webhook
  * (Lot 5, ADR-010 §9, §14).
  *
  * Extrait `PaymentIntentEventData` depuis `VerifiedWebhookEvent.data` avec une

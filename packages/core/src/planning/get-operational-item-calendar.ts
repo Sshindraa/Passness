@@ -1,5 +1,5 @@
 import { and, asc, eq, inArray, isNull, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookingItems,
   bookings,
@@ -13,7 +13,7 @@ import {
   products,
   productVariants,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import { CatalogError } from '../catalog/errors';
 import { clipPlanningInterval, getDefaultWeekWindow } from './get-operational-planning';
 import type {

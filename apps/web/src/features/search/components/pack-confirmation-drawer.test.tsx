@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
-import type { RankedPackCandidate, SolvedPackCandidate } from '@uttily/core';
+import type { RankedPackCandidate, SolvedPackCandidate } from '@passness/core';
 import { PackConfirmationDrawer } from './pack-confirmation-drawer';
 
 const mockPack: RankedPackCandidate<SolvedPackCandidate> = {

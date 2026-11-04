@@ -9,7 +9,7 @@ import {
   organizationPaymentAccounts,
   paymentAttempts,
   payments,
-} from '@uttily/database';
+} from '@passness/database';
 import { FinancialTermsError } from '../financial-terms/errors';
 import { resolveFinancialTerms } from '../financial-terms/resolve-financial-terms';
 import { completeKey, failKey, lockKey, reserveKey } from '../idempotency';
@@ -33,7 +33,7 @@ import type {
 import { INITIATE_PAYMENT_OPERATION, PAYMENT_PROTOCOL_VERSION } from './types';
 
 /**
- * @uttily/core — Initiation de paiement (Lot 5, ADR-010 §7).
+ * @passness/core — Initiation de paiement (Lot 5, ADR-010 §7).
  *
  * Use case d'initiation de paiement : convertit un brouillon HELD en
  * PAYMENT_PROCESSING, crée un payment + payment_attempt, appelle le provider

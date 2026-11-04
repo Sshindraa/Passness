@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Génération des candidats éligibles à partir des plans résolus et de l'intent.
  * Pour chaque ligne (variantId + quantity), génère tous les candidats possibles.

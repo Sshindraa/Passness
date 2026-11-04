@@ -2,7 +2,7 @@
 
 - **Statut** : Accepted — G5H-C2C-B1 (décision et conception) approuvé. G5H-C2C-B2 livré (renderer PDF pdf-lib implémenté et testé). G5H-C2C-B2 Round 2 livré (corrections du renderer). G5H-C2C-B3 livré (câblage production createWorkerDependenciesFromEnv, arrêt propre, signaux). G5H-C2C-B4 livré (smoke test local du bundle compilé : harness `apps/worker/scripts/smoke-built-worker.mjs` importe `dist/index.js`, vérifie les exports, exécute `startWorker` avec fakes, émet un SIGTERM factice, vérifie shutdown unique et retrait des listeners, timeout ferme référencé 5000 ms (exit 70 si dépassé), terminaison naturelle au succès (pas de `process.exit(0)`), scrub des variables d'environnement fournisseur avant import, vérification de l'absence d'effets de bord à l'import (exitCode, listeners, console), 3 tests subprocess (bundle absent exit 2, hang/timeout exit 70, succès exit 0 naturel) ; commandes `smoke:built`, `smoke` et `smoke:verify` ; fixture dev-only `scripts/fixtures/hanging-bundle.mjs`). G5H-C2C-B4 Round 3 livré (capture des effets console différés via setImmediate pendant et après l'import ; validation stricte de `--timeout-ms` (regex `^[0-9]+$` + `Number.isSafeInteger` + borne [50, 10000], fail-closed exit 64 avec message générique sans interpolation de la valeur reçue) ; `fileParallelism: false` dans `vitest.config.ts` pour sérialiser les tests manipulant le répertoire `dist` partagé ; nouvelles fixtures dev-only `scripts/fixtures/deferred-console-bundle.mjs` et `scripts/fixtures/sync-console-bundle.mjs` ; 11 tests subprocess (bundle absent exit 2, hang/timeout exit 70, succès exit 0 naturel avec stdout exact et stderr vide, console synchrone détectée exit 1, console différée setImmediate détectée exit 1, validation stricte `--timeout-ms` exit 64 pour 5 cas invalides, fixtures absentes de dist)). Déploiement VPS et configuration réelle = lot distinct post-B4 (non livré).
 - **Date** : 2026-08-06
-- **Décideurs** : Équipe engineering Uttily
+- **Décideurs** : Équipe engineering Passness
 - **Relie à** : ADR-013, ADR-014
 
 ## 1. Contexte
@@ -337,7 +337,7 @@ pas de ressource fermable, aucun cleanup Resend n'est tenté.
   Commande `smoke:verify` : build frais + smoke:built + tests du harness contre ce build frais.
   Test d'échec contrôlé du harness via `apps/worker/src/smoke-harness.test.ts`
   (11 tests subprocess : échec propre bundle absent exit 2, timeout ferme exit 70 via fixture dev-only `scripts/fixtures/hanging-bundle.mjs` dont `startWorker` ne résout jamais, succès bundle présent exit 0 naturel avec stdout exact et stderr strictement vide, console synchrone pendant l'import détectée exit 1 via fixture dev-only `scripts/fixtures/sync-console-bundle.mjs`, console différée via setImmediate détectée exit 1 (pas exit 70) via fixture dev-only `scripts/fixtures/deferred-console-bundle.mjs`, validation stricte `--timeout-ms` exit 64 pour 5 cas invalides (49, 10001, 100junk, 100.5, chaîne vide) sans interpolation de la valeur reçue et échec immédiat (< 1000 ms), fixtures absentes de dist (seuls `index.js` et `index.js.map`) ; `beforeAll` build frais pour éviter un dist stale ; `assertNoSecrets` vérifie l'absence de `postgres://`, `postgresql://`, `re_`, `R2_SECRET_ACCESS_KEY`, `RESEND_API_KEY` dans stdout/stderr ; `fileParallelism: false` dans `vitest.config.ts` sérialise les tests manipulant le répertoire `dist` partagé).
-  Les deux modes de build (`pnpm --filter @uttily/worker build` et
+  Les deux modes de build (`pnpm --filter @passness/worker build` et
   `node apps/worker/build.mjs` depuis la racine) produisent un bundle smoke-testé.
   `node apps/worker/dist/index.js` avec environnement incomplet produit une
   `WorkerConfigurationError` propre (exit 1, aucune stack ni valeur sensible).
@@ -404,7 +404,7 @@ accents). La police Inter supporte ces caractères. Le Round 2 corrige tous les
 textes : `Confirmation de réservation`, `Référence réservation`, `Référence
 paiement`, `Début`, `Confirmé le`, `Quantité`, `Équipement`, `Numéro de série`,
 `État`, `Reçu technique`, `Période`, `Références`, `Statut réservation`, `Date
-de succès`, `Montant payé`, `Document technique généré par Uttily`, `Document
+de succès`, `Montant payé`, `Document technique généré par Passness`, `Document
 technique — sans valeur contractuelle légale.`, et `Reçu technique — ne
 constitue pas une facture fiscale.`
 

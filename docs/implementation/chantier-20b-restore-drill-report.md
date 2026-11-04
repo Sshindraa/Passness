@@ -13,7 +13,7 @@
 Commande exécutée :
 
 ```bash
-UTTILY_RECOVERY_DRILL=1 NODE_ENV=test pnpm recovery:restore-drill
+PASSNESS_RECOVERY_DRILL=1 NODE_ENV=test pnpm recovery:restore-drill
 ```
 
 Mécanisme : `pg_dump --format=custom --no-owner --no-privileges` puis

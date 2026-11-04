@@ -9,8 +9,8 @@ import {
   payments,
   refunds,
   type DatabaseClient,
-} from '@uttily/database';
-import { parseRefundRequestedEvent, type RefundRequestedEvent } from '@uttily/contracts';
+} from '@passness/database';
+import { parseRefundRequestedEvent, type RefundRequestedEvent } from '@passness/contracts';
 import type { PaymentProviderAdapter, StripeEnvironment } from '../payments/types';
 import { RefundRequestError } from './errors';
 import type {

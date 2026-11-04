@@ -14,8 +14,8 @@ import {
   users,
   type DatabaseClient,
   type DatabaseTransaction,
-} from '@uttily/database';
-import { isActionErrorCode } from '@uttily/contracts';
+} from '@passness/database';
+import { isActionErrorCode } from '@passness/contracts';
 import {
   completeKey,
   computeFingerprint,
@@ -69,7 +69,7 @@ import type {
 } from './types';
 
 /**
- * @uttily/core — Création atomique et idempotente d'un brouillon de réservation
+ * @passness/core — Création atomique et idempotente d'un brouillon de réservation
  * mono-loueur (Lot 4, étape 4).
  *
  * `createBookingDraftWithHold` est une primitive de haut niveau qui :

@@ -57,7 +57,7 @@ Le virement de remboursement a été transmis à notre opérateur de paiement. V
     : `Conformément aux conditions d'annulation applicables, aucun remboursement n'a été émis.`
 }
 
-L'équipe Uttily
+L'équipe Passness
 `;
 
   return {

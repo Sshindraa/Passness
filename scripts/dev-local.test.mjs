@@ -32,7 +32,7 @@ const LOCAL_WEBHOOK_VARIABLES = [
   'STRIPE_PLATFORM_WEBHOOK_SECRET',
   'STRIPE_CONNECT_WEBHOOK_SECRET',
 ];
-const INSPECTED_DOCKER_ENDPOINT = 'unix:///tmp/uttily-docker.sock';
+const INSPECTED_DOCKER_ENDPOINT = 'unix:///tmp/passness-docker.sock';
 const VALID_CLERK_KEYS = {
   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: `pk_test_${'A'.repeat(32)}`,
   CLERK_SECRET_KEY: `sk_test_${'B'.repeat(32)}`,
@@ -63,7 +63,7 @@ test('accepte les URLs PostgreSQL locales', () => {
   const localUrls = [
     'postgresql://uttily:uttily@localhost:5432/uttily',
     'postgres://uttily:uttily@127.0.0.1:5432/uttily',
-    'postgresql://uttily:uttily@[::1]:5432/uttily',
+    'postgresql://uttily:uttily@[::1]:5432/passness',
   ];
 
   for (const url of localUrls) {
@@ -105,7 +105,7 @@ test('force NODE_ENV development et le marqueur de seed local pour les processus
   const environment = createTestLocalEnvironment({ NODE_ENV: 'production' });
 
   assert.equal(environment.NODE_ENV, 'development');
-  assert.equal(environment.UTTILY_LOCAL_DEV, '1');
+  assert.equal(environment.PASSNESS_LOCAL_DEV, '1');
 });
 
 test('remplace les origins et le curseur hérités par les valeurs dev/test locales', () => {
@@ -304,33 +304,33 @@ test('neutralise les valeurs R2 et Resend héritées dans l’environnement enfa
 test('filtre l’environnement Docker et conserve PATH et les variables autorisées', () => {
   const environment = createDockerEnvironment({
     PATH: '/usr/bin',
-    HOME: '/tmp/uttily-home',
-    USER: 'uttily',
+    HOME: '/tmp/passness-home',
+    USER: 'passness',
     TMPDIR: '/tmp',
-    XDG_CONFIG_HOME: '/tmp/uttily-config',
-    DOCKER_CONFIG: '/tmp/uttily-docker',
-    DOCKER_CERT_PATH: '/tmp/uttily-certs',
+    XDG_CONFIG_HOME: '/tmp/passness-config',
+    DOCKER_CONFIG: '/tmp/passness-docker',
+    DOCKER_CERT_PATH: '/tmp/passness-certs',
     DOCKER_TLS_VERIFY: '1',
-    DOCKER_HOST: 'unix:///tmp/uttily-docker.sock',
+    DOCKER_HOST: 'unix:///tmp/passness-docker.sock',
     DOCKER_CONTEXT: 'colima',
-    COMPOSE_PROJECT_NAME: 'uttily-local',
+    COMPOSE_PROJECT_NAME: 'passness-local',
     COMPOSE_PROFILES: 'local',
-    DATABASE_URL: 'postgresql://app-secret.invalid/uttily',
+    DATABASE_URL: 'postgresql://app-secret.invalid/passness',
     APP_FAKE_SECRET: 'fixture-only-secret',
   });
 
   assert.deepEqual(environment, {
     PATH: '/usr/bin',
-    HOME: '/tmp/uttily-home',
-    USER: 'uttily',
+    HOME: '/tmp/passness-home',
+    USER: 'passness',
     TMPDIR: '/tmp',
-    XDG_CONFIG_HOME: '/tmp/uttily-config',
-    DOCKER_CONFIG: '/tmp/uttily-docker',
-    DOCKER_CERT_PATH: '/tmp/uttily-certs',
+    XDG_CONFIG_HOME: '/tmp/passness-config',
+    DOCKER_CONFIG: '/tmp/passness-docker',
+    DOCKER_CERT_PATH: '/tmp/passness-certs',
     DOCKER_TLS_VERIFY: '1',
-    DOCKER_HOST: 'unix:///tmp/uttily-docker.sock',
+    DOCKER_HOST: 'unix:///tmp/passness-docker.sock',
     DOCKER_CONTEXT: 'colima',
-    COMPOSE_PROJECT_NAME: 'uttily-local',
+    COMPOSE_PROJECT_NAME: 'passness-local',
     COMPOSE_PROFILES: 'local',
   });
   assert.equal(environment.APP_FAKE_SECRET, undefined);
@@ -474,8 +474,8 @@ test('refuse tout candidat sans contexte Docker local inspecté', () => {
       { status: 'missing' },
       {
         PATH: '/usr/bin',
-        HOME: '/tmp/uttily-home',
-        DOCKER_CONFIG: '/tmp/uttily-docker-config',
+        HOME: '/tmp/passness-home',
+        DOCKER_CONFIG: '/tmp/passness-docker-config',
       },
     ),
     [],

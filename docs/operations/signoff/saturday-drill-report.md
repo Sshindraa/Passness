@@ -12,7 +12,7 @@
 
 ## 1. Objectif du Drill & Périmètre Opérationnel
 
-Le drill **Lot 21-S1** a pour mission de valider de bout en bout sur une base PostgreSQL locale réelle le cycle de vie opérationnel complet d’un samedi d’exploitation typique (08h00 - 20h30) dans une boutique de location partenaire Uttily.
+Le drill **Lot 21-S1** a pour mission de valider de bout en bout sur une base PostgreSQL locale réelle le cycle de vie opérationnel complet d’un samedi d’exploitation typique (08h00 - 20h30) dans une boutique de location partenaire Passness.
 
 Il combine et éprouve l'interopérabilité des composants livrés au cours des chantiers récents :
 - **Lot 21-O1** : Identité légale et fiscale du loueur partenaire (SIRET, TVA, RCS, Siège social).
@@ -98,7 +98,7 @@ Il combine et éprouve l'interopérabilité des composants livrés au cours des 
 - Calcul du read-model financier du loueur via `getMerchantFinanceOverview(db, orgId)`.
 - Génération du décompte officiel via `generateCommissionStatementCsv`.
 - **Vérifications contractuelles et légales :**
-  - Entête légal Uttily SAS (Capital 10 000 €, SIREN 987 654 321).
+  - Entête légal Passness SAS (Capital 10 000 €, SIREN 987 654 321).
   - Identité complète du loueur partenaire (Raison sociale, Forme juridique SAS, SIRET, TVA, RCS Annecy, Adresse du siège).
   - Ventilation des ventes brutes, commissions et montants nets reversés.
 

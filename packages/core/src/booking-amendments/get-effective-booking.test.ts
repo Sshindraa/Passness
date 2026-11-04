@@ -258,19 +258,19 @@ describe('Exports publics — helpers internes non exposés', () => {
     expect((publicBarrel as Record<string, unknown>).FinancialSnapshot).toBeUndefined();
   });
 
-  it("parseFinancialSnapshot n'est pas exporté depuis @uttily/core", () => {
+  it("parseFinancialSnapshot n'est pas exporté depuis @passness/core", () => {
     expect((coreIndex as Record<string, unknown>).parseFinancialSnapshot).toBeUndefined();
   });
 
-  it("normalizeAggregateAmount n'est pas exporté depuis @uttily/core", () => {
+  it("normalizeAggregateAmount n'est pas exporté depuis @passness/core", () => {
     expect((coreIndex as Record<string, unknown>).normalizeAggregateAmount).toBeUndefined();
   });
 
-  it("assertFinancialInvariant n'est pas exporté depuis @uttily/core", () => {
+  it("assertFinancialInvariant n'est pas exporté depuis @passness/core", () => {
     expect((coreIndex as Record<string, unknown>).assertFinancialInvariant).toBeUndefined();
   });
 
-  it("isEffectiveBookingErrorCode n'est pas exporté depuis @uttily/core", () => {
+  it("isEffectiveBookingErrorCode n'est pas exporté depuis @passness/core", () => {
     expect((coreIndex as Record<string, unknown>).isEffectiveBookingErrorCode).toBeUndefined();
   });
 

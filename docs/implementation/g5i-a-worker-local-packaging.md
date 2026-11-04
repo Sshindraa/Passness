@@ -2,7 +2,7 @@
 
 - **Phase** : G5I-A
 - **Périmètre** : préparation et test LOCAL de l'image Docker et de la config
-  Compose du `@uttily/worker` pour un futur déploiement VPS.
+  Compose du `@passness/worker` pour un futur déploiement VPS.
 - **Statut** : Packaging Docker implémenté, validé statiquement ET validé en
   runtime Docker (G5I-B). Build, inspection, smoke, échec de configuration,
   Compose, démarrage avec PostgreSQL éphémère et SIGTERM tous exécutés avec
@@ -49,9 +49,9 @@ build sans `--target` produit l'image production :
 
 ```bash
 # Forme courte (production = stage par défaut, dernier FROM) :
-docker build -f Dockerfile.worker -t uttily-worker:local .
+docker build -f Dockerfile.worker -t passness-worker:local .
 # Forme explicite (defense in depth, utilisée par Compose) :
-docker build -f Dockerfile.worker -t uttily-worker:local --target production .
+docker build -f Dockerfile.worker -t passness-worker:local --target production .
 ```
 
 ### Image validation
@@ -59,27 +59,27 @@ docker build -f Dockerfile.worker -t uttily-worker:local --target production .
 Le stage validation (dev-only, harness + fixtures) nécessite `--target` :
 
 ```bash
-docker build -f Dockerfile.worker -t uttily-worker:validation --target validation .
+docker build -f Dockerfile.worker -t passness-worker:validation --target validation .
 ```
 
 ## 4. Inspection de l'image production
 
 ```bash
 # Vérifier l'utilisateur (1001), le CMD (node dist/index.js), aucun ExposedPorts.
-docker image inspect uttily-worker:local
+docker image inspect passness-worker:local
 
 # Vérifier le contenu de /app : dist/, node_modules/ et assets/fonts/.
 # Aucun scripts/, fixture, source, test ou .env ne doit être présent.
-docker run --rm --entrypoint /bin/sh uttily-worker:local -c "ls -la /app"
+docker run --rm --entrypoint /bin/sh passness-worker:local -c "ls -la /app"
 
-# Vérifier l'identité : uid=1001(uttily) gid=1001(uttily).
-docker run --rm --entrypoint /bin/sh uttily-worker:local -c "id"
+# Vérifier l'identité : uid=1001(passness) gid=1001(passness).
+docker run --rm --entrypoint /bin/sh passness-worker:local -c "id"
 
 # Vérifier l'absence de tests, fixtures, .env dans l'image production.
-docker run --rm --entrypoint /bin/sh uttily-worker:local -c "find /app -name '*.test.*' -o -name 'fixture*' -o -name '.env*'"
+docker run --rm --entrypoint /bin/sh passness-worker:local -c "find /app -name '*.test.*' -o -name 'fixture*' -o -name '.env*'"
 
 # Vérifier l'historique des couches : aucun secret baked in.
-docker image history uttily-worker:local
+docker image history passness-worker:local
 ```
 
 ## 5. Smoke du bundle dans le conteneur (image validation)
@@ -87,10 +87,10 @@ docker image history uttily-worker:local
 ```bash
 # Lance le harness smoke par défaut (CMD du stage validation).
 # Attendu : exit 0, stdout "Worker smoke: OK ...", stderr vide.
-docker run --rm uttily-worker:validation
+docker run --rm passness-worker:validation
 
 # Forme explicite.
-docker run --rm uttily-worker:validation node scripts/smoke-built-worker.mjs --bundle=/app/dist/index.js
+docker run --rm passness-worker:validation node scripts/smoke-built-worker.mjs --bundle=/app/dist/index.js
 ```
 
 ## 6. Configuration absente → WorkerConfigurationError
@@ -98,7 +98,7 @@ docker run --rm uttily-worker:validation node scripts/smoke-built-worker.mjs --b
 ```bash
 # Aucun env_file → le worker valide la config, échoue proprement.
 # Attendu : exit 1, WorkerConfigurationError propre, pas de stack, pas de secret.
-docker run --rm uttily-worker:local
+docker run --rm passness-worker:local
 ```
 
 ## 7. Validation locale avec valeurs fictives
@@ -122,13 +122,13 @@ qui remplace la liste `env_file` entière, au lieu de la fusionner) :
 test -f .env.worker && echo ".env.worker existe (non lu)" || echo ".env.worker absent"
 
 # 2. Créer un fichier temporaire hors dépôt avec les valeurs factices du modèle public.
-tmpenv=$(mktemp /tmp/uttily-worker-env.XXXXXX)
+tmpenv=$(mktemp /tmp/passness-worker-env.XXXXXX)
 trap 'rm -f "$tmpenv" "$tmpcompose"' EXIT
 
 # 3. Créer un override Compose temporaire utilisant !override pour remplacer
 #    entièrement le env_file original (.env.worker). Sans !override, Compose
 #    fusionnerait les deux env_file (sécurité : .env.worker serait lu).
-tmpcompose=$(mktemp /tmp/uttily-worker-compose.XXXXXX.yml)
+tmpcompose=$(mktemp /tmp/passness-worker-compose.XXXXXX.yml)
 cat > "$tmpcompose" <<EOF
 services:
   worker:
@@ -163,7 +163,7 @@ invalide, utiliser une exécution ponctuelle SANS restart policy :
 ```bash
 # Exécution ponctuelle : pas de -d, pas de restart, exit immédiat.
 # Attendu : exit 1, WorkerConfigurationError propre, pas de stack, pas de secret.
-docker run --rm uttily-worker:local
+docker run --rm passness-worker:local
 ```
 
 Ou avec un env_file factice (pour tester le parsing sans restart loop) :
@@ -176,11 +176,11 @@ Ou avec un env_file factice (pour tester le parsing sans restart loop) :
 ```bash
 # Crée un fichier temporaire hors du dépôt (jamais .env.worker).
 # Le modèle public .env.example ne contient aucun secret.
-tmpenv=$(mktemp /tmp/uttily-worker-env.XXXXXX)
+tmpenv=$(mktemp /tmp/passness-worker-env.XXXXXX)
 trap 'rm -f "$tmpenv"' EXIT
 cp apps/worker/.env.example "$tmpenv"
 # Exécution ponctuelle avec le fichier temporaire (pas de restart policy).
-docker run --rm --env-file "$tmpenv" uttily-worker:local
+docker run --rm --env-file "$tmpenv" passness-worker:local
 # Attendu : exit 1, WorkerConfigurationError (creds factices invalides).
 # Pas de restart loop car pas de restart policy en mode run.
 # Le trap EXIT supprime uniquement le fichier temporaire créé par mktemp.
@@ -238,14 +238,14 @@ Les logs sont JSON (`ConsoleWorkerLogger`), rotatés via `json-file`
 docker compose -f docker-compose.worker.yml ps -a
 
 # Code de sortie explicite.
-docker inspect --format='{{.State.ExitCode}}' uttily-worker
+docker inspect --format='{{.State.ExitCode}}' passness-worker
 ```
 
 ## 11. Rollback vers une image précédente
 
 ```bash
 # Tagger l'image courante avant chaque déploiement.
-docker tag uttily-worker:local uttily-worker:local-$(date +%Y%m%d-%H%M%S)
+docker tag passness-worker:local passness-worker:local-$(date +%Y%m%d-%H%M%S)
 
 # Rollback : pointer image: vers le tag précédent dans docker-compose.worker.yml,
 # puis :
@@ -266,14 +266,14 @@ docker compose -f docker-compose.worker.yml up -d --no-build
 3. **NON EXÉCUTÉE** — Copier `Dockerfile.worker`, `docker-compose.worker.yml`
    et `apps/worker/.env.example` vers le VPS.
 4. **NON EXÉCUTÉE** — Créer `/opt/uttily/.env.worker` avec des VRAIS credentials
-   (chmod 600, propriétaire dédié `uttily`, jamais `source`). Le `env_file:
+   (chmod 600, propriétaire dédié `passness`, jamais `source`). Le `env_file:
    .env.worker` dans `docker-compose.worker.yml` est résolu relativement au
    répertoire du fichier Compose. Si le Compose est stocké dans
    `/opt/uttily/docker-compose.worker.yml`, ce chemin relatif `.env.worker`
    résout `/opt/uttily/.env.worker` (chemin absolu). Si le fichier `.env.worker`
    est ailleurs, ajuster le `env_file` vers un chemin absolu dans une override
    Compose (ne pas modifier le Compose versionné).
-5. **NON EXÉCUTÉE** — `docker build -f Dockerfile.worker -t uttily-worker:local .`
+5. **NON EXÉCUTÉE** — `docker build -f Dockerfile.worker -t passness-worker:local .`
    (production = stage par défaut ; `--target production` optionnel pour clarté).
 6. **NON EXÉCUTÉE** — `docker compose -f docker-compose.worker.yml up -d`.
 7. **NON EXÉCUTÉE** — Vérifier les logs : `docker compose -f

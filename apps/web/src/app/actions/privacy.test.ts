@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { UserErasureError } from '@uttily/core';
+import { UserErasureError } from '@passness/core';
 
 const { getAuthenticatedUserMock, createPrivacyRequestMock, eraseUserAccountMock, deleteUserMock } =
   vi.hoisted(() => ({
@@ -31,8 +31,8 @@ vi.mock('@clerk/nextjs/server', () => ({
   ),
 }));
 
-vi.mock('@uttily/core', async () => {
-  const actual = await vi.importActual<Record<string, unknown>>('@uttily/core');
+vi.mock('@passness/core', async () => {
+  const actual = await vi.importActual<Record<string, unknown>>('@passness/core');
   return {
     ...actual,
     createPrivacyRequest: createPrivacyRequestMock,

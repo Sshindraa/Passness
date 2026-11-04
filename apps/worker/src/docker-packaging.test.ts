@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Validation statique du packaging Docker (G5I-A/G5I-B).
+ * @passness/worker — Validation statique du packaging Docker (G5I-A/G5I-B).
  *
  * Ce fichier contient uniquement des validations statiques : il lit les
  * fichiers Docker avec readFileSync et asserte leur contenu, SANS nécessiter
@@ -134,12 +134,12 @@ describe('Dockerfile.worker', () => {
     expect(dockerfile).toMatch(/pnpm\s+install\s+--frozen-lockfile/);
   });
 
-  it('contient pnpm --filter @uttily/worker build', () => {
-    expect(dockerfile).toMatch(/pnpm\s+--filter\s+@uttily\/worker\s+build/);
+  it('contient pnpm --filter @passness/worker build', () => {
+    expect(dockerfile).toMatch(/pnpm\s+--filter\s+@passness\/worker\s+build/);
   });
 
   it('contient pnpm deploy --prod --legacy (requis par pnpm v10)', () => {
-    expect(dockerfile).toMatch(/pnpm\s+deploy\s+--filter\s+@uttily\/worker\s+--prod\s+--legacy/);
+    expect(dockerfile).toMatch(/pnpm\s+deploy\s+--filter\s+@passness\/worker\s+--prod\s+--legacy/);
   });
 
   it('contient ENV NODE_ENV=production', () => {
@@ -147,12 +147,12 @@ describe('Dockerfile.worker', () => {
   });
 
   it('cree un utilisateur non-root avec UID/GID 1001', () => {
-    expect(dockerfile).toMatch(/groupadd.*--gid\s+1001\s+uttily/);
-    expect(dockerfile).toMatch(/useradd.*--uid\s+1001.*--gid\s+uttily/);
+    expect(dockerfile).toMatch(/groupadd.*--gid\s+1001\s+passness/);
+    expect(dockerfile).toMatch(/useradd.*--uid\s+1001.*--gid\s+passness/);
   });
 
-  it('contient USER uttily avant le CMD final du stage production', () => {
-    expect(dockerfile).toMatch(/USER\s+uttily/);
+  it('contient USER passness avant le CMD final du stage production', () => {
+    expect(dockerfile).toMatch(/USER\s+passness/);
   });
 
   it('le CMD du stage production est node dist/index.js', () => {

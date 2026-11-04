@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { PublicSearchError, safeRecordAnalyticsEvent } from '@uttily/core';
+import { PublicSearchError, safeRecordAnalyticsEvent } from '@passness/core';
 import { getDb } from '@/lib/db';
 import { getAnalyticsEnvironment } from '@/lib/product-analytics';
 import {

@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 
 /**
- * @uttily/core — Empreintes canoniques pour les rapports d'état et de dommages (G3B).
+ * @passness/core — Empreintes canoniques pour les rapports d'état et de dommages (G3B).
  *
  * Version v1. Les empreintes sont des SHA-256 hexadécimaux (64 caractères)
  * construits à partir d'un JSON canonique avec champs triés alphabétiquement

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-A).
+ * @passness/core — Module Product Analytics (G7H-A).
  *
  * Types et contrats du module analytics. Union discriminée pour l'enregistrement
  * d'événements, options pour l'agrégation, la purge et la lecture du résumé.

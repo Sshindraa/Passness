@@ -2,7 +2,7 @@
 
 - **Statut** : Accepté (périmètre architecture, schéma, pipelines et worker provider-neutral ; fournisseurs production choisis par ADR-014 — questions 6, 7, 14 résolues ; adapter R2 implémenté, testé G5H-A et câblé au worker G5H-C2C-B3 ; adapter Resend implémenté, testé G5H-B et câblé au worker G5H-C2C-B3 ; conception finale politique d'idempotence Resend < 24 h et fail-closed verrouillée G5H-C1 §13 — implémentation livrée (G5H-C2A, C2B, C2C-A, C2C-B1, C2C-B2, C2C-B3, C2C-B4) ; G5H-C2C-B4 = smoke test local du bundle compilé (livré). Déploiement VPS et configuration réelle = lot distinct post-B4 (non livré))
 - **Date** : 2026-08-03
-- **Décideurs** : Équipe engineering Uttily
+- **Décideurs** : Équipe engineering Passness
 - **Relie à** : ADR-003, ADR-009, ADR-010, ADR-011, ADR-012, ADR-014
 
 ## 1. Contexte et périmètre
@@ -32,7 +32,7 @@ livrables suivants :
    la confirmation et lui permettre d'accéder à ses documents.
 5. **Facture fiscale** — **exclue** du périmètre G5A. Sa production nécessite
    une décision conjointe des équipes finance et juridique sur le statut légal
-   d'Uttily, l'identité de l'émetteur fiscal, les mentions TVA et le régime
+   d'Passness, l'identité de l'émetteur fiscal, les mentions TVA et le régime
    applicable. Tant que ces décisions ne sont pas prises, aucune facture
    fiscale n'est générée.
 
@@ -1016,7 +1016,7 @@ legacy conservent la forme historique et ne sont pas convertis.
 
 - numéro de reçu séquentiel (format, séquence) ;
 - mentions légales de l'émetteur ;
-- identité du marchand de settlement (Uttily vs loueur) ;
+- identité du marchand de settlement (Passness vs loueur) ;
 - mentions TVA (si `taxStatus = APPLIED`) ;
 - distinction explicite reçu vs facture ;
 - logo / branding.
@@ -1269,7 +1269,7 @@ Aucun groupe ne dépend d'un fournisseur externe réel (fakes uniquement).
   (documents et emails) pour permettre aux tests E2E de crash/replay d'injecter
   une panne après la phase B (hors transaction) sans modifier la logique de
   production. `phaseCPersist` est privée à son module (plus exportée depuis
-  `@uttily/core`). Les testing utils sont dans `@uttily/core/testing` (pas dans
+  `@passness/core`). Les testing utils sont dans `@passness/core/testing` (pas dans
   l'API publique de production). `validateOutboxBatchLimit` (nom métier non
   ambigu) remplace `validateBatchLimit` dans l'API publique.
 
@@ -1342,7 +1342,7 @@ tranchées par ADR-014 ; les autres restent ouvertes et doivent être résolues
 avant l'implémentation des groupes correspondants :
 
 1. statut légal du « reçu » et distinction avec une facture fiscale ;
-2. identité légale de l'émetteur des documents (Uttily vs loueur) ;
+2. identité légale de l'émetteur des documents (Passness vs loueur) ;
 3. mentions contractuelles obligatoires dans le contrat de location ;
 4. politique de numérotation des documents (séquentiel, UUID, format lisible) ;
 5. durée de conservation des documents (RGPD) ;

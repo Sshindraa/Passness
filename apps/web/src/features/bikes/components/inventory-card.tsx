@@ -1,4 +1,4 @@
-import type { UnifiedBike } from '@uttily/core';
+import type { UnifiedBike } from '@passness/core';
 import { InventoryActions } from './inventory-actions';
 import styles from './components.module.css';
 

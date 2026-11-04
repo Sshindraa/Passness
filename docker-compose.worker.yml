@@ -23,12 +23,12 @@
 
 services:
   worker:
-    image: uttily-worker:local
+    image: passness-worker:local
     build:
       context: .
       dockerfile: Dockerfile.worker
       target: production
-    container_name: uttily-worker
+    container_name: passness-worker
     init: true
     user: '1001:1001'
     restart: unless-stopped

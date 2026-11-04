@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Test d'intégration PostgreSQL direct de withInvariantHandling
+ * @passness/core — Test d'intégration PostgreSQL direct de withInvariantHandling
  * (P1-1, ADR-010 §D).
  *
  * Le test 43 (handle-webhook.integration.test.ts) corrompt allocation.draft_line_id,
@@ -23,7 +23,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
 import { eq, sql } from 'drizzle-orm';
-import { createDatabase, paymentWebhookEvents, type DatabaseClient } from '@uttily/database';
+import { createDatabase, paymentWebhookEvents, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,

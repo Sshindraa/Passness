@@ -1,9 +1,9 @@
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { requireSupportPlatformAdmin } from './support-auth';
 import * as auth from './auth';
 import * as dbMod from './db';
-import { AuthorizationError } from '@uttily/core';
+import { AuthorizationError } from '@passness/core';
 
 vi.mock('./auth', () => ({
   getAuthenticatedUser: vi.fn(),

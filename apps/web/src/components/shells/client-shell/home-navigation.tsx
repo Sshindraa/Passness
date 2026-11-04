@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
-import { Button, Icon, LinkButton } from '@uttily/ui';
+import { Button, Icon, LinkButton } from '@passness/ui';
 import { useEffect, useRef, useState } from 'react';
 import type { AppLocale } from '@/lib/locale';
-import { UttilyBrand } from '@/components/brand';
+import { PassnessBrand } from '@/components/brand';
 import { LanguageDialog } from './language-dialog';
 import styles from './home-navigation.module.css';
 
@@ -56,9 +56,9 @@ export function HomeNavigation({
         {fr ? 'Aller au contenu' : 'Skip to content'}
       </a>
       <div className={styles.inner}>
-        <UttilyBrand
+        <PassnessBrand
           href={homeHref}
-          ariaLabel={fr ? 'Uttily, accueil' : 'Uttily, home'}
+          ariaLabel={fr ? 'Passness, accueil' : 'Passness, home'}
           className={styles.brand}
           logoClassName={styles.brandLogo}
           onClick={closeMenus}
@@ -99,7 +99,7 @@ export function HomeNavigation({
             <div className={[styles.panel, styles.accountPanel].join(' ')}>
               <div className={styles.accountAccess}>
                 <p className={styles.panelTitle}>
-                  {fr ? 'Bienvenue chez Uttily' : 'Welcome to Uttily'}
+                  {fr ? 'Bienvenue chez Passness' : 'Welcome to Passness'}
                 </p>
                 <SignedOut>
                   <p className={styles.accountHint}>

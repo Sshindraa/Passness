@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Use case interne de compensation atomique d'un supplément (G7M-C4-B).
+ * @passness/core — Use case interne de compensation atomique d'un supplément (G7M-C4-B).
  *
  * Crée atomiquement le remboursement (refunds) et l'événement outbox associé
  * (REFUND_REQUESTED.v1) dans la même transaction que la projection
@@ -24,13 +24,13 @@ import {
   outboxEvents,
   refunds,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import {
   REFUND_REQUESTED_AGGREGATE_TYPE,
   REFUND_REQUESTED_EVENT_TYPE,
   REFUND_REQUESTED_EVENT_VERSION,
   parseRefundRequestedV1Event,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 import { CompensationError } from '../compensation-execution/errors';
 
 export interface CompensateAmendmentPaymentInput {

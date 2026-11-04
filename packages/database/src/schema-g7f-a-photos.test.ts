@@ -27,7 +27,7 @@ import { productPhotoFileState } from '../src/schema';
  * - Le journal de migrations (62 entrées).
  */
 
-const TEST_DB_NAME = 'uttily_test_g7f_a_photos';
+const TEST_DB_NAME = 'passness_test_g7f_a_photos';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

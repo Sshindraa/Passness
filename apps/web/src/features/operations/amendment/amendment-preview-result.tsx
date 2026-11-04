@@ -1,5 +1,5 @@
 import React from 'react';
-import type { PreviewBookingAmendmentSuccess, PreviewLineDiffEntry } from '@uttily/core';
+import type { PreviewBookingAmendmentSuccess, PreviewLineDiffEntry } from '@passness/core';
 
 export interface AmendmentPreviewResultProps {
   preview: PreviewBookingAmendmentSuccess;
@@ -361,7 +361,7 @@ export function AmendmentPreviewResult({
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span>Commission Uttily estimée :</span>
+              <span>Commission Passness estimée :</span>
               <span>{formatEuros(preview.supplementCommissionAmountMinor ?? 0)}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>

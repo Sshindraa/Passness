@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Constantes et validation de planification (Phase 7A, ADR-010 §12).
+ * @passness/core — Constantes et validation de planification (Phase 7A, ADR-010 §12).
  */
 
 import { sql } from 'drizzle-orm';

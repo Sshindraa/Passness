@@ -1,5 +1,5 @@
 import { notFound, redirect } from 'next/navigation';
-import { getCustomerBooking } from '@uttily/core';
+import { getCustomerBooking } from '@passness/core';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import { BookingDetailView } from '@/features/bookings';

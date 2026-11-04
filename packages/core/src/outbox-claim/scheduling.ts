@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Constantes et validation de planification partagées (G5D, ADR-013 §7).
+ * @passness/core — Constantes et validation de planification partagées (G5D, ADR-013 §7).
  *
  * Ce module centralise les constantes de planification communes au worker de
  * compensation (ADR-010 §13) et au worker de documents transactionnels

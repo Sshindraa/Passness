@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { AuditLogSupportListItem, SupportSearchResult } from '@uttily/core';
+import type { AuditLogSupportListItem, SupportSearchResult } from '@passness/core';
 import { SupportSearchForm } from './support-search-form';
 import styles from './internal.module.css';
 

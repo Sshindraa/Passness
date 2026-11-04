@@ -10,11 +10,17 @@ describe('getPublicAppUrl', () => {
 
   it('exige HTTPS et un hostname public en production', () => {
     expect(
-      getPublicAppUrl({ NODE_ENV: 'production', PUBLIC_APP_URL: 'https://staging.uttily.example' }),
-    ).toBe('https://staging.uttily.example');
+      getPublicAppUrl({
+        NODE_ENV: 'production',
+        PUBLIC_APP_URL: 'https://staging.passness.example',
+      }),
+    ).toBe('https://staging.passness.example');
 
     expect(() =>
-      getPublicAppUrl({ NODE_ENV: 'production', PUBLIC_APP_URL: 'http://staging.uttily.example' }),
+      getPublicAppUrl({
+        NODE_ENV: 'production',
+        PUBLIC_APP_URL: 'http://staging.passness.example',
+      }),
     ).toThrow(/HTTPS/);
     expect(() =>
       getPublicAppUrl({ NODE_ENV: 'production', PUBLIC_APP_URL: 'http://localhost:3000' }),
@@ -34,9 +40,9 @@ describe('getPublicAppUrl', () => {
   it('refuse une valeur absente ou une URL avec chemin, query ou credentials', () => {
     expect(() => getPublicAppUrl({ NODE_ENV: 'development' })).toThrow(/PUBLIC_APP_URL/);
     for (const value of [
-      'https://uttily.example/checkout',
-      'https://uttily.example/?next=payment',
-      'https://user:password@uttily.example',
+      'https://passness.example/checkout',
+      'https://passness.example/?next=payment',
+      'https://user:password@passness.example',
     ]) {
       expect(() => getPublicAppUrl({ NODE_ENV: 'development', PUBLIC_APP_URL: value })).toThrow(
         /PUBLIC_APP_URL/,

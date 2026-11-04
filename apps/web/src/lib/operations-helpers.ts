@@ -4,7 +4,7 @@ import {
   type InventoryCondition,
   type ConditionReportPhase,
   type FulfillmentEventType,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 
 export {
   BOOKING_STATUSES,

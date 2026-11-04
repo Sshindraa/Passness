@@ -46,12 +46,12 @@ PostgreSQL 16/PostGIS local (`postgis/postgis:16-3.4`) pour l'intégration :
 
 | Commande | Résultat |
 | --- | --- |
-| `pnpm --filter @uttily/core exec vitest run src/dashboard/maintenance-signals.test.ts` | 1 fichier, 15 tests passés, 0 échec |
-| `DATABASE_URL=postgresql://uttily:uttily@localhost:5432/uttily pnpm --filter @uttily/core exec vitest run src/dashboard/maintenance-signals.integration.test.ts` | 1 fichier, 1 test passé, 0 échec ; tenant isolation, filtres et bornes `asOf`/`+24h` exécutés sur PostgreSQL réel |
-| `pnpm --filter @uttily/web test` | 10 fichiers passés, 8 suites skip attendues ; 196 tests passés, 100 skip attendus |
+| `pnpm --filter @passness/core exec vitest run src/dashboard/maintenance-signals.test.ts` | 1 fichier, 15 tests passés, 0 échec |
+| `DATABASE_URL=postgresql://uttily:uttily@localhost:5432/uttily pnpm --filter @passness/core exec vitest run src/dashboard/maintenance-signals.integration.test.ts` | 1 fichier, 1 test passé, 0 échec ; tenant isolation, filtres et bornes `asOf`/`+24h` exécutés sur PostgreSQL réel |
+| `pnpm --filter @passness/web test` | 10 fichiers passés, 8 suites skip attendues ; 196 tests passés, 100 skip attendus |
 | `pnpm lint` | exit 0 |
 | `pnpm typecheck` | exit 0 pour les 8 projets |
-| `pnpm --filter @uttily/web build` | exit 0 ; `/dashboard/[orgId]` reste dynamique (`ƒ`) |
+| `pnpm --filter @passness/web build` | exit 0 ; `/dashboard/[orgId]` reste dynamique (`ƒ`) |
 | `pnpm exec prettier --check` sur les fichiers G7G | exit 0 ; tous les fichiers utilisent le style Prettier |
 | `git diff --check` | exit 0 |
 

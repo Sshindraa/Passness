@@ -1,5 +1,5 @@
 /**
- * @uttily/contracts — Contrat de l'événement BOOKING_AMENDMENT_REQUESTED.v1.
+ * @passness/contracts — Contrat de l'événement BOOKING_AMENDMENT_REQUESTED.v1.
  *
  * Signal durable créé avant tout appel Stripe lors de l'initialisation locale
  * d'un supplément. Le payload reste minimal : le consommateur recharge les

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Sélection déterministe d'un seul candidat par variante.
  * Tie-break order exact (voir ADR-018 §7 et spec G7P-B1 §11).

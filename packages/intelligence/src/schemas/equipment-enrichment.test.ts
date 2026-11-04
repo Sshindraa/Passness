@@ -17,7 +17,7 @@ describe('EquipmentEnrichment Schemas & Confidence Policy (ADR-041)', () => {
     it('valide une entrée conforme avec une image en URL', () => {
       const parsed = EquipmentEnrichmentInputSchema.safeParse({
         organizationId: validOrgId,
-        images: [{ url: 'https://images.uttily.local/bike-sample.jpg', mimeType: 'image/jpeg' }],
+        images: [{ url: 'https://images.passness.local/bike-sample.jpg', mimeType: 'image/jpeg' }],
         locale: 'fr',
       });
       expect(parsed.success).toBe(true);
@@ -89,7 +89,7 @@ describe('EquipmentEnrichment Schemas & Confidence Policy (ADR-041)', () => {
       expect(parsed.success).toBe(false);
     });
 
-    it('rejette un slot photo non conforme au contrat @uttily/contracts', () => {
+    it('rejette un slot photo non conforme au contrat @passness/contracts', () => {
       const invalidProposal = {
         ...DEFAULT_FAKE_BIKE_PROPOSAL,
         detectedPhotoSlot: { value: 'UNKNOWN_SLOT', confidence: 0.9 },
@@ -126,7 +126,9 @@ describe('EquipmentEnrichment Schemas & Confidence Policy (ADR-041)', () => {
       const provider = new FakeEquipmentEnrichmentProvider({ latencyMs: 1 });
       const input = {
         organizationId: validOrgId,
-        images: [{ url: 'https://images.uttily.local/bike.jpg', mimeType: 'image/jpeg' as const }],
+        images: [
+          { url: 'https://images.passness.local/bike.jpg', mimeType: 'image/jpeg' as const },
+        ],
         locale: 'fr' as const,
       };
 
@@ -146,7 +148,7 @@ describe('EquipmentEnrichment Schemas & Confidence Policy (ADR-041)', () => {
       await expect(
         provider.enrichEquipment({
           organizationId: validOrgId,
-          images: [{ url: 'https://images.uttily.local/bike.jpg', mimeType: 'image/jpeg' }],
+          images: [{ url: 'https://images.passness.local/bike.jpg', mimeType: 'image/jpeg' }],
           locale: 'fr',
         }),
       ).rejects.toThrow('Erreur simulée du fournisseur IA');

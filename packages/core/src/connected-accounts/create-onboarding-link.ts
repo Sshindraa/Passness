@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Use case createOnboardingLink (Lot 5, ADR-010 §3.3, §16 étape 4).
+ * @passness/core — Use case createOnboardingLink (Lot 5, ADR-010 §3.3, §16 étape 4).
  *
  * Génère un lien d'onboarding Stripe-hosted pour un compte connecté existant.
  *
@@ -14,7 +14,7 @@
  */
 
 import { and, eq } from 'drizzle-orm';
-import { organizationPaymentAccounts } from '@uttily/database';
+import { organizationPaymentAccounts } from '@passness/database';
 import { PaymentProviderError } from '../payments/errors';
 import type { OnboardingLinkResult } from '../payments/types';
 import { ConnectedAccountError } from './errors';

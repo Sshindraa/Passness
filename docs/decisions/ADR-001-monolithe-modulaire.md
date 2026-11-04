@@ -5,7 +5,7 @@
 
 ## Contexte
 
-Uttily réunit marketplace, SaaS loueur, disponibilité concurrente et paiement. Le produit doit évoluer vite sans compromettre les règles de réservation.
+Passness réunit marketplace, SaaS loueur, disponibilité concurrente et paiement. Le produit doit évoluer vite sans compromettre les règles de réservation.
 
 ## Décision
 

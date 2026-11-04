@@ -1,5 +1,5 @@
 /**
- * @uttily/intelligence — Couche d'intelligence opérationnelle et d'enrichissement multimodal.
+ * @passness/intelligence — Couche d'intelligence opérationnelle et d'enrichissement multimodal.
  *
  * Conforme à ADR-019 et ADR-040 :
  * - Aucune dépendance de persistance directe (pas d'accès PostgreSQL / Drizzle).

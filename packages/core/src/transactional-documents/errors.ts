@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Erreurs typées fermées pour G5C (ADR-013).
+ * @passness/core — Erreurs typées fermées pour G5C (ADR-013).
  *
  * Codes non sensibles : aucun message d'erreur ne contient de données
  * personnelles, de secrets ou de valeurs métier. Les messages sont

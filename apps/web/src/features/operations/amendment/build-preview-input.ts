@@ -1,4 +1,4 @@
-import type { NeutralAmendmentIntent } from '@uttily/core';
+import type { NeutralAmendmentIntent } from '@passness/core';
 import type { PreviewBookingAmendmentInput } from '@/app/actions/booking-amendments';
 import type { AmendBookingFormLineProp } from './amend-booking-form';
 

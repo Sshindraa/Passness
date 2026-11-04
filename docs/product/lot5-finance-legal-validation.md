@@ -12,9 +12,9 @@
 Le MVP utilise un paiement Stripe Connect de type **destination charge** :
 
 - un panier et un paiement concernent un seul loueur professionnel ;
-- le PaymentIntent est créé par la plateforme Uttily ;
+- le PaymentIntent est créé par la plateforme Passness ;
 - le compte Stripe connecté du loueur est la destination ;
-- sur le chemin legacy, la commission Uttily est transmise comme
+- sur le chemin legacy, la commission Passness est transmise comme
   `application_fee_amount` ; sur le chemin split, le total client et
   l'application fee proviennent du snapshot 13/7 d'ADR-029 ;
 - le paiement est en EUR, par carte, avec capture automatique ;
@@ -28,7 +28,7 @@ valeurs et responsabilités nécessaires pour l'activer légalement en réel.
 ## 2. Effet financier à accepter
 
 Avec une destination charge, Stripe débite généralement le compte plateforme des
-frais de paiement, remboursements et litiges. Uttily peut inverser le transfert
+frais de paiement, remboursements et litiges. Passness peut inverser le transfert
 vers le loueur lors d'un remboursement, mais elle conserve une exposition
 opérationnelle et de trésorerie.
 
@@ -36,11 +36,11 @@ opérationnelle et de trésorerie.
 
 Valider par écrit :
 
-1. qui est le settlement merchant : Uttily ou le loueur connecté ;
+1. qui est le settlement merchant : Passness ou le loueur connecté ;
 2. si `on_behalf_of` doit désigner le loueur ;
 3. qui supporte les frais Stripe ;
 4. qui supporte remboursements, chargebacks, litiges et soldes négatifs ;
-5. comment Uttily récupère contractuellement une somme avancée pour le loueur ;
+5. comment Passness récupère contractuellement une somme avancée pour le loueur ;
 6. quelles réserves de trésorerie et alertes sont requises.
 
 ## 3. Commission
@@ -63,7 +63,7 @@ frais Stripe et les règles de remboursement.
 Pour les remboursements split et les diminutions après amendement, ADR-030
 propose un calcul entre états effectifs, composant par composant. Ce chemin
 reste fail-closed (`SPLIT_REFUND_UNRESOLVED`) tant que la répartition client,
-loueur et Uttily, les frais Stripe et l'exécution provider ne sont pas approuvés
+loueur et Passness, les frais Stripe et l'exécution provider ne sont pas approuvés
 et testés.
 
 Pour chaque offre pilote, fournir :
@@ -73,7 +73,7 @@ Pour chaque offre pilote, fournir :
 - minimum/maximum éventuel ;
 - traitement des frais Stripe ;
 - traitement de la commission lors d'un remboursement total ou partiel ;
-- traitement TVA/facture de la commission Uttily ;
+- traitement TVA/facture de la commission Passness ;
 - date d'effet et version de la règle.
 
 Le résultat doit toujours produire un `commission_amount_minor` entier, compris
@@ -94,7 +94,7 @@ Préciser pour le pilote :
 4. la règle permettant de calculer `tax_amount_minor` et, si pertinent,
    `tax_rate_bps` ;
 5. les données fiscales du loueur nécessaires ;
-6. le traitement fiscal de la commission Uttily ;
+6. le traitement fiscal de la commission Passness ;
 7. les mentions obligatoires sur confirmation, facture et reçu ;
 8. la version et la date d'effet de la règle.
 
@@ -134,7 +134,7 @@ par composant n'est pas validée.
 - aucune réallocation ni conversion rétroactive ;
 - remboursement intégral du montant payé ;
 - inversion intégrale du transfert au loueur ;
-- restitution intégrale de la commission Uttily ;
+- restitution intégrale de la commission Passness ;
 - opération idempotente et suivie jusqu'au statut fournisseur final ;
 - intervention humaine et information du client si le remboursement échoue ou
   reste en attente.

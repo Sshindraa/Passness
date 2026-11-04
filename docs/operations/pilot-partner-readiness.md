@@ -54,8 +54,8 @@ Ce dossier est le registre de suivi de collecte. Le formulaire prêt à l'emploi
 | Field | Status | Owner | Evidence / next action |
 | --- | --- | --- | --- |
 | Operations contact | `NOT_PROVIDED` | Partner operator | Fournir nom, canal et horaires d'astreinte par canal sécurisé. |
-| Incident contact | `NOT_PROVIDED` | Partner operator + Uttily ops | Fournir canal, délai de réponse et pouvoir de décision. |
-| Suspected overbooking | `NOT_PROVIDED` | Uttily ops + partner operator | Confirmer le contact et le protocole : arrêter la promesse, vérifier les allocations, escalader ; aucun contact fictif. |
+| Incident contact | `NOT_PROVIDED` | Partner operator + Passness ops | Fournir canal, délai de réponse et pouvoir de décision. |
+| Suspected overbooking | `NOT_PROVIDED` | Passness ops + partner operator | Confirmer le contact et le protocole : arrêter la promesse, vérifier les allocations, escalader ; aucun contact fictif. |
 | Refund request | `NOT_PROVIDED` | Finance + partner operator | Confirmer le canal d'escalade et les droits ; utiliser le flux refund officiel. |
 | Bike unavailable | `NOT_PROVIDED` | Partner operator | Confirmer qui déclare l'indisponibilité, sous quel délai et avec quelle preuve. |
 

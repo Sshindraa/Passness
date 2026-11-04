@@ -157,7 +157,7 @@ sont supprimés avant le `ALTER COLUMN TYPE` puis recréés avec le nouveau type
 ## Tests
 
 `packages/database/src/schema-g7m-a-amendments.test.ts` (3830 lignes) — 103 tests PostgreSQL
-réels (base dédiée `uttily_test_g7m_a`, migration from scratch).
+réels (base dédiée `passness_test_g7m_a`, migration from scratch).
 
 Couverture :
 
@@ -237,8 +237,8 @@ correctifs minimes dans `packages/core` pour préserver la compatibilité TypeSc
 
 Dernier run complet (PostgreSQL 16 + PostGIS, `DATABASE_URL=postgresql://uttily:uttily@localhost:5432/uttily`) :
 
-- `pnpm --filter @uttily/database test` : **778 tests passés, 0 échec, 0 skip** (15 fichiers, 581s)
-- `pnpm --filter @uttily/core exec vitest run --no-file-parallelism` : **2180 tests passés, 0 échec, 0 skip** (84 fichiers, 1530s)
+- `pnpm --filter @passness/database test` : **778 tests passés, 0 échec, 0 skip** (15 fichiers, 581s)
+- `pnpm --filter @passness/core exec vitest run --no-file-parallelism` : **2180 tests passés, 0 échec, 0 skip** (84 fichiers, 1530s)
 - Tests Core G7M-A ciblés (5 tests) : G7M-A-1 (refund historique), G7M-A-2 (refund amendement fail-closed),
   G7M-A read-models (rapports historiques), G7M-A compensation 33 (FAILED_REQUIRES_MANUAL_ACTION),
   G7M-A compensation 34 (SETTLED_OFF_PLATFORM) — tous passés

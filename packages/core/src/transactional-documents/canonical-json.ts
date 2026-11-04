@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Sérialisation canonique JSON pour G5C (ADR-013).
+ * @passness/core — Sérialisation canonique JSON pour G5C (ADR-013).
  *
  * Algorithme local déterministe :
  * 1. Clés d'objets triées récursivement par ordre lexicographique UTF-16

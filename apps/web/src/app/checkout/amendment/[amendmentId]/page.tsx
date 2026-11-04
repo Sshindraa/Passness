@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { getSupplementCheckoutSummary } from '@uttily/core';
+import { getSupplementCheckoutSummary } from '@passness/core';
 import { ClientShell } from '@/components/shells/client-shell';
 import { CheckoutFrame, CheckoutMessage, SupplementCheckoutPageView } from '@/features/checkout';
 

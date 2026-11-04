@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { loadHomeSearchOptions } from './home-search-options';
 
 const mocks = vi.hoisted(() => ({ list: vi.fn(), db: vi.fn(() => ({ public: true })) }));
-vi.mock('@uttily/core', () => ({ listPublicSearchFilterOptions: mocks.list }));
+vi.mock('@passness/core', () => ({ listPublicSearchFilterOptions: mocks.list }));
 vi.mock('@/lib/db', () => ({ getDb: mocks.db }));
 
 describe('Homepage public search options', () => {

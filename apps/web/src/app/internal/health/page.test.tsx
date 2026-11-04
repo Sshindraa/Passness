@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import type { OperationalHealth } from '@uttily/core';
+import type { OperationalHealth } from '@passness/core';
 
 const mocks = vi.hoisted(() => ({
   requireSupportPlatformAdmin: vi.fn(),
@@ -12,7 +12,7 @@ vi.mock('@/lib/support-auth', () => ({
   requireSupportPlatformAdmin: mocks.requireSupportPlatformAdmin,
 }));
 
-vi.mock('@uttily/core', () => ({
+vi.mock('@passness/core', () => ({
   getOperationalHealth: mocks.getOperationalHealth,
   emitOperationalLog: mocks.emitOperationalLog,
 }));

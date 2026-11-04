@@ -8,7 +8,7 @@ import {
   productPhotos,
   productVariants,
   products,
-} from '@uttily/database';
+} from '@passness/database';
 import {
   COMMERCIAL_EQUIPMENT_FAMILY_SLUGS,
   createCategory,
