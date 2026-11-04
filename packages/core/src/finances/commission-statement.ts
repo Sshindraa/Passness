@@ -39,7 +39,7 @@ export function generateCommissionStatementCsv(options: CommissionStatementOptio
       'Opérateur technique : Passness SAS · Capital 10 000 € · SIREN 987 654 321 · RCS Paris · TVA FR12987654321',
     ),
   );
-  lines.push(escapeCsv('Plateforme : Passness (https://uttily.com) · contact@uttily.com'));
+  lines.push(escapeCsv('Plateforme : Passness (https://uttily.com) · contact@passness.com'));
   lines.push('');
 
   // En-tête légal du partenaire loueur

@@ -31,7 +31,7 @@ vi.mock('next/cache', () => ({
 describe('Support Server Actions (Apps/Web)', () => {
   const adminUser = {
     id: 'admin-1111-2222-3333-444444444444',
-    email: 'support@uttily.com',
+    email: 'support@passness.com',
     isPlatformAdmin: true,
     oidcSubject: 'sub_admin',
     emailVerified: true,
