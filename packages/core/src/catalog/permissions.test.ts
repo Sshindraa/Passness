@@ -64,7 +64,7 @@ describe('catalog permissions', () => {
     expect(() => requireCatalogViewer(null)).toThrow(AuthorizationError);
   });
 
-  it('requireCategoryManager accepte admin Uttily', () => {
+  it('requireCategoryManager accepte admin Passness', () => {
     expect(() => requireCategoryManager(makeUser(true))).not.toThrow();
   });
 

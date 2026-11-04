@@ -9,7 +9,7 @@ OrganizationMembership
 Location
 ```
 
-`OrganizationMembership` porte le rôle : `OWNER`, `ADMIN`, `MANAGER` ou `STAFF`. L'identité est fournie par Clerk (ADR-006) ; Uttily reste la source de vérité des rôles, droits et appartenances. Les invitations en attente d'acceptation sont stockées dans une table `OrganizationInvitation` distincte : aucun `User` n'est créé avant l'acceptation.
+`OrganizationMembership` porte le rôle : `OWNER`, `ADMIN`, `MANAGER` ou `STAFF`. L'identité est fournie par Clerk (ADR-006) ; Passness reste la source de vérité des rôles, droits et appartenances. Les invitations en attente d'acceptation sont stockées dans une table `OrganizationInvitation` distincte : aucun `User` n'est créé avant l'acceptation.
 
 ## Catalogue et stock
 
@@ -21,7 +21,7 @@ InventoryItem
 InventoryMovement
 ```
 
-- `Category` : taxonomie globale gérée par l'admin Uttily. Arborescence via `parent_id` (profondeur maximale 3). Seed de 9 catégories racines au Lot 2A. Désactivation refusée tant que des produits `PUBLISHED` l'utilisent.
+- `Category` : taxonomie globale gérée par l'admin Passness. Arborescence via `parent_id` (profondeur maximale 3). Seed de 9 catégories racines au Lot 2A. Désactivation refusée tant que des produits `PUBLISHED` l'utilisent.
 - `Product` : ce qui est vendu (ex. paddle 10'4). Un produit peut être `PUBLISHED` sans exemplaire en stock (l'indisponibilité temporaire est un état légitime). `publication_status` (`DRAFT | PUBLISHED | ARCHIVED`) est un état métier réversible, distinct de `deleted_at` (suppression logique technique).
 - `ProductVariant` : taille, couleur ou configuration. Chaque produit a au moins une variante (variante « Standard » créée atomiquement à la création du produit). `product_id` est immuable. La désactivation ou suppression de la dernière variante active est rejetée par trigger PostgreSQL.
 - `InventoryItem` : exemplaire physique, SKU interne, numéro de série, état et établissement courant. `status` (`ACTIVE | RETIRED | LOST`) = statut de gestion du parc, découplé de `condition` (`NEW | GOOD | FAIR | POOR | BROKEN`) = état physique. Un exemplaire `ACTIVE` et `BROKEN` est légitime (en attente de réparation). La disponibilité réelle (réservable ou non) est calculée au Lot 3 via `InventoryBlock`. La cohérence multi-tenant (location et variante appartiennent à la même organisation que l'exemplaire) est garantie par trigger PostgreSQL.
@@ -351,7 +351,7 @@ Cinq enums PostgreSQL : `document_type`, `outbox_effect_type`,
 `REQUIRES_MANUAL_REVIEW` (ajouté par G5H-C1, migration 0029 planifiée).
 `document_processing_failure_code` inclut `PROVIDER_RESULT_UNCERTAIN` et
 `EMAIL_RETRY_WINDOW_EXPIRED` (ajoutés par G5H-C1). Les types TypeScript sont dérivés via `enumValues` Drizzle dans
-`@uttily/core/transactional-documents`. Les ports d'infrastructure
+`@passness/core/transactional-documents`. Les ports d'infrastructure
 (`DocumentRenderer`, `ObjectStorage`, `TransactionalEmailSender`) sont définis
 comme interfaces fermées sans implémentation (G5C–G5E). Le contrat
 `TransactionalEmailSender.send` retournera `Promise<EmailSendResult>`

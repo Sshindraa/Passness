@@ -1,6 +1,6 @@
 import { and, eq } from 'drizzle-orm';
-import type { DatabaseClient, DatabaseTransaction } from '@uttily/database';
-import { organizationMemberships } from '@uttily/database';
+import type { DatabaseClient, DatabaseTransaction } from '@passness/database';
+import { organizationMemberships } from '@passness/database';
 import { failKey } from '../idempotency/idempotency';
 import type { IdempotencyRecordRow } from '../idempotency/types';
 import { FulfillmentError, isFulfillmentErrorCode } from './fulfillment-errors';
@@ -10,7 +10,7 @@ import { BOOKING_STATUSES } from './types';
 import type { BookingStatus } from './types';
 
 /**
- * @uttily/core — Helpers internes partagés par les use cases fulfillment (G3A/G3B).
+ * @passness/core — Helpers internes partagés par les use cases fulfillment (G3A/G3B).
  *
  * Factorise uniquement les helpers dont le comportement doit être strictement
  * identique entre les transitions terrain et les rapports d'état/dommages.

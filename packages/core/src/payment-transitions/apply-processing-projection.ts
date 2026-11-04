@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Projection PROCESSING source-agnostique (Phase 7A, ADR-010 §12).
+ * @passness/core — Projection PROCESSING source-agnostique (Phase 7A, ADR-010 §12).
  *
  * Contient les validations et la projection monotone vers PROCESSING partagées
  * entre les handlers webhook et le moteur de réconciliation.
@@ -9,7 +9,7 @@
  */
 
 import { eq, sql } from 'drizzle-orm';
-import { paymentAttempts, payments, type DatabaseTransaction } from '@uttily/database';
+import { paymentAttempts, payments, type DatabaseTransaction } from '@passness/database';
 import type { PaymentIntentEventData, ResolvedAttempt } from '../webhook-handler/types';
 import { validateWebhookAuthority } from '../webhook-handler/validate-authority';
 import { projectAttemptStatus } from '../webhook-handler/project-status';

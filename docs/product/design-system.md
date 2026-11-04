@@ -1,8 +1,8 @@
-# Uttily — fondation UX/UI 21-U0
+# Passness — fondation UX/UI 21-U0
 
 ## Principes
 
-Uttily doit être professionnel, simple, rassurant et opérationnel. La surface
+Passness doit être professionnel, simple, rassurant et opérationnel. La surface
 Client met en avant la confiance, le lieu, la disponibilité réelle et la clarté
 du prix. La surface Pro réduit la charge cognitive et donne priorité aux actions
 du jour. L'interface reste lisible dehors et sur mobile, accessible et moderne
@@ -16,7 +16,7 @@ de retrait et de retour.
 
 ## Tokens
 
-Les tokens CSS canoniques sont dans `@uttily/ui/tokens.css`. Ils couvrent les
+Les tokens CSS canoniques sont dans `@passness/ui/tokens.css`. Ils couvrent les
 couleurs sémantiques, la typographie (famille, tailles, graisses, interlignes),
 les espacements, rayons, ombres, bordures, breakpoints, niveaux de profondeur et
 durées/courbes d'animation. Les composants consomment ces variables et aucune
@@ -60,7 +60,7 @@ transactionnels dont la reproductibilité et les polices embarquées restent inc
 
 L'organisation frontend suit la frontière décrite par
 [ADR-033](../decisions/ADR-033-frontend-boundaries.md) : les routes orchestrent,
-les features portent l'expérience d'un domaine et `@uttily/ui` fournit les
+les features portent l'expérience d'un domaine et `@passness/ui` fournit les
 primitives génériques. Une primitive ne connaît jamais une réservation, un vélo,
 une organisation ou Stripe.
 
@@ -123,7 +123,7 @@ progressifs ; il ne doit pas exister de scroll horizontal global.
 
 ## Primitives
 
-`@uttily/ui` expose le minimum réutilisable : `Button`, `LinkButton`,
+`@passness/ui` expose le minimum réutilisable : `Button`, `LinkButton`,
 `IconButton`, `Input`, `Textarea`, `Select`, `Field`, `Card`, `Badge`, `Alert`,
 `EmptyState`, `Spinner`, `LoadingState`, `Skeleton`, `Dialog`, `Tabs`,
 `PageHeader`, `SectionHeader` et `Icon`. Le package reste indépendant des

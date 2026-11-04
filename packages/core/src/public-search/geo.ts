@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Public Search (G7E-B).
+ * @passness/core — Module Public Search (G7E-B).
  *
  * Helpers géographiques pour la recherche publique.
  * Aucun appel à un géocodeur externe. Sans viewport choisi, les paliers

@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { runMigrations, assertLocalhost, createDatabase } from '@uttily/database';
-import { recordProductAnalyticsEvent, getProductAnalyticsSummary } from '@uttily/core';
+import { runMigrations, assertLocalhost, createDatabase } from '@passness/database';
+import { recordProductAnalyticsEvent, getProductAnalyticsSummary } from '@passness/core';
 import {
   runProductAnalyticsMaintenance,
   resolveMaintenanceWindow,
@@ -17,7 +17,7 @@ import {
  * - Le respect strict de l'exclusion de PRODUCTION.
  */
 
-const TEST_DB_NAME = 'uttily_test_product_analytics_maintenance_18a';
+const TEST_DB_NAME = 'passness_test_product_analytics_maintenance_18a';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

@@ -18,7 +18,7 @@ import { runMigrations, assertLocalhost } from '../src/index';
  * skip si pas DATABASE_URL en local.
  */
 
-const TEST_DB_NAME = 'uttily_test_lot6_documents';
+const TEST_DB_NAME = 'passness_test_lot6_documents';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 
@@ -2211,7 +2211,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Lot 6 G5B — Documents transacti
 
     // --- 21. Migration depuis 0028 (base dédiée) ---
     describe('Migration depuis 0028', () => {
-      const MIGRATION_TEST_DB = 'uttily_test_lot6_migration_0029';
+      const MIGRATION_TEST_DB = 'passness_test_lot6_migration_0029';
       let migrationTestUrl: string | null = null;
       let migrationAdminSql: ReturnType<typeof postgres> | null = null;
 

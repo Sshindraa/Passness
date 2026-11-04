@@ -8,7 +8,7 @@ import type {
   InventoryStatus,
   InventorySummary,
   RecurringManualBlockSeriesView,
-} from '@uttily/core';
+} from '@passness/core';
 import {
   getInventoryConditionPresentation,
   getInventoryStatusPresentation,
@@ -19,7 +19,7 @@ import {
   updateInventoryItemsStatusBatchAction,
   updateInventoryItemsConditionBatchAction,
 } from '@/app/actions/inventory';
-import { PageHeader, Card, Badge, LinkButton } from '@uttily/ui';
+import { PageHeader, Card, Badge, LinkButton } from '@passness/ui';
 import { OpenMaintenanceModal } from './open-maintenance-modal';
 import { OpenManualBlockModal } from './open-manual-block-modal';
 import { OpenRecurringManualBlockModal } from './open-recurring-manual-block-modal';

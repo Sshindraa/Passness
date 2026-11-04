@@ -1,11 +1,11 @@
 /**
- * @uttily/core — Erreurs du module connected-accounts (Lot 5, ADR-010 §3.3).
+ * @passness/core — Erreurs du module connected-accounts (Lot 5, ADR-010 §3.3).
  *
  * Codes d'erreur fermés mappés vers l'union `ActionErrorCode` utilisée par les
  * Server Actions et persistée dans idempotency_records.
  */
 
-import type { ActionErrorCode, FieldErrors } from '@uttily/contracts';
+import type { ActionErrorCode, FieldErrors } from '@passness/contracts';
 import type { ConnectedAccountErrorCode } from './types';
 
 /**

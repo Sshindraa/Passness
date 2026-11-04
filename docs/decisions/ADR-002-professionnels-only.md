@@ -5,7 +5,7 @@
 
 ## Décision
 
-Uttily accepte uniquement les loueurs professionnels dans le MVP.
+Passness accepte uniquement les loueurs professionnels dans le MVP.
 
 ## Raisons
 

@@ -1,4 +1,4 @@
-import { searchSupport, listAuditLogsSupport } from '@uttily/core';
+import { searchSupport, listAuditLogsSupport } from '@passness/core';
 import { SupportCockpitView } from '@/features/internal';
 import { requireSupportPlatformAdmin } from '@/lib/support-auth';
 

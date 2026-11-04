@@ -18,7 +18,7 @@ pnpm benchmark:destination --network
 Le mode par défaut n'utilise que PostgreSQL local. L'option `--network` envoie
 une requête séquentielle par cas vers les démonstrateurs publics Photon et
 Géoplateforme IGN, avec une pause courte entre les requêtes. Elle ne modifie
-aucune donnée Uttily et n'est pas utilisée par l'application.
+aucune donnée Passness et n'est pas utilisée par l'application.
 
 ## Résultats d'une exécution contrôlée
 
@@ -41,7 +41,7 @@ retournant des voies homonymes éloignées, et sa latence observée est supérie
 
 ## Décision
 
-PostgreSQL/PostGIS est retenu comme moteur du runtime Uttily pour les
+PostgreSQL/PostGIS est retenu comme moteur du runtime Passness pour les
 destinations activées : résultat canonique, sélection sécurisée, fonctionnement
 hors ligne et autorité transactionnelle déjà en place. Aucun appel Photon ou IGN
 n'est ajouté au Web ou au worker.

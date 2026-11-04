@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Fonctions de validation et calcul d'identité légale et fiscale d'entreprise.
+ * @passness/core — Fonctions de validation et calcul d'identité légale et fiscale d'entreprise.
  * Conforme aux obligations légales françaises (SIREN, SIRET, TVA intracommunautaire, RCS).
  */
 

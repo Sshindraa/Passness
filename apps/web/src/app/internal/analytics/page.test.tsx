@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { AuthorizationError } from '@uttily/core';
+import { AuthorizationError } from '@passness/core';
 import * as auth from '@/lib/auth';
-import * as core from '@uttily/core';
+import * as core from '@passness/core';
 
 import InternalAnalyticsPage from './page';
 
@@ -27,15 +27,15 @@ vi.mock('@/lib/product-analytics', () => ({
   getAnalyticsEnvironment: vi.fn(() => 'DEVELOPMENT'),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     getProductAnalyticsSummary: vi.fn(),
   };
 });
 
-/** Utilisateur Pro : authentifié, mais PAS admin plateforme Uttily. */
+/** Utilisateur Pro : authentifié, mais PAS admin plateforme Passness. */
 const PRO_USER = {
   id: 'user-pro-owner',
   email: 'boss@location-pro.fr',
@@ -44,12 +44,12 @@ const PRO_USER = {
   emailVerified: true,
 };
 
-/** Compte interne Uttily : seul profil autorisé. */
+/** Compte interne Passness : seul profil autorisé. */
 const INTERNAL_ADMIN = {
-  id: 'user-uttily-ops',
+  id: 'user-passness-ops',
   email: 'ops@uttily.com',
   isPlatformAdmin: true,
-  oidcSubject: 'sub_uttily_ops',
+  oidcSubject: 'sub_passness_ops',
   emailVerified: true,
 };
 

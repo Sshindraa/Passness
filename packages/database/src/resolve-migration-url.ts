@@ -112,7 +112,7 @@ function parseAndValidateUrl(url: string, varName: string): URL {
   if (!dbName) {
     throw new MigrationUrlError(
       `${varName} ne contient pas de nom de base. ` +
-        'Une URL PostgreSQL valide doit contenir un nom de base (ex: /uttily).',
+        'Une URL PostgreSQL valide doit contenir un nom de base (ex: /passness).',
     );
   }
 

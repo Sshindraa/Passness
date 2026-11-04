@@ -1,4 +1,4 @@
-# ADR-028 : Back-office Uttily & Support V1
+# ADR-028 : Back-office Passness & Support V1
 
 ## Statut
 
@@ -6,9 +6,9 @@ Accepté
 
 ## Contexte
 
-Dans le cadre du lancement du pilote réel d'Uttily avec des loueurs professionnels, l'équipe interne Uttily doit être en mesure d'exploiter la plateforme, de diagnostiquer les incidents et de résoudre les blocages opérationnels (ex: notification transactionnelle échouée, anomalie de paiement, diagnostic de readiness loueur) sans nécessiter d'intervention manuelle directe sur la base de données de production.
+Dans le cadre du lancement du pilote réel d'Passness avec des loueurs professionnels, l'équipe interne Passness doit être en mesure d'exploiter la plateforme, de diagnostiquer les incidents et de résoudre les blocages opérationnels (ex: notification transactionnelle échouée, anomalie de paiement, diagnostic de readiness loueur) sans nécessiter d'intervention manuelle directe sur la base de données de production.
 
-Le back-office est destiné **exclusivement à l'équipe interne Uttily** et ne doit en aucun cas être accessible aux clients loueurs (même avec un rôle `OWNER` ou `ADMIN` au sein de leur organisation).
+Le back-office est destiné **exclusivement à l'équipe interne Passness** et ne doit en aucun cas être accessible aux clients loueurs (même avec un rôle `OWNER` ou `ADMIN` au sein de leur organisation).
 
 Il ne doit pas non plus devenir une deuxième application métier lourde : sa vocation est d'être un cockpit d'investigation dense, sûr et précis, fournissant une vue unifiée à 360° et n'exposant que des actions support strictement contrôlées et auditées.
 
@@ -24,7 +24,7 @@ Il ne doit pas non plus devenir une deuxième application métier lourde : sa vo
 
 ### 2. Moteur de recherche globale multi-entités (`searchSupport`)
 
-- Module Core dédié sous `@uttily/core/src/support`.
+- Module Core dédié sous `@passness/core/src/support`.
 - Accepte des requêtes naturelles ou des identifiants exacts (UUIDs, slugs, emails, références de réservation, identifiants Stripe).
 - Couvre 6 familles d'entités :
   1. Organisations (`legalName`, `publicDisplayName`, `slug`, `id`)
@@ -65,6 +65,6 @@ ne peut contourner cette étape par une mise à jour SQL arbitraire.
 
 ## Conséquences
 
-- L'équipe support Uttily dispose d'un outil opérationnel complet et sûr pour le lancement du pilote.
+- L'équipe support Passness dispose d'un outil opérationnel complet et sûr pour le lancement du pilote.
 - L'espace Pro loueur reste totalement découplé et intact.
 - Les invariants de sécurité multi-tenant et de non-exposition des secrets sont garantis par construction et testés automatiquement.

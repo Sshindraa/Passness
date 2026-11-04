@@ -1,4 +1,4 @@
-# Environnements — Uttily
+# Environnements — Passness
 
 Trois environnements séparés : **local**, **staging** et **production**.
 Aucun secret n'est versionné. Les variables sont fournies via `.env` en local
@@ -21,7 +21,7 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
   - `pnpm db:seed` applique explicitement la fixture locale/dev-only
     idempotente ; `pnpm dev:full -- --seed` l'exécute après les migrations et
     avant Web/worker. La combinaison `--seed --no-worker` est également
-    acceptée. Ces deux chemins fournissent `UTTILY_LOCAL_DEV=1` au script de
+    acceptée. Ces deux chemins fournissent `PASSNESS_LOCAL_DEV=1` au script de
     seed ; toute autre valeur, ou `NODE_ENV=production`, est refusée avant la
     connexion PostgreSQL.
   - Le seed ne crée aucun utilisateur Clerk, compte/provider réel, paiement,
@@ -33,13 +33,13 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
     photos réelles uploadées via l'interface ; R2 est neutralisé dans le
     workflow local.
   - `pnpm db:seed:preview` est un parcours local distinct, explicitement marqué
-    par `UTTILY_LOCAL_PREVIEW=1`. Il réutilise la fixture locale, ajoute trois
+    par `PASSNESS_LOCAL_PREVIEW=1`. Il réutilise la fixture locale, ajoute trois
     métadonnées photo synthétiques et publie `kayak-dev` pour tester le rendu
     d'une offre publique. Aucun objet R2 n'est créé ; cette commande est
     refusée hors développement local et ne doit pas être utilisée avec staging
     ou production. Rejouer `pnpm db:seed` remet le produit en brouillon.
   - La CI des parcours navigateur n'utilise pas cette fixture brouillon : elle
-    appelle `pnpm db:seed:browser` avec `CI` et `UTTILY_BROWSER_E2E=1`. Cette
+    appelle `pnpm db:seed:browser` avec `CI` et `PASSNESS_BROWSER_E2E=1`. Cette
     commande ajoute dans la base éphémère du job uniquement trois métadonnées
     photo synthétiques pour publier l'offre de test public ; elle est refusée
     hors CI et ne doit jamais servir à préparer des données locales ou réelles.
@@ -102,7 +102,7 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
   explicitement transmis comme chaînes vides. `CRON_SECRET` est fixé à
   `dev-cron-secret-local`, sans reprendre une valeur héritée.
 - Isolation de la recherche publique et des origins : `dev:full` injecte
-  `PUBLIC_SEARCH_CURSOR_SECRET=uttily-local-dev-public-search-cursor-v1`, une
+  `PUBLIC_SEARCH_CURSOR_SECRET=passness-local-dev-public-search-cursor-v1`, une
   valeur dev/test fixe, non sensible et interdite en staging/production. Il
   force aussi `ALLOWED_ORIGINS` à la chaîne vide dans l'environnement enfant.
   Ces variables sont toujours présentes dans l'environnement transmis, afin
@@ -117,7 +117,7 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
 - `pnpm dev:full` sans `--seed` migre uniquement la base et ne crée aucune
   donnée métier. Le seed est fourni séparément via `pnpm db:seed` ou l'option
   explicite `pnpm dev:full -- --seed` ; il est local/dev-only et idempotent.
-  Le script est fail-closed : `UTTILY_LOCAL_DEV` doit être exactement `1` et
+  Le script est fail-closed : `PASSNESS_LOCAL_DEV` doit être exactement `1` et
   `NODE_ENV` ne doit pas être `production`, avec un refus avant toute connexion
   et des erreurs qui ne révèlent ni URL ni variable sensible. Il n'utilise ni
   Clerk ni provider réel et n'effectue aucun appel réseau externe.
@@ -129,8 +129,8 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
   local joignable et exécute les suites Database sans parallélisme entre
   fichiers, afin d'éviter la contention entre bases de test. La validation
   exhaustive combine `pnpm test:full` avec les suites spécialisées
-  `pnpm --filter @uttily/web test:browser`, `pnpm test:recovery` et
-  `pnpm --filter @uttily/worker smoke:verify`, ainsi que la matrice CI.
+  `pnpm --filter @passness/web test:browser`, `pnpm test:recovery` et
+  `pnpm --filter @passness/worker smoke:verify`, ainsi que la matrice CI.
 - Le fichier `.env` racine reste destiné aux commandes locales exécutées hors
   orchestration. Pour `dev:full`, les valeurs de l'environnement enfant sont
   imposées par le workflow, indépendamment de ces fichiers, notamment les URLs
@@ -147,7 +147,7 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
   `R2_PHOTOS_BUCKET_NAME` ; aucune URL R2 n'est exposée au navigateur, les
   lectures passent par les routes applicatives contrôlées.
 - Emails : domaine Resend `sokar.tech` vérifié, expéditeur
-  `Uttily <noreply@sokar.tech>` et template de confirmation publié.
+  `Passness <noreply@sokar.tech>` et template de confirmation publié.
 - Worker : conteneur `uttily-worker-staging` isolé sur l'hôte staging existant,
   avec credentials R2/Resend hors dépôt et droits minimaux.
 - Scheduler : Worker Cloudflare `uttily-staging-cron`, déclenché chaque minute
@@ -173,7 +173,7 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
 | Variable | Local | Staging / Production | Remarque |
 | --- | --- | --- | --- |
 | `NODE_ENV` | `development` | `production` | |
-| `NEXT_PUBLIC_APP_NAME` | `Uttily` | `Uttily` | |
+| `NEXT_PUBLIC_APP_NAME` | `Passness` | `Passness` | |
 | `DATABASE_URL` | `postgresql://...` | fournie par Neon (endpoint **pooled**, hostname avec `-pooler`) | PostgreSQL + PostGIS. Connexion runtime distant : application Web et worker. Les tests unitaires n'utilisent aucune base. Les tests d'intégration PostgreSQL destructifs utilisent uniquement PostgreSQL local (garde-fou `assertLocalhost`). |
 | `DATABASE_DIRECT_URL` | `postgresql://...` (peut être identique à `DATABASE_URL` en local) | fournie par Neon (endpoint **direct**, hostname **sans** `-pooler`) | Réservée aux migrations Drizzle Kit et opérations administratives explicites. Jamais utilisée par le runtime. |
 | `PUBLIC_APP_URL` | `http://localhost:3000` | URL HTTPS publique du déploiement | Origine absolue sans chemin, query ni fragment ; utilisée pour le retour Stripe. Le serveur refuse une valeur locale ou HTTP en environnement de production. |
@@ -227,7 +227,7 @@ accidentelles de bases distantes.
 
 ### Environnement de développement actuel
 
-- **Neon Dev** : projet `Uttily-dev` (project ID non secret
+- **Neon Dev** : projet `Passness-dev` (project ID non secret
   `little-star-24391080`), région `aws-eu-central-1` (Frankfurt), PostgreSQL 16,
   plan **Free**, Neon Auth désactivé.
 - **PostgreSQL local** (Docker Compose) reste la cible de tous les tests
@@ -235,7 +235,7 @@ accidentelles de bases distantes.
 - **Vercel / Neon / Resend payants** uniquement au lancement commercial
   (ADR-014).
 - Aucune migration distante n'est exécutée implicitement par les tests.
-- La base Neon Dev ne contient **pas encore** le schéma Uttily : les migrations
+- La base Neon Dev ne contient **pas encore** le schéma Passness : les migrations
   seront appliquées dans une étape séparée, après configuration manuelle des
   secrets.
 

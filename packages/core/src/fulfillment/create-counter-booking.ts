@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { and, asc, eq, inArray, isNull, sql } from 'drizzle-orm';
-import type { DatabaseClient, DatabaseTransaction } from '@uttily/database';
+import type { DatabaseClient, DatabaseTransaction } from '@passness/database';
 import {
   allocations,
   auditLog,
@@ -18,7 +18,7 @@ import {
   products,
   productVariants,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import { requireMembership } from '../identity/permissions';
 import { FULFILLMENT_OPERATORS } from './operators';
 import { getMembership } from '../identity/memberships';

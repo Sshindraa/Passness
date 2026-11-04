@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Confirmation atomique de réservation source-agnostique
+ * @passness/core — Confirmation atomique de réservation source-agnostique
  * (Phase 7A, ADR-010 §10).
  *
  * Contient les validations et transitions de confirmation (création booking,
@@ -23,7 +23,7 @@ import {
   paymentAttempts,
   payments,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import type { PaymentIntentEventData, ResolvedAttempt } from '../webhook-handler/types';
 import { WebhookHandlerError } from '../webhook-handler/errors';
 import { validateWebhookAuthority } from '../webhook-handler/validate-authority';

@@ -45,9 +45,9 @@ Un bloc soft-deleted (`deleted_at` non null) ne bloque plus : il est exclu de la
 ## Flux de réservation
 
 1. Le client demande une disponibilité.
-2. Uttily attribue immédiatement les exemplaires dans une transaction.
-3. Uttily crée un `HOLD` actif, expirant en général après dix minutes.
-4. Uttily crée ou réutilise le paiement avec une clé d'idempotence.
+2. Passness attribue immédiatement les exemplaires dans une transaction.
+3. Passness crée un `HOLD` actif, expirant en général après dix minutes.
+4. Passness crée ou réutilise le paiement avec une clé d'idempotence.
 5. Le webhook de paiement est la source de vérité.
 6. En transaction, un paiement réussi convertit le hold en réservation confirmée.
 7. Un événement est écrit dans l'outbox : confirmation, contrat et notification sont traités par le worker.

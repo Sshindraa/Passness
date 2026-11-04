@@ -8,7 +8,7 @@ import {
   can,
   getCancellationPolicyDefinitions,
   type CancellationPolicyCode,
-} from '@uttily/core';
+} from '@passness/core';
 import { updateCancellationPolicyAction } from '@/app/actions/settings';
 import { PoliciesSettingsView } from '@/features/settings';
 

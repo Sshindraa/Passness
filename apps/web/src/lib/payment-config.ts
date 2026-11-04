@@ -1,4 +1,4 @@
-import type { FinancialTermsConfig, StripeEnvironment } from '@uttily/core';
+import type { FinancialTermsConfig, StripeEnvironment } from '@passness/core';
 
 const BASIS_POINTS = 10_000;
 
@@ -63,7 +63,7 @@ export function loadFinancialTermsConfig(
       status: 'NOT_APPLICABLE',
       amountMinor: null,
       rateBps: null,
-      invoiceIssuer: 'Uttily',
+      invoiceIssuer: 'Passness',
     },
     // Le modèle split est calculé depuis le snapshot serveur du draft. Une
     // commission issue d'une variable d'environnement ne peut plus faire

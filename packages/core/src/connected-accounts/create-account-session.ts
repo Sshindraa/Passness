@@ -1,8 +1,8 @@
 /**
- * @uttily/core — Use case createAccountSession (Lot 5 / Chantier 5).
+ * @passness/core — Use case createAccountSession (Lot 5 / Chantier 5).
  *
  * Crée une Account Session Stripe Connect Embedded pour afficher les composants
- * d'onboarding bancaire et de gestion financière directement dans Uttily.
+ * d'onboarding bancaire et de gestion financière directement dans Passness.
  *
  * Contraintes critiques :
  * - Aucun appel provider à l'intérieur d'une transaction PostgreSQL.
@@ -10,7 +10,7 @@
  */
 
 import { and, eq } from 'drizzle-orm';
-import { organizationPaymentAccounts } from '@uttily/database';
+import { organizationPaymentAccounts } from '@passness/database';
 import { PaymentProviderError } from '../payments/errors';
 import type { AccountSessionResult } from '../payments/types';
 import { ConnectedAccountError } from './errors';

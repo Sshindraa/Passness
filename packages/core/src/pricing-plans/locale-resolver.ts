@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Résolution de locale FR/EN.
  * Règle : jamais utiliser fr comme fallback pour en ou vice versa.

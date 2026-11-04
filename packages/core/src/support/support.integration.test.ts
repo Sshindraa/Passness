@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -19,7 +19,7 @@ import { reconcilePaymentSupport } from './actions/reconcile-payment';
 const isSkipped = shouldSkipIntegrationTests();
 
 describe.skipIf(isSkipped)(
-  'Chantier 16 — Back-office Uttily & Support V1 (Intégration PostgreSQL)',
+  'Chantier 16 — Back-office Passness & Support V1 (Intégration PostgreSQL)',
   () => {
     let ctx: IntegrationTestContext | null = null;
     let db: DatabaseClient | null = null;

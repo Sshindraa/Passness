@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-A).
+ * @passness/core — Module Product Analytics (G7H-A).
  *
  * Agrégation UTC quotidienne des événements raw vers product_analytics_daily.
  *
@@ -18,8 +18,8 @@
  */
 
 import { and, eq, gte, lt, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { productAnalyticsDaily, productAnalyticsEvents } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { productAnalyticsDaily, productAnalyticsEvents } from '@passness/database';
 import { ProductAnalyticsError } from './errors';
 import type { AggregateProductAnalyticsDaysOptions } from './types';
 import { decodeNonNegativeBigInt, validateDayRange, validateEnvironment } from './validation';

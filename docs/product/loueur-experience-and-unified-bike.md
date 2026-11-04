@@ -3,13 +3,13 @@
 > **Règle fondamentale :**  
 > *Une profondeur technique d'URL ou de modèle relationnel n'implique jamais une profondeur d'expérience utilisateur.*
 
-Ce document définit la vision produit et l'arborescence UX d'Uttily Pro. Il fixe la séparation claire entre la **rigueur du modèle relationnel PostgreSQL** (la vérité transactionnelle) et le **modèle mental fluide du loueur professionnel** (l'expérience utilisateur).
+Ce document définit la vision produit et l'arborescence UX d'Passness Pro. Il fixe la séparation claire entre la **rigueur du modèle relationnel PostgreSQL** (la vérité transactionnelle) et le **modèle mental fluide du loueur professionnel** (l'expérience utilisateur).
 
 ---
 
 ## 1. Core Relationnel vs Expérience Utilisateur
 
-Dans Uttily, la base de données PostgreSQL garantit l'intégrité transactionnelle, l'anti-surbooking et l'immutabilité financière :
+Dans Passness, la base de données PostgreSQL garantit l'intégrité transactionnelle, l'anti-surbooking et l'immutabilité financière :
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -42,7 +42,7 @@ Le loueur ne doit jamais avoir l'impression de manipuler un ERP relationnel à t
 
 ## 2. Les Deux Mondes dès l'Accueil
 
-Dès la racine `/`, Uttily distingue explicitement deux publics aux intentions totalement différentes :
+Dès la racine `/`, Passness distingue explicitement deux publics aux intentions totalement différentes :
 
 ```text
 /
@@ -68,7 +68,7 @@ Dès la racine `/`, Uttily distingue explicitement deux publics aux intentions t
     └── /dashboard
         │
         ├── /onboarding/organization (si aucune organisation n'est encore rattachée)
-        └── /dashboard/[orgId]  (Uttily Pro — Espace d'administration)
+        └── /dashboard/[orgId]  (Passness Pro — Espace d'administration)
 ```
 
 Après connexion, `/dashboard` liste les organisations actives de l'utilisateur.
@@ -84,7 +84,7 @@ donc pas une destination métier finale.
 Pour sortir de la logique technique « par table » et épouser le quotidien d'un magasin de location, l'arborescence cible s'articule autour des verbes et concepts métiers :
 
 ```text
-Uttily Pro
+Passness Pro
 
 🏠 Accueil (Tableau de bord)
 │   ├── Vue d'ensemble de l'activité
@@ -150,7 +150,7 @@ La Fiche Vélo Unifiée regroupe sur un seul écran ou dans un flux sans couture
 │                                                                             │
 │  4. FLOTTE PHYSIQUE DISPONIBLE (Inventory)                                  │
 │     « Combien d'exemplaires identiques avez-vous ? [ − 3 + ] »              │
-│     (Uttily crée sous le capot les 3 InventoryItems rattachés au magasin).  │
+│     (Passness crée sous le capot les 3 InventoryItems rattachés au magasin).  │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 

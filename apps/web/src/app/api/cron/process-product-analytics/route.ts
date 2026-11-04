@@ -6,7 +6,7 @@ import {
   emitOperationalLog,
   ProductAnalyticsError,
   type ProductAnalyticsErrorCode,
-} from '@uttily/core';
+} from '@passness/core';
 
 // Désactive l'optimisation statique : cet endpoint doit toujours s'exécuter
 // dynamiquement (cron).
@@ -58,7 +58,7 @@ function safeErrorCode(error: ProductAnalyticsError): string {
  * - L'agrégation est un recalcul idempotent, la purge est une compaction
  *   additive. Une exécution répétée converge vers le même état.
  *
- * @see ADR-022 (privacy & rétention analytics), conventions cron Uttily
+ * @see ADR-022 (privacy & rétention analytics), conventions cron Passness
  */
 export async function GET(request: Request): Promise<NextResponse> {
   // 1. Authentification (fail-closed).

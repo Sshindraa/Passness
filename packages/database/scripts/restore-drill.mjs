@@ -10,11 +10,11 @@ const execFileAsync = promisify(execFile);
 
 export const DEFAULT_LOCAL_DATABASE_URL = 'postgresql://uttily:uttily@127.0.0.1:5432/uttily';
 export const REQUIRED_CONFIRMATION = '1';
-export const RECOVERY_DRILL_ENVIRONMENT = 'UTTILY_RECOVERY_DRILL';
+export const RECOVERY_DRILL_ENVIRONMENT = 'PASSNESS_RECOVERY_DRILL';
 
 const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1', '::1']);
 const ALLOWED_PROTOCOLS = new Set(['postgres:', 'postgresql:']);
-const DATABASE_NAME_PATTERN = /^uttily_recovery_(source|restored)_[a-z0-9_]+$/;
+const DATABASE_NAME_PATTERN = /^passness_recovery_(source|restored)_[a-z0-9_]+$/;
 
 export const FIXTURE_IDS = Object.freeze({
   organization: '00000000-0000-0000-0000-000000002001',
@@ -103,8 +103,8 @@ export function databaseUrlForName(databaseUrl, databaseName) {
 export function buildDatabaseNames(now = Date.now(), processId = process.pid) {
   const suffix = `${Number(now).toString(36)}_${Number(processId).toString(36)}`;
   return {
-    source: `uttily_recovery_source_${suffix}`,
-    restored: `uttily_recovery_restored_${suffix}`,
+    source: `passness_recovery_source_${suffix}`,
+    restored: `passness_recovery_restored_${suffix}`,
   };
 }
 
@@ -149,7 +149,7 @@ function migrationEnvironment(sourceUrl, restoredUrl) {
 }
 
 async function applyMigrations(repoRoot, sourceUrl, restoredUrl) {
-  await runCommand('pnpm', ['--filter', '@uttily/database', 'db:migrate'], {
+  await runCommand('pnpm', ['--filter', '@passness/database', 'db:migrate'], {
     cwd: repoRoot,
     env: migrationEnvironment(sourceUrl, restoredUrl),
   });
@@ -502,7 +502,7 @@ export async function runRestoreDrill(options = {}) {
   const sourceUrl = databaseUrlForName(baseUrl, names.source);
   const restoredUrl = databaseUrlForName(baseUrl, names.restored);
   const repoRoot = options.repoRoot ?? resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
-  const dumpDirectory = await mkdtemp(join(tmpdir(), 'uttily-recovery-drill-'));
+  const dumpDirectory = await mkdtemp(join(tmpdir(), 'passness-recovery-drill-'));
   const dumpPath = join(dumpDirectory, 'recovery.dump');
   const startedAt = Date.now();
   let sourceCreated = false;

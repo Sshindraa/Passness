@@ -68,7 +68,7 @@ describe('generateCommissionStatementCsv', () => {
 
     expect(csv.startsWith('\uFEFF')).toBe(true);
     expect(csv).toContain('DÉCOMPTE OFFICIEL DE COMMISSIONS ET REVERSEMENTS');
-    expect(csv).toContain('Uttily SAS');
+    expect(csv).toContain('Passness SAS');
     expect(csv).toContain('Outdoor Rent SAS (SAS)');
     expect(csv).toContain('SIRET/SIREN : 73282932000074');
     expect(csv).toContain('RCS : Annecy');

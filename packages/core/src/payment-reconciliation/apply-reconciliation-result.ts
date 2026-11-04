@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Application d'un résultat de réconciliation (Phase 7A, ADR-010 §12).
+ * @passness/core — Application d'un résultat de réconciliation (Phase 7A, ADR-010 §12).
  *
  * Ouvre une nouvelle transaction, verrouille les lignes métier, vérifie le
  * lease (fencing token atomique), mappe le résultat provider vers PaymentIntentEventData,
@@ -14,7 +14,7 @@ import {
   payments,
   type DatabaseClient,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import type { PaymentIntentResult, StripeEnvironment } from '../payments/types';
 import type { PaymentIntentEventData, ResolvedAttempt } from '../webhook-handler/types';
 import { TERMINAL_ATTEMPT_STATUSES } from '../webhook-handler/types';

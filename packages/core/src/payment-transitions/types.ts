@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Payment Transitions (Phase 7A, ADR-010 §10, §12).
+ * @passness/core — Module Payment Transitions (Phase 7A, ADR-010 §10, §12).
  *
  * Transitions métier source-agnostiques partagées entre les handlers webhook
  * et le moteur de réconciliation. Ces fonctions NE touchent PAS
@@ -13,7 +13,7 @@ import type {
   inventoryBlocks,
   paymentAttempts,
   payments,
-} from '@uttily/database';
+} from '@passness/database';
 
 /** Lignes métier verrouillées (draft + blocks + allocs + payment + attempt). */
 export interface LockedBusinessRows {

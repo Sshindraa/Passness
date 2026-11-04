@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Use case : quoteFlexiblePricing(db, input).
  * Charge le contexte depuis la base, calcule le devis (pur), retourne le résultat.

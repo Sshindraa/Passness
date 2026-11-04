@@ -1,5 +1,5 @@
 import { eq, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookings,
   bookingItems,
@@ -8,8 +8,8 @@ import {
   inventoryItems,
   maintenanceCases,
   outboxEvents,
-} from '@uttily/database';
-import { lockOrganization } from '@uttily/database';
+} from '@passness/database';
+import { lockOrganization } from '@passness/database';
 import { reserveKey, lockKey, completeKey } from '../idempotency/idempotency';
 import type { IdempotencyRecordRow } from '../idempotency/types';
 import { writeAuditEntry } from '../identity/audit';
@@ -30,7 +30,7 @@ const MAX_IDEMPOTENCY_KEY_LENGTH = 200;
 const ALLOWED_DAMAGE_STATUSES: readonly BookingStatus[] = ['ACTIVE', 'RETURNED'];
 
 /**
- * @uttily/core — Use case transactionnel de déclaration de dommage (G3B / Chantier 8D).
+ * @passness/core — Use case transactionnel de déclaration de dommage (G3B / Chantier 8D).
  *
  * Règles métier MVP :
  * - booking.status doit être ACTIVE ou RETURNED

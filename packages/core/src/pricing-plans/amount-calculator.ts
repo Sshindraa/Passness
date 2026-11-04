@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Calcul des montants pour chaque candidat.
  * Tous les montants sont en unités mineures (entiers).

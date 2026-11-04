@@ -4,9 +4,9 @@ import type {
   OperationalDayDesk,
   OperationalDeskBooking,
   OperationalDeskBucket,
-} from '@uttily/core';
-import { Badge, Button, Card, LinkButton, PageHeader } from '@uttily/ui';
-import type { BadgeTone } from '@uttily/ui';
+} from '@passness/core';
+import { Badge, Button, Card, LinkButton, PageHeader } from '@passness/ui';
+import type { BadgeTone } from '@passness/ui';
 import {
   bookingStatusLabel,
   conditionLabel,

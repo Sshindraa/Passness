@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Point d'entrée du worker de documents transactionnels (G5F).
+ * @passness/worker — Point d'entrée du worker de documents transactionnels (G5F).
  *
  * Ce module expose une composition injectable et testable :
  * - `runTransactionalDocumentsWorkerCycle` : unité testable (cycle documents puis emails).
@@ -11,7 +11,7 @@
  * - `WorkerConfigurationError` : erreur de configuration normalisée.
  *
  * Exécutable localement : tests unitaires + tests E2E PostgreSQL + harness local
- * (fakes depuis `@uttily/core`).
+ * (fakes depuis `@passness/core`).
  *
  * G5H-C2C-B3 : câblage production avec R2, Resend, pdf-lib, PostgreSQL/Neon.
  *
@@ -21,14 +21,14 @@
  * et couverte par 12 tests unitaires déterministes avec fake timers.
  */
 
-import { createDatabase } from '@uttily/database';
-import type { DatabaseClient } from '@uttily/database';
-import type { DocumentRenderer, ObjectStorage, TransactionalEmailSender } from '@uttily/core';
+import { createDatabase } from '@passness/database';
+import type { DatabaseClient } from '@passness/database';
+import type { DocumentRenderer, ObjectStorage, TransactionalEmailSender } from '@passness/core';
 import {
   executeDocumentPipeline,
   executeTransactionalEmailPipeline,
   validateOutboxBatchLimit,
-} from '@uttily/core';
+} from '@passness/core';
 import { fileURLToPath } from 'node:url';
 
 import type { WorkerDependencies, WorkerCycleOptions } from './worker-cycle.js';
@@ -55,8 +55,8 @@ import {
   ResendNotificationEmailSender,
   type ResendNotificationConfig,
 } from './adapters/resend-notification-email-sender.js';
-import type { NotificationEmailSender } from '@uttily/core';
-import { FakeNotificationEmailSender } from '@uttily/core';
+import type { NotificationEmailSender } from '@passness/core';
+import { FakeNotificationEmailSender } from '@passness/core';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Erreur de configuration normalisée.
@@ -351,7 +351,7 @@ function normalizeConfigError(e: unknown, genericMessage: string): WorkerConfigu
 
 /**
  * Construit les dépendances du worker pour les tests et le harness local,
- * en utilisant les fakes depuis `@uttily/core`.
+ * en utilisant les fakes depuis `@passness/core`.
  *
  * NE PAS utiliser en production. Les fakes sont autorisés uniquement
  * pour les tests et le harness local.

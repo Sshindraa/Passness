@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { listOrganizationsForUser } from '@uttily/core';
+import { listOrganizationsForUser } from '@passness/core';
 import { ClientShell } from '@/components/shells/client-shell';
 import { OrganizationSelectorView } from '@/features/dashboard';
 

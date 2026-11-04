@@ -1,6 +1,6 @@
 import { and, desc, eq } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
-import { auditLog, users } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
+import { auditLog, users } from '@passness/database';
 import type { AuditLogSupportListItem } from './types';
 
 export interface ListAuditLogsSupportOptions {

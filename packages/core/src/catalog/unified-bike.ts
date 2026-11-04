@@ -1,6 +1,6 @@
 import { and, asc, eq, inArray, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { REQUIRED_BIKE_PHOTO_SLOTS } from '@uttily/contracts';
+import type { DatabaseClient } from '@passness/database';
+import { REQUIRED_BIKE_PHOTO_SLOTS } from '@passness/contracts';
 import {
   categories,
   inventoryItems,
@@ -8,7 +8,7 @@ import {
   productPhotos,
   productVariants,
   products,
-} from '@uttily/database';
+} from '@passness/database';
 import { getVariantPricingSummary, type PricingPlanSummary } from '../pricing-plans/management';
 import { missingRequiredBikePhotoSlots } from '../photos/photo-publication-rules';
 import { collectPublicationFailures, collectPublicationFailuresBatch } from './products';

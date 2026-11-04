@@ -12,7 +12,7 @@
 
 - Vercel `uttily-staging` sert le commit de merge `cebc640` sur
   `https://uttily-staging.vercel.app`.
-- Neon `Uttily-dev`, branche `staging` : journal Drizzle à 49 migrations ; les
+- Neon `Passness-dev`, branche `staging` : journal Drizzle à 49 migrations ; les
   migrations `0040` à `0049` ont été appliquées le 30 août 2026.
 - Le parcours public recherche → résultat → page d’offre a été vérifié sur
   Annecy pour la période du 10 au 11 juin 2030 ; une offre est retournée et sa
@@ -44,7 +44,7 @@ utilisés.
 
 - **Web** : projet Vercel `uttily-staging`, branche `main`, domaine
   `https://uttily-staging.vercel.app`, build prêt sur le commit `bb5384d`.
-- **Neon** : preuve historique du 27 août sur le projet `Uttily-dev`, branche
+- **Neon** : preuve historique du 27 août sur le projet `Passness-dev`, branche
   `staging`, région Frankfurt, avec 38 migrations alors présentes ;
   l'application et le worker utilisent l'endpoint pooled. L’état courant est
   celui décrit dans la section précédente.
@@ -55,7 +55,7 @@ utilisés.
 - **Clerk** : instance development/test, utilisateur pilote
   `uttily-staging-e2e+clerk_test@example.com`, authentifié par le flux Clerk
   réel. Dans Uttily, il est `OWNER` et `ACTIVE` dans `Uttily Demo Rental` ; les
-  rôles applicatifs restent autoritaires côté base Uttily.
+  rôles applicatifs restent autoritaires côté base Passness.
 - **Stripe Connect** : compte TEST prêt et destinations webhook actives sur
   `/api/webhooks/stripe/connect` et `/api/webhooks/stripe/platform`.
 - **Worker** : conteneur `uttily-worker-staging` sur l'hôte staging existant,

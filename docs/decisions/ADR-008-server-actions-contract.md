@@ -13,7 +13,7 @@ Le domaine catalog levait jusqu'ici des `Error` génériques avec des messages f
 
 1. **Signature** : Les Server Actions de mutation retournent `ActionResult<T>` (`{ ok: true; data } | { ok: false; code; message; fieldErrors? }`). Les lectures se font via Server Components appelant directement le core (pas d'action).
 
-2. **Codes d'erreur typés** : `ActionErrorCode` est une union fermée dans `@uttily/contracts`. Toute extension nécessite une décision documentée (ADR).
+2. **Codes d'erreur typés** : `ActionErrorCode` est une union fermée dans `@passness/contracts`. Toute extension nécessite une décision documentée (ADR).
 
 3. **Erreurs métier typées** : Le domaine catalog lève `CatalogError` (avec `code: ActionErrorCode`) au lieu d'`Error` générique. Les actions catchent `CatalogError` et mappent le code vers `ActionResult`. Pas de string matching sur les messages.
 
@@ -35,7 +35,7 @@ Le domaine catalog levait jusqu'ici des `Error` génériques avec des messages f
 
 ## Conséquences
 
-- `@uttily/contracts` n'est plus vide (introduction `ActionResult`, `ActionErrorCode`, `FieldErrors`).
+- `@passness/contracts` n'est plus vide (introduction `ActionResult`, `ActionErrorCode`, `FieldErrors`).
 - Le domaine catalog lève `CatalogError` (refactor des fonctions existantes `createProduct`, `updateProduct`, `publishProduct`, `createVariant`, `updateVariant`, `deactivateVariant`, `deleteVariant`, `createInventoryItem`, `transferInventoryItem`).
 - `AuthorizationError` est conservée pour les cas d'autorisation (mappée vers `FORBIDDEN` ou `NOT_FOUND` côté action).
 - Le code `CONCURRENCY` a été retiré de l'union `ActionErrorCode` : aucun handling des deadlocks PostgreSQL (SQLSTATE `40P01`) n'est implémenté dans le domaine catalog. Le handling de la concurrence (deadlocks, retries optimistes) sera ajouté via ADR dans les lots futurs (réservations/paiements) où la concurrence sera plus critique.

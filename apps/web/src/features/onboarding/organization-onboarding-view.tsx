@@ -15,7 +15,7 @@ export function OrganizationOnboardingView({
   return (
     <main className={styles.page}>
       <section className={styles.card} aria-labelledby="onboarding-heading">
-        <div className={styles.eyebrow}>Uttily Pro</div>
+        <div className={styles.eyebrow}>Passness Pro</div>
         <h1 id="onboarding-heading">Créez votre espace loueur</h1>
         <p className={styles.intro}>
           Vous êtes connecté en tant que <strong>{userEmail}</strong>. Commencez par renseigner
@@ -79,7 +79,7 @@ export function OrganizationOnboardingView({
               aria-describedby="currency-help"
             />
             <p id="currency-help">
-              Le pilote Uttily utilise l’EUR uniquement. La multi-devise sera ajoutée
+              Le pilote Passness utilise l’EUR uniquement. La multi-devise sera ajoutée
               ultérieurement.
             </p>
           </div>
@@ -102,7 +102,7 @@ export function OrganizationOnboardingView({
               >
                 Conditions Générales Partenaires (Conditions Pro)
               </Link>{' '}
-              d’Uttily pour le compte de mon organisation (version v1).
+              d’Passness pour le compte de mon organisation (version v1).
             </label>
           </div>
 

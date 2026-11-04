@@ -51,8 +51,8 @@ function baseInput(overrides: Partial<CreateOnboardingLinkInput> = {}): CreateOn
   return {
     organizationId: ORG_ID,
     environment: 'TEST',
-    returnUrl: 'https://app.uttily.test/onboarding/return',
-    refreshUrl: 'https://app.uttily.test/onboarding/refresh',
+    returnUrl: 'https://app.passness.test/onboarding/return',
+    refreshUrl: 'https://app.passness.test/onboarding/refresh',
     idempotencyKey: 'onboarding-link-key-abc',
     ...overrides,
   };
@@ -86,7 +86,7 @@ function makeMockDb(accountRow: AccountRow | null) {
   return {
     select: selectMock,
     update: updateMock,
-  } as unknown as import('@uttily/database').DatabaseClient;
+  } as unknown as import('@passness/database').DatabaseClient;
 }
 
 function makeMockProvider(

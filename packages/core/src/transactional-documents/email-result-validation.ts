@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Validation stricte du EmailSendResult à l'exécution (G5H-C2B, ADR-013 §13.4).
+ * @passness/core — Validation stricte du EmailSendResult à l'exécution (G5H-C2B, ADR-013 §13.4).
  *
  * Parseur PUR et FERMÉ : aucune dépendance externe, aucun effet de bord.
  * Les messages d'erreur ne contiennent JAMAIS la valeur reçue (confidentialité).

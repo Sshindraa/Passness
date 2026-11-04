@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-A).
+ * @passness/core — Module Product Analytics (G7H-A).
  *
  * Purge des événements raw expirés (90 jours) et des agrégats expirés (24 mois)
  * avec le modèle de compaction.
@@ -37,8 +37,8 @@
  */
 
 import { and, eq, gte, inArray, lt, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { productAnalyticsDaily, productAnalyticsEvents } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { productAnalyticsDaily, productAnalyticsEvents } from '@passness/database';
 import { ProductAnalyticsError } from './errors';
 import type {
   AnalyticsEnvironment,

@@ -1,4 +1,4 @@
-import { Card, LinkButton, PageHeader } from '@uttily/ui';
+import { Card, LinkButton, PageHeader } from '@passness/ui';
 import styles from './organization-selector-view.module.css';
 
 type OrganizationSummary = {

@@ -1,5 +1,5 @@
-import { inventoryCondition } from '@uttily/database';
-import type { PhotoSlotType } from '@uttily/contracts';
+import { inventoryCondition } from '@passness/database';
+import type { PhotoSlotType } from '@passness/contracts';
 
 export const PUBLICATION_STATUSES = ['DRAFT', 'PUBLISHED', 'ARCHIVED'] as const;
 export type PublicationStatus = (typeof PUBLICATION_STATUSES)[number];

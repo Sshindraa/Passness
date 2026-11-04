@@ -1,5 +1,5 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import { AuthorizationError, type AuthenticatedUser } from '@uttily/core';
+import { AuthorizationError, type AuthenticatedUser } from '@passness/core';
 import * as catalogAuth from '@/lib/catalog-auth';
 import { scanEquipmentPhotoAction } from './equipment-scan';
 

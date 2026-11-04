@@ -1,5 +1,5 @@
 import postgres from 'postgres';
-import { runMigrations, assertLocalhost } from '@uttily/database';
+import { runMigrations, assertLocalhost } from '@passness/database';
 
 /**
  * Setup des tests d'intégration PostgreSQL.
@@ -17,7 +17,7 @@ import { runMigrations, assertLocalhost } from '@uttily/database';
  *   est injoignable, la fonction lève une erreur explicite (pas de faux vert).
  */
 
-const DEFAULT_TEST_DB_NAME = 'uttily_test';
+const DEFAULT_TEST_DB_NAME = 'passness_test';
 
 export interface IntegrationTestContext {
   databaseUrl: string;
@@ -57,7 +57,7 @@ async function checkConnectivity(url: string): Promise<boolean> {
  *
  * @param suffix Suffixe optionnel pour le nom de la base de test.
  *   Permet à plusieurs fichiers de test de tourner en parallèle sans
- *   collision sur la même base (ex: "identity" → uttily_test_identity).
+ *   collision sur la même base (ex: "identity" → passness_test_identity).
  */
 export async function setupIntegrationTestDb(
   suffix?: string,

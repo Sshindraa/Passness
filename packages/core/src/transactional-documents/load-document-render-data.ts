@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Chargement autoritatif des données de rendu depuis DB (G5C, ADR-013).
+ * @passness/core — Chargement autoritatif des données de rendu depuis DB (G5C, ADR-013).
  *
  * Cette fonction ne crée PAS le snapshot en base : elle charge et valide les
  * autorités DB, recoupe les cohérences, et construit un LoadedDocumentRenderDataV1
@@ -12,7 +12,7 @@
  */
 
 import { sql } from 'drizzle-orm';
-import type { DbExecutor } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
 import { DocumentRenderError } from './errors';
 import { isRecursivelySerializable } from './opaque-json';
 import { isValidTimeZone } from '../identity/time-zone';

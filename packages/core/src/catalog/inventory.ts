@@ -1,6 +1,6 @@
 import { and, eq, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { inventoryItems, inventoryMovements } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { inventoryItems, inventoryMovements } from '@passness/database';
 import type {
   InventoryItemRecord,
   InventoryMovementRecord,

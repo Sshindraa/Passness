@@ -1,5 +1,5 @@
 import { and, asc, count, desc, eq, inArray, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   categories,
   inventoryItems,
@@ -8,7 +8,7 @@ import {
   productVariants,
   productPhotos,
   products,
-} from '@uttily/database';
+} from '@passness/database';
 import type {
   ActiveVariantOption,
   InventoryDetails,

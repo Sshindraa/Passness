@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests unitaires du module Webhook Handler (Lot 5, ADR-010).
+ * @passness/core — Tests unitaires du module Webhook Handler (Lot 5, ADR-010).
  *
  * Tests sans DB : extraction, projection monotone, validation, signature.
  */

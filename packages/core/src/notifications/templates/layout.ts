@@ -141,13 +141,13 @@ export function renderEmailLayout(options: EmailLayoutOptions): string {
   <div class="wrapper">
     <div class="container">
       <div class="header">
-        <a href="${escapeHtml(brand.publicAppUrl)}" class="brand">Uttily<span>.</span></a>
+        <a href="${escapeHtml(brand.publicAppUrl)}" class="brand">Passness<span>.</span></a>
       </div>
       <div class="body">
         ${options.contentHtml}
       </div>
       <div class="footer">
-        Uttily — Plateforme de location d'équipements professionnels.<br>
+        Passness — Plateforme de location d'équipements professionnels.<br>
         Pour toute assistance, contactez votre loueur ou <a href="mailto:${escapeHtml(brand.supportEmail)}">${escapeHtml(brand.supportEmail)}</a>.
       </div>
     </div>

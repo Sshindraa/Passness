@@ -11,7 +11,7 @@ describe('browser E2E membership fixture guards', () => {
     );
     expect(() =>
       assertBrowserE2eEnvironment({
-        UTTILY_BROWSER_E2E: '1',
+        PASSNESS_BROWSER_E2E: '1',
         NODE_ENV: 'production',
         E2E_CLERK_USER_EMAIL: 'e2e+clerk_test@example.com',
       }),
@@ -20,7 +20,7 @@ describe('browser E2E membership fixture guards', () => {
 
   it('accepts only a dedicated Clerk test email', () => {
     const validEnvironment = {
-      UTTILY_BROWSER_E2E: '1',
+      PASSNESS_BROWSER_E2E: '1',
       NODE_ENV: 'test',
       E2E_CLERK_USER_EMAIL: 'e2e+clerk_test@example.com',
     };

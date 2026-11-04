@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import type { OperationalBookingDetails, BookingStatus } from '@uttily/core';
+import type { OperationalBookingDetails, BookingStatus } from '@passness/core';
 import {
   bookingStatusLabel,
   formatDateTimeInTimeZone,
   conditionLabel,
 } from '@/lib/operations-helpers';
-import { PageHeader, Card, Badge, LinkButton } from '@uttily/ui';
-import type { BadgeTone } from '@uttily/ui';
+import { PageHeader, Card, Badge, LinkButton } from '@passness/ui';
+import type { BadgeTone } from '@passness/ui';
 import { DepartureFlow } from './departure-flow';
 import { ReturnFlow } from './return-flow';
 import { CancellationFlow } from './cancellation-flow';

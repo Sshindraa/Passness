@@ -56,9 +56,9 @@ par composant. Cette proposition est formalisée dans
 - les amendements successifs comparent le dernier état `APPLIED` au nouvel état
   final ;
 - le client reçoit la baisse de son total payé ;
-- la baisse du net loueur et la baisse de l'application fee Uttily sont
+- la baisse du net loueur et la baisse de l'application fee Passness sont
   rapprochées séparément ;
-- les frais Stripe non récupérables restent un coût Uttily distinct ;
+- les frais Stripe non récupérables restent un coût Passness distinct ;
 - un calcul impossible avant application laisse la réservation inchangée ;
 - un échec après application conserve l'amendement et la dette visible, avec
   résolution manuelle auditée sous le SLA proposé.

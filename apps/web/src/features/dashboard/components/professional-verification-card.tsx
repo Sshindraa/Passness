@@ -1,7 +1,7 @@
 import { type ReactElement } from 'react';
 import Link from 'next/link';
-import { Icon } from '@uttily/ui';
-import type { ProfessionalVerificationResult } from '@uttily/core';
+import { Icon } from '@passness/ui';
+import type { ProfessionalVerificationResult } from '@passness/core';
 import styles from './professional-verification-card.module.css';
 
 interface ProfessionalVerificationCardProps {

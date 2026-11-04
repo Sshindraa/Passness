@@ -1,4 +1,4 @@
-import type { ActionErrorCode, FieldErrors } from '@uttily/contracts';
+import type { ActionErrorCode, FieldErrors } from '@passness/contracts';
 
 /**
  * Codes d'erreur fermés du module payment-initiation.

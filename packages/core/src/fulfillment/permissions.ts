@@ -3,7 +3,7 @@ import { AuthorizationError } from '../identity/permissions';
 import { FULFILLMENT_OPERATORS } from './operators';
 
 /**
- * @uttily/core — Permissions serveur — module Fulfillment (G4A).
+ * @passness/core — Permissions serveur — module Fulfillment (G4A).
  *
  * MVP (ADR-011) : tous les membres actifs (OWNER, ADMIN, MANAGER, STAFF) sont autorisés.
  * La vérification d'appartenance active se fait côté serveur dans chaque use case Core

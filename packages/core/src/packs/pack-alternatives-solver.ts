@@ -1,4 +1,4 @@
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { PackRequest, FunctionalRequirement } from './party-model';
 import { solvePackForParty, type SolvedPackCandidate } from './pack-solver';
 import type { RankedPackCandidate } from './pack-ranker';

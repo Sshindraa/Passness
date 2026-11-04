@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Chargeur de contexte de pricing depuis PostgreSQL.
  * Toutes les données sont chargées en requêtes batchées (pas de N+1).
@@ -17,7 +17,7 @@ import {
   productVariants,
   products,
   type DbExecutor,
-} from '@uttily/database';
+} from '@passness/database';
 import type {
   OpeningHour,
   PricingContext,

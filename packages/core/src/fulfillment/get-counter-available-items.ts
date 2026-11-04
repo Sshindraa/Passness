@@ -1,5 +1,5 @@
 import { and, asc, eq, inArray, isNull, notExists, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   categories,
   inventoryBlocks,
@@ -7,7 +7,7 @@ import {
   locations,
   products,
   productVariants,
-} from '@uttily/database';
+} from '@passness/database';
 import { requireMembership } from '../identity/permissions';
 import { FULFILLMENT_OPERATORS } from './operators';
 import { getMembership } from '../identity/memberships';

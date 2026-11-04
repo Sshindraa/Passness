@@ -1,6 +1,6 @@
 import { and, desc, eq, ilike, sql } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
-import { notifications, organizations } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
+import { notifications, organizations } from '@passness/database';
 import type { NotificationSupportListItem } from './types';
 
 export interface ListNotificationsSupportOptions {

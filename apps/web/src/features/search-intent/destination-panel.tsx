@@ -1,14 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import type { PublicSearchDestinationOption } from '@uttily/core';
-import { Button, Icon } from '@uttily/ui';
+import type { PublicSearchDestinationOption } from '@passness/core';
+import { Button, Icon } from '@passness/ui';
 import { rankDestinationSuggestions } from '@/lib/destination-suggestions';
 import { SuggestionPicker } from './suggestion-picker';
 import type { SearchLocale } from './search-state';
 import styles from './search-intent.module.css';
 
-const RECENT_KEY = 'uttily:recent-destinations:v1';
+const RECENT_KEY = 'passness:recent-destinations:v1';
 
 export function DestinationPanel({
   destinations,

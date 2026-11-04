@@ -8,7 +8,7 @@ export interface MarketplaceFeeRule {
   readonly customerRateBps: number;
   readonly roundingRule: MarketplaceFeeRoundingRule;
   readonly noFixedFee: true;
-  readonly uttilyOsMonthlyFeeAmountMinor: 0;
+  readonly passnessOsMonthlyFeeAmountMinor: 0;
 }
 
 /** Snapshot économique immuable d'une transaction marketplace. */

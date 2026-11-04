@@ -6,7 +6,7 @@ Ces règles s'appliquent indépendamment de l'interface, de l'API ou du worker.
 
 1. Une action professionnelle exige une appartenance active à l'organisation concernée et le rôle adéquat.
 2. Une organisation ne peut jamais lire ni modifier les données opérationnelles d'une autre organisation.
-3. Les actions d'administration Uttily sont distinctes des actions des loueurs et sont auditées.
+3. Les actions d'administration Passness sont distinctes des actions des loueurs et sont auditées.
 
 ## Stock et disponibilité
 

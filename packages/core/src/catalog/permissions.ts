@@ -60,10 +60,12 @@ export function requireCatalogViewer(
 }
 
 /**
- * Vérifie qu'un utilisateur est admin Uttily (gestion des catégories globales).
+ * Vérifie qu'un utilisateur est admin Passness (gestion des catégories globales).
  */
 export function requireCategoryManager(user: AuthenticatedUser): void {
   if (!user.isPlatformAdmin) {
-    throw new AuthorizationError('Gestion des catégories réservée à l\u2019administrateur Uttily.');
+    throw new AuthorizationError(
+      'Gestion des catégories réservée à l\u2019administrateur Passness.',
+    );
   }
 }

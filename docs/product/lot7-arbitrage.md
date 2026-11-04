@@ -2,7 +2,7 @@
 
 - **Statut** : Décisions produit approuvées
 - **Date** : 2026-08-07
-- **Autorité** : Porteur produit Uttily
+- **Autorité** : Porteur produit Passness
 - **Relie à** : ADR-009, ADR-017, ADR-018 ; `docs/implementation/g7a-public-search-audit-and-delivery-plan.md`
 
 ## Objet
@@ -104,7 +104,7 @@ Le simple rayon utilisateur fixe est remplacé par une stratégie adaptative :
 
 - la destination résolue fournit un centre et idéalement une bounding
   box/viewport ;
-- Uttily recherche d'abord dans la zone correspondant à la destination ;
+- Passness recherche d'abord dans la zone correspondant à la destination ;
 - si les résultats exacts sont insuffisants, la zone peut être élargie
   progressivement ;
 - les résultats élargis ne sont jamais mélangés silencieusement aux résultats
@@ -174,7 +174,7 @@ Forfaits de référence : demi-journée = 4 heures ; journée = plage commercial
 de référence de 8 heures ; forfaits personnalisés possibles (2 h, 6 h, etc.).
 Le loueur choisit les offres disponibles pour sa variante.
 
-Uttily ne doit pas utiliser une IA ou un modèle probabiliste pour déterminer un
+Passness ne doit pas utiliser une IA ou un modèle probabiliste pour déterminer un
 montant financier. Le moteur tarifaire est : déterministe, auditable,
 reproductible, testé, calculé côté serveur, figé dans le snapshot de
 réservation.

@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
-import type { NotificationEmailSender } from '@uttily/core';
-import { NotificationSendError } from '@uttily/core';
+import type { NotificationEmailSender } from '@passness/core';
+import { NotificationSendError } from '@passness/core';
 
 export interface ResendNotificationConfig {
   readonly apiKey: string;
@@ -134,6 +134,6 @@ export function createResendNotificationEmailSenderFromEnv(): ResendNotification
   const fromEmail =
     process.env['RESEND_FROM_EMAIL'] ??
     process.env['EMAIL_FROM'] ??
-    'Uttily <notifications@uttily.com>';
+    'Passness <notifications@uttily.com>';
   return new ResendNotificationEmailSender({ apiKey, fromEmail });
 }

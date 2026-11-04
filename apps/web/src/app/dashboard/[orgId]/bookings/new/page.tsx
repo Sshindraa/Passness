@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import { listLocations, getCounterAvailableItems } from '@uttily/core';
-import { EmptyState, LinkButton } from '@uttily/ui';
+import { listLocations, getCounterAvailableItems } from '@passness/core';
+import { EmptyState, LinkButton } from '@passness/ui';
 import { requireFulfillmentOperatorOf } from '@/lib/fulfillment-auth';
 import { CounterBookingView } from '@/features/operations/counter-booking-view';
 

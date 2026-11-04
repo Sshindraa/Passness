@@ -5,11 +5,11 @@ import {
   createDatabase,
   runMigrations,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import { getSupplementCheckoutSummary } from './get-supplement-checkout-summary';
 
 const sourceUrl = process.env.DATABASE_URL;
-const testDatabase = `uttily_test_g7m_c5c_checkout_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+const testDatabase = `passness_test_g7m_c5c_checkout_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 const shouldSkip = !sourceUrl && process.env.CI !== '1' && process.env.CI !== 'true';
 
 describe.skipIf(shouldSkip)('getSupplementCheckoutSummary — PostgreSQL réel (G7M-C5-C)', () => {

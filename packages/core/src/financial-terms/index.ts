@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Financial Terms (Lot 5, ADR-010 §6).
+ * @passness/core — Module Financial Terms (Lot 5, ADR-010 §6).
  *
  * Résolution pure des termes financiers avant initiation du paiement.
  * Aucune dépendance base de données, aucun appel Stripe, aucun effet de bord.

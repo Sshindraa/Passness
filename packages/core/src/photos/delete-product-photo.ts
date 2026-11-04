@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Photos (G7F-A2).
+ * @passness/core — Module Photos (G7F-A2).
  *
  * Suppression (soft delete) d'une photo produit.
  *
@@ -17,8 +17,8 @@
  */
 
 import { and, eq, isNull, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { productPhotos, products } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { productPhotos, products } from '@passness/database';
 import { PhotoError } from './errors';
 import type { ProductPhotoStorage } from './storage';
 

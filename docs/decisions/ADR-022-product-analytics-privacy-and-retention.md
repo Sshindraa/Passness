@@ -2,7 +2,7 @@
 
 - **Statut** : Accepted
 - **Date** : 2026-08-10
-- **Décideurs** : Porteur produit Uttily, engineering
+- **Décideurs** : Porteur produit Passness, engineering
 - **Relie à** : ADR-017, ADR-019 ; G7H-A ; G7B-R3
 
 ## 1. Contexte
@@ -22,7 +22,7 @@ juridique séparée.
 ### 2.1 First-party uniquement, aucun provider externe
 
 L'analytics produit est first-party : les événements sont stockés dans
-PostgreSQL, agrégés et lus par Uttily. Aucun provider externe (Google
+PostgreSQL, agrégés et lus par Passness. Aucun provider externe (Google
 Analytics, Mixpanel, Segment, etc.) n'est introduit dans le périmètre MVP.
 
 Cette décision préserve la confidentialité, évite la dépendance à un tiers et

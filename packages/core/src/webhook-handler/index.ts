@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Webhook Handler (Lot 5, ADR-010 §9, §10, §11, §13, §14).
+ * @passness/core — Module Webhook Handler (Lot 5, ADR-010 §9, §10, §11, §13, §14).
  *
  * Use case de traitement des webhooks Stripe signés, idempotents et
  * transactionnels. Le webhook signé est l'autorité de l'état externe du

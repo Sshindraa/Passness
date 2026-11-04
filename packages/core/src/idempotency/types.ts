@@ -1,4 +1,4 @@
-import type { IdempotencyRecord } from '@uttily/database';
+import type { IdempotencyRecord } from '@passness/database';
 
 /**
  * Payload canonique pour le calcul de l'empreinte (ADR-009 section 12).

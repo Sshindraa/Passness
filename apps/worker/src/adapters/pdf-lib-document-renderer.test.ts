@@ -5,8 +5,8 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PDFDocument } from 'pdf-lib';
 
-import { DocumentRenderError } from '@uttily/core';
-import type { DocumentRenderSnapshotV1 } from '@uttily/core';
+import { DocumentRenderError } from '@passness/core';
+import type { DocumentRenderSnapshotV1 } from '@passness/core';
 
 import {
   PdfLibDocumentRenderer,
@@ -457,7 +457,7 @@ describe('PdfLibDocumentRenderer', () => {
     const renderer = new PdfLibDocumentRenderer();
     const r = await renderer.render('booking-confirmation-technical-v1', makeValidSnapshot());
     const reloaded = await PDFDocument.load(r.content, { updateMetadata: false });
-    expect(reloaded.getCreator()).toBe('Uttily Worker');
+    expect(reloaded.getCreator()).toBe('Passness Worker');
     expect(reloaded.getProducer()).toBe('pdf-lib 1.17.1');
   });
 

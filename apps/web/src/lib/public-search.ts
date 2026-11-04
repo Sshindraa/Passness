@@ -11,7 +11,7 @@ import {
   type PublicSearchViewport,
 } from '@uttily/core';
 import { and, eq, inArray, isNull } from 'drizzle-orm';
-import { type DatabaseClient, productPhotos, products } from '@uttily/database';
+import { type DatabaseClient, productPhotos, products } from '@passness/database';
 import { parseSearchPeople } from './search-people';
 
 export interface EnrichedPublicOfferSearchItem extends PublicOfferSearchItem {

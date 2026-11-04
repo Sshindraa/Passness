@@ -8,7 +8,7 @@ import { revalidatePath } from 'next/cache';
 import { requireCatalogManagerOf } from '@/lib/catalog-auth';
 import { runAction } from '@/lib/action-mapper';
 import { isValidUuid } from '@/lib/validation';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   createProduct,
   updateProduct,

@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { requireCatalogManagerOf } from '@/lib/catalog-auth';
 import { runAction } from '@/lib/action-mapper';
-import type { ActionResult } from '@uttily/contracts';
+import type { ActionResult } from '@passness/contracts';
 import {
   openMaintenanceCase,
   startMaintenanceCase,
@@ -11,7 +11,7 @@ import {
   type OpenMaintenanceResult,
   type StartMaintenanceResult,
   type ResolveMaintenanceResult,
-} from '@uttily/core';
+} from '@passness/core';
 import { isValidUuid } from '@/lib/validation';
 
 export async function openMaintenanceCaseAction(

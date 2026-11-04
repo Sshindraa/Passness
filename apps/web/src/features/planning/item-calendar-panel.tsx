@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { OperationalItemCalendar, OperationalItemCalendarEvent } from '@uttily/core';
+import type { OperationalItemCalendar, OperationalItemCalendarEvent } from '@passness/core';
 import { formatDateTimeInTimeZone } from '@/lib/operations-helpers';
 import { getInventoryStatusPresentation } from '@/lib/status-presentation';
 import { getCategoryPresentation } from '@/features/equipment/category-presentation';

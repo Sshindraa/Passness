@@ -6,7 +6,7 @@ export const UTTILY_FONT_FAMILY = 'Sora, system-ui, sans-serif';
 export const PAYMENT_APPEARANCE: Appearance = {
   theme: 'stripe',
   variables: {
-    fontFamily: UTTILY_FONT_FAMILY,
+    fontFamily: PASSNESS_FONT_FAMILY,
     fontSizeBase: '16px',
     fontSizeSm: '14px',
     fontWeightNormal: '400',

@@ -119,7 +119,7 @@ Ce lot implémente le parcours de paiement en ligne sécurisé du supplément ta
 | Zéro identifiant technique exposé | Conforme | Retourne uniquement `{ kind: 'READY', clientSecret }`. |
 | Suppression de l'input URL côté loueur | Conforme | Aucun champ textuel, copie presse-papier absolue sécurisée, feedback d'échec sans URL/UUID. |
 | Message de succès sans annonce prématurée | Conforme | « Paiement soumis. La modification sera appliquée automatiquement après confirmation du paiement. » |
-| Aucun nouveau package ou produit Stripe | Conforme | Réutilisation stricte de `@stripe/react-stripe-js` et `@uttily/core`. |
+| Aucun nouveau package ou produit Stripe | Conforme | Réutilisation stricte de `@stripe/react-stripe-js` et `@passness/core`. |
 | Zéro migration de schéma | Conforme | Aucune migration ajoutée. |
 | Test PostgreSQL reproductible | Conforme | Utilisation de `assertLocalhost`, base dédiée, `runMigrations(testUrl)`, nettoyage `afterAll`. |
 

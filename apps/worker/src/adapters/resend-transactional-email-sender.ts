@@ -1,11 +1,11 @@
 /**
- * @uttily/worker — Adapter de production Resend pour TransactionalEmailSender
+ * @passness/worker — Adapter de production Resend pour TransactionalEmailSender
  * (G5H-B, ADR-014 §2.5).
  *
  * Utilise le SDK officiel `resend` (v6.18.1) pour l'API email Resend.
  *
  * Caractéristiques :
- * - Implémente exactement le port `TransactionalEmailSender` de `@uttily/core`.
+ * - Implémente exactement le port `TransactionalEmailSender` de `@passness/core`.
  * - Mapping fermé des templateKeys logiques vers les identifiants Resend.
  * - `providerIdempotencyKey` transmis via `{ idempotencyKey }` au SDK.
  * - Fenêtre de déduplication Resend : 24 heures (documentée).
@@ -24,9 +24,9 @@
  */
 
 import { Resend } from 'resend';
-import type { TransactionalEmailSender } from '@uttily/core';
-import type { EmailInput, EmailSendResult } from '@uttily/core';
-import { BOOKING_CONFIRMED_EMAIL_TEMPLATE_KEY } from '@uttily/core';
+import type { TransactionalEmailSender } from '@passness/core';
+import type { EmailInput, EmailSendResult } from '@passness/core';
+import { BOOKING_CONFIRMED_EMAIL_TEMPLATE_KEY } from '@passness/core';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Configuration
@@ -63,7 +63,7 @@ function isNonEmptyTrimmed(value: string): boolean {
  *
  * Cet adapter utilise un sous-ensemble ASCII conservateur (refuse les parties
  * locales entre guillemets RFC 5321/5322 complexes, les domaines internationalisés
- * IDN, et les commentaires) car les emails transactionnels Uttily n'ont pas besoin
+ * IDN, et les commentaires) car les emails transactionnels Passness n'ont pas besoin
  * de ces formes. L'objectif est la sécurité et la prévisibilité.
  *
  * Règles :
@@ -156,7 +156,7 @@ function isValidFromAddress(value: string): boolean {
  *
  * Ce validateur local duplique la logique de `parseRecipientEmail` de Core
  * (`packages/core/src/transactional-documents/recipient-email.ts`) car celle-ci
- * n'est pas exportée publiquement depuis `@uttily/core`. Ne pas créer d'import
+ * n'est pas exportée publiquement depuis `@passness/core`. Ne pas créer d'import
  * profond fragile vers le module interne.
  *
  * Le destinataire n'accepte PAS la forme avec nom d'affichage (seulement email@domain.tld).

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Compensation tardive (Lot 5, ADR-010 §13).
+ * @passness/core — Compensation tardive (Lot 5, ADR-010 §13).
  *
  * Si payment_intent.succeeded mais le brouillon est déjà terminal (EXPIRED/
  * CANCELLED/CONVERTED) OU les invariants empêchent la conversion :
@@ -20,7 +20,7 @@
  */
 
 import { eq, sql } from 'drizzle-orm';
-import { paymentWebhookEvents, type DatabaseTransaction } from '@uttily/database';
+import { paymentWebhookEvents, type DatabaseTransaction } from '@passness/database';
 import type { PaymentIntentEventData, ResolvedAttempt, HandlerOutcome } from './types';
 import { WebhookHandlerError } from './errors';
 import { lockWebhookEvent } from './dedupe-event';

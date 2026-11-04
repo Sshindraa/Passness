@@ -1,5 +1,5 @@
 import { and, eq, inArray, isNull, count, sql } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
 import {
   categories,
   products,
@@ -277,7 +277,7 @@ export async function updateProduct(
  */
 /**
  * Évalue les prérequis de publication pour un ensemble de produits en requêtes groupées sans N+1.
- * Source unique de vérité pour les invariants de publication d'Uttily :
+ * Source unique de vérité pour les invariants de publication d'Passness :
  * - Nom ≥ 2 caractères
  * - Description non vide
  * - Catégorie active

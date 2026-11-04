@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Public Search (G7E-B).
+ * @passness/core — Module Public Search (G7E-B).
  *
  * Moteur de recherche publique exacte (read-only, informatif).
  * PostgreSQL reste l'autorité des filtres d'inventaire et de disponibilité.

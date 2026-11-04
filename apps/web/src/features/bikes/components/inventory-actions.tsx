@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { UnifiedBikeInventoryItem } from '@uttily/core';
-import { MAX_BULK_INVENTORY_ITEMS } from '@uttily/contracts';
+import type { UnifiedBikeInventoryItem } from '@passness/core';
+import { MAX_BULK_INVENTORY_ITEMS } from '@passness/contracts';
 import {
   bulkCreateInventoryItemsAction,
   createInventoryItemAction,

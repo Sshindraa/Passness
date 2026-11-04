@@ -1,8 +1,8 @@
 import { eq, or, sql } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
-import type { DatabaseClient } from '@uttily/database';
-import { maintenanceCases, outboxEvents } from '@uttily/database';
-import { lockOrganization } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { maintenanceCases, outboxEvents } from '@passness/database';
+import { lockOrganization } from '@passness/database';
 import { reserveKey, lockKey, completeKey, failKey } from '../idempotency/idempotency';
 import { writeAuditEntry } from '../identity/audit';
 import { CatalogError } from '../catalog/errors';

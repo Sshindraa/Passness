@@ -1,13 +1,13 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach, vi } from 'vitest';
 import postgres from 'postgres';
-import { createDatabase, runMigrations, assertLocalhost } from '@uttily/database';
-import type { DatabaseClient } from '@uttily/database';
-import { createBookingDraftWithHold } from '@uttily/core';
+import { createDatabase, runMigrations, assertLocalhost } from '@passness/database';
+import type { DatabaseClient } from '@passness/database';
+import { createBookingDraftWithHold } from '@passness/core';
 import type {
   CreateBookingDraftResult,
   CreateBookingDraftSuccess,
   LegacyCreateBookingDraftInput,
-} from '@uttily/core';
+} from '@passness/core';
 import { sql } from 'drizzle-orm';
 
 // ---------------------------------------------------------------------------
@@ -33,7 +33,7 @@ const { GET } = await import('./route');
 // ---------------------------------------------------------------------------
 
 const isCi = process.env.CI === '1' || process.env.CI === 'true';
-const TEST_DB_NAME = 'uttily_test_cron_expire';
+const TEST_DB_NAME = 'passness_test_cron_expire';
 
 /**
  * Détermine si les tests d'intégration PostgreSQL doivent être skippés.

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Clés d'idempotence pour les emails transactionnels (G5E, ADR-013 §11).
+ * @passness/core — Clés d'idempotence pour les emails transactionnels (G5E, ADR-013 §11).
  *
  * Deux clés distinctes, stables, sans PII :
  * - provider_idempotency_key : envoyée au fournisseur d'email pour la déduplication

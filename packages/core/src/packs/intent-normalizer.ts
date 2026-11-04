@@ -1,10 +1,10 @@
 /**
- * Intent Normalizer — Traduction de la proposition d'intention IA vers le modèle canonique (@uttily/core).
+ * Intent Normalizer — Traduction de la proposition d'intention IA vers le modèle canonique (@passness/core).
  *
  * Conforme à l'ADR-041 (Principes 3.1 & 3.2) :
- * - L'IA (@uttily/intelligence) produit une proposition probabiliste (CompiledIntentProposal).
+ * - L'IA (@passness/intelligence) produit une proposition probabiliste (CompiledIntentProposal).
  * - Le modèle de groupe (PartyModel) et les exigences fonctionnelles (FunctionalRequirement)
- *   sont instanciés et validés souverainement par @uttily/core.
+ *   sont instanciés et validés souverainement par @passness/core.
  * - Règle du UNKNOWN : Zéro supposition statistique (tailles adultes ou enfants non extrapolées).
  */
 
@@ -50,7 +50,7 @@ export interface NormalizedIntentResolution {
 }
 
 /**
- * Normalise une proposition d'intention compilée vers les entités canoniques de @uttily/core.
+ * Normalise une proposition d'intention compilée vers les entités canoniques de @passness/core.
  */
 export function normalizeIntentProposal(
   proposal: CompiledIntentProposalInput,

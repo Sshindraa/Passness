@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Arithmétique sûre sur entiers en unités mineures.
  * Toute opération qui dépasserait Number.MAX_SAFE_INTEGER lève

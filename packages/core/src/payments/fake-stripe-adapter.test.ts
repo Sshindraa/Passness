@@ -1049,8 +1049,8 @@ describe('FakeStripeAdapter', () => {
       const created = await fake.createConnectedAccount(baseCreateConnectedAccountParams());
       const params: CreateOnboardingLinkParams = {
         accountId: created.id,
-        returnUrl: 'https://uttily.example.com/return',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        returnUrl: 'https://passness.example.com/return',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: 'idem_link_abc',
       };
       const result = await fake.createOnboardingLink(params);
@@ -1064,8 +1064,8 @@ describe('FakeStripeAdapter', () => {
       const created = await fake.createConnectedAccount(baseCreateConnectedAccountParams());
       const params: CreateOnboardingLinkParams = {
         accountId: created.id,
-        returnUrl: 'https://uttily.example.com/return',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        returnUrl: 'https://passness.example.com/return',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: 'idem_link_replay',
       };
       const result1 = await fake.createOnboardingLink(params);
@@ -1077,8 +1077,8 @@ describe('FakeStripeAdapter', () => {
     it('lève NOT_FOUND pour un compte inexistant', async () => {
       const params: CreateOnboardingLinkParams = {
         accountId: 'acct_missing',
-        returnUrl: 'https://uttily.example.com/return',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        returnUrl: 'https://passness.example.com/return',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: 'idem_link_abc',
       };
       await expect(fake.createOnboardingLink(params)).rejects.toThrow(PaymentProviderError);
@@ -1089,7 +1089,7 @@ describe('FakeStripeAdapter', () => {
       const params: CreateOnboardingLinkParams = {
         accountId: created.id,
         returnUrl: '',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: 'idem_link_abc',
       };
 
@@ -1100,7 +1100,7 @@ describe('FakeStripeAdapter', () => {
       const created = await fake.createConnectedAccount(baseCreateConnectedAccountParams());
       const params: CreateOnboardingLinkParams = {
         accountId: created.id,
-        returnUrl: 'https://uttily.example.com/return',
+        returnUrl: 'https://passness.example.com/return',
         refreshUrl: '',
         idempotencyKey: 'idem_link_abc',
       };
@@ -1112,8 +1112,8 @@ describe('FakeStripeAdapter', () => {
       const created = await fake.createConnectedAccount(baseCreateConnectedAccountParams());
       const params: CreateOnboardingLinkParams = {
         accountId: created.id,
-        returnUrl: 'https://uttily.example.com/return',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        returnUrl: 'https://passness.example.com/return',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: '',
       };
 
@@ -1124,16 +1124,16 @@ describe('FakeStripeAdapter', () => {
       const created = await fake.createConnectedAccount(baseCreateConnectedAccountParams());
       const params1: CreateOnboardingLinkParams = {
         accountId: created.id,
-        returnUrl: 'https://uttily.example.com/return',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        returnUrl: 'https://passness.example.com/return',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: 'shared_onboarding_key',
       };
       await fake.createOnboardingLink(params1);
 
       const params2: CreateOnboardingLinkParams = {
         accountId: created.id,
-        returnUrl: 'https://uttily.example.com/different-return',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        returnUrl: 'https://passness.example.com/different-return',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: 'shared_onboarding_key',
       };
 

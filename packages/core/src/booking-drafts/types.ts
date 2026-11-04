@@ -1,4 +1,4 @@
-import type { ActionErrorCode } from '@uttily/contracts';
+import type { ActionErrorCode } from '@passness/contracts';
 import type { VariantPricingSnapshot } from '../pricing/types';
 import type { PricingWindowSnapshot } from '../pricing-plans/types';
 import type { MarketplaceFeeSnapshot } from '../marketplace-fees';

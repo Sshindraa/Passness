@@ -44,7 +44,7 @@ function baseFinancialTermsConfig() {
       status: 'NOT_APPLICABLE' as const,
       amountMinor: null,
       rateBps: null,
-      invoiceIssuer: 'Uttily SAS',
+      invoiceIssuer: 'Passness SAS',
     },
     commission: {
       version: 'commission-v1',

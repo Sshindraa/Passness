@@ -1,5 +1,5 @@
-import type { DatabaseClient, ProductPhotoRecord } from '@uttily/database';
-import type { PhotoSlotType } from '@uttily/contracts';
+import type { DatabaseClient, ProductPhotoRecord } from '@passness/database';
+import type { PhotoSlotType } from '@passness/contracts';
 import type { ProductPhotoStorage } from './storage';
 import { deleteProductPhoto } from './delete-product-photo';
 import { uploadProductPhoto } from './upload-product-photo';

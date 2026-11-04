@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Tests unitaires des failure codes normalisés (G5F).
+ * @passness/worker — Tests unitaires des failure codes normalisés (G5F).
  */
 
 import { describe, it, expect } from 'vitest';

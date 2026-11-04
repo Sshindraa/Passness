@@ -30,7 +30,7 @@ const DEFAULT_MODEL = 'openai/gpt-5.6-luna';
 const DEFAULT_BASE_URL = 'https://openrouter.ai/api/v1';
 const DEFAULT_TIMEOUT_MS = 15000;
 
-const SYSTEM_PROMPT = `Tu es le Compilateur d'Intention et Assistant de Recherche d'Uttily, la plateforme de location d'équipements outdoor et de mobilité.
+const SYSTEM_PROMPT = `Tu es le Compilateur d'Intention et Assistant de Recherche d'Passness, la plateforme de location d'équipements outdoor et de mobilité.
 Ton rôle est de traduire une requête utilisateur en langage naturel en un AST strict de critères de recherche pour le moteur de réservation.
 
 RÈGLE CARDINALE D'ADR-041 : ABSTENTION > HALLUCINATION
@@ -150,7 +150,7 @@ Compulse cette intention sous forme JSON :
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
           'HTTP-Referer': 'https://uttily.com',
-          'X-Title': 'Uttily Intent Compiler',
+          'X-Title': 'Passness Intent Compiler',
         },
         body: JSON.stringify({
           model: this.model,

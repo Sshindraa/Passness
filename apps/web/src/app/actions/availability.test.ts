@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
-import type { ActionResult } from '@uttily/contracts';
+import type { ActionResult } from '@passness/contracts';
 import type {
   CreateManualBlockResult,
   RecurringManualBlockSeriesMutationResult,
-} from '@uttily/core';
+} from '@passness/core';
 
 vi.mock('@/lib/catalog-auth', () => ({
   requireCatalogManagerOf: vi.fn(() => {

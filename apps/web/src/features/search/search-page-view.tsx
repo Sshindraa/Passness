@@ -5,7 +5,7 @@ import type {
   RankedPackCandidate,
   SolvedPackCandidate,
   SolvedPackAlternatives,
-} from '@uttily/core';
+} from '@passness/core';
 import type { PublicSearchParseResult, PublicUiLocale } from '@/lib/public-search';
 import { SearchForm } from './search-form';
 import { SearchIntentBar } from '@/features/search-intent/search-intent-bar';

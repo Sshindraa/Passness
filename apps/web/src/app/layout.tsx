@@ -5,7 +5,7 @@ import '@uttily/ui/tokens.css';
 import { UTTILY_FONT_FAMILY } from '@/lib/typography';
 
 export const metadata: Metadata = {
-  title: 'Uttily',
+  title: 'Passness',
   description: 'Plateforme B2B2C de location d\u2019équipements.',
 };
 
@@ -23,7 +23,7 @@ export default function RootLayout({
       localization={frFR}
       appearance={{
         variables: {
-          fontFamily: UTTILY_FONT_FAMILY,
+          fontFamily: PASSNESS_FONT_FAMILY,
           colorPrimary: 'var(--ut-color-primary)',
           colorText: 'var(--ut-color-ink-strong)',
           colorTextSecondary: 'var(--ut-color-ink-muted)',

@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
-import type { DbExecutor } from '@uttily/database';
-import { categories } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
+import { categories } from '@passness/database';
 import type { CategoryRecord, CreateCategoryInput, UpdateCategoryInput } from './types';
 import { isValidSlug } from '../identity/slug';
 import { AuthorizationError } from '../identity/permissions';

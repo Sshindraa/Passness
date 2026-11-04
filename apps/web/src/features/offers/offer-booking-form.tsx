@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import type { PublicOfferDetails } from '@uttily/core';
+import type { PublicOfferDetails } from '@passness/core';
 import { createBookingDraftAction } from '@/app/actions/bookings';
 import styles from './offer.module.css';
 

@@ -1,5 +1,5 @@
 import { and, eq, inArray, isNull, ne, sql } from 'drizzle-orm';
-import type { DatabaseTransaction } from '@uttily/database';
+import type { DatabaseTransaction } from '@passness/database';
 import {
   bookingItems,
   bookings,
@@ -8,7 +8,7 @@ import {
   inventoryItems,
   maintenanceCases,
   outboxEvents,
-} from '@uttily/database';
+} from '@passness/database';
 import { writeAuditEntry } from '../identity/audit';
 import { FulfillmentError } from './fulfillment-errors';
 

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Erreurs du module Compensation Execution (Phase 8, ADR-010 §13).
+ * @passness/core — Erreurs du module Compensation Execution (Phase 8, ADR-010 §13).
  *
  * Codes d'erreur fermés pour le moteur d'exécution des compensations.
  */

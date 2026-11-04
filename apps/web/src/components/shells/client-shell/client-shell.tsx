@@ -43,8 +43,8 @@ export function ClientShell({
         <div className={styles.footerInner}>
           <p className={styles.footerCopyright}>
             {fr
-              ? '© 2026, Uttily | Tous droits réservés.'
-              : '© 2026, Uttily | All Rights Reserved.'}
+              ? '© 2026, Passness | Tous droits réservés.'
+              : '© 2026, Passness | All Rights Reserved.'}
           </p>
           <nav aria-label={fr ? 'Liens légaux' : 'Legal links'} className={styles.footerLegalLinks}>
             <Link href={`/${locale}/terms`} className={styles.footerLegalLink}>

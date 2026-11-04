@@ -1,8 +1,8 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import type { ActionResult } from '@uttily/contracts';
-import { Button } from '@uttily/ui';
+import type { ActionResult } from '@passness/contracts';
+import { Button } from '@passness/ui';
 import { duplicateProductAction } from '@/app/actions/products';
 
 type DuplicateResult = ActionResult<{ equipmentId: string }>;

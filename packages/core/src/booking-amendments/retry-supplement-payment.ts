@@ -14,7 +14,7 @@ import {
   lockOrganization,
   type DatabaseClient,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 
 const ACTIVE_AMENDMENT_STATUSES = ['HOLD_PENDING', 'READY_TO_APPLY'] as const;
 const NON_TERMINAL_ATTEMPT_STATUSES = [

@@ -6,13 +6,13 @@ import {
   runMigrations,
   assertLocalhost,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import { createSupplementBookingAmendment } from './create-supplement-booking-amendment';
 import { SupplementAmendmentError } from './types-amendment';
 import type { AuthenticatedUser } from '../identity/types';
 
 const sourceUrl = process.env.DATABASE_URL;
-const testDatabase = 'uttily_test_g7m_c1';
+const testDatabase = 'passness_test_g7m_c1';
 const shouldSkip = !sourceUrl && process.env.CI !== '1' && process.env.CI !== 'true';
 
 let db: DatabaseClient | null = null;

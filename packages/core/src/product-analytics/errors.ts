@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-A).
+ * @passness/core — Module Product Analytics (G7H-A).
  *
  * Erreur métier typée pour les opérations analytics. Les codes sont
  * spécifiques au domaine product-analytics et distincts des autres modules.

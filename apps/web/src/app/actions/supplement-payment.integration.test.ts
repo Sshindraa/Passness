@@ -5,11 +5,11 @@ import {
   createDatabase,
   runMigrations,
   type DatabaseClient,
-} from '@uttily/database';
-import { FakeStripeAdapter } from '@uttily/core';
+} from '@passness/database';
+import { FakeStripeAdapter } from '@passness/core';
 
 const sourceUrl = process.env.DATABASE_URL;
-const testDatabase = 'uttily_test_g7m_c5c_act';
+const testDatabase = 'passness_test_g7m_c5c_act';
 const shouldSkip = !sourceUrl && process.env.CI !== '1' && process.env.CI !== 'true';
 
 let db: DatabaseClient | null = null;

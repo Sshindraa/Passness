@@ -41,7 +41,7 @@ test('the eight 20-B runbooks are present and operationally structured', async (
 
 test('the restore drill is fail-closed and uses dump/restore tooling', async () => {
   const content = await read('packages/database/scripts/restore-drill.mjs');
-  assert.match(content, /UTTILY_RECOVERY_DRILL/);
+  assert.match(content, /PASSNESS_RECOVERY_DRILL/);
   assert.match(content, /NODE_ENV.*production/);
   assert.match(content, /pg_dump/);
   assert.match(content, /pg_restore/);

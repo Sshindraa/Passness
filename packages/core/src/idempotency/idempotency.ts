@@ -1,6 +1,6 @@
 import { and, eq, sql } from 'drizzle-orm';
-import type { DatabaseClient, DatabaseTransaction } from '@uttily/database';
-import { idempotencyRecords } from '@uttily/database';
+import type { DatabaseClient, DatabaseTransaction } from '@passness/database';
+import { idempotencyRecords } from '@passness/database';
 import { IdempotencyError } from './errors';
 import {
   toRow,
@@ -10,7 +10,7 @@ import {
 } from './types';
 
 /**
- * @uttily/core — Idempotency protocol (ADR-009 section 11b).
+ * @passness/core — Idempotency protocol (ADR-009 section 11b).
  *
  * Étapes du protocole d'exécution :
  * - Étape 1 (reserveKey) : réserver et committer la clé en PENDING (transaction séparée).

@@ -34,7 +34,7 @@ import {
   privacyRequests,
   privacyProbatorySeals,
   auditLog,
-} from '@uttily/database';
+} from '@passness/database';
 import { eraseUserAccount, checkUserErasureEligibility, UserErasureError } from '../privacy';
 import { executeErasurePrivacyRequest } from '../support/privacy';
 import { provisionUserFromOidc } from '../identity/provisioning';

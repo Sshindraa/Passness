@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getMerchantFinanceOverview, exportFinancesCsv } from '@uttily/core';
+import { getMerchantFinanceOverview, exportFinancesCsv } from '@passness/core';
 import { requireFinancialViewerOf } from '@/lib/finances-auth';
 
 export async function GET(
@@ -13,7 +13,7 @@ export async function GET(
     const overview = await getMerchantFinanceOverview(db, organizationId);
     const csvContent = exportFinancesCsv(overview);
 
-    const filename = `uttily-finances-${overview.period.label.toLowerCase().replace(/\s+/g, '-')}.csv`;
+    const filename = `passness-finances-${overview.period.label.toLowerCase().replace(/\s+/g, '-')}.csv`;
 
     return new NextResponse(csvContent, {
       status: 200,

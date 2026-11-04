@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 export const LOCAL_DATABASE_URL = 'postgresql://uttily:uttily@127.0.0.1:5432/uttily';
 
 // Valeur de signature dev/test uniquement : non secrète et interdite en staging/production.
-export const LOCAL_DEV_PUBLIC_SEARCH_CURSOR_SECRET = 'uttily-local-dev-public-search-cursor-v1';
+export const LOCAL_DEV_PUBLIC_SEARCH_CURSOR_SECRET = 'passness-local-dev-public-search-cursor-v1';
 export const LOCAL_PUBLIC_APP_URL = 'http://localhost:3000';
 
 const LOCAL_DATABASE_HOSTNAMES = new Set(['localhost', '127.0.0.1', '::1', '[::1]']);
@@ -136,7 +136,7 @@ export function createLocalEnvironment(baseEnvironment = process.env) {
   const childEnvironment = {
     ...sanitizedBaseEnvironment,
     NODE_ENV: 'development',
-    UTTILY_LOCAL_DEV: '1',
+    PASSNESS_LOCAL_DEV: '1',
     DATABASE_URL: LOCAL_DATABASE_URL,
     DATABASE_DIRECT_URL: LOCAL_DATABASE_URL,
     STRIPE_ENVIRONMENT: 'TEST',
@@ -722,9 +722,9 @@ async function waitForPostgres(compose, signal) {
           'postgres',
           'pg_isready',
           '-U',
-          'uttily',
+          'passness',
           '-d',
-          'uttily',
+          'passness',
         ],
         {
           cwd: REPOSITORY_ROOT,
@@ -956,7 +956,7 @@ export async function runDev(args = process.argv.slice(2)) {
     }
     console.log('dev:full: PostgreSQL local prêt.');
 
-    const migrations = await runCommand('pnpm', ['--filter', '@uttily/database', 'db:migrate'], {
+    const migrations = await runCommand('pnpm', ['--filter', '@passness/database', 'db:migrate'], {
       cwd: REPOSITORY_ROOT,
       env: localEnvironment,
       stdio: 'inherit',
@@ -972,7 +972,7 @@ export async function runDev(args = process.argv.slice(2)) {
     if (signal.aborted) return 0;
 
     if (options.seed) {
-      const seed = await runCommand('pnpm', ['--filter', '@uttily/database', 'db:seed:local'], {
+      const seed = await runCommand('pnpm', ['--filter', '@passness/database', 'db:seed:local'], {
         cwd: REPOSITORY_ROOT,
         env: localEnvironment,
         stdio: 'inherit',
@@ -993,7 +993,11 @@ export async function runDev(args = process.argv.slice(2)) {
       children.push(spawnManagedChild('pnpm', ['--filter', 'web', 'dev'], localEnvironment));
       if (!options.noWorker && !signal.aborted) {
         children.push(
-          spawnManagedChild('pnpm', ['--filter', '@uttily/worker', 'dev:local'], localEnvironment),
+          spawnManagedChild(
+            'pnpm',
+            ['--filter', '@passness/worker', 'dev:local'],
+            localEnvironment,
+          ),
         );
       }
     } catch {

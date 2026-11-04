@@ -2,8 +2,8 @@ import {
   getOperationalDeskBookings,
   getOperationalLocalCivilDate,
   listLocations,
-} from '@uttily/core';
-import type { OperationalDayDesk } from '@uttily/core';
+} from '@passness/core';
+import type { OperationalDayDesk } from '@passness/core';
 import { DeskView } from '@/features/operations';
 import { requireFulfillmentOperatorOf } from '@/lib/fulfillment-auth';
 

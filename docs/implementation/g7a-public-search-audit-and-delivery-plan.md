@@ -105,7 +105,7 @@ pour l'affichage. Une recherche valide sans résultat retourne `items: []` et
 
 La recherche géographique intelligente remplace le simple rayon fixe : la
 destination résolue fournit un centre et idéalement une bounding box/viewport ;
-Uttily recherche d'abord dans la zone correspondant à la destination ; si les
+Passness recherche d'abord dans la zone correspondant à la destination ; si les
 résultats exacts sont insuffisants, la zone peut être élargie progressivement ; les
 résultats élargis ne sont jamais mélangés silencieusement aux résultats exacts ; ils
 apparaissent dans une section explicite. La carte est déplaçable et zoomable ; un
@@ -186,11 +186,11 @@ ou catégorie publique autorisée, `sort`, `locale`, `environment` et
 `occurredAt`.
 
 Sont interdits : aucun texte libre brut de recherche ; aucune adresse client ;
-aucune IP dans le ledger Uttily ; aucun GPS brut ; aucun fingerprint ; aucun
+aucune IP dans le ledger Passness ; aucun GPS brut ; aucun fingerprint ; aucun
 email ; IP, email, GPS brut, secret cookie, fingerprint, payment/Stripe,
 SKU/serial interne, notes et descriptions. Le fournisseur de géocodage peut
 traiter des données techniques selon sa propre politique, indépendamment du
-ledger analytics Uttily. En développement, pas de provider payant
+ledger analytics Passness. En développement, pas de provider payant
 et analytics désactivées ou synthétiques admises. La collecte production ne peut pas
 commencer avant validation privacy/juridique ; le consentement, la rétention et
 l'agrégation bloquent cette seule activation G7H, pas G7C–G7G.

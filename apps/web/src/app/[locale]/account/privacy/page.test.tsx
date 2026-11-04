@@ -27,8 +27,8 @@ vi.mock('@clerk/nextjs', () => ({
   }),
 }));
 
-vi.mock('@uttily/core', async () => {
-  const actual = await vi.importActual<Record<string, unknown>>('@uttily/core');
+vi.mock('@passness/core', async () => {
+  const actual = await vi.importActual<Record<string, unknown>>('@passness/core');
   return {
     ...actual,
     getUserPrivacyRequests: getUserPrivacyRequestsMock,

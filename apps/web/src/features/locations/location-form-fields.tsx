@@ -1,4 +1,4 @@
-import type { LocationRecord, OpeningHourInput } from '@uttily/core';
+import type { LocationRecord, OpeningHourInput } from '@passness/core';
 import { LOCATION_HOUR_SLOTS, LOCATION_WEEKDAYS, toTimeInputValue } from './location-form';
 
 interface LocationFormFieldsProps {

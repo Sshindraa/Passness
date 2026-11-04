@@ -12,8 +12,8 @@ import type {
   RankedPackCandidate,
   SolvedPackCandidate,
   SolvedPackAlternatives,
-} from '@uttily/core';
-import { Icon } from '@uttily/ui';
+} from '@passness/core';
+import { Icon } from '@passness/ui';
 import type { PublicUiLocale } from '@/lib/public-search';
 import { FloatingViewToggle } from './components/floating-view-toggle';
 import { PackSolutionCard } from './components/pack-solution-card';

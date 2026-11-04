@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
 
 export type OperationalHealthStatus = 'OK' | 'À surveiller' | 'Action requise';
 

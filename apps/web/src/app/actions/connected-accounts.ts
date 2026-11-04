@@ -17,7 +17,7 @@ import {
   type CreateConnectedAccountInput,
   type CreateOnboardingLinkInput,
   type CreateAccountSessionInput,
-} from '@uttily/core';
+} from '@passness/core';
 
 /**
  * Retourne l'état de readiness du compte connecté Stripe pour l'organisation.

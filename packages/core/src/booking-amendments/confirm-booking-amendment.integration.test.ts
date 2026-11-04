@@ -5,7 +5,7 @@ import {
   createDatabase,
   runMigrations,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import { confirmBookingAmendment } from './confirm-booking-amendment';
 import { getEffectiveBooking } from './get-effective-booking';
 import { computeAmendmentFingerprint } from './execute-booking-amendment-internal';
@@ -13,7 +13,7 @@ import type { AuthenticatedUser } from '../identity/types';
 import type { ConfirmBookingAmendmentCommand } from './types-amendment';
 
 const sourceUrl = process.env.DATABASE_URL;
-const testDatabase = `uttily_test_c5b_conf_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+const testDatabase = `passness_test_c5b_conf_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 const shouldSkip = !sourceUrl && process.env.CI !== '1' && process.env.CI !== 'true';
 
 describe.skipIf(shouldSkip)(

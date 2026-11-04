@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Payment Reconciliation (Phase 7A, ADR-010 §12).
+ * @passness/core — Module Payment Reconciliation (Phase 7A, ADR-010 §12).
  *
  * Moteur de réconciliation des paiements non-terminaux. Réconcilie les
  * tentatives dont l'échéance de réconciliation est atteinte en interrogeant

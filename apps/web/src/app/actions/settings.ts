@@ -11,7 +11,7 @@ import {
   updateOrganizationLegalSettings,
   type CancellationPolicyCode,
   type OrganizationLegalInput,
-} from '@uttily/core';
+} from '@passness/core';
 
 export async function updateCompanySettingsAction(
   organizationId: string,

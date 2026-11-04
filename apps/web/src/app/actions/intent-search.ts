@@ -1,18 +1,18 @@
 'use server';
 
-import type { ActionResult } from '@uttily/contracts';
+import type { ActionResult } from '@passness/contracts';
 import {
   OpenRouterIntentCompilerProvider,
   FakeIntentCompilerProvider,
   type IntentProposal,
-} from '@uttily/intelligence';
+} from '@passness/intelligence';
 import { loadHomeSearchOptions } from './home-search-options';
 
 /**
  * Server Action de compilation d'intention de recherche en langage naturel (P1).
  *
  * Conforme à l'ADR-008 (validation manuelle, aucun Zod aux frontières HTTP)
- * et à l'ADR-040 (délégation du traitement NLP à @uttily/intelligence).
+ * et à l'ADR-040 (délégation du traitement NLP à @passness/intelligence).
  */
 export async function compileSearchIntentAction(
   rawQuery: string,

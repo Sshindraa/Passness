@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -938,8 +938,8 @@ describe.skipIf(shouldSkipIntegrationTests())(
         CREATE FUNCTION temp_inject_overlapping_block()
         RETURNS TRIGGER AS $$
         BEGIN
-          IF current_setting('uttily.test.conflict_injected', true) IS DISTINCT FROM 'on' THEN
-            PERFORM set_config('uttily.test.conflict_injected', 'on', true);
+          IF current_setting('passness.test.conflict_injected', true) IS DISTINCT FROM 'on' THEN
+            PERFORM set_config('passness.test.conflict_injected', 'on', true);
             INSERT INTO inventory_blocks (
               organization_id, inventory_item_id, type, status,
               customer_start_at, customer_end_at, blocked_start_at, blocked_end_at, expires_at

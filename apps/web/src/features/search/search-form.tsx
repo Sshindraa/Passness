@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import type { PublicSearchCategoryOption, PublicSearchDestinationOption } from '@uttily/core';
+import type { PublicSearchCategoryOption, PublicSearchDestinationOption } from '@passness/core';
 import type { PublicSearchFormValues, PublicUiLocale } from '@/lib/public-search';
 import { getPublicCategoryLabel } from '@/lib/public-search-labels';
 import { DestinationCombobox } from './destination-combobox';

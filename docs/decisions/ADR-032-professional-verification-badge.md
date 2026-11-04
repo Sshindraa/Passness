@@ -14,7 +14,7 @@ lorsqu'un établissement ou un compte de paiement ne remplit plus les conditions
 
 ## Décision
 
-Uttily expose un read model serveur `getProfessionalVerification` avec trois
+Passness expose un read model serveur `getProfessionalVerification` avec trois
 statuts : `eligible`, `ineligible` et `pending`. Le statut n'est pas stocké dans
 une colonne mutable : il est recalculé à partir des faits transactionnels afin
 de ne jamais devenir obsolète.

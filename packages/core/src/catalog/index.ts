@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Catalog & Inventory (Lot 2A).
+ * @passness/core — Module Catalog & Inventory (Lot 2A).
  *
  * Catalogue (catégories globales, produits, variantes) et inventaire physique
  * (exemplaires, mouvements). Isolation multi-tenant garantie par PostgreSQL.

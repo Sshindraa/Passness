@@ -852,7 +852,7 @@ export function BikeSetupWizard({
             <h2 className={styles.stepTitle}>🧰 Combien d’exemplaires avez-vous en stock ?</h2>
             <p className={styles.stepSubtitle}>
               Indiquez le nombre d’exemplaires disponibles et leur lieu de retrait. Chaque
-              exemplaire sera suivi individuellement par Uttily.
+              exemplaire sera suivi individuellement par Passness.
             </p>
           </div>
 

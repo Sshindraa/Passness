@@ -74,7 +74,7 @@ const surfaces: ProSurface[] = [
   {
     name: 'Onboarding loueur',
     path: (organizationId) => `/dashboard/${organizationId}/onboarding`,
-    heading: /Créer ma boutique Uttily|Votre boutique Uttily est prête !/,
+    heading: /Créer ma boutique Passness|Votre boutique Passness est prête !/,
   },
   {
     name: 'Redirection Opérations',

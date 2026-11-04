@@ -1,20 +1,20 @@
 import { eq } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { users } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { users } from '@passness/database';
 import type { AuthenticatedUser } from './types';
 import { AccountDeletedError } from './types';
 
 /**
- * Provisioning d'un utilisateur Uttily depuis l'identité Clerk (ADR-006, ADR-039).
+ * Provisioning d'un utilisateur Passness depuis l'identité Clerk (ADR-006, ADR-039).
  *
- * À la première connexion authentifiée, Uttily crée un `users` avec
+ * À la première connexion authentifiée, Passness crée un `users` avec
  * oidc_subject + oidc_provider + email. Si l'utilisateur existe déjà
  * (par oidc_subject ou email), il est réutilisé.
  *
  * Si le compte a été supprimé / neutralisé (deletedAt !== null), la connexion
  * est strictement rejetée (fail-closed, ADR-039).
  *
- * Uttily reste la source de vérité des rôles et appartenances.
+ * Passness reste la source de vérité des rôles et appartenances.
  */
 export async function provisionUserFromOidc(
   db: DatabaseClient,

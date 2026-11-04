@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Idempotency (Lot 4).
+ * @passness/core — Module Idempotency (Lot 4).
  *
  * Persistance de l'idempotence via la table idempotency_records (ADR-009).
  * Calcul de l'empreinte SHA-256 canonique, réservation de clé PENDING,

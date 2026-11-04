@@ -99,11 +99,11 @@ toujours l'allocation réelle.
 
 ## Validation
 
-- `pnpm --filter @uttily/web test` : 193 tests réussis, 100 ignorés ;
+- `pnpm --filter @passness/web test` : 193 tests réussis, 100 ignorés ;
 - tests Core ciblés avec PostgreSQL réel : 83 tests réussis sur 4 fichiers,
   dont 35 tests d'intégration de recherche publique ;
 - `pnpm lint` et `pnpm typecheck` : réussis sur le monorepo ;
-- `pnpm --filter @uttily/web build` : build Next.js de production réussi ;
+- `pnpm --filter @passness/web build` : build Next.js de production réussi ;
 - contrôle des artefacts : MapLibre est présent dans les chunks statiques
   client et absent de `.next/server` ;
 - `git diff --check` : réussi.

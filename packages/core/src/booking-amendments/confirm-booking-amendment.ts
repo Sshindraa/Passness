@@ -1,5 +1,5 @@
 /**
- * @uttily/core — confirmBookingAmendment (G7M-C5-B, ADR-023 §3-9, §11-13, §15).
+ * @passness/core — confirmBookingAmendment (G7M-C5-B, ADR-023 §3-9, §11-13, §15).
  *
  * Orchestrateur canonique de confirmation de modification de réservation :
  * 1. Authentification et contrôle de membership strict (OWNER / ADMIN / MANAGER).
@@ -19,8 +19,8 @@
  */
 
 import { and, eq, inArray } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { idempotencyRecords } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { idempotencyRecords } from '@passness/database';
 import { lockKey } from '../idempotency/idempotency';
 import type { AuthenticatedUser } from '../identity/types';
 import { getMembership } from '../identity/memberships';

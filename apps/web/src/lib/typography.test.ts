@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { getEmbeddedFonts, PAYMENT_APPEARANCE, UTTILY_FONT_FAMILY } from './typography';
+import { getEmbeddedFonts, PAYMENT_APPEARANCE, PASSNESS_FONT_FAMILY } from './typography';
 
 describe('Sora typography integration', () => {
   it('ships the original local WOFF2 with its redistribution license', () => {
@@ -22,7 +22,7 @@ describe('Sora typography integration', () => {
       { cssSrc: 'http://localhost:3000/fonts/sora/sora.css' },
     ]);
     expect(getEmbeddedFonts()).toEqual([]);
-    expect(PAYMENT_APPEARANCE.variables?.fontFamily).toBe(UTTILY_FONT_FAMILY);
+    expect(PAYMENT_APPEARANCE.variables?.fontFamily).toBe(PASSNESS_FONT_FAMILY);
     expect(PAYMENT_APPEARANCE.variables?.fontSizeBase).toBe('16px');
     const config = readFileSync(new URL('../../next.config.mjs', import.meta.url), 'utf8');
     expect(config).toContain("source: '/fonts/sora/:path*'");
@@ -31,7 +31,7 @@ describe('Sora typography integration', () => {
 
   it('wires Sora to Clerk and both payment flows without changing payment options', () => {
     const layout = readFileSync(new URL('../app/layout.tsx', import.meta.url), 'utf8');
-    expect(layout).toContain('fontFamily: UTTILY_FONT_FAMILY');
+    expect(layout).toContain('fontFamily: PASSNESS_FONT_FAMILY');
     expect(layout).toContain('rel="preload"');
     for (const file of ['checkout-client.tsx', 'supplement-checkout-client.tsx']) {
       const source = readFileSync(new URL(`../features/checkout/${file}`, import.meta.url), 'utf8');
@@ -43,7 +43,7 @@ describe('Sora typography integration', () => {
       new URL('../features/finances/finances-hub.tsx', import.meta.url),
       'utf8',
     );
-    expect(connect).toContain('fontFamily: UTTILY_FONT_FAMILY');
+    expect(connect).toContain('fontFamily: PASSNESS_FONT_FAMILY');
     expect(connect).toContain('fonts: getEmbeddedFonts()');
   });
 });

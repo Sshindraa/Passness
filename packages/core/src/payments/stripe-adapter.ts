@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Adapter Stripe réel (Lot 5, ADR-010 §3, §5, §14).
+ * @passness/core — Adapter Stripe réel (Lot 5, ADR-010 §3, §5, §14).
  *
  * SEUL fichier du domaine qui importe le SDK Stripe. Implémente
  * PaymentProviderAdapter. La configuration est injectée ; aucune clé secrète

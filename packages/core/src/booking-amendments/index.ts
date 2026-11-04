@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module booking-amendments (G7M-B1, G7M-B2-A, G7M-C1, G7M-C2, G7M-C4-A).
+ * @passness/core — Module booking-amendments (G7M-B1, G7M-B2-A, G7M-C1, G7M-C2, G7M-C4-A).
  *
  * Projection canonique read-only de l'état effectif d'une réservation (G7M-B1)
  * et mutations transactionnelles d'amendement NEUTRAL/REFUND, ainsi que la

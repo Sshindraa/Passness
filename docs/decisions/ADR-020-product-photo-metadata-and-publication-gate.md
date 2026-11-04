@@ -6,7 +6,7 @@
 - **Phase** : 11 / Lot 7 — G7F-A1 : décision et conception ; G7F-A2 : implémentation
   (migration, schéma Drizzle, triggers, gate PostgreSQL, tests) ; G8B-1/G8B-3B4 :
   upload réel et Photo Coach hors périmètre initial
-- **Décideurs** : Porteur produit Uttily, engineering
+- **Décideurs** : Porteur produit Passness, engineering
 - **Relie à** : ADR-014, ADR-017, ADR-018 ;
   `docs/product/lot7-arbitrage.md` ;
   `docs/implementation/g7f-a2-implementation-plan.md`

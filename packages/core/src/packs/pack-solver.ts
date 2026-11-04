@@ -1,5 +1,5 @@
 import { and, eq, isNull, ne, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   inventoryItems,
   productVariants,
@@ -7,7 +7,7 @@ import {
   categories,
   locations,
   organizations,
-} from '@uttily/database';
+} from '@passness/database';
 import type { PackRequest } from './party-model';
 import { findAdmissibleAccessorySubstitutions } from './compatibility-graph';
 import { createAccessorySubstitutionRepair, type PackRepair } from './pack-repair';

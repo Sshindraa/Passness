@@ -111,7 +111,7 @@ describe('GET /api/dashboard/[orgId]/bookings/[bookingId]/documents/[documentId]
 
     expect(response.status).toBe(200);
     expect(response.headers.get('Content-Type')).toBe('application/pdf');
-    expect(response.headers.get('Content-Disposition')).toContain('uttily-receipt');
+    expect(response.headers.get('Content-Disposition')).toContain('passness-receipt');
     expect(response.headers.get('Cache-Control')).toContain('private');
   });
 });

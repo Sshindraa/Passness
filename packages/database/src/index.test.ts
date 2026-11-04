@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import * as schema from './schema';
 
-describe('@uttily/database schema', () => {
+describe('@passness/database schema', () => {
   it('expose les tables du Lot 1', () => {
     expect(schema.users).toBeDefined();
     expect(schema.organizations).toBeDefined();

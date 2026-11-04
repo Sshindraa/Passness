@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'integration PostgreSQL G7P-B2-C.
+ * @passness/core — Tests d'integration PostgreSQL G7P-B2-C.
  *
  * 22 tests obligatoires couvrant la copie exacte du snapshot flexible
  * (booking_drafts -> bookings, booking_draft_lines -> booking_lines)
@@ -12,7 +12,7 @@ import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -404,7 +404,7 @@ function makeFinancialTermsConfig(connectedAccountId = 'acct_test_123'): Financi
       status: 'NOT_APPLICABLE',
       amountMinor: null,
       rateBps: null,
-      invoiceIssuer: 'Uttily',
+      invoiceIssuer: 'Passness',
     },
     commission: {
       version: 'v1',
@@ -1832,7 +1832,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
           status: 'APPLIED',
           amountMinor: 200,
           rateBps: 1000,
-          invoiceIssuer: 'Uttily',
+          invoiceIssuer: 'Passness',
         },
         commission: {
           version: 'v1',

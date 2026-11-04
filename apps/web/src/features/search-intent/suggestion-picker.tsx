@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useState } from 'react';
-import { Button, Icon, Input } from '@uttily/ui';
+import { Button, Icon, Input } from '@passness/ui';
 import styles from './search-intent.module.css';
 
 export interface Suggestion {

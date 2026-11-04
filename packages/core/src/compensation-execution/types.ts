@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Types du module Compensation Execution (Phase 8, ADR-010 §13).
+ * @passness/core — Types du module Compensation Execution (Phase 8, ADR-010 §13).
  *
  * Le worker d'exécution consomme les événements `PAYMENT_COMPENSATION_REQUESTED`
  * de l'outbox, appelle Stripe `createRefund` hors transaction, et persiste le
@@ -7,7 +7,7 @@
  * jamais déclaré par le worker — c'est le webhook qui le projette.
  */
 
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { PaymentProviderAdapter, StripeEnvironment } from '../payments/types';
 
 /** Dépendances injectées pour le moteur d'exécution des compensations. */

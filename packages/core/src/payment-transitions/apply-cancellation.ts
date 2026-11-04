@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Annulation atomique source-agnostique (Phase 7A, ADR-010 §12).
+ * @passness/core — Annulation atomique source-agnostique (Phase 7A, ADR-010 §12).
  *
  * Contient les validations et transitions d'annulation (draft CANCELLED,
  * holds RELEASED, allocations RELEASED, payment/attempt CANCELLED) partagées
@@ -17,7 +17,7 @@ import {
   paymentAttempts,
   payments,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import type { PaymentIntentEventData, ResolvedAttempt } from '../webhook-handler/types';
 import { validateWebhookAuthority } from '../webhook-handler/validate-authority';
 import { projectAttemptStatus } from '../webhook-handler/project-status';

@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach, vi } from 'vitest';
 import { createHash } from 'node:crypto';
 import postgres from 'postgres';
-import { createDatabase, runMigrations, assertLocalhost } from '@uttily/database';
-import type { DatabaseClient } from '@uttily/database';
-import { createBookingDraftWithHold, initiatePayment } from '@uttily/core';
+import { createDatabase, runMigrations, assertLocalhost } from '@passness/database';
+import type { DatabaseClient } from '@passness/database';
+import { createBookingDraftWithHold, initiatePayment } from '@passness/core';
 import type {
   CreateBookingDraftResult,
   CreateBookingDraftSuccess,
@@ -27,7 +27,7 @@ import type {
   CreateOnboardingLinkParams,
   OnboardingLinkResult,
   AccountCapabilities,
-} from '@uttily/core';
+} from '@passness/core';
 import { sql } from 'drizzle-orm';
 
 // ---------------------------------------------------------------------------
@@ -63,7 +63,7 @@ const { GET } = await import('./route');
 
 // ---------------------------------------------------------------------------
 // Provider fake minimal pour les tests (FakeStripeAdapter n'est pas exporté
-// depuis @uttily/core). Implémente PaymentProviderAdapter avec un store
+// depuis @passness/core). Implémente PaymentProviderAdapter avec un store
 // en mémoire des PaymentIntents.
 // ---------------------------------------------------------------------------
 
@@ -160,7 +160,7 @@ class TestStripeProvider implements PaymentProviderAdapter {
 // ---------------------------------------------------------------------------
 
 const isCi = process.env.CI === '1' || process.env.CI === 'true';
-const TEST_DB_NAME = 'uttily_test_cron_reconcile';
+const TEST_DB_NAME = 'passness_test_cron_reconcile';
 
 /**
  * Détermine si les tests d'intégration PostgreSQL doivent être skippés.
@@ -403,7 +403,7 @@ function makeFinancialTermsConfig(connectedAccountId = 'acct_test_123'): Financi
       status: 'NOT_APPLICABLE',
       amountMinor: null,
       rateBps: null,
-      invoiceIssuer: 'Uttily',
+      invoiceIssuer: 'Passness',
     },
     commission: {
       version: 'v1',

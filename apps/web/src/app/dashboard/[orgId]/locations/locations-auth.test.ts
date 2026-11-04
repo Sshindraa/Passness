@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { requireMembership, LOCATION_MANAGERS, type MembershipRecord } from '@uttily/core';
+import { requireMembership, LOCATION_MANAGERS, type MembershipRecord } from '@passness/core';
 
 const PAGE_PATH = join(__dirname, 'page.tsx');
 const FEATURE_PATH = join(__dirname, '../../../../features/locations/locations-list-view.tsx');

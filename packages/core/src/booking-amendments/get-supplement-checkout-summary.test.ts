@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
-import { bookingAmendments, amendmentPayments, amendmentPaymentAttempts } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { bookingAmendments, amendmentPayments, amendmentPaymentAttempts } from '@passness/database';
 import { getSupplementCheckoutSummary } from './get-supplement-checkout-summary';
 
 describe('getSupplementCheckoutSummary — Unit Tests (G7M-C5-C)', () => {

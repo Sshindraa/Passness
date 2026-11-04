@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Tests du point d'entrée (G5F, G5H-C2C-B3).
+ * @passness/worker — Tests du point d'entrée (G5F, G5H-C2C-B3).
  *
  * Ces tests couvrent :
  * - la validation de configuration (variables manquantes, invalides, valides) ;
@@ -13,7 +13,7 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   WorkerConfigurationError,
   createWorkerDependenciesFromEnv,
@@ -24,7 +24,7 @@ import {
   type WorkerResourceFactories,
   type SignalSource,
 } from './index';
-import { executeDocumentPipeline, executeTransactionalEmailPipeline } from '@uttily/core';
+import { executeDocumentPipeline, executeTransactionalEmailPipeline } from '@passness/core';
 import { PdfLibDocumentRenderer } from './adapters/pdf-lib-document-renderer.js';
 import { R2ObjectStorage } from './adapters/r2-object-storage.js';
 import { ResendTransactionalEmailSender } from './adapters/resend-transactional-email-sender.js';
@@ -302,7 +302,7 @@ function createMockRuntimeWithThrowingR2(): {
 // Tests
 // ─────────────────────────────────────────────────────────────────────────────
 
-describe('@uttily/worker — index', () => {
+describe('@passness/worker — index', () => {
   let savedEnv: Record<string, string | undefined>;
 
   beforeEach(() => {

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Public Search (G7E-B).
+ * @passness/core — Module Public Search (G7E-B).
  *
  * Use case : searchPublicOffers(db, input).
  *
@@ -88,7 +88,7 @@ import {
   multiDayDiscountTiers,
   pricingPlanTranslations,
   pricingPlanWindows,
-} from '@uttily/database';
+} from '@passness/database';
 import type {
   Candidate,
   PricingContext,

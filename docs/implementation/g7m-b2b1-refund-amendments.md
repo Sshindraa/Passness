@@ -16,7 +16,7 @@ Statut : **G7M-B2-B1 livré ; moteur Core G7M-B2-B2A livré et validé dans
 `docs/implementation/g7m-b2b2a-refund-execution.md` ; wiring route/cron
 G7M-B2-B2B livré dans `docs/implementation/g7m-b2b2b-refund-cron.md`**.
 
-## API Publique `@uttily/core`
+## API Publique `@passness/core`
 
 ```typescript
 export async function createRefundBookingAmendment(
@@ -49,7 +49,7 @@ Extrait dans `packages/core/src/booking-amendments/execute-booking-amendment-int
 - Mode classification fermé : `'NEUTRAL'` | `'REFUND'`.
 - Ordre de verrouillage strict pour prévenir tout deadlock : `bookings` `FOR UPDATE` par `bookingId`, puis `inventory_blocks` par `id` croissant `FOR UPDATE`.
 
-## Contrat Outbox `REFUND_REQUESTED.v1` (`@uttily/contracts`)
+## Contrat Outbox `REFUND_REQUESTED.v1` (`@passness/contracts`)
 
 Fichier : `packages/contracts/src/refund-requested-event.ts`
 - `aggregateType`: `'REFUND'`
@@ -89,5 +89,5 @@ Après commit et avant traitement provider (statut `PENDING`) :
 - **Unit booking-amendments** : 2 fichiers (`create-neutral-booking-amendment.test.ts`, `create-refund-booking-amendment.test.ts`), 50 tests (passés).
 - **PostgreSQL booking-amendments** : 2 fichiers (`create-neutral-booking-amendment.integration.test.ts`, `create-refund-booking-amendment.integration.test.ts`), 23 tests, 0 skip (passés).
 - **Module booking-amendments** : 6 fichiers, 153 tests, 0 skip (passés).
-- **Suite Core complète** : la commande `DATABASE_URL=postgres://uttily:uttily@127.0.0.1:5432/uttily pnpm --filter @uttily/core exec vitest run --no-file-parallelism` s'est terminée avec exit 0. Le résumé numérique terminal a été tronqué par le runner et n'est donc pas affirmé ici ; la CI fournira la preuve terminale complète après push.
+- **Suite Core complète** : la commande `DATABASE_URL=postgres://uttily:uttily@127.0.0.1:5432/uttily pnpm --filter @passness/core exec vitest run --no-file-parallelism` s'est terminée avec exit 0. Le résumé numérique terminal a été tronqué par le runner et n'est donc pas affirmé ici ; la CI fournira la preuve terminale complète après push.
 - **Qualité & Gates** : `pnpm lint`, `pnpm typecheck`, `pnpm format:check` et `git diff --check` sont 100% conformes.

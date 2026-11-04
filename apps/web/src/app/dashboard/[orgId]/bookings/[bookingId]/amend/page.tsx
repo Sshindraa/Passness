@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { and, eq, inArray, isNull } from 'drizzle-orm';
-import { bookingAmendments, locations, productVariants, products } from '@uttily/database';
-import { getEffectiveBooking, getEffectivePricingIntent, type BookingStatus } from '@uttily/core';
+import { bookingAmendments, locations, productVariants, products } from '@passness/database';
+import { getEffectiveBooking, getEffectivePricingIntent, type BookingStatus } from '@passness/core';
 import { requireAmendmentManagerOf } from '@/lib/amendment-auth';
 import { isValidUuid } from '@/lib/operations-helpers';
 import {

@@ -4,8 +4,8 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import * as auth from '@/lib/auth';
-import * as core from '@uttily/core';
-import type { PublicOfferDetails } from '@uttily/core';
+import * as core from '@passness/core';
+import type { PublicOfferDetails } from '@passness/core';
 import PublicOfferPage from './page';
 import {
   OfferBookingForm,
@@ -29,8 +29,8 @@ vi.mock('@clerk/nextjs', () => ({
   UserButton: () => null,
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     getPublicOfferDetails: vi.fn(),

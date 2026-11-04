@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import Link from 'next/link';
-import { Icon, LinkButton, PageHeader } from '@uttily/ui';
+import { Icon, LinkButton, PageHeader } from '@passness/ui';
 import { formatDateTimeInTimeZone } from '@/lib/operations-helpers';
 import { OnboardingReadinessCard } from './components/onboarding-readiness-card';
 import { ProfessionalVerificationCard } from './components/professional-verification-card';

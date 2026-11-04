@@ -1,7 +1,7 @@
 'use client';
 
 import { type ReactElement, useEffect, useState } from 'react';
-import type { PhotoSlotDefinition } from '@uttily/contracts';
+import type { PhotoSlotDefinition } from '@passness/contracts';
 import styles from './PhotoChecklist.module.css';
 
 export interface PhotoChecklistProps {

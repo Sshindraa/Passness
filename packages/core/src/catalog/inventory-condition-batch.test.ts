@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { updateInventoryItemsConditionBatch } from './inventory-condition-batch';
 
 describe('mise à jour groupée de l’état physique — validation', () => {

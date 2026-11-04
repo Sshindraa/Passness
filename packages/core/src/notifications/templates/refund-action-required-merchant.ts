@@ -37,7 +37,7 @@ export function renderRefundActionRequiredMerchant(
       }
     </div>
 
-    <p>Veuillez vous connecter à votre espace d'administration Uttily / Finances pour régulariser la situation manuellement ou contacter le support.</p>
+    <p>Veuillez vous connecter à votre espace d'administration Passness / Finances pour régulariser la situation manuellement ou contacter le support.</p>
   `;
 
   const text = `Action requise sur un remboursement ⚠️
@@ -47,9 +47,9 @@ Un remboursement d'un montant de ${formatEur(data.amountMinor)} pour votre organ
 Montant concerné : ${formatEur(data.amountMinor)}
 Réservation : ${data.bookingId}
 ${data.failureCode ? `Code d'erreur : ${data.failureCode}\n` : ''}
-Veuillez vous connecter à votre espace d'administration Uttily / Finances pour régulariser la situation.
+Veuillez vous connecter à votre espace d'administration Passness / Finances pour régulariser la situation.
 
-L'équipe Uttily
+L'équipe Passness
 `;
 
   return {

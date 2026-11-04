@@ -7,7 +7,7 @@
  */
 
 import { and, asc, eq, inArray, isNull, sql } from 'drizzle-orm';
-import type { DatabaseClient, DatabaseTransaction } from '@uttily/database';
+import type { DatabaseClient, DatabaseTransaction } from '@passness/database';
 import {
   amendmentPaymentAttempts,
   amendmentPayments,
@@ -21,13 +21,13 @@ import {
   organizationMemberships,
   outboxEvents,
   payments,
-} from '@uttily/database';
+} from '@passness/database';
 import {
   BOOKING_AMENDMENT_REQUESTED_AGGREGATE_TYPE,
   BOOKING_AMENDMENT_REQUESTED_EVENT_TYPE,
   BOOKING_AMENDMENT_REQUESTED_EVENT_VERSION,
-} from '@uttily/contracts';
-import { lockOrganization } from '@uttily/database';
+} from '@passness/contracts';
+import { lockOrganization } from '@passness/database';
 import { reserveKey, lockKey, completeKey, failKey } from '../idempotency/idempotency';
 import { AuthorizationError, LOCATION_MANAGERS, requireMembership } from '../identity/permissions';
 import { getMembership } from '../identity/memberships';

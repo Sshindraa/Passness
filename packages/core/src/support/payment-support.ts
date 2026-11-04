@@ -1,6 +1,6 @@
 import { and, desc, eq, inArray, or, sql } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
-import { bookings, organizations, paymentAttempts, payments, users } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
+import { bookings, organizations, paymentAttempts, payments, users } from '@passness/database';
 import type { PaymentSupportListItem } from './types';
 
 export interface ListPaymentsSupportOptions {

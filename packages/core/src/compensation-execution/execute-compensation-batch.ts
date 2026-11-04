@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Orchestrateur d'exécution des compensations par batch
+ * @passness/core — Orchestrateur d'exécution des compensations par batch
  * (Phase 8, ADR-010 §13).
  *
  * Orchestre l'exécution d'un batch d'événements de compensation :
@@ -23,7 +23,7 @@
  */
 
 import { sql } from 'drizzle-orm';
-import { type DatabaseClient } from '@uttily/database';
+import { type DatabaseClient } from '@passness/database';
 import { PaymentProviderError } from '../payments/errors';
 import { CompensationError } from './errors';
 import {

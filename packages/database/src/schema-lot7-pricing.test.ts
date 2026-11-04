@@ -35,7 +35,7 @@ import { runMigrations, assertLocalhost } from '../src/index';
  * skip si pas DATABASE_URL en local.
  */
 
-const TEST_DB_NAME = 'uttily_test_lot7_pricing';
+const TEST_DB_NAME = 'passness_test_lot7_pricing';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 
@@ -3633,7 +3633,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
 // ---------------------------------------------------------------------------
 // L. Upgrade 0031 → 0032 avec données préexistantes
 // ---------------------------------------------------------------------------
-const UPGRADE_TEST_DB = 'uttily_test_lot7_pricing_upgrade';
+const UPGRADE_TEST_DB = 'passness_test_lot7_pricing_upgrade';
 
 async function applyMigrationsUntilBefore0032(dbUrl: string): Promise<void> {
   const sql = postgres(dbUrl, { max: 1 });
@@ -3845,7 +3845,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Upgrade 0031 → 0032 avec donné
 // ---------------------------------------------------------------------------
 // M. Rollback transactionnel 0032
 // ---------------------------------------------------------------------------
-const ROLLBACK_TEST_DB = 'uttily_test_lot7_pricing_rollback';
+const ROLLBACK_TEST_DB = 'passness_test_lot7_pricing_rollback';
 
 describe.skipIf(shouldSkipIntegrationTests())('Rollback transactionnel 0032', () => {
   let rollbackTestUrl: string | null = null;

@@ -39,7 +39,7 @@ export function HomeHero({ locale }: { locale: 'fr' | 'en' }): React.ReactElemen
           <HomeSearch key={locale} locale={locale} middleSlot={heading} smartAssistantAfterSearch />
           <ul
             className={styles.trustSignals}
-            aria-label={fr ? 'Engagements Uttily' : 'Uttily commitments'}
+            aria-label={fr ? 'Engagements Passness' : 'Passness commitments'}
           >
             <li>
               <span aria-hidden="true">✓</span>

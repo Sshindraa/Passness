@@ -2,7 +2,7 @@ import type {
   MaintenanceDashboardSignal,
   OrganizationOnboardingReadiness,
   ProfessionalVerificationResult,
-} from '@uttily/core';
+} from '@passness/core';
 
 export interface DashboardTask {
   type: 'PICKUP' | 'RETURN';

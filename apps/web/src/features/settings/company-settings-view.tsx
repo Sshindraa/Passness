@@ -1,6 +1,6 @@
 import React from 'react';
-import { type OrganizationRecord, LEGAL_FORMS, getLegalFormLabel } from '@uttily/core';
-import { Badge, Button, Card, Field, Input } from '@uttily/ui';
+import { type OrganizationRecord, LEGAL_FORMS, getLegalFormLabel } from '@passness/core';
+import { Badge, Button, Card, Field, Input } from '@passness/ui';
 import styles from './company-settings.module.css';
 
 export interface CompanySettingsViewProps {

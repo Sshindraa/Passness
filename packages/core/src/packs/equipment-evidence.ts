@@ -1,4 +1,4 @@
-import type { EvidenceLevel, EquipmentAttributeEvidence } from '@uttily/contracts';
+import type { EvidenceLevel, EquipmentAttributeEvidence } from '@passness/contracts';
 import type { RequiredAccessoryType } from './party-model';
 
 /**
@@ -89,7 +89,7 @@ export function validateSafetyAttributeCompatibility(
   if (!currentLevel || currentLevel === 'AI_OBSERVED') {
     return {
       isCompatible: false,
-      reason: `L'attribut « ${attributeKey} » n'a été qu'observé par vision IA (AI_OBSERVED). Les règles de sécurité Uttily exigent une confirmation humaine formelle (HUMAN_CONFIRMED) ou une certification constructeur (SOURCE_VERIFIED) pour le transport d'enfants (${accessoryType}).`,
+      reason: `L'attribut « ${attributeKey} » n'a été qu'observé par vision IA (AI_OBSERVED). Les règles de sécurité Passness exigent une confirmation humaine formelle (HUMAN_CONFIRMED) ou une certification constructeur (SOURCE_VERIFIED) pour le transport d'enfants (${accessoryType}).`,
       effectiveEvidenceLevel: currentLevel || 'AI_OBSERVED',
     };
   }

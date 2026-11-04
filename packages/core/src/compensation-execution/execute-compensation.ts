@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Exécution d'une compensation individuelle (Phase 8, ADR-010 §13).
+ * @passness/core — Exécution d'une compensation individuelle (Phase 8, ADR-010 §13).
  *
  * Exécute une compensation revendiquée en trois phases :
  * 1. Transaction de chargement et vérification (vérification précoce du lease,
@@ -20,7 +20,7 @@
  */
 
 import { eq, sql } from 'drizzle-orm';
-import { refunds, payments, paymentAttempts } from '@uttily/database';
+import { refunds, payments, paymentAttempts } from '@passness/database';
 import type { StripeEnvironment } from '../payments/types';
 import { CompensationError } from './errors';
 import type { CompensationDependencies, ClaimedCompensation } from './types';

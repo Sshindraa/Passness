@@ -18,7 +18,7 @@
 
 ## Sources d'inspiration (non normatives)
 
-Les principes de transparence des prix, de politiques prédéfinies et de fuseau local s'inspirent d'Airbnb. Ces sources ne constituent ni une dépendance normative ni une justification juridique pour Uttily.
+Les principes de transparence des prix, de politiques prédéfinies et de fuseau local s'inspirent d'Airbnb. Ces sources ne constituent ni une dépendance normative ni une justification juridique pour Passness.
 
 - Prix total visible : https://news.airbnb.com/total-price-display-is-now-standard-globally/
 - Présentation des politiques d'annulation : https://www.airbnb.com/help/article/4052
@@ -30,7 +30,7 @@ Les principes de transparence des prix, de politiques prédéfinies et de fuseau
 
 ## Décision 1 — Politiques d'annulation prédéfinies
 
-**Décision** : Uttily propose trois politiques prédéfinies. La politique **Flexible** est la valeur par défaut du MVP.
+**Décision** : Passness propose trois politiques prédéfinies. La politique **Flexible** est la valeur par défaut du MVP.
 
 **Source** : La politique applicable est choisie au niveau de l'organisation (`organizations.default_cancellation_policy_code`), pas par variante. Valeur par défaut : `FLEXIBLE`. Choix parmi `FLEXIBLE | MODERATE | FIRM`. Les définitions des politiques (bornes, pourcentages, version) sont versionnées côté domaine. Au moment du brouillon, le snapshot copie `policy_code`, `policy_version` et le fuseau IANA du lieu (`timezone`). Aucune politique par variante au MVP.
 
@@ -113,7 +113,7 @@ historique.
 
 **Reporté** : Décomposition fiscale, calcul de TVA, commission appliquée (Lot 5).
 
-**Réserve juridique/finance** : Taxes, facturation et rôle légal d'Uttily restent OUVERT (Lot 5). La décomposition fiscale doit être résolue avant la confirmation.
+**Réserve juridique/finance** : Taxes, facturation et rôle légal d'Passness restent OUVERT (Lot 5). La décomposition fiscale doit être résolue avant la confirmation.
 
 ---
 

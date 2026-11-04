@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Fake déterministe en mémoire pour ObjectStorage (G5D, ADR-013 §5).
+ * @passness/core — Fake déterministe en mémoire pour ObjectStorage (G5D, ADR-013 §5).
  *
  * NE JAMAIS utiliser en production. Fake en mémoire pour tests uniquement.
  *

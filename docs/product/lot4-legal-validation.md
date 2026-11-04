@@ -9,13 +9,13 @@
 
 ## Contexte produit
 
-Uttily est une plateforme B2B2C de location d'équipements de plein air (paddle, kayak, vélo, etc.). Les loueurs sont des professionnels. Le client réserve en ligne, paie en ligne, et retire l'équipement dans l'établissement du loueur. Le pilote cible une destination européenne, devise EUR.
+Passness est une plateforme B2B2C de location d'équipements de plein air (paddle, kayak, vélo, etc.). Les loueurs sont des professionnels. Le client réserve en ligne, paie en ligne, et retire l'équipement dans l'établissement du loueur. Le pilote cible une destination européenne, devise EUR.
 
 La réservation passe par un brouillon, un hold temporaire de 10 minutes, puis un paiement. La confirmation de réservation intervient après le paiement (Lot 5). L'annulation peut survenir entre la confirmation et le retrait.
 
 ## Politiques d'annulation prédéfinies
 
-Uttily propose trois politiques prédéfinies. La politique **Flexible** est la valeur par défaut du MVP. Le loueur choisit la politique applicable au niveau de l'organisation (`organizations.default_cancellation_policy_code`). La valeur par défaut est `FLEXIBLE`. Aucune politique par variante au MVP (post-MVP : politique personnalisée par variante).
+Passness propose trois politiques prédéfinies. La politique **Flexible** est la valeur par défaut du MVP. Le loueur choisit la politique applicable au niveau de l'organisation (`organizations.default_cancellation_policy_code`). La valeur par défaut est `FLEXIBLE`. Aucune politique par variante au MVP (post-MVP : politique personnalisée par variante).
 
 ### Flexible (par défaut)
 

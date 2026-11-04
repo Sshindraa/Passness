@@ -175,7 +175,7 @@ async function queryExternal(provider, testCase) {
     const response = await fetch(providerUrl(provider, testCase.query), {
       headers: {
         Accept: 'application/json',
-        'User-Agent': 'Uttily-G8B-2B-development-benchmark/1.0',
+        'User-Agent': 'Passness-G8B-2B-development-benchmark/1.0',
       },
       signal: controller.signal,
     });

@@ -32,7 +32,7 @@ const DEFAULT_BASE_URL = 'https://openrouter.ai/api/v1';
 const DEFAULT_TIMEOUT_MS = 60000;
 const PROMPT_VERSION = 'p0-equipment-v1.1-openrouter';
 
-const SYSTEM_PROMPT = `Tu es l'Inspecteur Technique & Rédacteur d'Uttily, la plateforme professionnelle de location d'équipements outdoor.
+const SYSTEM_PROMPT = `Tu es l'Inspecteur Technique & Rédacteur d'Passness, la plateforme professionnelle de location d'équipements outdoor.
 Ton rôle est d'analyser la photo d'un équipement (vélo, kayak, ski, surf, paddle, etc.) et d'en extraire les données factuelles avec une rigueur absolue.
 
 RÈGLE CARDINALE D'ADR-041 : ABSTENTION > HALLUCINATION
@@ -115,8 +115,8 @@ export class OpenRouterEquipmentEnrichmentProvider implements EquipmentEnrichmen
 
     // Message contextuel utilisateur
     const userPromptText = input.contextHint
-      ? `Analyse cette image d'équipement outdoor pour préparer sa fiche location Uttily.\nContexte additionnel fourni par le loueur : "${input.contextHint}"`
-      : `Analyse cette image d'équipement outdoor pour préparer sa fiche location Uttily.`;
+      ? `Analyse cette image d'équipement outdoor pour préparer sa fiche location Passness.\nContexte additionnel fourni par le loueur : "${input.contextHint}"`
+      : `Analyse cette image d'équipement outdoor pour préparer sa fiche location Passness.`;
 
     contentParts.push({ type: 'text', text: userPromptText });
 
@@ -137,7 +137,7 @@ export class OpenRouterEquipmentEnrichmentProvider implements EquipmentEnrichmen
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'HTTP-Referer': 'https://uttily.com',
-          'X-Title': 'Uttily Equipment Intelligence',
+          'X-Title': 'Passness Equipment Intelligence',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

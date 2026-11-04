@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Fake déterministe de renderer de documents pour tests G5C (ADR-013).
+ * @passness/core — Fake déterministe de renderer de documents pour tests G5C (ADR-013).
  *
  * NE JAMAIS utiliser en production. Le rendu est un artefact technique
  * contenant le template key + le JSON canonique du snapshot. Aucun réseau,
@@ -44,7 +44,7 @@ export type FakeTemplateKey = (typeof FAKE_TEMPLATE_KEYS)[number];
  * parseDocumentRenderSnapshotV1 (validation récursive stricte).
  */
 export class FakeDeterministicDocumentRenderer implements DocumentRenderer {
-  readonly contentType = 'application/vnd.uttily.test-document+json';
+  readonly contentType = 'application/vnd.passness.test-document+json';
 
   async render(templateKey: string, snapshot: DocumentRenderSnapshotV1): Promise<RenderedDocument> {
     if (!FAKE_TEMPLATE_KEYS.includes(templateKey as FakeTemplateKey)) {

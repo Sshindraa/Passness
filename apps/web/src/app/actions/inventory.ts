@@ -26,9 +26,9 @@ import {
   type TransferInventoryItemsBatchResult,
   type UpdateInventoryItemsStatusBatchResult,
   type UpdateInventoryItemsConditionBatchResult,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
-import { MAX_BULK_INVENTORY_ITEMS } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
+import { MAX_BULK_INVENTORY_ITEMS } from '@passness/contracts';
 import { parseUpdateInventoryItem, type ParsedFailure } from './parsers';
 
 // ---------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-import { listPrivacyRequestsSupport } from '@uttily/core';
+import { listPrivacyRequestsSupport } from '@passness/core';
 import { PrivacySupportView } from '@/features/internal';
 import { requireSupportPlatformAdmin } from '@/lib/support-auth';
 

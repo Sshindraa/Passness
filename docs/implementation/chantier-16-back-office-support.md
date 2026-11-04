@@ -1,16 +1,16 @@
-# Chantier 16 — Back-office Uttily & Support V1
+# Chantier 16 — Back-office Passness & Support V1
 
 ## Contexte & Périmètre
 
-Le Chantier 16 met en place le **back-office interne Uttily V1** indispensable pour opérer, diagnostiquer et supporter un pilote réel sans jamais intervenir directement en base de données.
+Le Chantier 16 met en place le **back-office interne Passness V1** indispensable pour opérer, diagnostiquer et supporter un pilote réel sans jamais intervenir directement en base de données.
 
-Ce back-office est strictement réservé à l'équipe **Uttily** (`is_platform_admin = true`). Il ne s'agit ni d'une deuxième application métier complète, ni d'un éditeur générique de base de données.
+Ce back-office est strictement réservé à l'équipe **Passness** (`is_platform_admin = true`). Il ne s'agit ni d'une deuxième application métier complète, ni d'un éditeur générique de base de données.
 
 ---
 
 ## 1. Décisions d'Architecture
 
-- **ADR-028** : [`docs/decisions/ADR-028-back-office-uttily-and-support-v1.md`](../decisions/ADR-028-back-office-uttily-and-support-v1.md).
+- **ADR-028** : [`docs/decisions/ADR-028-back-office-passness-and-support-v1.md`](../decisions/ADR-028-back-office-passness-and-support-v1.md).
 - **Séparation des espaces** : Zone `/internal` isolée de l'espace pro `/dashboard`.
 - **Fail-closed** : Toute requête vers `/internal` ou les Server Actions support exige un compte utilisateur avec `is_platform_admin = true`.
 - **Zéro fuite de secrets** : Aucun jeton d'invitation ou secret n'est exposé.

@@ -65,44 +65,44 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - package: '@uttily/auth'
-            label: '@uttily/auth'
+          - package: '@passness/auth'
+            label: '@passness/auth'
             shard: ''
-          - package: '@uttily/contracts'
-            label: '@uttily/contracts'
+          - package: '@passness/contracts'
+            label: '@passness/contracts'
             shard: ''
-          - package: '@uttily/ui'
-            label: '@uttily/ui'
+          - package: '@passness/ui'
+            label: '@passness/ui'
             shard: ''
-          - package: '@uttily/database'
-            label: '@uttily/database'
+          - package: '@passness/database'
+            label: '@passness/database'
             shard: ''
-          - package: '@uttily/core'
-            label: '@uttily/core shard 1/6'
+          - package: '@passness/core'
+            label: '@passness/core shard 1/6'
             shard: '1/6'
-          - package: '@uttily/core'
-            label: '@uttily/core shard 2/6'
+          - package: '@passness/core'
+            label: '@passness/core shard 2/6'
             shard: '2/6'
-          - package: '@uttily/core'
-            label: '@uttily/core shard 3/6'
+          - package: '@passness/core'
+            label: '@passness/core shard 3/6'
             shard: '3/6'
-          - package: '@uttily/core'
-            label: '@uttily/core shard 4/6'
+          - package: '@passness/core'
+            label: '@passness/core shard 4/6'
             shard: '4/6'
-          - package: '@uttily/core'
-            label: '@uttily/core shard 5/6'
+          - package: '@passness/core'
+            label: '@passness/core shard 5/6'
             shard: '5/6'
-          - package: '@uttily/core'
-            label: '@uttily/core shard 6/6'
+          - package: '@passness/core'
+            label: '@passness/core shard 6/6'
             shard: '6/6'
-          - package: '@uttily/web'
-            label: '@uttily/web'
+          - package: '@passness/web'
+            label: '@passness/web'
             shard: ''
-          - package: '@uttily/worker'
-            label: '@uttily/worker'
+          - package: '@passness/worker'
+            label: '@passness/worker'
             shard: ''
-          - package: '@uttily/staging-cron'
-            label: '@uttily/staging-cron'
+          - package: '@passness/staging-cron'
+            label: '@passness/staging-cron'
             shard: ''
 
     services:
@@ -177,8 +177,8 @@ jobs:
       CLERK_PUBLISHABLE_KEY: ${{ secrets.CLERK_TEST_PUBLISHABLE_KEY }}
       CLERK_SECRET_KEY: ${{ secrets.CLERK_TEST_SECRET_KEY }}
       E2E_CLERK_USER_EMAIL: ${{ vars.E2E_CLERK_USER_EMAIL || secrets.E2E_CLERK_USER_EMAIL }}
-      PUBLIC_SEARCH_CURSOR_SECRET: uttily-ci-public-search-cursor-v1
-      UTTILY_BROWSER_E2E: '1'
+      PUBLIC_SEARCH_CURSOR_SECRET: passness-ci-public-search-cursor-v1
+      PASSNESS_BROWSER_E2E: '1'
 
     services:
       postgres:
@@ -227,7 +227,7 @@ jobs:
           NODE
 
       - name: Run migrations
-        run: pnpm --filter @uttily/database db:migrate
+        run: pnpm --filter @passness/database db:migrate
         env:
           DATABASE_URL: postgresql://uttily:uttily@localhost:5432/uttily
 
@@ -237,10 +237,10 @@ jobs:
           DATABASE_URL: postgresql://uttily:uttily@localhost:5432/uttily
 
       - name: Install Playwright Browsers with OS dependencies
-        run: pnpm --filter @uttily/web exec playwright install --with-deps chromium
+        run: pnpm --filter @passness/web exec playwright install --with-deps chromium
 
       - name: Run Playwright tests
-        run: pnpm --filter @uttily/web test:browser
+        run: pnpm --filter @passness/web test:browser
         env:
           DATABASE_URL: postgresql://uttily:uttily@localhost:5432/uttily
   verify:

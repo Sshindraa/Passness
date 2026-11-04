@@ -12,11 +12,11 @@ export async function generateMetadata({ params }: PrivacyPageProps): Promise<Me
   const fr = locale === 'fr';
   return {
     title: fr
-      ? 'Politique de Confidentialité et Données Personnelles · Uttily'
-      : 'Privacy Policy and Personal Data · Uttily',
+      ? 'Politique de Confidentialité et Données Personnelles · Passness'
+      : 'Privacy Policy and Personal Data · Passness',
     description: fr
-      ? 'Engagement d’Uttily en matière de protection de vos données personnelles et respect du RGPD.'
-      : 'Uttily’s commitment to personal data protection and GDPR compliance.',
+      ? 'Engagement d’Passness en matière de protection de vos données personnelles et respect du RGPD.'
+      : 'Passness’s commitment to personal data protection and GDPR compliance.',
   };
 }
 
@@ -46,7 +46,7 @@ export default async function PrivacyPage({
             <h2>1. Responsable de traitement</h2>
             <p>
               Le responsable du traitement des données personnelles collectées sur la plateforme est
-              la société <strong>Uttily SAS</strong>.
+              la société <strong>Passness SAS</strong>.
             </p>
             <p>
               Pour toute question relative à la gestion de vos données ou pour exercer vos droits,
@@ -79,7 +79,7 @@ export default async function PrivacyPage({
             </ul>
             <div className="callout">
               <p>
-                <strong>Sécurité bancaire (zéro stockage) :</strong> Uttily ne collecte ni ne
+                <strong>Sécurité bancaire (zéro stockage) :</strong> Passness ne collecte ni ne
                 conserve aucun numéro complet de carte bancaire, date d’expiration ou cryptogramme
                 visuel. Les transactions financières sont opérées directement par notre prestataire
                 certifié <strong>Stripe</strong> (PCI-DSS Niveau 1).
@@ -197,7 +197,7 @@ export default async function PrivacyPage({
             <h2>1. Data Controller</h2>
             <p>
               The data controller responsible for personal data processing on the platform is{' '}
-              <strong>Uttily SAS</strong>.
+              <strong>Passness SAS</strong>.
             </p>
             <p>
               For any inquiries regarding personal data processing or to exercise your rights, you
@@ -225,7 +225,7 @@ export default async function PrivacyPage({
             </ul>
             <div className="callout">
               <p>
-                <strong>Payment Security (Zero card storage):</strong> Uttily does not store or
+                <strong>Payment Security (Zero card storage):</strong> Passness does not store or
                 process full payment card details. All financial transactions are securely handled
                 by our PCI-DSS Level 1 certified partner, <strong>Stripe</strong>.
               </p>

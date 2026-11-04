@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Validation pure et fermée d'adresse email (G5E Round 2, ADR-013 §11).
+ * @passness/core — Validation pure et fermée d'adresse email (G5E Round 2, ADR-013 §11).
  *
  * Fonction PURE : aucune dépendance SQL, aucun effet de bord, aucune RegExp complexe.
  * Toutes les vérifications sont déterministes et reproductibles.

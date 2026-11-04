@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Type fermé et sérialisable pour le snapshot de rendu v1 (G5C, ADR-013).
+ * @passness/core — Type fermé et sérialisable pour le snapshot de rendu v1 (G5C, ADR-013).
  *
  * Toutes les dates sont en ISO 8601 UTC canonique (string, format
  * YYYY-MM-DDTHH:mm:ss.sssZ). Le timeZone IANA est conservé séparément. Les

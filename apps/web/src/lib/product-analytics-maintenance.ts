@@ -24,8 +24,8 @@ import {
   type AnalyticsEnvironment,
   type PurgeResult,
   type ResolvedAnalyticsEnvironment,
-} from '@uttily/core';
-import type { DatabaseClient } from '@uttily/database';
+} from '@passness/core';
+import type { DatabaseClient } from '@passness/database';
 
 /**
  * Environnements éligibles à l'agrégation de maintenance.

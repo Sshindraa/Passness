@@ -24,7 +24,7 @@ convertir les produits historiques qui utilisent `equipment`.
 
 ## Décision
 
-Uttily est une plateforme commerciale fermée autour de quatre univers :
+Passness est une plateforme commerciale fermée autour de quatre univers :
 
 1. Cycle ;
 2. Kayak, canoë et pagaie ;
@@ -33,7 +33,7 @@ Uttily est une plateforme commerciale fermée autour de quatre univers :
 
 Les catégories camping, outdoor technique, sports généralistes, outillage,
 jardin, événementiel, audiovisuel et construction sont explicitement hors
-périmètre. Uttily ne se présente pas comme une marketplace généraliste.
+périmètre. Passness ne se présente pas comme une marketplace généraliste.
 
 La taxonomie possède trois niveaux : univers, famille d'équipement,
 caractéristiques ou sous-types. Une caractéristique n'a jamais son propre slug
@@ -119,7 +119,7 @@ est appliqué. La migration 0052 ne convertit pas les produits historiques
 
 Le contrat prépare les modes `INCLUDED`, `MANDATORY`, `OPTIONAL_FREE`,
 `PAID_SUPPLEMENT` et `SEPARATELY_RENTABLE`. Ce dernier nécessite une
-autorisation explicite d'Uttily et du loueur. Les accessoires des quatre
+autorisation explicite d'Passness et du loueur. Les accessoires des quatre
 univers sont désactivés pour une publication autonome par défaut.
 
 Ces valeurs ne constituent pas encore un moteur de supplément, une règle de

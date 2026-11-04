@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { confirmBookingAmendment } from './confirm-booking-amendment';
 import * as memberships from '../identity/memberships';
 import * as previewModule from './preview-booking-amendment';

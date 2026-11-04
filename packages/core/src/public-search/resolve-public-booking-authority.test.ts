@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { resolvePublicBookingAuthority } from './resolve-public-booking-authority';
 
 describe('resolvePublicBookingAuthority — tests unitaires', () => {

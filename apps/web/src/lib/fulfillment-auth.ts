@@ -1,7 +1,7 @@
 import { getAuthenticatedUser } from './auth';
 import { getDb } from './db';
-import { getMembership, requireFulfillmentOperator, type AuthenticatedUser } from '@uttily/core';
-import type { DatabaseClient } from '@uttily/database';
+import { getMembership, requireFulfillmentOperator, type AuthenticatedUser } from '@passness/core';
+import type { DatabaseClient } from '@passness/database';
 
 /**
  * Helpers d'autorisation partagés pour le module Fulfillment (G4A).

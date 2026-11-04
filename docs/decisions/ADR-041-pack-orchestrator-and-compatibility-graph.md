@@ -2,43 +2,43 @@
 
 - **Statut :** Accepted
 - **Date :** 2026-09-07
-- **Relie à :** [ADR-001](ADR-001-monolithe-modulaire.md), [ADR-008](ADR-008-server-actions-contract.md), [ADR-009](ADR-009-booking-draft-pricing-idempotency-and-holds.md), [ADR-019](ADR-019-ai-native-global-rental-infrastructure.md), [ADR-035](ADR-035-closed-outdoor-equipment-taxonomy.md), [ADR-040](ADR-040-uttily-intelligence-architecture.md)
+- **Relie à :** [ADR-001](ADR-001-monolithe-modulaire.md), [ADR-008](ADR-008-server-actions-contract.md), [ADR-009](ADR-009-booking-draft-pricing-idempotency-and-holds.md), [ADR-019](ADR-019-ai-native-global-rental-infrastructure.md), [ADR-035](ADR-035-closed-outdoor-equipment-taxonomy.md), [ADR-040](ADR-040-passness-intelligence-architecture.md)
 
 ---
 
 ## 1. Contexte & Problématique
 
-Le moteur de recherche public d'Uttily opère historiquement sur des offres unitaires (`searchPublicOffers`) : un utilisateur recherche une famille d'équipement (ex. vélo), sélectionne une offre, puis configure une variante isolée.
+Le moteur de recherche public d'Passness opère historiquement sur des offres unitaires (`searchPublicOffers`) : un utilisateur recherche une famille d'équipement (ex. vélo), sélectionne une offre, puis configure une variante isolée.
 
 Dans la pratique de la location de loisir et d'aventure, la majorité des demandes émane de **groupes ou de familles** exprimant un projet d'activité global (ex. *« 2 adultes et 1 enfant de 6 ans, tour du lac en vélos électriques ce samedi »*). 
 
 Cette réalité se heurte à deux limites majeures :
 1. **La fragmentation des recherches** : Le locataire doit effectuer plusieurs recherches manuelles indépendantes pour trouver simultanément 2 vélos adultes, un dispositif de transport d'enfant et des casques compatibles.
-2. **L'invariant du panier mono-loueur** : Pour des raisons de responsabilité juridique, de logistique de retrait et d'encaissement Stripe Connect, une réservation Uttily ne peut contenir que les produits d'une **seule et même organisation** de loueur professionnel.
+2. **L'invariant du panier mono-loueur** : Pour des raisons de responsabilité juridique, de logistique de retrait et d'encaissement Stripe Connect, une réservation Passness ne peut contenir que les produits d'une **seule et même organisation** de loueur professionnel.
 
 Plutôt que de traiter le panier mono-loueur comme une contrainte technique limitante, la présente décision en fait un **avantage produit distinctif** :
 > *« Un groupe. Une activité. Un loueur. Un retrait. Un paiement. »*
-> Uttily ne cherche pas de simples équipements isolés ; Uttily compose une solution de location cohérente, disponible et retirable au même endroit.
+> Passness ne cherche pas de simples équipements isolés ; Passness compose une solution de location cohérente, disponible et retirable au même endroit.
 
 ---
 
 ## 2. Décision d'Architecture
 
-Nous introduisons dans `@uttily/core` le sous-domaine **Pack Orchestration** et le **Graphe de Compatibilité**, appuyés sur la couche de compréhension probabiliste `@uttily/intelligence` définie dans l'[ADR-040](ADR-040-uttily-intelligence-architecture.md).
+Nous introduisons dans `@passness/core` le sous-domaine **Pack Orchestration** et le **Graphe de Compatibilité**, appuyés sur la couche de compréhension probabiliste `@passness/intelligence` définie dans l'[ADR-040](ADR-040-passness-intelligence-architecture.md).
 
 ```text
 [ REQUÊTE UTILISATEUR ]
           │
           ▼
 ┌──────────────────────────────────────┐
-│ @uttily/intelligence                 │
+│ @passness/intelligence                 │
 │ IntentCompiler                       │
 │ Produit : CompiledIntentProposal     │
 │ (faits, inconnues, préférences)      │
 └──────────────────┬───────────────────┘
                    ▼
 ┌──────────────────────────────────────┐
-│ @uttily/core                         │
+│ @passness/core                         │
 │ Intent Normalizer                    │
 │ PartyModel & RequirementModel        │
 └──────────────────┬───────────────────┘
@@ -49,12 +49,12 @@ Nous introduisons dans `@uttily/core` le sous-domaine **Pack Orchestration** et 
              │            │
       UI visuelle         ▼
                  ┌──────────────────────────────────────┐
-                 │ CompatibilityGraph (@uttily/core)    │
+                 │ CompatibilityGraph (@passness/core)    │
                  │ Règles sourcées, versionnées         │
                  └──────────────────┬───────────────────┘
                                     ▼
                  ┌──────────────────────────────────────┐
-                 │ PackSolver (@uttily/core)            │
+                 │ PackSolver (@passness/core)            │
                  │ Résolution déterministe mono-loueur  │
                  │ Contraintes temps réel PostgreSQL    │
                  └──────────────────┬───────────────────┘
@@ -63,13 +63,13 @@ Nous introduisons dans `@uttily/core` le sous-domaine **Pack Orchestration** et 
                              │            │
                             Oui          Non
                              │            ▼
-                             │     Repair Engine (@uttily/core)
+                             │     Repair Engine (@passness/core)
                              │     Relaxations explicites
                              │            │
                              └──────┬─────┘
                                     ▼
                  ┌──────────────────────────────────────┐
-                 │ PackRanker (@uttily/core)            │
+                 │ PackRanker (@passness/core)            │
                  │ Classement déterministe et auditable │
                  └──────────────────┬───────────────────┘
                                     ▼
@@ -88,11 +88,11 @@ Nous introduisons dans `@uttily/core` le sous-domaine **Pack Orchestration** et 
 
 ## 3. Principes Fondateurs
 
-### 3.1. Souveraineté du `PartyModel` dans `@uttily/core`
+### 3.1. Souveraineté du `PartyModel` dans `@passness/core`
 
 Le modèle de groupe (`PartyModel`) n'appartient pas à l'IA. Le LLM produit uniquement une **proposition compilée** (`CompiledIntentProposal`) contenant des faits extraits, des préférences probabilistes et des inconnues explicites.
 
-C'est `@uttily/core` qui valide et instancie le modèle canonique :
+C'est `@passness/core` qui valide et instancie le modèle canonique :
 ```ts
 export interface ExtractedFact {
   readonly kind: 'DESTINATION' | 'DATE' | 'PARTY_MEMBER' | 'EQUIPMENT_NEED';
@@ -118,13 +118,13 @@ Ce découplage garantit que `PartyModel` pourra être alimenté indifféremment 
 
 ### 3.2. Règle du `UNKNOWN` : Zéro supposition statistique
 
-Pour mériter la confiance des professionnels et des locataires, Uttily n'extrapole jamais de données morphologiques statistiques non fournies (ex. ne jamais déduire qu'un enfant de 6 ans mesure 115 cm ou qu'un adulte fait une taille M).
+Pour mériter la confiance des professionnels et des locataires, Passness n'extrapole jamais de données morphologiques statistiques non fournies (ex. ne jamais déduire qu'un enfant de 6 ans mesure 115 cm ou qu'un adulte fait une taille M).
 - Tout attribut physique non mentionné est instancié à `UNKNOWN`.
 - Lorsque l'attribution d'une taille physique d'exemplaire est nécessaire, l'interface utilisateur pose explicitement la question via des composants visuels directs (sélecteurs de taille par palier).
 
 ### 3.3. Graphe de Compatibilité Sourcé et Versionné
 
-Le `CompatibilityGraph` réside dans `@uttily/core` et modélise les relations physiques, mécaniques et de sécurité entre variantes d'équipements et besoins fonctionnels.
+Le `CompatibilityGraph` réside dans `@passness/core` et modélise les relations physiques, mécaniques et de sécurité entre variantes d'équipements et besoins fonctionnels.
 
 **Règle cardinale : Aucune recommandation de sécurité n'est inventée par le LLM.**
 - Le LLM identifie le besoin fonctionnel (ex. `CHILD_TRANSPORT`).
@@ -223,7 +223,7 @@ Les contraintes `EXCLUDE USING gist` au niveau de la table garantissent mathéma
 
 ## 5. État d'Implémentation & Prochaines Étapes
 
-1. Définition des types et schémas `PartyModel`, `FunctionalRequirement` et `PackRequest` dans `@uttily/core`.
+1. Définition des types et schémas `PartyModel`, `FunctionalRequirement` et `PackRequest` dans `@passness/core`.
 2. Implémentation du `CompatibilityGraph` dans `packages/core/src/compatibility/`.
 3. Implémentation du use-case `solvePackForParty` dans `packages/core/src/pack-solver/`.
 4. Intégration dans la Server Action `apps/web/src/app/actions/pack-search.ts`.

@@ -30,7 +30,7 @@ import { runMigrations, assertLocalhost } from '../src/index';
  * - Le journal de migrations (59 entrées).
  */
 
-const TEST_DB_NAME = 'uttily_test_g7p_b2_snapshots';
+const TEST_DB_NAME = 'passness_test_g7p_b2_snapshots';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

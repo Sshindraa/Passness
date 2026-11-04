@@ -15,7 +15,7 @@ Ce pack consigne les arbitrages financiers et fiscaux validés par la Direction 
 | `FIN-001` | Settlement merchant & destination charge | `APPROVED` ✅ | Modèle de destination charge mono-loueur avec `settlementMerchantMode: 'PLATFORM'` et `onBehalfOfAccountId: null` validé pour le pilote. |
 | `FIN-002` | Frais marketplace split 13/7 | `APPROVED` ✅ | Règle `split-13-7-v1` (ADR-029) validée pour activation LIVE : base `subtotal + mandatory fees`, commission loueur 13 %, frais client 7 %, calcul et arrondi `HALF_UP_PER_COMPONENT`. Remboursements par delta (ADR-030). |
 | `FIN-003` | Statut fiscal / TVA | `APPROVED` ✅ | Statut de taxe `NOT_APPLICABLE` (franchise en base de TVA / article 293 B du CGI) approuvé pour le premier pilote commercial ; taux et montants TVA à null. |
-| `FIN-004` | Émetteur de facture & documents | `APPROVED` ✅ | Reçus acquittés émis sous la mention d'intermédiation Uttily SAS (`invoiceIssuer: 'Uttily'`) ; le loueur demeure le vendeur exclusif de la location. |
+| `FIN-004` | Émetteur de facture & documents | `APPROVED` ✅ | Reçus acquittés émis sous la mention d'intermédiation Passness SAS (`invoiceIssuer: 'Passness'`) ; le loueur demeure le vendeur exclusif de la location. |
 | `FIN-005` | Documents financiers générés | `APPROVED` ✅ | Reçus de location acquittés (`RENTAL_RECEIPT`) et décomptes de commission (`COMMISSION_STATEMENT`) générés déterministement selon Lot 21-F1. |
 | `FIN-006` | Exécution des refunds | `APPROVED` ✅ | Remboursements 100 % exécutés automatiquement via Stripe ; remboursements partiels fail-closed en attente d'instruction manuelle sous 5 jours ouvrés. |
 | `FIN-007` | Stratégie de caution | `APPROVED` ✅ | Aucune caution sur le PaymentIntent de location (ADR-010) ; caution physique directe au comptoir par le loueur pour le pilote. |
@@ -108,7 +108,7 @@ location ; aucune implémentation n'est ajoutée ici.
 
 Décrire l'émetteur, la périodicité, la devise, les pièces et le rapprochement de
 la facture/commission partenaire. Une destination charge et un payout Stripe
-ne constituent pas automatiquement une facture commerciale entre Uttily et le
+ne constituent pas automatiquement une facture commerciale entre Passness et le
 loueur.
 
 ## État de clôture du pack

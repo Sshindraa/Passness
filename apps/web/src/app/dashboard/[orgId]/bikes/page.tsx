@@ -1,4 +1,4 @@
-import { listUnifiedBikes, getMembership, CATALOG_MANAGERS } from '@uttily/core';
+import { listUnifiedBikes, getMembership, CATALOG_MANAGERS } from '@passness/core';
 import { requireCatalogViewerOf } from '@/lib/catalog-auth';
 import { BikesListView } from '@/features/bikes';
 

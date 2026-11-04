@@ -49,7 +49,7 @@ suppression ou promotion implicite vers `pedalboat` n'est effectuée.
 Les accessoires nautiques associés au pédalo restent des compléments et ne sont
 pas publiables seuls par défaut. Leurs futurs modes sont ceux déjà documentés
 par ADR-035 : inclus, obligatoire, optionnel gratuit, supplément payant ou
-louable séparément avec autorisation explicite d'Uttily et du loueur. Aucun
+louable séparément avec autorisation explicite d'Passness et du loueur. Aucun
 moteur de packs, de suppléments, de stock ou de composition automatique n'est
 ajouté.
 

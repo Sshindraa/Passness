@@ -1,12 +1,12 @@
 import { and, asc, eq, gt, isNull, lte, or } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   inventoryBlocks,
   inventoryItems,
   locations,
   productVariants,
   products,
-} from '@uttily/database';
+} from '@passness/database';
 import { DashboardError } from './errors';
 import type {
   ListMaintenanceDashboardSignalsOptions,
