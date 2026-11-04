@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import type { DbExecutor, NotificationRecord } from '@uttily/database';
+import type { DbExecutor, NotificationRecord } from '@passness/database';
 import {
   bookingCancellations,
   bookingLines,
@@ -12,7 +12,7 @@ import {
   productVariants,
   refunds,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import { createSignedInvitationToken } from '../identity/invitations';
 import { getPublicAppUrl } from '../identity/public-app-url';
 import { parseMarketplaceFeeSnapshot } from '../marketplace-fees';
@@ -68,7 +68,7 @@ export async function renderNotificationRecord(
       return renderBookingConfirmedCustomer({
         bookingId: row.bookingId,
         organizationName: row.organizationName,
-        productName: row.productName ?? 'Équipement Uttily',
+        productName: row.productName ?? 'Équipement Passness',
         customerStartAt: row.customerStartAt,
         customerEndAt: row.customerEndAt,
         locationName: row.locationName,
@@ -120,7 +120,7 @@ export async function renderNotificationRecord(
       return renderBookingConfirmedMerchant({
         bookingId: row.bookingId,
         organizationName: row.organizationName,
-        productName: row.productName ?? 'Équipement Uttily',
+        productName: row.productName ?? 'Équipement Passness',
         customerStartAt: row.customerStartAt,
         customerEndAt: row.customerEndAt,
         customerEmail: row.customerEmail,
@@ -159,7 +159,7 @@ export async function renderNotificationRecord(
       return renderBookingCancelledCustomer({
         bookingId: row.bookingId,
         organizationName: row.organizationName,
-        productName: row.productName ?? 'Équipement Uttily',
+        productName: row.productName ?? 'Équipement Passness',
         refundAmountMinor: row.refundAmountMinor ?? 0,
         retainedAmountMinor: row.retainedAmountMinor ?? 0,
       });
@@ -194,7 +194,7 @@ export async function renderNotificationRecord(
       return renderBookingCancelledMerchant({
         bookingId: row.bookingId,
         organizationName: row.organizationName,
-        productName: row.productName ?? 'Équipement Uttily',
+        productName: row.productName ?? 'Équipement Passness',
         customerEmail: row.customerEmail,
         actorReason: row.actorReason ?? 'ANNULATION_CLIENT',
         retainedAmountMinor: row.retainedAmountMinor ?? 0,
@@ -228,7 +228,7 @@ export async function renderNotificationRecord(
       return renderRefundConfirmedCustomer({
         refundId: row.refundId,
         organizationName: row.organizationName,
-        productName: row.productName ?? 'Équipement Uttily',
+        productName: row.productName ?? 'Équipement Passness',
         amountMinor: row.amountMinor,
       });
     }
@@ -263,7 +263,7 @@ export async function renderNotificationRecord(
       return renderPickupReminderCustomer({
         bookingId: row.bookingId,
         organizationName: row.organizationName,
-        productName: row.productName ?? 'Équipement Uttily',
+        productName: row.productName ?? 'Équipement Passness',
         customerStartAt: row.customerStartAt,
         locationName: row.locationName,
         locationAddress: row.locationAddress ?? undefined,
@@ -303,7 +303,7 @@ export async function renderNotificationRecord(
       return renderReturnReminderCustomer({
         bookingId: row.bookingId,
         organizationName: row.organizationName,
-        productName: row.productName ?? 'Équipement Uttily',
+        productName: row.productName ?? 'Équipement Passness',
         customerEndAt: row.customerEndAt,
         locationName: row.locationName,
         locationAddress: row.locationAddress ?? undefined,

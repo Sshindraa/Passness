@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Pipeline de génération de documents transactionnels (G5D, ADR-013 §11).
+ * @passness/core — Pipeline de génération de documents transactionnels (G5D, ADR-013 §11).
  *
  * Orchestrateur en trois phases pour les événements BOOKING_CONFIRMED.v1 :
  *
@@ -42,7 +42,7 @@
 
 import { sql } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { DocumentRenderer, ObjectStorage } from './ports';
 import type { OutboxEffectType, DocumentProcessingFailureCode } from './types';
 import {

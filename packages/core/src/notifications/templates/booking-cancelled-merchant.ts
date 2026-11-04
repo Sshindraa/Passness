@@ -49,7 +49,7 @@ Motif : ${data.actorReason}
 ${data.finalMerchantRevenueMinor > 0 ? `Revenu net conservé : ${formatEur(data.finalMerchantRevenueMinor)}\n` : ''}
 L'équipement a été automatiquement débloqué et est de nouveau disponible à la location.
 
-L'équipe Uttily
+L'équipe Passness
 `;
 
   return {

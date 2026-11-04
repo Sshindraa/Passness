@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { OrganizationSupportDetails } from '@uttily/core';
+import type { OrganizationSupportDetails } from '@passness/core';
 import { ResendInvitationButton } from './resend-invitation-button';
 import styles from './organization-support.module.css';
 

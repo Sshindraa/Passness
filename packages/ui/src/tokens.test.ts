@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 const tokens = readFileSync(new URL('./tokens.css', import.meta.url), 'utf8');
 
-describe('@uttily/ui design tokens', () => {
+describe('@passness/ui design tokens', () => {
   it('uses locally served Chillax variable with shared role-based typography', () => {
     expect(tokens).toContain("font-family: 'Chillax'");
     expect(tokens).toContain("url('/fonts/chillax/chillax-variable.woff2')");

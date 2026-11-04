@@ -1,7 +1,7 @@
 import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import type { PhotoQualityAssessment } from '@uttily/contracts';
+import type { PhotoQualityAssessment } from '@passness/contracts';
 import { PhotoCoachAiFeedback } from './PhotoCoachAiFeedback';
 
 describe('PhotoCoachAiFeedback Component', () => {

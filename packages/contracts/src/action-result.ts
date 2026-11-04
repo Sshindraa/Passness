@@ -32,9 +32,9 @@ export const ACTION_ERROR_CODES = [
 ] as const;
 
 /**
- * Contrat ActionResult pour les Server Actions Uttily.
+ * Contrat ActionResult pour les Server Actions Passness.
  *
- * Codes d'erreur normalisés pour les Server Actions Uttily.
+ * Codes d'erreur normalisés pour les Server Actions Passness.
  * Union fermée : toute nouvelle action doit réutiliser ou étendre cette union
  * via une décision documentée (ADR).
  */

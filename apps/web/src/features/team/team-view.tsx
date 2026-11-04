@@ -1,6 +1,6 @@
-import { canInviteRole, type MembershipRole, type MembershipStatus } from '@uttily/core';
-import { PageHeader, Card, Badge, Button } from '@uttily/ui';
-import type { BadgeTone } from '@uttily/ui';
+import { canInviteRole, type MembershipRole, type MembershipStatus } from '@passness/core';
+import { PageHeader, Card, Badge, Button } from '@passness/ui';
+import type { BadgeTone } from '@passness/ui';
 
 const ROLE_LABELS: Record<MembershipRole, string> = {
   OWNER: 'Propriétaire',

@@ -3,7 +3,7 @@ import type { MarketplaceFeeSnapshot } from '../marketplace-fees';
 export type LineAction = 'ADD' | 'MODIFY' | 'REMOVE' | 'UNCHANGED';
 
 /**
- * @uttily/core — Types publics pour la mutation createNeutralBookingAmendment (G7M-B2-A).
+ * @passness/core — Types publics pour la mutation createNeutralBookingAmendment (G7M-B2-A).
  *
  * ADR-023 §3-9, §11-13, §15 : amendements NEUTRAL append-only sur réservation
  * CONFIRMED. NEUTRAL et REFUND sont appliqués directement ; SUPPLEMENT est

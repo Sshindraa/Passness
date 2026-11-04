@@ -1,5 +1,5 @@
 import { and, count, eq, inArray, isNull, ne } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookingDrafts,
   bookings,
@@ -10,7 +10,7 @@ import {
   privacyProbatorySeals,
   privacyRequests,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import { writeAuditEntry } from '../identity/audit';
 
 export interface EraseUserAccountInput {

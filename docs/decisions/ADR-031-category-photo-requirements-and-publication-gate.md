@@ -5,7 +5,7 @@ conservent la règle générique d'ADR-020.
 
 **Date :** 2026-08-30
 
-**Décideurs :** Porteur produit Uttily, engineering
+**Décideurs :** Porteur produit Passness, engineering
 
 **Relie à :** [ADR-020](ADR-020-product-photo-metadata-and-publication-gate.md),
 [ADR-026](ADR-026-product-photo-upload-and-delivery.md),

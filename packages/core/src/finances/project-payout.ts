@@ -1,6 +1,6 @@
 import { sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { connectedAccountPayouts } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { connectedAccountPayouts } from '@passness/database';
 import { CatalogError } from '../catalog/errors';
 
 export interface ProjectPayoutInput {

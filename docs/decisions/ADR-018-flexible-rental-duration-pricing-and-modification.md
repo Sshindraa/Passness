@@ -4,7 +4,7 @@
   (sujets juridiques et de paiement explicitement reserves)
 - **Date** : 2026-08-07
 - **Phase** : 11 / Lot 7 — G7B-R3 : arbitrage produit et conception ; G7P-A Round 2 : schema implante (migration 0032, tables pricing_plans/pricing_plan_windows/multi_day_discount_tiers/pricing_plan_translations, enum pricing_lifecycle_state, locations.operating_currency, backfill DAILY avec traductions FR+EN)
-- **Decideurs** : Porteur produit Uttily, engineering
+- **Decideurs** : Porteur produit Passness, engineering
 - **Relie a** : ADR-009, ADR-017 ; `docs/product/lot7-arbitrage.md`
 
 ## 1. Contexte et contradiction avec le modele journalier actuel
@@ -348,7 +348,7 @@ configuration de reference fait cesser l'horaire avant la demi-journee de 4 h.
 Si une flexibilite differente est envisagee plus tard, elle necessitera une
 decision produit explicite.
 
-Uttily ne doit pas utiliser une IA ou un modele probabiliste pour determiner un
+Passness ne doit pas utiliser une IA ou un modele probabiliste pour determiner un
 montant financier. Le moteur est deterministe, auditable, reproductible, teste,
 calcule cote serveur et fige dans le snapshot.
 

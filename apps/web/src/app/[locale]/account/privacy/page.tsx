@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getUserPrivacyRequests } from '@uttily/core';
+import { getUserPrivacyRequests } from '@passness/core';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import { PrivacyView } from '@/features/privacy';
@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const fr = locale === 'fr';
   return {
     title: fr
-      ? 'Confidentialité et données personnelles · Uttily'
-      : 'Privacy and personal data · Uttily',
+      ? 'Confidentialité et données personnelles · Passness'
+      : 'Privacy and personal data · Passness',
     description: fr
       ? 'Gérez vos données personnelles et exercez vos droits RGPD.'
       : 'Manage your personal data and exercise your GDPR rights.',

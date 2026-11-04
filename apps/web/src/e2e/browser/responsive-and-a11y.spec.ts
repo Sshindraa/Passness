@@ -184,7 +184,7 @@ test.describe('Real Browser Responsive & Accessibility Matrix', () => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await waitForClientHydration(page);
 
-    const brandLink = page.getByRole('link', { name: 'Uttily, accueil' });
+    const brandLink = page.getByRole('link', { name: 'Passness, accueil' });
     const hostLink = page.getByRole('link', { name: 'Vous êtes loueur' });
     const languageButton = page.getByRole('button', { name: 'Choisir la langue' });
 
@@ -217,7 +217,7 @@ test.describe('Real Browser Responsive & Accessibility Matrix', () => {
     await openButton.focus();
     await page.keyboard.press('Space');
 
-    const dialog = page.getByRole('dialog', { name: /Photo Coach Uttily.*Vue de profil/ });
+    const dialog = page.getByRole('dialog', { name: /Photo Coach Passness.*Vue de profil/ });
     await expect(dialog).toBeVisible();
     await expect(dialog).toHaveAttribute('aria-modal', 'true');
 

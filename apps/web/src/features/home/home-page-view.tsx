@@ -1,4 +1,4 @@
-import { Icon } from '@uttily/ui';
+import { Icon } from '@passness/ui';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { FeaturedShowcase } from './featured-showcase';
 import { HomeHero } from './home-hero';
@@ -15,7 +15,7 @@ export function HomePageView({ locale }: { locale: 'fr' | 'en' }): React.ReactEl
 
       <section
         className={styles.proofSection}
-        aria-label={fr ? 'Pourquoi choisir Uttily' : 'Why choose Uttily'}
+        aria-label={fr ? 'Pourquoi choisir Passness' : 'Why choose Passness'}
       >
         <div className={styles.proofGrid}>
           <ScrollReveal as="article" className={styles.proofCard} delay={0} offset={16}>

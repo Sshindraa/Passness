@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import type { RecurringManualBlockSeriesMutationResult } from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+import type { RecurringManualBlockSeriesMutationResult } from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 import { createRecurringManualBlockSeriesAction } from '@/app/actions/availability';
 import styles from './fleet.module.css';
 

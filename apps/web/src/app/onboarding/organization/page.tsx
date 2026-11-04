@@ -2,7 +2,7 @@ import { type ReactElement } from 'react';
 import { redirect } from 'next/navigation';
 import { createOrganizationAction } from '@/app/actions/organizations';
 import { getAuthenticatedUser } from '@/lib/auth';
-import { MVP_ORGANIZATION_CURRENCY } from '@uttily/core';
+import { MVP_ORGANIZATION_CURRENCY } from '@passness/core';
 import { ClientShell } from '@/components/shells/client-shell';
 import { OrganizationOnboardingView } from '@/features/onboarding';
 

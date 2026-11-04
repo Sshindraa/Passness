@@ -6,14 +6,14 @@ vi.mock('@/app/actions/home-search-options', () => ({ loadHomeSearchOptions: vi.
 vi.mock('next/navigation', () => ({ useRouter: () => ({ push: vi.fn() }) }));
 
 describe('Homepage proof grid', () => {
-  it('presents four Uttily-specific reasons to rent', () => {
+  it('presents four Passness-specific reasons to rent', () => {
     const html = renderToStaticMarkup(<HomePageView locale="fr" />);
 
     expect(html).not.toContain('Simple et transparent');
-    expect(html).not.toContain('Comment fonctionne Uttily');
+    expect(html).not.toContain('Comment fonctionne Passness');
     expect(html).not.toContain('Louer sans friction');
     expect(html).not.toContain('Le bon équipement, au bon endroit.');
-    expect(html).not.toContain('Uttily relie votre sortie');
+    expect(html).not.toContain('Passness relie votre sortie');
     expect(html).toContain('Disponibilité réelle');
     expect(html).toContain('Ce que vous réservez vous attend.');
     expect(html).toContain(
@@ -32,7 +32,7 @@ describe('Homepage proof grid', () => {
     const html = renderToStaticMarkup(<HomePageView locale="en" />);
 
     expect(html).not.toContain('Simple and transparent');
-    expect(html).not.toContain('How Uttily works');
+    expect(html).not.toContain('How Passness works');
     expect(html).not.toContain('Rent without friction');
     expect(html).not.toContain('The right equipment, in the right place.');
     expect(html).toContain('Real availability');

@@ -236,7 +236,9 @@
     0 0 0 2px #262c33,
     0 0 0 4.5px #090c0e;
   flex-shrink: 0;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s ease;
   user-select: none;
 }
 
@@ -294,7 +296,12 @@
 .screenGlare {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 28%, rgba(255, 255, 255, 0) 48%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.1) 28%,
+    rgba(255, 255, 255, 0) 48%
+  );
   pointer-events: none;
   z-index: 25;
 }
@@ -453,7 +460,6 @@
 .sliderRevealWrapper {
   width: 100%;
 }
-
 
 /* Home indicator en bas de l'iPhone */
 .homeIndicator {

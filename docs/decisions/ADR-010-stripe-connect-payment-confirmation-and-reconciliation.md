@@ -87,10 +87,10 @@ ne doit pas être ajoutée au PaymentIntent de la location.
    §4). Le contrat local `ConnectedAccountControllerConfig` utilise une
    sémantique provider-agnostique (`PLATFORM` / `CONNECTED_ACCOUNT` / `STRIPE`)
    qui sera mappée explicitement vers v1 ou v2 lors de cette migration.
-3. **Stripe-hosted onboarding au MVP.** Uttily ne construit pas de formulaire
+3. **Stripe-hosted onboarding au MVP.** Passness ne construit pas de formulaire
    KYC maison. L'état du compte connecté est répliqué localement par webhook.
 4. **Payment Intents + Payment Element.** Le paiement est intégré au parcours
-   Uttily et gère SCA/3DS. Le `client_secret` est transmis au client autorisé,
+   Passness et gère SCA/3DS. Le `client_secret` est transmis au client autorisé,
    jamais persisté ni loggé.
 5. **Carte uniquement, capture automatique.** Les méthodes à confirmation
    différée sont désactivées au MVP. Apple Pay et Google Pay peuvent être exposés
@@ -141,7 +141,7 @@ Pour un brouillon mono-loueur :
 
 ```text
 client
-  → PaymentIntent créé sur le compte plateforme Uttily
+  → PaymentIntent créé sur le compte plateforme Passness
   → transfer_data.destination = compte connecté du loueur
   → application_fee_amount = application fee du snapshot
   → capture_method = automatic
@@ -651,7 +651,7 @@ son état fournisseur est projeté et réconcilié.
 
 Si le compte connecté ne possède pas un solde suffisant pour l'inversion du
 transfert, Stripe peut refuser l'opération combinée au lieu de créer un
-remboursement en attente. Dans ce cas, Uttily ne marque ni le remboursement ni la
+remboursement en attente. Dans ce cas, Passness ne marque ni le remboursement ni la
 compensation comme réussis, déclenche une alerte humaine, conserve la même clé
 idempotente et exige une décision opérationnelle explicite avant un éventuel
 remboursement financé par la plateforme. Aucun retry ne doit retirer
@@ -977,7 +977,7 @@ réussi en production.
   au prix d'un protocole en plusieurs transactions autour des appels réseau.
 - Les holds `PAYMENT_PROCESSING` peuvent survivre au délai normal, mais restent
   visibles et réconciliables plutôt que libérés dangereusement.
-- Uttily assume techniquement le rôle de plateforme de destination charge. La
+- Passness assume techniquement le rôle de plateforme de destination charge. La
   responsabilité juridique et financière correspondante doit être acceptée avant
   le mode LIVE.
 

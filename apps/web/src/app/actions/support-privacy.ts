@@ -13,8 +13,8 @@ import {
   executeErasurePrivacyRequest,
   type EraseUserAccountResult,
   PrivacySupportActionError,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 
 function handleActionError(err: unknown): ActionResult<never> {
   const message = err instanceof Error ? err.message : 'Échec de l’action support privacy.';

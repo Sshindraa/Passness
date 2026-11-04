@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import type { AuthenticatedUser } from '@uttily/core';
-import type { DatabaseClient } from '@uttily/database';
+import type { AuthenticatedUser } from '@passness/core';
+import type { DatabaseClient } from '@passness/database';
 import * as auth from '@/lib/auth';
 import * as dbLib from '@/lib/db';
 import {
@@ -21,8 +21,8 @@ vi.mock('next/cache', () => ({
   revalidatePath: vi.fn(),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     getMembership: vi.fn(),
@@ -56,7 +56,7 @@ describe('Settings Server Actions', () => {
   it('updateCompanySettingsAction : rejette si rôle insuffisant (ex : STAFF)', async () => {
     vi.spyOn(auth, 'getAuthenticatedUser').mockResolvedValueOnce(user);
     vi.spyOn(dbLib, 'getDb').mockReturnValueOnce({} as DatabaseClient);
-    const { getMembership } = await import('@uttily/core');
+    const { getMembership } = await import('@passness/core');
     vi.mocked(getMembership).mockResolvedValueOnce({
       organizationId: orgId,
       userId: user.id,
@@ -79,7 +79,7 @@ describe('Settings Server Actions', () => {
   it('updateCancellationPolicyAction : rejette si rôle insuffisant (ex : MANAGER)', async () => {
     vi.spyOn(auth, 'getAuthenticatedUser').mockResolvedValueOnce(user);
     vi.spyOn(dbLib, 'getDb').mockReturnValueOnce({} as DatabaseClient);
-    const { getMembership } = await import('@uttily/core');
+    const { getMembership } = await import('@passness/core');
     vi.mocked(getMembership).mockResolvedValueOnce({
       organizationId: orgId,
       userId: user.id,
@@ -105,7 +105,7 @@ describe('Settings Server Actions', () => {
   it('updateCompanyLegalSettingsAction : rejette si rôle insuffisant (ex : STAFF)', async () => {
     vi.spyOn(auth, 'getAuthenticatedUser').mockResolvedValueOnce(user);
     vi.spyOn(dbLib, 'getDb').mockReturnValueOnce({} as DatabaseClient);
-    const { getMembership } = await import('@uttily/core');
+    const { getMembership } = await import('@passness/core');
     vi.mocked(getMembership).mockResolvedValueOnce({
       organizationId: orgId,
       userId: user.id,
@@ -124,7 +124,7 @@ describe('Settings Server Actions', () => {
   it('updateCompanyLegalSettingsAction : met à jour avec succès pour OWNER/ADMIN', async () => {
     vi.spyOn(auth, 'getAuthenticatedUser').mockResolvedValueOnce(user);
     vi.spyOn(dbLib, 'getDb').mockReturnValueOnce({} as DatabaseClient);
-    const { getMembership, updateOrganizationLegalSettings } = await import('@uttily/core');
+    const { getMembership, updateOrganizationLegalSettings } = await import('@passness/core');
     vi.mocked(getMembership).mockResolvedValueOnce({
       organizationId: orgId,
       userId: user.id,

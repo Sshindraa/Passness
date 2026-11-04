@@ -1,5 +1,5 @@
 import { and, asc, desc, eq, inArray, isNull, sql } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
 import {
   bookingCancellations,
   bookingLines,
@@ -13,7 +13,7 @@ import {
   products,
   productVariants,
   refunds,
-} from '@uttily/database';
+} from '@passness/database';
 import type {
   CustomerBookingCancellationRecord,
   CustomerBookingDetail,

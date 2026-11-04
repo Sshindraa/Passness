@@ -1,5 +1,5 @@
 import { and, eq } from 'drizzle-orm';
-import { bookings, documents } from '@uttily/database';
+import { bookings, documents } from '@passness/database';
 import { requireFulfillmentOperatorOf } from '@/lib/fulfillment-auth';
 import { isValidUuid } from '@/lib/validation';
 import { getTransactionalDocumentStorage } from '@/lib/transactional-document-storage';
@@ -52,7 +52,7 @@ export async function GET(
       status: 200,
       headers: {
         'Content-Type': doc.contentType || 'application/pdf',
-        'Content-Disposition': `inline; filename="uttily-${doc.type.toLowerCase()}-${doc.id.slice(0, 8)}.pdf"`,
+        'Content-Disposition': `inline; filename="passness-${doc.type.toLowerCase()}-${doc.id.slice(0, 8)}.pdf"`,
         'Cache-Control': 'private, no-cache, no-store, must-revalidate',
         'X-Content-Type-Options': 'nosniff',
       },

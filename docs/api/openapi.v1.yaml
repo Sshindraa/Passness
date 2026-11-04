@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Uttily Mobile API
+  title: Passness Mobile API
   version: 1.0.0
   description: |
     Contrat commun préparatoire pour les futurs clients Client et Pro.
@@ -8,7 +8,7 @@ info:
     volontairement vide. Les composants décrivent les enveloppes et headers
     qui devront être utilisés par l'adaptateur API M1.
 servers:
-  - url: https://app.uttily.example/api/v1
+  - url: https://app.passness.example/api/v1
     description: URL illustrative à remplacer par la configuration de l'environnement
 paths: {}
 components:

@@ -1,5 +1,5 @@
 import { requireSupportPlatformAdmin } from '@/lib/support-auth';
-import { emitOperationalLog, getOperationalHealth, type OperationalHealth } from '@uttily/core';
+import { emitOperationalLog, getOperationalHealth, type OperationalHealth } from '@passness/core';
 import { HealthSupportView } from '@/features/internal';
 
 export const dynamic = 'force-dynamic';

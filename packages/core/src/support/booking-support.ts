@@ -1,5 +1,5 @@
 import { asc, eq, inArray, or } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
 import {
   amendmentPayments,
   bookingAmendments,
@@ -20,7 +20,7 @@ import {
   products,
   refunds,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import type { BookingSupportDetails, SupportTimelineEvent } from './types';
 import { projectCustomerBookingStatus } from '../customer-bookings/get-customer-bookings';
 
@@ -32,7 +32,7 @@ export class SupportBookingNotFoundError extends Error {
 }
 
 /**
- * Récupère le diagnostic 360° d'une réservation pour le support Uttily.
+ * Récupère le diagnostic 360° d'une réservation pour le support Passness.
  * Calcule la décomposition financière consolidée et assemble la timeline chronologique.
  */
 export async function getBookingSupportDetails(

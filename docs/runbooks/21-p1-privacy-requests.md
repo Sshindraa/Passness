@@ -45,7 +45,7 @@
 - **Action opérateur :** Passer la demande en `IN_REVIEW`. Si un refus partiel ou total s'impose au titre de la conservation probatoire, notifier le demandeur avec le motif `LEGAL_RETENTION_OBLIGATION` ou `LITIGATION_HOLD`.
 
 ### E. Droit d'opposition (Art. 21) & Limitation (Art. 18) — `OPPOSITION` / `RESTRICTION`
-- Vérifier si le traitement contesté repose sur l'intérêt légitime d'Uttily.
+- Vérifier si le traitement contesté repose sur l'intérêt légitime d'Passness.
 - Les communications marketing non sollicitées doivent être interrompues immédiatement.
 - En cas de refus légitime, passer en `REFUSED` avec `decision_reason_code` approprié.
 

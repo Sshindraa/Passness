@@ -48,7 +48,7 @@ Critères d'acceptation :
 
 ### Décisions prises (Lot 2A)
 
-- **Catégories globales** : taxonomie partagée gérée par l'admin Uttily. Seed de 9 catégories racines. Arborescence profondeur ≤ 3. Désactivation refusée si produits PUBLISHED.
+- **Catégories globales** : taxonomie partagée gérée par l'admin Passness. Seed de 9 catégories racines. Arborescence profondeur ≤ 3. Désactivation refusée si produits PUBLISHED.
 - **Variante par défaut** : chaque produit a au moins une `ProductVariant` (variante « Standard » créée atomiquement). `product_id` immuable. Dernière variante active protégée par trigger PostgreSQL.
 - **Publication sans stock** : un produit peut être `PUBLISHED` sans exemplaire. L'indisponibilité temporaire est un état légitime. La publication exige : nom, description, catégorie active, ≥ 1 variante active.
 - **Statut structurel** : `ACTIVE | RETIRED | LOST` (gestion du parc) découplé de `condition` (`NEW | GOOD | FAIR | POOR | BROKEN`, état physique). Pas de disponibilité au Lot 2 ; calculée au Lot 3 via `InventoryBlock`.
@@ -65,7 +65,7 @@ Critères d'acceptation :
 
 ### Décisions prises (Lot 2B)
 
-- **Contrat `ActionResult<T>`** : les Server Actions de mutation retournent une discriminated union `{ ok: true; data } | { ok: false; code; message; fieldErrors? }`. Les codes d'erreur sont une union fermée `ActionErrorCode` dans `@uttily/contracts` (cf. ADR-008).
+- **Contrat `ActionResult<T>`** : les Server Actions de mutation retournent une discriminated union `{ ok: true; data } | { ok: false; code; message; fieldErrors? }`. Les codes d'erreur sont une union fermée `ActionErrorCode` dans `@passness/contracts` (cf. ADR-008).
 - **Erreurs métier typées `CatalogError`** : le domaine catalog lève `CatalogError` (avec `code: ActionErrorCode`) au lieu d'`Error` générique. Les actions catchent `CatalogError` et mappent le code vers `ActionResult` — pas de string matching côté actions.
 - **Conflits PostgreSQL par nom de contrainte** : les violations uniques (slug, SKU, serial) sont catchées par nom de contrainte (SQLSTATE 23505), pas par message. Les triggers `RAISE EXCEPTION` (P0001) sont identifiés par message dans le domaine (seul endroit avec string matching, justifié car PG ne fournit pas d'identifiant machine-readable).
 - **`organizationId` injecté serveur** : jamais trusté du client. Les actions utilisent le binding par closure (`action.bind(null, orgId)`) — l'`organizationId` vient du paramètre de route, validé par `requireCatalogManagerOf` qui vérifie la membership.
@@ -110,7 +110,7 @@ Critères d'acceptation :
 - Signature des webhooks vérifiée et événements dédupliqués.
 - Paiement réussi : hold converti en réservation, snapshot figé et outbox créée dans une transaction.
 - Paiement échoué ou abandonné : hold libéré selon les règles.
-- Aucun numéro de carte n'est persisté par Uttily.
+- Aucun numéro de carte n'est persisté par Passness.
 
 ## Lot 6 — Opérations et documents
 
@@ -256,7 +256,7 @@ complet sont validés dans
 séparent les primitives UI, officialisent les shells, extraient le cockpit
 loueur et structurent la recherche, le checkout, les réservations, l'offre publique,
 l'onboarding, la flotte, les établissements et la maintenance par domaine sans modifier
-l'API publique de `@uttily/ui`, les URLs ou le comportement métier des routes. Le
+l'API publique de `@passness/ui`, les URLs ou le comportement métier des routes. Le
 checkout courant ajoute aussi les extractions accueil, sélection d'organisation
 et support interne, supprime les façades devenues mortes et documente les
 assets retirés. Le commit fonctionnel réécrit de clôture est
@@ -354,7 +354,7 @@ disponibilité transactionnelle, les prix et les URLs restent inchangés.
 | 21-L1 — Surfaces légales publiques et textes contractuels canoniques | publication des pages légales publiques accessibles et localisées (`/terms`, `/rental-terms`, `/privacy`, `/legal`) en version `v1` canonique ; intégration des liens contractuels dans le footer client et notice de consentement opposable dans le checkout ; routes publiques Clerk autorisées et redirections d'alias racine (`/cgu`, `/cgv`, etc.) | **Implémentation locale terminée le 2026-09-03 — tests unitaires Web, `check:fast`, lint et format verts ; pages v1 prêtes pour validation juridique humaine** |
 | 21-L2 — Contrat Loueur & Conditions Pro B2B (Conditions Générales Partenaires) | publication de la page contractuelle publique bilingue `/pro-terms` (version `v1` canonique) détaillant le modèle de split 13/7, la conformité de flotte, la substitution obligatoire, l'obligation d'assurance RC Pro et le mandat de reversement Stripe Connect ; case à cocher d'acceptation obligatoire dans l'onboarding organisation avec enregistrement immuable dans `audit_log` (`ORGANIZATION_PRO_TERMS_ACCEPTED`) | **Implémentation locale terminée le 2026-09-03 — tests unitaires Core/Web, typechecks, lint/format et `check:fast` verts ; contrat v1 prêt pour validation juridique humaine** |
 | 21-O1 — Informations légales et fiscales du loueur partenaire | identification formelle du loueur partenaire (migration 0057) : colonnes SIRET/SIREN avec validation Luhn, numéro de TVA intracommunautaire (calcul et format), forme juridique (`LEGAL_FORMS`), RCS, ville d'immatriculation, capital social, siège social et représentant légal ; écran de gestion Pro `/dashboard/[orgId]/settings` avec journalisation immuable (`ORGANIZATION_LEGAL_SETTINGS_UPDATED`) ; intégration dans le read model de readiness loueur | **Livré et fusionné sur `main` (PR #78) le 2026-09-04 — tests unitaires, validation Luhn/TVA, 8 tests PostgreSQL, `check:fast` et CI complète verts** |
-| 21-F1 — Reçus financiers déterministes, mentions légales et décompte de commission | pipeline documentaire financier complet : reçu de location acquitté (`RENTAL_RECEIPT`) et décompte de commission/reversement loueur (`COMMISSION_STATEMENT`) générés déterministement au format PDF avec mentions légales obligatoires complètes (Uttily SAS intermédiaire, loueur vendeur, TVA/art. 293 B) ; routes d'accès client (`/account`) et loueur (`/dashboard/[orgId]/finances/statement`) | **Livré et fusionné sur `main` (PR #78) le 2026-09-04 — tests unitaires Core/Web/Worker, génération PDF vérifiée, `check:fast` et CI complète verts** |
+| 21-F1 — Reçus financiers déterministes, mentions légales et décompte de commission | pipeline documentaire financier complet : reçu de location acquitté (`RENTAL_RECEIPT`) et décompte de commission/reversement loueur (`COMMISSION_STATEMENT`) générés déterministement au format PDF avec mentions légales obligatoires complètes (Passness SAS intermédiaire, loueur vendeur, TVA/art. 293 B) ; routes d'accès client (`/account`) et loueur (`/dashboard/[orgId]/finances/statement`) | **Livré et fusionné sur `main` (PR #78) le 2026-09-04 — tests unitaires Core/Web/Worker, génération PDF vérifiée, `check:fast` et CI complète verts** |
 | 21-P1 — Fondation RGPD client & registre des demandes de droits | table canonique `privacy_requests` (migration 0058), formulaire client bilingue `/[locale]/account/privacy`, calcul d'échéance légale (+1 mois calendaire), journalisation append-only sans PII ; endpoint d'export sécurisé `/api/account/privacy/export` scindé en copie intégrale Art. 15 (`buildPersonalDataCopy`, sans secrets ni IDs Stripe) et export portable Art. 20 (`buildPortableData`) | **Livré et fusionné sur `main` (PR #78) le 2026-09-04 — tests unitaires Core/Web, tests d'intégration PostgreSQL réels, `check:fast` et CI complète verts** |
 | 21-P1A — Cockpit régalien support RGPD | interface interne d'instruction `/internal/privacy` avec filtrage par statut et type de droit ; Server Actions sécurisées pour prise en charge (`TAKE_IN_CHARGE`), décision régalienne (`DECIDE`) avec motifs fermés (acceptation, refus légal, prolongation 2 mois justifiée), attestation d'envoi et clôture effective ; outbox events et audit trail complets | **Livré et fusionné sur `main` (PR #78) le 2026-09-04 — tests unitaires Core/Web, typecheck 9/9, `check:fast` et CI complète verts** |
 | 21-S1 — Simulation opérationnelle locale d'un samedi type | scénario d'intégration bout-en-bout (`scripts/saturday-drill.mjs`) simulant une journée complète d'exploitation 08h00 - 20h30 sur PostgreSQL réel : création de compte avec mentions légales (21-O1), réservation walk-in (21-U2-AD), substitution au comptoir (21-U2-AA), restitution avec dommage (21-U2-AB), décompte financier (21-F1) et export RGPD (21-P1) | **Livré et fusionné sur `main` (PR #78) le 2026-09-04 — exécutable via `pnpm drill:saturday`, testé dans la CI et en local** |

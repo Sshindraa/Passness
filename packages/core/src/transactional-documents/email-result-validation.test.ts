@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests unitaires du parseur validateEmailResult (G5H-C2B, ADR-013 §13.4).
+ * @passness/core — Tests unitaires du parseur validateEmailResult (G5H-C2B, ADR-013 §13.4).
  *
  * Tests PURS : aucun PostgreSQL requis. Vérifient la validation stricte du
  * EmailSendResult (4 variantes) et l'absence de la valeur reçue dans les messages d'erreur.

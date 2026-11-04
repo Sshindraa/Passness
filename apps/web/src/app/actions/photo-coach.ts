@@ -1,6 +1,6 @@
 'use server';
 
-import { CatalogError, stripJpegExif } from '@uttily/core';
+import { CatalogError, stripJpegExif } from '@passness/core';
 import { revalidatePath } from 'next/cache';
 import { requireCatalogManagerOf } from '@/lib/catalog-auth';
 import { runAction } from '@/lib/action-mapper';
@@ -10,15 +10,15 @@ import {
   FakePhotoCoachAnalyzer,
   type PhotoQualityAssessment,
   type DetectedEquipmentFeatures,
-} from '@uttily/intelligence';
+} from '@passness/intelligence';
 import {
   type ActionResult,
   type EquipmentAttributeEvidence,
   type PhotoSlotType,
   PHOTO_SLOT_TYPES,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 import { eq, isNull, and } from 'drizzle-orm';
-import { productVariants, products } from '@uttily/database';
+import { productVariants, products } from '@passness/database';
 import { DEMO_PHOTO_COACH_ORG_ID } from '@/lib/photo-coach-constants';
 
 export async function analyzePhotoQualityAction(

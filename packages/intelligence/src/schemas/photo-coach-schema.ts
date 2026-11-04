@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { PHOTO_SLOT_TYPES } from '@uttily/contracts';
+import { PHOTO_SLOT_TYPES } from '@passness/contracts';
 
 export const PhotoCoachVerdictSchema = z.enum(['CONFORMANT', 'WARNING', 'REJECTED']);
 export type PhotoCoachVerdict = z.infer<typeof PhotoCoachVerdictSchema>;

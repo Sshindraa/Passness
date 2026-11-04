@@ -2,14 +2,14 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import type { PublicSearchCategoryOption } from '@uttily/core';
+import type { PublicSearchCategoryOption } from '@passness/core';
 import {
   BIKE_SUBTYPE_DEFINITIONS,
   getBikeSubtypeLabel,
   isBikeSubtype,
   type BikeSubtype,
-} from '@uttily/contracts';
-import { Button, Icon } from '@uttily/ui';
+} from '@passness/contracts';
+import { Button, Icon } from '@passness/ui';
 import { getPublicCategoryLabel } from '@/lib/public-search-labels';
 import {
   categoryBreadcrumb,

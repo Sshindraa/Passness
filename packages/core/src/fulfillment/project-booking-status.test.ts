@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { bookingStatus } from '@uttily/database';
+import { bookingStatus } from '@passness/database';
 import { projectBookingStatus } from './project-booking-status';
 import { BookingTransitionError } from './errors';
 import { BOOKING_STATUSES, type BookingStatus } from './types';

@@ -1,6 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto';
 import { and, asc, eq, isNull } from 'drizzle-orm';
-import type { DatabaseClient, DatabaseTransaction } from '@uttily/database';
+import type { DatabaseClient, DatabaseTransaction } from '@passness/database';
 import {
   inventoryBlocks,
   inventoryItems,
@@ -8,8 +8,8 @@ import {
   lockOrganization,
   manualBlockSeries,
   manualBlockSeriesOccurrences,
-} from '@uttily/database';
-import { isActionErrorCode, type ActionErrorCode } from '@uttily/contracts';
+} from '@passness/database';
+import { isActionErrorCode, type ActionErrorCode } from '@passness/contracts';
 import { CatalogError } from '../catalog/errors';
 import { AuthorizationError } from '../identity/permissions';
 import { completeKey, failKey, lockKey, reserveKey } from '../idempotency';

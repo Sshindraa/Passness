@@ -11,7 +11,7 @@ communs : ils reçoivent un contexte serveur authentifié et ne sont pas copiés
 dans les clients.
 
 ```text
-Web Uttily ─────────────── Server Actions adapter ───────┐
+Web Passness ─────────────── Server Actions adapter ───────┐
                                                          ├── Core use cases ── PostgreSQL/PostGIS
 Client mobile (futur) ─── /api/v1 adapter (M1) ──────────┤
 Pro mobile (futur) ────── /api/v1 adapter (M1) ──────────┘
@@ -27,7 +27,7 @@ Pro mobile (futur) ────── /api/v1 adapter (M1) ───────
   décideront l’ordre de la thin slice.
 
 M0 n’introduit ni microservice, ni API complète, ni chemin produit mobile.
-`@uttily/contracts` porte uniquement les éléments indépendants du Web ; le
+`@passness/contracts` porte uniquement les éléments indépendants du Web ; le
 contrat peut donc être partagé sans importer Next.js.
 
 ## 2. Convention `/api/v1`
@@ -78,8 +78,8 @@ est triviale et effectivement nécessaire au slice choisi.
 ## 4. Authentification mobile
 
 Le fournisseur d’identité actuel est **Clerk via OIDC** (ADR-006). Le Web
-utilise `currentUser()` puis synchronise l’identité dans Uttily avec
-`provisionUserFromOidc`. `@uttily/auth` n’expose pas encore d’adaptateur mobile
+utilise `currentUser()` puis synchronise l’identité dans Passness avec
+`provisionUserFromOidc`. `@passness/auth` n’expose pas encore d’adaptateur mobile
 et aucune route Bearer mobile n’existe.
 
 Design M1 :
@@ -89,14 +89,14 @@ Design M1 :
 - l’API vérifie signature, audience/issuer, expiration et état de révocation
   selon la configuration Clerk retenue ; l’identité est ensuite synchronisée
   côté serveur ;
-- `userId` est toujours dérivé du token validé et de la base Uttily ; le client
+- `userId` est toujours dérivé du token validé et de la base Passness ; le client
   ne peut pas le fournir comme autorité ;
 - `orgId` n’est jamais trusté depuis l’app. Une organisation Pro est résolue
   côté serveur et la membership active ainsi que le rôle (`OWNER`, `ADMIN`,
   `MANAGER`, `STAFF`) sont vérifiés pour chaque use case ;
 - un locataire est autorisé par son identité et la propriété/visibilité du
   booking, sans membership Pro ; un utilisateur Pro est autorisé par sa
-  membership Uttily ; ces deux scopes ne sont pas interchangeables ;
+  membership Passness ; ces deux scopes ne sont pas interchangeables ;
 - expiration, rafraîchissement, logout et révocation restent ceux du provider
   validé par le serveur. Les durées, le stockage sécurisé du refresh token et
   la configuration de révocation sont une dépendance de configuration M1 ;
@@ -133,7 +133,7 @@ l’opération, à l’utilisateur/tenant autorisé et à une empreinte de requ�
 | Erreur d’autorisation, validation ou conflit de clé                      | `DO_NOT_RETRY`                    |
 | État métier devenu obsolète (hold expiré, disponibilité, conflit d’état) | `REFRESH_STATE_BEFORE_RETRY`      |
 
-Le mapping fermé est exporté par `@uttily/contracts/src/mobile-api.ts` et
+Le mapping fermé est exporté par `@passness/contracts/src/mobile-api.ts` et
 couvre également `retryable`. `INTERNAL_ERROR` est rejouable avec la même clé
 lorsqu’il s’agit d’une mutation idempotente ; un GET reste traité comme une
 opération safe par son adaptateur.
@@ -279,7 +279,7 @@ moteurs disponibilité, réservation, paiement, webhook ou analytics.
 
 ## 12. Dépendances et périmètre
 
-M0 ajoute le contrat fermé dans `@uttily/contracts`, ce document et une
+M0 ajoute le contrat fermé dans `@passness/contracts`, ce document et une
 spécification OpenAPI minimale des enveloppes communes. Il n’ajoute aucune
 table, migration, route, app native, SDK généré, secret, configuration Clerk
 mobile, APNs/FCM ou signed URL.

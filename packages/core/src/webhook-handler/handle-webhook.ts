@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Use case principal de traitement des webhooks Stripe (Lot 5, ADR-010 §9, §10, §11, §13, §14).
+ * @passness/core — Use case principal de traitement des webhooks Stripe (Lot 5, ADR-010 §9, §10, §11, §13, §14).
  *
  * Orchestration : verify → extract PaymentIntentEventData → ingest (transaction 1, courte)
  * → dispatch par type → confirm/compensate/non-success (transaction 2, métier)
@@ -32,7 +32,7 @@ import {
   refunds,
   type DatabaseClient,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import type { VerifiedWebhookEvent } from '../payments/types';
 import type {
   WebhookHandlerDeps,

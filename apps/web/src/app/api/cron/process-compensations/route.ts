@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/db';
 import { getStripeAdapter } from '@/lib/stripe';
 import { resolveStripeEnvironment } from '@/lib/payment-config';
-import { emitOperationalLog, executeCompensationBatch } from '@uttily/core';
+import { emitOperationalLog, executeCompensationBatch } from '@passness/core';
 
 // Désactive l'optimisation statique : cet endpoint doit toujours s'exécuter
 // dynamiquement (cron).

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { PublicSearchDestinationOption } from '@uttily/core';
+import type { PublicSearchDestinationOption } from '@passness/core';
 import {
   destinationDisplayLabel,
   normalizeDestinationQuery,

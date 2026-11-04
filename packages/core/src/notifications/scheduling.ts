@@ -1,5 +1,5 @@
 import { and, eq, inArray, sql } from 'drizzle-orm';
-import type { DbExecutor } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
 import {
   bookingCancellations,
   bookings,
@@ -10,7 +10,7 @@ import {
   payments,
   refunds,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import {
   buildBookingCancelledCustomerKey,
   buildBookingCancelledMerchantKey,

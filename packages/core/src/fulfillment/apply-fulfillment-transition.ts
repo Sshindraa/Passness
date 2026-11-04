@@ -1,7 +1,7 @@
 import { and, eq, sql } from 'drizzle-orm';
-import type { DatabaseClient, DatabaseTransaction } from '@uttily/database';
-import { bookings, bookingFulfillmentEvents, outboxEvents } from '@uttily/database';
-import { lockOrganization } from '@uttily/database';
+import type { DatabaseClient, DatabaseTransaction } from '@passness/database';
+import { bookings, bookingFulfillmentEvents, outboxEvents } from '@passness/database';
+import { lockOrganization } from '@passness/database';
 import { reserveKey, lockKey, completeKey } from '../idempotency/idempotency';
 import type { IdempotencyRecordRow } from '../idempotency/types';
 import { writeAuditEntry } from '../identity/audit';
@@ -18,7 +18,7 @@ import {
 } from './fulfillment-shared';
 
 /**
- * @uttily/core — Use case commun transactionnel pour les transitions terrain (G3A).
+ * @passness/core — Use case commun transactionnel pour les transitions terrain (G3A).
  *
  * Factorisation interne commune aux 4 opérations (prepare, pickup, return, close)
  * pour éviter 4 implémentations divergentes. Garantit l'atomicité des quatre

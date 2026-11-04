@@ -1,23 +1,23 @@
-# Business plan et stratégie — Uttily
+# Business plan et stratégie — Passness
 
 ## Vision
 
-Uttily vise à devenir le système d'exploitation de la location outdoor
+Passness vise à devenir le système d'exploitation de la location outdoor
 professionnelle dans un périmètre commercial fermé : une marketplace
 spécialisée pour les voyageurs et habitants, couplée à un SaaS opérationnel
 pour les loueurs professionnels. Les quatre univers et les familles
 activables sont définis dans la [taxonomie canonique](equipment-taxonomy.md).
 
-La direction stratégique retenue est l'**option C** : Uttily construit
+La direction stratégique retenue est l'**option C** : Passness construit
 progressivement une infrastructure mondiale de l'accès au matériel, composée de
-trois couches complémentaires — **Uttily OS**, **Uttily Marketplace** et
-**Uttily Intelligence**. À terme, l'offre pourra également être distribuée par
+trois couches complémentaires — **Passness OS**, **Passness Marketplace** et
+**Passness Intelligence**. À terme, l'offre pourra également être distribuée par
 des partenaires et des agents logiciels autorisés. La vision canonique et ses
 garde-fous sont détaillés dans
 [`long-term-vision.md`](long-term-vision.md) et ADR-019.
 
 La stratégie n'est pas de se déployer partout immédiatement ni de devenir une
-marketplace généraliste. Uttily crée d'abord une offre dense, fiable et utile
+marketplace généraliste. Passness crée d'abord une offre dense, fiable et utile
 dans une destination, puis reproduit ce modèle destination par destination.
 
 ## Problème
@@ -26,7 +26,7 @@ dans une destination, puis reproduit ce modèle destination par destination.
 
 Louer un équipement implique encore souvent une recherche dispersée, des disponibilités incertaines, des appels téléphoniques, des cautions peu transparentes et des contrats papier.
 
-La promesse Uttily est :
+La promesse Passness est :
 
 > Trouver et réserver le bon équipement, au bon endroit et au bon moment, en quelques minutes.
 
@@ -34,7 +34,7 @@ La promesse Uttily est :
 
 Les professionnels utilisent fréquemment plusieurs outils pour le stock, le calendrier, les paiements, les contrats, les cautions et leur site. Cela cause des doubles réservations, de l'administration, une faible visibilité et une mauvaise exploitation des données.
 
-La promesse Uttily est :
+La promesse Passness est :
 
 > Gérer toute son activité depuis un seul outil et recevoir de nouveaux clients.
 
@@ -44,13 +44,13 @@ La promesse Uttily est :
 | --- | --- |
 | Marketplace client spécialisée | Découvrir, comparer, réserver, payer et gérer une location dans le périmètre fermé. |
 | SaaS loueur | Gérer catalogue, exemplaires, disponibilité, prix, réservations, opérations et performance. |
-| Plateforme Uttily | Paiement, contrats, caution, administration, risque et distribution. |
+| Plateforme Passness | Paiement, contrats, caution, administration, risque et distribution. |
 
 Le MVP est limité aux loueurs professionnels. Les particuliers, partenaires touristiques, livraison, casiers et assurance intégrée restent des extensions futures.
 
 ## Positionnement
 
-Uttily associe la découverte et la réservation d'une marketplace à l'outillage opérationnel d'un SaaS de location.
+Passness associe la découverte et la réservation d'une marketplace à l'outillage opérationnel d'un SaaS de location.
 
 Les différenciateurs recherchés sont :
 
@@ -90,7 +90,7 @@ Hypothèse initiale : **Hossegor, Capbreton et Seignosse**.
 
 Le pilote commence par la famille `bike`. `kayak`, `surf`, `ski` et `snowboard` sont désormais
 actifs dans le registre commercial fermé. Les autres familles neige et
-catégories ne font pas partie de la marketplace Uttily.
+catégories ne font pas partie de la marketplace Passness.
 
 ## MVP commercial
 
@@ -108,8 +108,8 @@ Le critère de succès principal est :
 
 ## Modèle économique
 
-Uttily adopte un modèle transactionnel marketplace, couplé à un logiciel de gestion
-(**Uttily OS**) mis à disposition **gratuitement** des loueurs professionnels
+Passness adopte un modèle transactionnel marketplace, couplé à un logiciel de gestion
+(**Passness OS**) mis à disposition **gratuitement** des loueurs professionnels
 partenaires pour capter leur inventaire physique sans friction d'onboarding ni
 risque lié à la saisonnalité.
 
@@ -117,7 +117,7 @@ risque lié à la saisonnalité.
 | --- | ---: | --- |
 | Frais plateforme loueur | 13 % de la base marketplace | Part loueur du modèle `split-13-7-v1`, prélevée via l'application fee Stripe |
 | Frais de service client | 7 % de la base marketplace | Part client affichée séparément et incluse dans le total payé |
-| Logiciel opérationnel (Uttily OS) | 0 € / mois (Gratuit) | Gestion d'inventaire, exemplaires physiques, retraits/retours, états des lieux et disponibilité |
+| Logiciel opérationnel (Passness OS) | 0 € / mois (Gratuit) | Gestion d'inventaire, exemplaires physiques, retraits/retours, états des lieux et disponibilité |
 
 Revenus potentiels complémentaires : options de protection/assurance, livraison,
 mise en avant locale, marque blanche, affiliation et outils analytiques. Les
@@ -145,7 +145,7 @@ spécialisé et un expert-comptable avant la commercialisation (FIN-002 reste
 
 - nombre d'exemplaires physiques actifs et synchronisés ;
 - volume de chiffre d'affaires généré par loueur ;
-- activation et rétention des loueurs sur Uttily OS ;
+- activation et rétention des loueurs sur Passness OS ;
 - réservations et taux d'utilisation par équipement.
 
 ### Opérations
@@ -179,7 +179,7 @@ spécialisé et un expert-comptable avant la commercialisation (FIN-002 reste
 
 - niveau d'acceptation du taux de commission par catégorie et profil de loueur ;
 - besoin réel de caution numérique par catégorie ;
-- responsabilité juridique d'Uttily dans chaque flux de paiement ;
+- responsabilité juridique d'Passness dans chaque flux de paiement ;
 - catégorie et destination pilote les plus liquides ;
 - coût d'acquisition des loueurs et des clients ;
 - valeur de la livraison ou des partenaires touristiques dans la première destination.

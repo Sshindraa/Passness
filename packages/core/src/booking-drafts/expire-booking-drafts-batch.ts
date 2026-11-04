@@ -6,7 +6,7 @@ import {
   inventoryBlocks,
   type DatabaseClient,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import { BookingDraftError } from './errors';
 import type {
   BatchExpirationAnomaly,
@@ -15,7 +15,7 @@ import type {
 } from './types';
 
 /**
- * @uttily/core — Expiration atomique et batch des brouillons de réservation
+ * @passness/core — Expiration atomique et batch des brouillons de réservation
  * mono-loueur expirés (Lot 4, étape 5, ADR-009 §15).
  *
  * `expireBookingDraftsBatch` est un worker d'expiration qui libère les

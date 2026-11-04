@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import type { UnifiedBike } from '@uttily/core';
-import * as core from '@uttily/core';
+import type { UnifiedBike } from '@passness/core';
+import * as core from '@passness/core';
 import * as catalogAuth from '@/lib/catalog-auth';
 import { formatMoneyAmount } from '@/lib/status-presentation';
 import UnifiedBikePage from './page';
@@ -14,8 +14,8 @@ vi.mock('@/lib/catalog-auth', () => ({
   requireCatalogViewerOf: vi.fn(),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     getUnifiedBike: vi.fn(),

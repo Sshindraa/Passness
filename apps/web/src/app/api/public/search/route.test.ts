@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { PublicSearchError } from '@uttily/core';
+import { PublicSearchError } from '@passness/core';
 
 const { executePublicSearchMock, safeRecordAnalyticsEventMock, getAnalyticsEnvironmentMock } =
   vi.hoisted(() => ({
@@ -16,8 +16,8 @@ vi.mock('@/lib/public-search', async (importOriginal) => {
 vi.mock('@/lib/product-analytics', () => ({
   getAnalyticsEnvironment: getAnalyticsEnvironmentMock,
 }));
-vi.mock('@uttily/core', async (importOriginal) => {
-  const original = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const original = await importOriginal<typeof import('@passness/core')>();
   return { ...original, safeRecordAnalyticsEvent: safeRecordAnalyticsEventMock };
 });
 

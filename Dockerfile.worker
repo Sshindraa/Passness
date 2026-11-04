@@ -1,11 +1,11 @@
-# Dockerfile.worker — Packaging local Docker du @uttily/worker (G5I-A).
+# Dockerfile.worker — Packaging local Docker du @passness/worker (G5I-A).
 #
 # DEV / LOCAL ONLY. Ce fichier prépare et teste localement l'image Docker du
 # worker pour un futur déploiement VPS. Il ne déploie RIEN, ne configure aucun
 # fournisseur réel (Neon, Cloudflare R2, Resend), ne contient aucun secret.
 #
 # Build context : racine du monorepo (`.`) afin d'accéder à pnpm-lock.yaml,
-# pnpm-workspace.yaml et aux packages workspace (@uttily/core, @uttily/database).
+# pnpm-workspace.yaml et aux packages workspace (@passness/core, @passness/database).
 #
 # Quatre stages :
 #   1. builder       — installe les deps, build le bundle esbuild, pnpm deploy.
@@ -21,11 +21,11 @@
 #
 # Commandes de build (depuis la racine du monorepo) :
 #   PRODUCTION (stage par défaut, dernier FROM) :
-#     docker build -f Dockerfile.worker -t uttily-worker:local .
+#     docker build -f Dockerfile.worker -t passness-worker:local .
 #     # Compose utilise --target production explicitement (defense in depth) :
-#     docker build -f Dockerfile.worker -t uttily-worker:local --target production .
+#     docker build -f Dockerfile.worker -t passness-worker:local --target production .
 #   VALIDATION (dev-only, --target obligatoire) :
-#     docker build -f Dockerfile.worker -t uttily-worker:validation --target validation .
+#     docker build -f Dockerfile.worker -t passness-worker:validation --target validation .
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Stage 1 — builder
@@ -47,7 +47,7 @@ COPY . .
 RUN pnpm install --frozen-lockfile
 
 # Build du bundle esbuild → apps/worker/dist/index.js + index.js.map.
-RUN pnpm --filter @uttily/worker build
+RUN pnpm --filter @passness/worker build
 
 # Garantie défensive : la police Inter TTF doit exister après le build, car le
 # stage runtime-base la copie depuis /deploy/worker/assets/fonts (pnpm deploy).
@@ -58,7 +58,7 @@ RUN test -d apps/worker/assets/fonts && test -f apps/worker/assets/fonts/inter-r
 # pnpm deploy : produit /deploy/worker avec node_modules prod uniquement
 # (postgres est désormais en dependencies après G5I-A, donc inclus).
 # --legacy requis par pnpm v10 (sinon ERR_PNPM_DEPLOY_NONINJECTED_WORKSPACE).
-RUN pnpm deploy --filter @uttily/worker --prod --legacy /deploy/worker
+RUN pnpm deploy --filter @passness/worker --prod --legacy /deploy/worker
 
 # Garantie défensive : copie explicite de dist/ dans /deploy/worker au cas où
 # pnpm deploy l'exclurait (champ files ou .npmignore futur). Idempotent.
@@ -70,16 +70,16 @@ RUN cp -r apps/worker/dist /deploy/worker/dist
 FROM node:24-slim AS runtime-base
 
 # Utilisateur non-root dédié (UID/GID fixes 1001 pour reproductibilité).
-RUN groupadd --system --gid 1001 uttily && \
-    useradd --system --uid 1001 --gid uttily --home-dir /app --shell /usr/sbin/nologin uttily
+RUN groupadd --system --gid 1001 passness && \
+    useradd --system --uid 1001 --gid passness --home-dir /app --shell /usr/sbin/nologin passness
 
 WORKDIR /app
 
 # Copie STRICTEMENT : dist/ (bundle) + node_modules/ (deps prod).
 # Aucun src/, scripts/, test, .env, package.json, tsconfig — dist est autonome
 # sauf node_modules.
-COPY --from=builder --chown=uttily:uttily /deploy/worker/dist ./dist
-COPY --from=builder --chown=uttily:uttily /deploy/worker/node_modules ./node_modules
+COPY --from=builder --chown=passness:passness /deploy/worker/dist ./dist
+COPY --from=builder --chown=passness:passness /deploy/worker/node_modules ./node_modules
 
 # Police Inter TTF — chargée depuis disque au runtime par le renderer PDF
 # (pdf-lib-document-renderer.ts via import.meta.url). Depuis dist/index.js,
@@ -87,11 +87,11 @@ COPY --from=builder --chown=uttily:uttily /deploy/worker/node_modules ./node_mod
 # Sans ce fichier, le rendu PDF échoue (DocumentRenderError VALIDATION).
 # Chemin absolu /deploy/worker/assets/fonts (consistant avec les autres COPY
 # --from=builder ; le chemin relatif ne se résout pas dans cette version Docker).
-COPY --from=builder --chown=uttily:uttily /deploy/worker/assets/fonts ./assets/fonts
+COPY --from=builder --chown=passness:passness /deploy/worker/assets/fonts ./assets/fonts
 
 ENV NODE_ENV=production
 
-USER uttily
+USER passness
 
 # Pas de CMD dans runtime-base : chaque stage final (validation/production)
 # définit son propre CMD.
@@ -108,8 +108,8 @@ FROM runtime-base AS validation
 # Chemins absolus /build/... (le chemin relatif ne se résout pas dans cette
 # version Docker ; les fixtures ne sont pas dans /deploy/worker car pnpm deploy
 # --prod n'inclut que les deps production, pas les scripts de test).
-COPY --from=builder --chown=uttily:uttily /build/apps/worker/scripts/smoke-built-worker.mjs ./scripts/smoke-built-worker.mjs
-COPY --from=builder --chown=uttily:uttily /build/apps/worker/scripts/fixtures ./scripts/fixtures
+COPY --from=builder --chown=passness:passness /build/apps/worker/scripts/smoke-built-worker.mjs ./scripts/smoke-built-worker.mjs
+COPY --from=builder --chown=passness:passness /build/apps/worker/scripts/fixtures ./scripts/fixtures
 
 # Le CMD du stage validation lance le harness smoke par défaut.
 CMD ["node", "scripts/smoke-built-worker.mjs"]

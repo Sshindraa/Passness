@@ -5,7 +5,7 @@ import {
   createDatabase,
   runMigrations,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import { createSupplementBookingAmendment } from './create-supplement-booking-amendment';
 import { previewBookingAmendment } from './preview-booking-amendment';
 import { createNeutralBookingAmendment } from './create-neutral-booking-amendment';
@@ -15,7 +15,7 @@ import type { AuthenticatedUser } from '../identity/types';
 import type { PreviewBookingAmendmentCommand } from './types-amendment';
 
 const sourceUrl = process.env.DATABASE_URL;
-const testDatabase = `uttily_test_c5a_prev_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+const testDatabase = `passness_test_c5a_prev_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
 const shouldSkip = !sourceUrl && process.env.CI !== '1' && process.env.CI !== 'true';
 
 describe.skipIf(shouldSkip)('previewBookingAmendment — intégration PostgreSQL', () => {

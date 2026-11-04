@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Fake strict du provider Stripe (Lot 5, ADR-010).
+ * @passness/core — Fake strict du provider Stripe (Lot 5, ADR-010).
  *
  * Fake déterministe pour tests unitaires. N'appelle JAMAIS l'API Stripe réelle.
  * Les IDs sont générés de façon stable depuis les clés d'idempotence.

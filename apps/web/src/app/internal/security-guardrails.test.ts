@@ -8,9 +8,9 @@ import {
 } from '@/app/actions/support';
 import * as auth from '@/lib/auth';
 import * as dbMod from '@/lib/db';
-import { AuthorizationError } from '@uttily/core';
+import { AuthorizationError } from '@passness/core';
 
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 
 vi.mock('@/lib/auth', () => ({
   getAuthenticatedUser: vi.fn(),
@@ -51,7 +51,7 @@ describe('Chantier 16 — Sécurité & Guardrails Support Back-Office', () => {
       await expect(requireSupportPlatformAdmin()).rejects.toThrow(AuthorizationError);
     });
 
-    it('autorise uniquement un compte interne Uttily (isPlatformAdmin = true)', async () => {
+    it('autorise uniquement un compte interne Passness (isPlatformAdmin = true)', async () => {
       const admin = {
         id: 'user-support-admin',
         email: 'ops@uttily.com',

@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Input } from '@uttily/ui';
+import { Button, Input } from '@passness/ui';
 import { MAX_SEARCH_PEOPLE } from '@/lib/search-people';
 import type { SearchLocale } from './search-state';
 import styles from './search-intent.module.css';

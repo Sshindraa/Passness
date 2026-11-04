@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Helper de gestion des invariants irréconciliables (P1-2, ADR-010 §D).
+ * @passness/core — Helper de gestion des invariants irréconciliables (P1-2, ADR-010 §D).
  *
  * Wrap une fonction handler pour capturer les invariants irréconciliables.
  * - WebhookHandlerError avec statusCode > 200 : ROLLBACK TO SAVEPOINT des
@@ -18,7 +18,7 @@
  * FAILED, laissant l'agrégat dans un état incohérent.
  */
 
-import type { DatabaseTransaction } from '@uttily/database';
+import type { DatabaseTransaction } from '@passness/database';
 import { WebhookHandlerError, isIrreconcilable } from './errors';
 import { markWebhookFailed } from './dedupe-event';
 import type { HandlerOutcome } from './types';

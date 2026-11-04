@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Validation d'autorité webhook partagée (Lot 5, ADR-010 §10 étape 6).
+ * @passness/core — Validation d'autorité webhook partagée (Lot 5, ADR-010 §10 étape 6).
  *
  * Extrait les validations webhook vs données locales (montant, devise,
  * PaymentIntent ID, organisation, destination, commission, on_behalf_of,
@@ -11,7 +11,7 @@
  */
 
 import { and, eq } from 'drizzle-orm';
-import { organizationPaymentAccounts, type DatabaseTransaction } from '@uttily/database';
+import { organizationPaymentAccounts, type DatabaseTransaction } from '@passness/database';
 import type { PaymentIntentEventData, ResolvedAttempt } from './types';
 import { WebhookHandlerError } from './errors';
 import { parseMarketplaceFeeSnapshot } from '../marketplace-fees';

@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -83,7 +83,7 @@ async function seedShop(suffix = SUFFIX()): Promise<SeedShop> {
 
   const operatorUser = await sql`
     INSERT INTO users (email, display_name)
-    VALUES (${'operator-' + suffix + '@uttily.test'}, 'Jean Responsable')
+    VALUES (${'operator-' + suffix + '@passness.test'}, 'Jean Responsable')
     RETURNING id
   `.then((rows) => rows[0]!);
 
@@ -145,7 +145,7 @@ async function seedShop(suffix = SUFFIX()): Promise<SeedShop> {
     locationId: location.id,
     operator: {
       id: operatorUser.id,
-      email: 'operator-' + suffix + '@uttily.test',
+      email: 'operator-' + suffix + '@passness.test',
       emailVerified: true,
       isPlatformAdmin: false,
       oidcSubject: 'oidc-' + suffix,

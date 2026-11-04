@@ -1,8 +1,8 @@
-# ADR-025 — Proposition évaluée : onboarding Stripe Connect Embedded dans Uttily
+# ADR-025 — Proposition évaluée : onboarding Stripe Connect Embedded dans Passness
 
 - **Statut** : Rejected
 - **Date** : 2026-08-26
-- **Décideurs** : Porteur produit Uttily, engineering
+- **Décideurs** : Porteur produit Passness, engineering
 - **Relie à** : [ADR-010 — Stripe Connect, paiement, confirmation et réconciliation](./ADR-010-stripe-connect-payment-confirmation-and-reconciliation.md), [ADR-024 — Stripe Connect Express et onboarding France du MVP](./ADR-024-stripe-connect-express-france-onboarding.md)
 
 Cette proposition est **rejetée pour G8A-0**. Elle ne constitue pas une
@@ -15,20 +15,20 @@ une nouvelle décision explicite et une implémentation complète testée.
 ## 1. Contexte
 
 Le parcours actuel crée un `AccountLink` pour l'onboarding du compte connecté.
-Ce lien redirige le loueur vers `connect.stripe.com`, donc hors d'Uttily. Cette
+Ce lien redirige le loueur vers `connect.stripe.com`, donc hors d'Passness. Cette
 rupture de parcours n'est pas conforme à la décision produit : l'onboarding du
-loueur doit rester dans Uttily et ne doit pas rediriger vers une page Stripe
+loueur doit rester dans Passness et ne doit pas rediriger vers une page Stripe
 externe.
 
 Stripe propose les Embedded Components pour afficher l'onboarding dans
 l'interface de la plateforme. Le composant d'onboarding est initialisé à partir
 d'une `AccountSession` éphémère créée côté serveur. Cette session permet de
 fournir à Stripe le contexte de l'onboarding sans faire de son jeton de
-bootstrap une donnée métier Uttily.
+bootstrap une donnée métier Passness.
 
 ADR-024 fixe déjà le parcours France du MVP : Accounts v1 avec controller
 properties, responsabilités Express et collecte des exigences par Stripe. Elle
-interdit à Uttily de construire un formulaire KYC ou de stocker les données KYC.
+interdit à Passness de construire un formulaire KYC ou de stocker les données KYC.
 ADR-010 conserve les webhooks et l'état PostgreSQL comme autorités, et interdit
 notamment de stocker ou journaliser un `client_secret`. L'intégration Embedded
 doit donc modifier le contenant UX de l'onboarding, pas ces invariants.
@@ -39,7 +39,7 @@ doit donc modifier le contenant UX de l'onboarding, pas ces invariants.
 
 La solution évaluée aurait utilisé une `AccountSession` éphémère pour activer
 le composant Stripe Embedded `ConnectAccountOnboarding` directement dans
-l'interface Uttily. Elle aurait supprimé, pour ce parcours, l'`AccountLink` qui
+l'interface Passness. Elle aurait supprimé, pour ce parcours, l'`AccountLink` qui
 redirige vers `connect.stripe.com`.
 
 Le flux cible est le suivant :
@@ -76,7 +76,7 @@ un artefact éphémère de transport et de session : il n'est jamais une preuve 
 création, d'identité, de KYC, de readiness ou de capacité de paiement.
 
 Une nouvelle session est créée lorsque le serveur autorisé démarre un parcours.
-La session n'est pas persistée dans Uttily et le navigateur ne choisit ni le
+La session n'est pas persistée dans Passness et le navigateur ne choisit ni le
 compte connecté ni l'organisation à partir d'une valeur faisant autorité côté
 client.
 
@@ -101,14 +101,14 @@ Les invariants suivants restent applicables :
   notamment `account.updated` ; le navigateur, le composant Embedded, la réponse
 du provider et `onExit` ne peuvent pas confirmer la readiness ;
 - `organization_payment_accounts` reste le read model métier local et l'autorité
-  consultée par Uttily pour l'état du compte, ses identifiants provider, ses
+  consultée par Passness pour l'état du compte, ses identifiants provider, ses
   statuts et les capacités nécessaires au paiement ;
 - la readiness locale dépend de la projection serveur et non de la fermeture du
   composant ou du retour de la session ;
 - les autorités de paiement, de confirmation, de réconciliation et de contrôle
   LIVE de l'ADR-010 ne changent pas ;
 - aucune donnée de carte, aucun KYC et aucun justificatif n'est stocké par
-  Uttily.
+  Passness.
 
 ### 2.3 Secret de session et données minimisées
 
@@ -125,7 +125,7 @@ Le `client_secret` de l'`AccountSession` :
 - est éliminé après son usage côté serveur et côté interface selon le cycle de
   vie de la session.
 
-Uttily ne reçoit, ne conserve et ne traite pas les données KYC ni les documents
+Passness ne reçoit, ne conserve et ne traite pas les données KYC ni les documents
 justificatifs collectés par Stripe. Le stockage local reste borné aux
 identifiants du compte provider, aux statuts, aux capacités et au snapshot
 technique de readiness nécessaires au paiement, conformément à ADR-024.
@@ -146,7 +146,7 @@ en fournissant un autre `organizationId` ou `accountId`.
 
 Le composant `ConnectAccountOnboarding` est présenté en **Focus Mode** : le
 loueur est guidé dans une tâche unique, sans confusion avec le dashboard ou un
-état de paiement. Les messages Uttily sont factuels et ne promettent ni
+état de paiement. Les messages Passness sont factuels et ne promettent ni
 validation immédiate ni capacité de paiement. Ils peuvent indiquer que les
 informations sont transmises à Stripe ou que la validation locale attend un
 événement Connect, mais ne déclarent pas une complétion sur la seule base de
@@ -185,7 +185,7 @@ séparées.
    `organization_payment_accounts`. Un `client_secret`, une réponse du
    composant ou un callback navigateur ne modifie pas cette table.
 2. **Readiness** : seuls les événements Connect signés et leur projection locale
-   déterminent l'état de readiness utilisé par Uttily. Un retour visuel réussi
+   déterminent l'état de readiness utilisé par Passness. Un retour visuel réussi
    ne suffit pas à autoriser les destination charges.
 3. **Idempotence et sessions** : les retries du use case ne créent ni second
    compte local ni seconde projection webhook. Une `AccountSession` peut être
@@ -193,7 +193,7 @@ séparées.
 4. **Multi-tenant** : l'autorisation `MANAGER+`, l'organisation et le compte
    provider sont vérifiés côté serveur avant la création de la session.
 5. **Minimisation** : aucun KYC, justificatif, donnée de carte ou
-   `client_secret` n'est persisté ou journalisé par Uttily.
+   `client_secret` n'est persisté ou journalisé par Passness.
 6. **Paiement inchangé** : les destination charges, la confirmation par webhook,
    la réconciliation, le snapshot financier et le verrou
    `PAYMENTS_LIVE_ENABLED=false` tant que les conditions de l'ADR-010 ne sont
@@ -205,9 +205,9 @@ séparées.
 
 ### 4.1 Conséquences positives
 
-- Le loueur reste dans Uttily pendant l'onboarding ; le parcours n'est plus
+- Le loueur reste dans Passness pendant l'onboarding ; le parcours n'est plus
   interrompu par une redirection vers une page Stripe externe.
-- Stripe conserve la collecte des exigences et du KYC, ce qui évite à Uttily de
+- Stripe conserve la collecte des exigences et du KYC, ce qui évite à Passness de
   construire, sécuriser et maintenir un formulaire KYC ou de stocker des
   justificatifs.
 - Le contrat provider-agnostique sépare le use case métier de la création
@@ -228,7 +228,7 @@ séparées.
 - L'UX peut afficher un état différent de la readiness locale pendant le délai
   de réception ou de traitement du webhook `account.updated`.
 - Le parcours reste dépendant des exigences et des messages Stripe ; le fait de
-  rester dans Uttily ne permet pas de personnaliser ou de stocker le KYC.
+  rester dans Passness ne permet pas de personnaliser ou de stocker le KYC.
 - Une extension aux changements de compte ou aux payouts nécessitera des
   autorisations, composants, tests et décisions supplémentaires.
 
@@ -238,15 +238,15 @@ séparées.
 
 Rejeté pour ce parcours : cette option conserve la rupture d'expérience vers
 `connect.stripe.com` et contredit la décision produit de maintenir l'onboarding
-dans Uttily. Elle ne doit pas être utilisée comme fallback silencieux de la
+dans Passness. Elle ne doit pas être utilisée comme fallback silencieux de la
 feature Embedded.
 
-### 5.2 Construire un KYC custom Uttily
+### 5.2 Construire un KYC custom Passness
 
-Rejeté pour le MVP. Cette option ferait porter à Uttily la collecte, la sécurité,
+Rejeté pour le MVP. Cette option ferait porter à Passness la collecte, la sécurité,
 la rétention et la conformité des données KYC et des justificatifs. Elle
 contredit ADR-024, qui retient `controller.requirement_collection=stripe` et un
-onboarding sans stockage de KYC par Uttily. Un besoin de collecte contrôlée
+onboarding sans stockage de KYC par Passness. Un besoin de collecte contrôlée
 nécessiterait une décision dédiée et l'étude des Account Tokens.
 
 ### 5.3 Utiliser `onExit` comme preuve de complétion
@@ -281,7 +281,7 @@ La revue de l'implémentation devra au minimum vérifier :
   optimiste) et les messages factuels en Focus Mode ;
 - la CSP minimale pour les domaines Stripe nécessaires, en environnement TEST
   puis dans les environnements applicables ;
-- l'absence de stockage Uttily de KYC ou de justificatifs, et l'absence des
+- l'absence de stockage Passness de KYC ou de justificatifs, et l'absence des
   surfaces Account Management/Payouts du MVP.
 
 ## 7. Références

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests unitaires du parseur providerMessageId (G5E Round 3, ADR-013 §11).
+ * @passness/core — Tests unitaires du parseur providerMessageId (G5E Round 3, ADR-013 §11).
  *
  * Tests PURS : aucun PostgreSQL requis. Vérifient la validation stricte du
  * providerMessageId et l'absence de la valeur reçue dans les messages d'erreur.

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-A).
+ * @passness/core — Module Product Analytics (G7H-A).
  *
  * Fonctions de validation pures (sans accès base de données).
  * Utilisées par record-event, aggregate, purge et summary.

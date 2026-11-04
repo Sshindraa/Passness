@@ -24,7 +24,7 @@ import { analyticsEventType, analyticsEnvironment, productAnalyticsDaily } from 
  * - Le journal de migrations (62 entrées, dont 0050, 0051, 0052, 0053, 0054, 0055 et 0056).
  */
 
-const TEST_DB_NAME = 'uttily_test_g7h_analytics';
+const TEST_DB_NAME = 'passness_test_g7h_analytics';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

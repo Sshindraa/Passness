@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { PhotoSlotType } from '@uttily/contracts';
-import type { UnifiedBikePhotoItem } from '@uttily/core';
+import type { PhotoSlotType } from '@passness/contracts';
+import type { UnifiedBikePhotoItem } from '@passness/core';
 import { PhotoCoachModal } from '@/components/photo-coach/PhotoCoachModal';
 import styles from './components.module.css';
 

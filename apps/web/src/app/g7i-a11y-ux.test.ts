@@ -1,5 +1,5 @@
 /**
- * @uttily/web — G7I Lot 7 static accessibility guardrails.
+ * @passness/web — G7I Lot 7 static accessibility guardrails.
  *
  * Tests d'analyse statique (static source analysis) vérifiant la structure
  * source : labels, rôles, live regions et media queries.

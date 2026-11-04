@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Tests unitaires du cycle du worker (G5F).
+ * @passness/worker — Tests unitaires du cycle du worker (G5F).
  *
  * Couvre SANS PostgreSQL (stubs typés injectés) :
  * 1. Ordre documents puis email.
@@ -14,9 +14,9 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
-import type { DocumentRenderer, ObjectStorage, TransactionalEmailSender } from '@uttily/core';
-import type { DocumentPipelineResult, TransactionalEmailPipelineResult } from '@uttily/core';
+import type { DatabaseClient } from '@passness/database';
+import type { DocumentRenderer, ObjectStorage, TransactionalEmailSender } from '@passness/core';
+import type { DocumentPipelineResult, TransactionalEmailPipelineResult } from '@passness/core';
 
 import { runTransactionalDocumentsWorkerCycle, isPipelineGlobalFailure } from './worker-cycle';
 import type { WorkerDependencies } from './worker-cycle';

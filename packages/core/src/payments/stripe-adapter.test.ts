@@ -1539,8 +1539,8 @@ describe('StripeAdapter', () => {
 
       const params: CreateOnboardingLinkParams = {
         accountId: 'acct_123',
-        returnUrl: 'https://uttily.example.com/return',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        returnUrl: 'https://passness.example.com/return',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: 'idem_link_abc',
       };
       const result = await adapter.createOnboardingLink(params);
@@ -1551,16 +1551,16 @@ describe('StripeAdapter', () => {
       const [createParams, options] = mockAccountLinksCreate.mock.calls[0]!;
       expect(createParams.account).toBe('acct_123');
       expect(createParams.type).toBe('account_onboarding');
-      expect(createParams.return_url).toBe('https://uttily.example.com/return');
-      expect(createParams.refresh_url).toBe('https://uttily.example.com/refresh');
+      expect(createParams.return_url).toBe('https://passness.example.com/return');
+      expect(createParams.refresh_url).toBe('https://passness.example.com/refresh');
       expect(options.idempotencyKey).toBe('idem_link_abc');
     });
 
     it('rejette un accountId vide avec VALIDATION', async () => {
       const params: CreateOnboardingLinkParams = {
         accountId: '',
-        returnUrl: 'https://uttily.example.com/return',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        returnUrl: 'https://passness.example.com/return',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: 'idem_link_abc',
       };
 
@@ -1579,7 +1579,7 @@ describe('StripeAdapter', () => {
       const params: CreateOnboardingLinkParams = {
         accountId: 'acct_123',
         returnUrl: '',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: 'idem_link_abc',
       };
 
@@ -1597,7 +1597,7 @@ describe('StripeAdapter', () => {
     it('rejette un refreshUrl vide avec VALIDATION', async () => {
       const params: CreateOnboardingLinkParams = {
         accountId: 'acct_123',
-        returnUrl: 'https://uttily.example.com/return',
+        returnUrl: 'https://passness.example.com/return',
         refreshUrl: '',
         idempotencyKey: 'idem_link_abc',
       };
@@ -1616,8 +1616,8 @@ describe('StripeAdapter', () => {
     it("rejette une clé d'idempotence vide avec VALIDATION", async () => {
       const params: CreateOnboardingLinkParams = {
         accountId: 'acct_123',
-        returnUrl: 'https://uttily.example.com/return',
-        refreshUrl: 'https://uttily.example.com/refresh',
+        returnUrl: 'https://passness.example.com/return',
+        refreshUrl: 'https://passness.example.com/refresh',
         idempotencyKey: '',
       };
 

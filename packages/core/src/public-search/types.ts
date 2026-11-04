@@ -1,5 +1,5 @@
-import type { DatabaseClient } from '@uttily/database';
-import type { BikeSubtype } from '@uttily/contracts';
+import type { DatabaseClient } from '@passness/database';
+import type { BikeSubtype } from '@passness/contracts';
 import type { ProfessionalVerificationStatus } from '../professional-verification';
 
 // ─────────────────────────────────────────────────────────────────────────────

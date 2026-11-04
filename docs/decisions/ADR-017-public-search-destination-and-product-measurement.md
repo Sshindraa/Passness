@@ -3,7 +3,7 @@
 - **Statut** : Accepted — réserves non bloquantes listées
 - **Date** : 2026-08-06
 - **Phase** : 11 / Lot 7 — G7B : gel documentaire complet ; G7C-R3 : migration 0031 alignée (pays, destinations i18n, traductions, locations renforcées)
-- **Décideurs** : Porteur produit Uttily, engineering, juridique / privacy
+- **Décideurs** : Porteur produit Passness, engineering, juridique / privacy
 - **Relie à** : ADR-004, ADR-009, ADR-014, ADR-018 ; `docs/implementation/g7a-public-search-audit-and-delivery-plan.md` ; `docs/product/lot7-arbitrage.md`
 
 > **Note de révision (2026-08-07)** : Plusieurs décisions de cet ADR ont été
@@ -116,7 +116,7 @@ stratégie adaptative :
 
 - la destination résolue fournit un centre et idéalement une bounding
   box/viewport ;
-- Uttily recherche d'abord dans la zone correspondant à la destination ;
+- Passness recherche d'abord dans la zone correspondant à la destination ;
 - si les résultats exacts sont insuffisants, la zone peut être élargie
   progressivement ;
 - les résultats élargis ne sont jamais mélangés silencieusement aux résultats
@@ -271,11 +271,11 @@ si elle existe, stratégie de zone ou étape d'élargissement, `hasResults`,
 ou catégorie publique autorisée, `sort`, `locale`, `environment` et
 `occurredAt`.
 Sont interdits : aucun texte libre brut de recherche ; aucune adresse client ;
-aucune IP dans le ledger Uttily ; aucun GPS brut ; aucun fingerprint ; aucun
+aucune IP dans le ledger Passness ; aucun GPS brut ; aucun fingerprint ; aucun
 email ; IP, email, GPS brut, secret cookie, fingerprint, payment/Stripe,
 SKU/serial interne, notes et descriptions. Le fournisseur de géocodage peut
 traiter des données techniques selon sa propre politique, indépendamment du
-ledger analytics Uttily. En développement, aucun
+ledger analytics Passness. En développement, aucun
 provider payant n'est utilisé ; analytics désactivées ou synthétiques sont admises.
 Aucune collecte de production ne commence avant validation privacy/juridique.
 

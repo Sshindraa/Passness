@@ -5,14 +5,14 @@ import {
   runMigrations,
   organizationMemberships,
   assertLocalhost,
-} from '@uttily/database';
-import type { DatabaseClient } from '@uttily/database';
+} from '@passness/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   createOrganizationForUser,
   createLocation,
   provisionUserFromOidc,
   type AuthenticatedUser,
-} from '@uttily/core';
+} from '@passness/core';
 import { sql } from 'drizzle-orm';
 
 // ---------------------------------------------------------------------------
@@ -50,12 +50,12 @@ vi.mock('@/lib/auth', async () => {
   return { getAuthenticatedUser: actual.getAuthenticatedUser };
 });
 
-// Mock `@uttily/core` : on passe tout au travers (vi.importActual) sauf
+// Mock `@passness/core` : on passe tout au travers (vi.importActual) sauf
 // `prepareBooking` qui est enveloppé dans un `vi.fn` pour permettre de
 // simuler une erreur interne brute (test UNKNOWN / sanitisation G4A).
 // Par défaut, le `vi.fn` appelle l'implémentation réelle.
-vi.mock('@uttily/core', async () => {
-  const actual = await vi.importActual<typeof import('@uttily/core')>('@uttily/core');
+vi.mock('@passness/core', async () => {
+  const actual = await vi.importActual<typeof import('@passness/core')>('@passness/core');
   return { ...actual, prepareBooking: vi.fn(actual.prepareBooking) };
 });
 
@@ -71,14 +71,14 @@ const {
 } = await import('./fulfillment');
 const { revalidatePath } = await import('next/cache');
 // Référence au mock `prepareBooking` pour pouvoir le surcharger ponctuellement.
-const coreModule = await import('@uttily/core');
+const coreModule = await import('@passness/core');
 
 // ---------------------------------------------------------------------------
 // Setup base de test (réplique minimale de setupIntegrationTestDb).
 // ---------------------------------------------------------------------------
 
 const isCi = process.env.CI === '1' || process.env.CI === 'true';
-const TEST_DB_NAME = 'uttily_test_fulfillment_actions';
+const TEST_DB_NAME = 'passness_test_fulfillment_actions';
 
 /**
  * Détermine si les tests d'intégration PostgreSQL doivent être skippés.
@@ -173,7 +173,7 @@ beforeEach(async () => {
   // restaure l'implémentation par défaut (l'implémentation réelle).
   vi.mocked(coreModule.prepareBooking).mockClear();
   vi.mocked(coreModule.prepareBooking).mockImplementation(
-    (await vi.importActual<typeof import('@uttily/core')>('@uttily/core')).prepareBooking,
+    (await vi.importActual<typeof import('@passness/core')>('@passness/core')).prepareBooking,
   );
   // TRUNCATE réinitialise toutes les tables métier (RESTART IDENTITY).
   // Les catégories seedées par migration ne sont pas tronquées.

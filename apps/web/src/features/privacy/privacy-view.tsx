@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { useClerk } from '@clerk/nextjs';
-import type { PrivacyRequestSummary, PrivacyRequestType } from '@uttily/core';
-import { Card, Badge, PageHeader, Icon } from '@uttily/ui';
-import type { BadgeTone } from '@uttily/ui';
+import type { PrivacyRequestSummary, PrivacyRequestType } from '@passness/core';
+import { Card, Badge, PageHeader, Icon } from '@passness/ui';
+import type { BadgeTone } from '@passness/ui';
 import { eraseMyAccountAction, submitPrivacyRequestAction } from '@/app/actions/privacy';
 import styles from './privacy-view.module.css';
 
@@ -286,8 +286,8 @@ export function PrivacyView({ locale, requests }: PrivacyViewProps): React.React
               </h2>
               <p className={styles.cardSubtitle}>
                 {fr
-                  ? 'Obtenez une copie lisible ou structurée de vos données détenues par Uttily.'
-                  : 'Obtain an intelligible or structured copy of your data held by Uttily.'}
+                  ? 'Obtenez une copie lisible ou structurée de vos données détenues par Passness.'
+                  : 'Obtain an intelligible or structured copy of your data held by Passness.'}
               </p>
             </div>
           </div>
@@ -544,8 +544,8 @@ export function PrivacyView({ locale, requests }: PrivacyViewProps): React.React
           <div className={styles.transparencyContent}>
             <p>
               {fr
-                ? 'Uttily s’appuie sur des prestataires qualifiés pour assurer son service : Clerk (authentification), Stripe (paiement sécurisé), Neon (base de données), Cloudflare (stockage sécurisé), Resend (emails transactionnels) et Vercel (infrastructure).'
-                : 'Uttily relies on qualified service providers to operate: Clerk (authentication), Stripe (secure payments), Neon (database), Cloudflare (secure storage), Resend (transactional emails) and Vercel (infrastructure).'}
+                ? 'Passness s’appuie sur des prestataires qualifiés pour assurer son service : Clerk (authentification), Stripe (paiement sécurisé), Neon (base de données), Cloudflare (stockage sécurisé), Resend (emails transactionnels) et Vercel (infrastructure).'
+                : 'Passness relies on qualified service providers to operate: Clerk (authentication), Stripe (secure payments), Neon (database), Cloudflare (secure storage), Resend (transactional emails) and Vercel (infrastructure).'}
             </p>
             <p>
               {fr

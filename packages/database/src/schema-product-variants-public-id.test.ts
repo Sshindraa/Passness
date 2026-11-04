@@ -6,8 +6,8 @@ import { assertLocalhost, runMigrations } from '../src/index';
  * Tests PostgreSQL réels pour la migration 0038 (public_id immuable sur product_variants).
  */
 
-const TEST_DB_NAME = 'uttily_test_product_variants_public_id';
-const UPGRADE_DB_NAME = 'uttily_test_product_variants_public_id_upgrade';
+const TEST_DB_NAME = 'passness_test_product_variants_public_id';
+const UPGRADE_DB_NAME = 'passness_test_product_variants_public_id_upgrade';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

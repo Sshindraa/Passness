@@ -1,6 +1,6 @@
 import { and, eq, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { productVariants, products } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { productVariants, products } from '@passness/database';
 import type { ProductVariantRecord, CreateVariantInput, UpdateVariantInput } from './types';
 import { AuthorizationError } from '../identity/permissions';
 import { CatalogError } from './errors';

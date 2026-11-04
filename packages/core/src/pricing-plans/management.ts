@@ -1,12 +1,12 @@
 import { and, eq, isNull, sql, inArray, desc } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
 import {
   pricingPlans,
   pricingPlanTranslations,
   multiDayDiscountTiers,
   productVariants,
   products,
-} from '@uttily/database';
+} from '@passness/database';
 import { FlexiblePricingError } from './errors';
 
 export interface DiscountTierSummary {

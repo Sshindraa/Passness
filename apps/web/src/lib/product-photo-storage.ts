@@ -9,7 +9,7 @@ import type {
   ProductPhotoStorage,
   ProductPhotoStorageMetadata,
   ProductPhotoStoragePutResult,
-} from '@uttily/core';
+} from '@passness/core';
 
 const ACCOUNT_ID_RE = /^[a-zA-Z0-9]{6,64}$/;
 const BUCKET_RE = /^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$/;

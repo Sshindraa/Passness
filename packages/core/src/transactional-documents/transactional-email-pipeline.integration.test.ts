@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'intégration PostgreSQL du pipeline d'emails transactionnels
+ * @passness/core — Tests d'intégration PostgreSQL du pipeline d'emails transactionnels
  * (G5E, ADR-013 §11).
  *
  * 40 scénarios couvrant : filtrage READY_FOR_TRANSACTIONAL_EMAIL, nominal send,
@@ -10,7 +10,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { sql } from 'drizzle-orm';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,

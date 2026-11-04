@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'intégration PostgreSQL du pipeline de génération de
+ * @passness/core — Tests d'intégration PostgreSQL du pipeline de génération de
  * documents transactionnels (G5D, ADR-013 §10, §11).
  *
  * 30 scénarios couvrant : filtrage exact BOOKING_CONFIRMED.v1/BOOKING,
@@ -15,7 +15,7 @@
 
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -997,7 +997,7 @@ describe.skipIf(skip)('executeDocumentPipeline — integration PostgreSQL', () =
       putIfAbsent: async () => ({
         kind: 'ALREADY_EXISTS' as const,
         metadata: {
-          contentType: 'application/vnd.uttily.test-document+json',
+          contentType: 'application/vnd.passness.test-document+json',
           sizeBytes: 100,
           checksumSha256: null,
         },
@@ -2113,7 +2113,7 @@ describe.skipIf(skip)('executeDocumentPipeline — integration PostgreSQL', () =
         },
       }),
       head: async () => ({
-        contentType: 'application/vnd.uttily.test-document+json',
+        contentType: 'application/vnd.passness.test-document+json',
         sizeBytes: 999,
         checksumSha256: null,
       }),

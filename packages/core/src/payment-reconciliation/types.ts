@@ -1,8 +1,8 @@
 /**
- * @uttily/core — Types du module Payment Reconciliation (Phase 7A, ADR-010 §12).
+ * @passness/core — Types du module Payment Reconciliation (Phase 7A, ADR-010 §12).
  */
 
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { PaymentProviderAdapter, StripeEnvironment } from '../payments/types';
 import type { MarketplaceFeeSnapshot } from '../marketplace-fees';
 

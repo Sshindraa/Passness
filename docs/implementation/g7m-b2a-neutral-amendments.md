@@ -84,7 +84,7 @@ En cas d'échec métier déterministe, `failKey` est appelé dans la transaction
 
 ## Outbox BOOKING_AMENDED.v1
 
-- Insertion dans `outbox_events` avec les constantes fermées de `@uttily/contracts` (`BOOKING_AMENDED_AGGREGATE_TYPE`, `BOOKING_AMENDED_EVENT_TYPE`, `BOOKING_AMENDED_EVENT_VERSION`).
+- Insertion dans `outbox_events` avec les constantes fermées de `@passness/contracts` (`BOOKING_AMENDED_AGGREGATE_TYPE`, `BOOKING_AMENDED_EVENT_TYPE`, `BOOKING_AMENDED_EVENT_VERSION`).
 - Validé par le parseur runtime fermé `parseBookingAmendedV1Event(input)`.
 
 ## Concurrence et Robustesse

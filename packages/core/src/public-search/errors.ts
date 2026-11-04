@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Public Search (G7D-A).
+ * @passness/core — Module Public Search (G7D-A).
  *
  * Erreur métier typée pour le moteur de recherche publique.
  * Les codes sont spécifiques au domaine public-search et distincts

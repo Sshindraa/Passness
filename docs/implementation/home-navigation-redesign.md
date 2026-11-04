@@ -1,7 +1,7 @@
 # Accueil — première tranche de refonte (2026-08-31)
 
 Périmètre demandé : reproduire la barre de la capture Airbnb fournie, en
-remplaçant sa marque par `uttily`. Cette tranche de présentation s'inscrit dans
+remplaçant sa marque par `passness`. Cette tranche de présentation s'inscrit dans
 21-U1 / ADR-033 et n'exige aucune nouvelle décision structurelle.
 
 - `HomeNavigation` est injectée uniquement sur `/` dans le shell client ; le
@@ -13,7 +13,7 @@ remplaçant sa marque par `uttily`. Cette tranche de présentation s'inscrit dan
   choisir une destination ; aucune destination ni catégorie métier n'est inventée.
 - Le H est un repère
   visuel provisoire, pas une initiale issue du compte connecté.
-- Le menu donne accès aux parcours Uttily existants et conserve le contrôle
+- Le menu donne accès aux parcours Passness existants et conserve le contrôle
   Clerk connecté/déconnecté. Échap ferme chacun des menus et restitue le focus.
 - La navigation passe sur deux lignes sur tablette/mobile. Les couleurs de la
   référence sont des tokens dédiés, sans changement de thème global.
@@ -34,9 +34,9 @@ optionnel `nativeModal` utilise `showModal()` et verrouille le défilement du fo
 
 ## Logo fourni (quatrième itération)
 
-Le symbole vectoriel fourni par le porteur de produit (`logo_uttily_vector.svg`)
-est servi localement depuis `/images/brand/uttily-logo.svg`, à côté du nom
-« uttily », comme la composition symbole + nom de la référence Airbnb.
+Le symbole vectoriel fourni par le porteur de produit (`logo_passness_vector.svg`)
+est servi localement depuis `/images/brand/passness-logo.svg`, à côté du nom
+« passness », comme la composition symbole + nom de la référence Airbnb.
 Les tracés, le noir et le dégradé bleu d'origine sont préservés. Seuls le
 `viewBox` et les dimensions du canevas sont resserrés pour retirer les grandes
 marges transparentes ; le fichier source fourni reste intact.
@@ -46,8 +46,8 @@ de faire lire deux fois le nom.
 
 ## Marque partagée dans les shells
 
-Le composant partagé `components/brand/UttilyBrand` réutilise désormais ce même
-logo dans la navigation d'accueil, le shell Client, le shell Uttily Pro
+Le composant partagé `components/brand/PassnessBrand` réutilise désormais ce même
+logo dans la navigation d'accueil, le shell Client, le shell Passness Pro
 (sidebar et en-tête mobile) et l'en-tête Support interne. Les variantes `Pro`
 et `Support` conservent leur suffixe textuel, tandis que le symbole, son texte
 alternatif décoratif et le lien accessible restent centralisés. Les pages qui
@@ -64,7 +64,7 @@ Sur l'accueil uniquement, sa prop `sticky={false}` la laisse défiler avec la
 page ; le filtre de recherche prend ensuite le relais et se fixe en haut de la
 fenêtre (`searchBarPinned`). Les autres shells gardent leur comportement sticky.
 La photo locale de Nick Page / Unsplash est une inspiration éditoriale, pas une
-annonce Uttily. Sa provenance figure dans `public/images/home/README.md`.
+annonce Passness. Sa provenance figure dans `public/images/home/README.md`.
 
 Les trois entrées et le bouton Rechercher ouvrent un dialogue accessible qui
 réutilise `SearchForm` et ses critères réels, avec focus sur le champ demandé.
@@ -75,7 +75,7 @@ techniques ne sont pas exposées ; un lien de repli reste disponible en cas de
 source indisponible ou de JavaScript désactivé. Les sections explicatives sous
 le premier écran sont conservées. Aucune modification Core, paiement ou schéma.
 
-## Navigation Uttily — direction originale
+## Navigation Passness — direction originale
 
 À la demande du porteur de produit, la navigation abandonne ensuite la
 composition Airbnb : bandeau bleu nuit, bloc de marque blanc à angle découpé,
@@ -144,7 +144,7 @@ Les quatre PNG de référence, provenant de la navigation publique de
 https://www.airbnb.com/ consultée le 2026-08-31, ont été inspectés puis retirés
 du checkout lors de la stabilisation Phase 0. Ils n’étaient pas utilisés par
 l’interface et aucun asset tiers sans licence de redistribution ne reste dans
-`apps/web/public/`. Prévoir uniquement des visuels Uttily sous licence avant
+`apps/web/public/`. Prévoir uniquement des visuels Passness sous licence avant
 toute nouvelle réutilisation de cette direction.
 
 Identifiants des sources `a0.muscache.com/im/pictures/` :

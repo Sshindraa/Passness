@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Renderer PDF déterministe via pdf-lib (G5H-C2C-B2, ADR-013).
+ * @passness/worker — Renderer PDF déterministe via pdf-lib (G5H-C2C-B2, ADR-013).
  *
  * Implémente DocumentRenderer avec pdf-lib + @pdf-lib/fontkit. Trois templates
  * techniques : confirmation de réservation, contrat de location technique,
@@ -29,9 +29,9 @@ import { fileURLToPath } from 'node:url';
 import fontkit from '@pdf-lib/fontkit';
 import { PDFDocument, rgb, type PDFFont, type PDFPage } from 'pdf-lib';
 
-import { DocumentRenderError } from '@uttily/core';
-import type { DocumentRenderer, DocumentRenderSnapshotV1, RenderedDocument } from '@uttily/core';
-import { parseDocumentRenderSnapshotV1 } from '@uttily/core';
+import { DocumentRenderError } from '@passness/core';
+import type { DocumentRenderer, DocumentRenderSnapshotV1, RenderedDocument } from '@passness/core';
+import { parseDocumentRenderSnapshotV1 } from '@passness/core';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constantes publiques
@@ -93,7 +93,7 @@ export function assertPdfOutputLimits(input: {
 // Constantes PDF internes
 // ─────────────────────────────────────────────────────────────────────────────
 
-const PDF_CREATOR = 'Uttily Worker';
+const PDF_CREATOR = 'Passness Worker';
 const PDF_PRODUCER = 'pdf-lib 1.17.1';
 
 // A4 en points (1 pt = 1/72 inch). Valeurs fixes (PageSizes.A4 = [595.28, 841.89]).
@@ -754,7 +754,7 @@ function drawFooters(ctx: LayoutContext): void {
   for (let i = 0; i < totalPages; i++) {
     const pageNum = i + 1;
     const page = ctx.pages[i]!;
-    const footerText = `Document technique généré par Uttily — Page ${pageNum} / ${totalPages}`;
+    const footerText = `Document technique généré par Passness — Page ${pageNum} / ${totalPages}`;
     const textWidth = ctx.font.widthOfTextAtSize(footerText, 8);
     page.drawText(footerText, {
       x: (PAGE_WIDTH - textWidth) / 2,
@@ -993,7 +993,7 @@ function renderPaymentReceipt(ctx: LayoutContext, vm: RendererViewModel): void {
   drawSpacer(ctx, 8);
   drawWrappedText(
     ctx,
-    'Reçu délivré via la plateforme Uttily · Opérateur technique Uttily SAS · Justificatif de règlement.',
+    'Reçu délivré via la plateforme Passness · Opérateur technique Passness SAS · Justificatif de règlement.',
     {
       size: 8,
       color: COLOR_MEDIUM_GRAY,

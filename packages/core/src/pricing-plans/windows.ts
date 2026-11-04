@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Matching des fenêtres commerciales (pricing_plan_windows).
  */

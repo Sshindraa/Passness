@@ -3,27 +3,27 @@
 - **Statut** : kit livré ; G8B-3B1/B2/B3 livrés ; G8B-3B4 Photo Coach partiellement livré
 - **Date** : 2026-08-27
 - **Cible** : deux loueurs professionnels, vingt vélos réels à Lyon
-- **Décision produit** : onboarding accompagné par Uttily pendant le pilote
+- **Décision produit** : onboarding accompagné par Passness pendant le pilote
 - **Relie à** : `docs/product/g8b-3-bike-pilot-visual-trust-and-coach.md`
 
 ## 1. Principe opérationnel
 
 Le pilote n'investit pas encore dans un tunnel d'onboarding autonome. Un membre
-d'Uttily accompagne le propriétaire ou l'administrateur du loueur pendant deux
+d'Passness accompagne le propriétaire ou l'administrateur du loueur pendant deux
 sessions courtes :
 
 1. qualification de l'entreprise et collecte des informations publiables ;
 2. configuration partagée du compte, vérification du catalogue et test d'une
    réservation Stripe TEST.
 
-Le loueur conserve son propre compte et ses accès. Uttily ne demande jamais son
+Le loueur conserve son propre compte et ses accès. Passness ne demande jamais son
 mot de passe, ses données de carte, ses identifiants bancaires ou ses documents
 d'identité par email ou dans un champ libre. Les informations d'identité et de
 paiement requises par Stripe sont saisies directement dans le parcours Stripe
 Connect.
 
 L'accompagnement ne contourne aucune autorisation : chaque écriture utilise les
-actions serveur tenant-scoped existantes ou une future interface Uttily dédiée.
+actions serveur tenant-scoped existantes ou une future interface Passness dédiée.
 Aucune donnée partenaire réelle n'est insérée manuellement par SQL en staging ou
 en production.
 
@@ -39,7 +39,7 @@ en production.
 - confirmation qu'il s'agit d'un loueur professionnel.
 
 Le SIRET, les représentants légaux et les coordonnées bancaires sont collectés
-par Stripe Connect lorsque Stripe les exige. Leur copie dans Uttily nécessite un
+par Stripe Connect lorsque Stripe les exige. Leur copie dans Passness nécessite un
 besoin métier et un cadrage RGPD distincts.
 
 ### Établissement de retrait
@@ -80,7 +80,7 @@ Chaque vélo réservables possède :
 - un établissement courant ;
 - un état (`NEW`, `GOOD` ou `FAIR` pour être publiable) ;
 - un statut `ACTIVE` ;
-- un numéro de série seulement si le loueur souhaite le conserver dans Uttily ;
+- un numéro de série seulement si le loueur souhaite le conserver dans Passness ;
 - une note interne facultative, jamais exposée publiquement.
 
 Le nombre annoncé n'est jamais utilisé comme stock. Seuls les exemplaires
@@ -94,7 +94,7 @@ créés et disponibles dans PostgreSQL peuvent être alloués à une réservatio
 2. créer l'organisation et le premier compte `OWNER` ;
 3. définir le nom public et l'établissement ;
 4. inviter les membres utiles avec le moindre rôle suffisant ;
-5. lancer Stripe Connect TEST sans transmettre de donnée bancaire à Uttily ;
+5. lancer Stripe Connect TEST sans transmettre de donnée bancaire à Passness ;
 6. relever les informations manquantes et fixer le responsable de chacune.
 
 ### Session 2 — offre et preuve

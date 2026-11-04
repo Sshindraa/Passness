@@ -1,13 +1,13 @@
 'use server';
 
-import type { ActionErrorCode, ActionResult } from '@uttily/contracts';
+import type { ActionErrorCode, ActionResult } from '@passness/contracts';
 import {
   createBookingDraftWithHold,
   FIRST_PILOT_PRICING_POLICY,
   PostgresPhotoPublicationGate,
   resolvePublicBookingAuthority,
   type FlexibleCreateBookingDraftInput,
-} from '@uttily/core';
+} from '@passness/core';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 

@@ -5,7 +5,9 @@
   border-radius: 28px !important;
   border: 1px solid var(--ut-color-border) !important;
   background: var(--ut-color-surface) !important;
-  box-shadow: 0 24px 60px -12px rgba(28, 36, 38, 0.2), 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  box-shadow:
+    0 24px 60px -12px rgba(28, 36, 38, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.04) !important;
   overflow: visible !important;
 }
 

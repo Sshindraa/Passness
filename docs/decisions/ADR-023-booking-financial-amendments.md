@@ -2,7 +2,7 @@
 
 - **Statut** : Accepted — conception approuvée ; G7M C1–C5 livré, validé et fusionné sur `main` ; validation Core/Web/PostgreSQL et CI post-merge vertes. La politique proposée des remboursements split est déléguée à [ADR-030](ADR-030-split-refund-policy.md) ; son exécution reste bloquée tant que Finance/Juridique ne l'ont pas signée.
 - **Date** : 2026-08-10
-- **Décideurs** : Porteur produit Uttily, engineering
+- **Décideurs** : Porteur produit Passness, engineering
 - **Relie à** : ADR-009, ADR-010, ADR-011, ADR-013, ADR-018, ADR-029, ADR-030 ; G7M/G7P-C
 - **Remplace** : la section « Modifications de réservation » reportée de l'ADR-018
 

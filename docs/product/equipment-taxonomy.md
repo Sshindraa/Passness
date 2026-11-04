@@ -6,7 +6,7 @@ le 2026-09-11.
 
 ## Périmètre commercial
 
-Uttily est une plateforme de location professionnelle spécialisée dans quatre
+Passness est une plateforme de location professionnelle spécialisée dans quatre
 univers outdoor fermés :
 
 | Univers | Slug d’univers | Familles prévues | Statut dans cette tranche |
@@ -237,7 +237,7 @@ Les modes futurs d'un complément sont :
 - `MANDATORY` — requis pour l'usage autorisé ;
 - `OPTIONAL_FREE` — optionnel et gratuit ;
 - `PAID_SUPPLEMENT` — supplément payant ;
-- `SEPARATELY_RENTABLE` — louable séparément uniquement si Uttily et le loueur
+- `SEPARATELY_RENTABLE` — louable séparément uniquement si Passness et le loueur
   l'autorisent.
 
 Les accessoires vélo, nautisme, surf et neige ne sont pas publiables seuls par
@@ -248,6 +248,6 @@ décision avant leur implémentation.
 Pour le paddle, les compléments `pagaie`, `pompe`, `leash`, `gilet`,
 `chariot`, `sac étanche` et `combinaison` suivront ce même contrat : inclus,
 obligatoire, optionnel gratuit, supplément payant ou louable séparément
-uniquement si Uttily et le loueur l'autorisent. Ils restent des compléments
+uniquement si Passness et le loueur l'autorisent. Ils restent des compléments
 non publiables seuls par défaut ; aucun moteur de packs ou de suppléments n'est
 préparé dans cette tranche.

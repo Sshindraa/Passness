@@ -56,7 +56,7 @@ function makeMockDb(accountRow: AccountRow | null) {
 
   return {
     select: selectMock,
-  } as unknown as import('@uttily/database').DatabaseClient;
+  } as unknown as import('@passness/database').DatabaseClient;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { runMigrations, assertLocalhost, createDatabase } from '@uttily/database';
+import { runMigrations, assertLocalhost, createDatabase } from '@passness/database';
 import {
   recordProductAnalyticsEvent,
   aggregateProductAnalyticsDays,
@@ -41,7 +41,7 @@ import { calculateAggregateRetentionBoundary, calculateRawRetentionBoundary } fr
  * - Colonnes compacted et contraintes.
  */
 
-const TEST_DB_NAME = 'uttily_test_product_analytics';
+const TEST_DB_NAME = 'passness_test_product_analytics';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

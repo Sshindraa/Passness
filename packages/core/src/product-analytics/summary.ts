@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-A).
+ * @passness/core — Module Product Analytics (G7H-A).
  *
  * Lecture du résumé agrégé des quatre mesures produit sur une plage de jours.
  *
@@ -13,8 +13,8 @@
  */
 
 import { and, eq, gte, lt, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { productAnalyticsDaily } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { productAnalyticsDaily } from '@passness/database';
 import { ProductAnalyticsError } from './errors';
 import type { GetProductAnalyticsSummaryOptions, ProductAnalyticsSummary } from './types';
 import {

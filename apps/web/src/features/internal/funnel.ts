@@ -1,4 +1,4 @@
-import type { ProductAnalyticsSummary, ResolvedAnalyticsEnvironment } from '@uttily/core';
+import type { ProductAnalyticsSummary, ResolvedAnalyticsEnvironment } from '@passness/core';
 import type { MaintenanceAnalyticsEnvironment } from '@/lib/product-analytics-maintenance';
 
 export type FunnelRangeDays = 7 | 30;

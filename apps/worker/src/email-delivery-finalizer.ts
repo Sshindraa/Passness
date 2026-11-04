@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Finaliseur DB-only des livraisons email (G5H-C2C-A).
+ * @passness/worker — Finaliseur DB-only des livraisons email (G5H-C2C-A).
  *
  * Met en revue manuelle les notifications PENDING lorsque le budget de
  * tentatives est épuisé ou que la fenêtre de 23h est dépassée, sans appeler
@@ -7,11 +7,11 @@
  */
 
 import { sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   OUTBOX_MAX_ATTEMPTS as MAX_ATTEMPTS,
   validateOutboxBatchLimit as validateBatchLimit,
-} from '@uttily/core';
+} from '@passness/core';
 
 export type EmailDeliveryFinalizerResult = {
   readonly inspectedCount: number;

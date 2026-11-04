@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests unitaires de validation runtime pour le module outbox-claim
+ * @passness/core — Tests unitaires de validation runtime pour le module outbox-claim
  * (G5D Round 4, ADR-013 §7).
  *
  * Ces tests sont PURS : aucun PostgreSQL requis. Ils vérifient que

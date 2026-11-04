@@ -1,7 +1,7 @@
 /**
  * Compatibility barrel for the original primitives entrypoint.
  * New code should import from the component-owned modules or from the package
- * root (`@uttily/ui`).
+ * root (`@passness/ui`).
  */
 export * from './button';
 export * from './icon';

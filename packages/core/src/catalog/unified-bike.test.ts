@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { getUnifiedBike, listUnifiedBikes, resolveBikeStatusSummary } from './unified-bike';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 
 describe('UnifiedBike Read Model (Core Unit Tests)', () => {
   describe('resolveBikeStatusSummary', () => {

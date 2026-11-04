@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Confirmation atomique de réservation (Lot 5, ADR-010 §10).
+ * @passness/core — Confirmation atomique de réservation (Lot 5, ADR-010 §10).
  *
  * Transaction unique sur `payment_intent.succeeded` :
  * 1. Verrouiller le brouillon racine FOR UPDATE.
@@ -26,7 +26,7 @@
  */
 
 import { eq, sql } from 'drizzle-orm';
-import { paymentWebhookEvents, type DatabaseTransaction } from '@uttily/database';
+import { paymentWebhookEvents, type DatabaseTransaction } from '@passness/database';
 import type { PaymentIntentEventData, ResolvedAttempt, HandlerOutcome } from './types';
 import { WebhookHandlerError } from './errors';
 import { lockWebhookEvent } from './dedupe-event';

@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import type { OperationalBookingSummary, BookingStatus } from '@uttily/core';
+import type { OperationalBookingSummary, BookingStatus } from '@passness/core';
 import {
   bookingStatusLabel,
   formatDateTimeInTimeZone,
   QUICK_FILTERS,
 } from '@/lib/operations-helpers';
-import { PageHeader, Card, Badge, LinkButton } from '@uttily/ui';
-import type { BadgeTone } from '@uttily/ui';
+import { PageHeader, Card, Badge, LinkButton } from '@passness/ui';
+import type { BadgeTone } from '@passness/ui';
 
 function getBookingBadgeTone(status: BookingStatus): BadgeTone {
   switch (status) {

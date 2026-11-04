@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Compensation tardive source-agnostique (Phase 7A, ADR-010 §13).
+ * @passness/core — Compensation tardive source-agnostique (Phase 7A, ADR-010 §13).
  *
  * Contient les validations et la compensation tardive (succès externe sans
  * réservation, refund LATE_PAYMENT_NO_BOOKING, outbox
@@ -18,7 +18,7 @@ import {
   payments,
   refunds,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import type { PaymentIntentEventData, ResolvedAttempt } from '../webhook-handler/types';
 import { WebhookHandlerError } from '../webhook-handler/errors';
 import { validateWebhookAuthority } from '../webhook-handler/validate-authority';

@@ -1,12 +1,12 @@
 /**
- * @uttily/core — Types publics de la projection canonique getEffectiveBooking (G7M-B1).
+ * @passness/core — Types publics de la projection canonique getEffectiveBooking (G7M-B1).
  *
  * ADR-023 §4.1 et §11.1 : getEffectiveBooking est l'unique autorité de lecture pour
  * l'état effectif d'une réservation, y compris la projection financière complète.
  * Cette phase est strictement read-only.
  */
 
-import type { amendmentType } from '@uttily/database';
+import type { amendmentType } from '@passness/database';
 import type { MarketplaceFeeSnapshot } from '../marketplace-fees';
 
 /**

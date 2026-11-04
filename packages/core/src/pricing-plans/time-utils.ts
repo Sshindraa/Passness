@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Fonctions pures de gestion du temps, fuseaux IANA et jours civils.
  * Réutilise le pattern Intl.DateTimeFormat de civil-days.ts.

@@ -30,8 +30,8 @@ const PREVIEW_PHOTOS = [
 
 export function assertLocalPreviewSeedEnvironment(environment = process.env) {
   assertLocalSeedEnvironment(environment);
-  if (environment?.UTTILY_LOCAL_PREVIEW !== LOCAL_PREVIEW_MARKER) {
-    throw new Error('La preview locale exige le marqueur UTTILY_LOCAL_PREVIEW=1.');
+  if (environment?.PASSNESS_LOCAL_PREVIEW !== LOCAL_PREVIEW_MARKER) {
+    throw new Error('La preview locale exige le marqueur PASSNESS_LOCAL_PREVIEW=1.');
   }
 }
 
@@ -42,7 +42,7 @@ async function seedLocalPreview() {
   const sql = postgres(resolveLocalDatabaseUrl(), { max: 1 });
   try {
     await sql.begin(async (tx) => {
-      await tx`SELECT pg_advisory_xact_lock(hashtextextended('uttily-local-demo-seed', 0))`;
+      await tx`SELECT pg_advisory_xact_lock(hashtextextended('passness-local-demo-seed', 0))`;
 
       const products = await tx`
         SELECT p."id", p."organization_id"

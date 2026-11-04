@@ -2,8 +2,8 @@ import type {
   LocationRecord,
   LocationScheduleExceptionRecord,
   OpeningHourInput,
-} from '@uttily/core';
-import { Badge, Button, Card, Input, PageHeader, Select } from '@uttily/ui';
+} from '@passness/core';
+import { Badge, Button, Card, Input, PageHeader, Select } from '@passness/ui';
 import { LocationFormFields } from './location-form-fields';
 import styles from './location-detail.module.css';
 

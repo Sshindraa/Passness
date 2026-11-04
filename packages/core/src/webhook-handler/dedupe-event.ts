@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Déduplication idempotente des événements webhook (Lot 5, ADR-010 §7, §9, §10).
+ * @passness/core — Déduplication idempotente des événements webhook (Lot 5, ADR-010 §7, §9, §10).
  *
  * Insertion idempotente dans `payment_webhook_events` + résolution
  * organization_id. L'ordre de verrouillage global (ADR-010 §10) exige que
@@ -15,7 +15,7 @@ import {
   paymentWebhookEvents,
   type DatabaseClient,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import { createHash } from 'node:crypto';
 import type { VerifiedWebhookEvent } from '../payments/types';
 import type { WebhookEventRow } from './types';

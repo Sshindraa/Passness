@@ -3,12 +3,12 @@
 ## Client — recherche et réservation
 
 1. Le client indique destination, période et catégorie.
-2. Uttily retourne des produits réellement disponibles, avec prix, lieu et conditions.
+2. Passness retourne des produits réellement disponibles, avec prix, lieu et conditions.
 3. Le client choisit un produit et ses éventuelles options.
-4. Uttily crée un brouillon puis alloue les exemplaires dans une transaction.
-5. Uttily crée un hold temporaire et ouvre le paiement.
+4. Passness crée un brouillon puis alloue les exemplaires dans une transaction.
+5. Passness crée un hold temporaire et ouvre le paiement.
 6. Le paiement est confirmé par webhook.
-7. Uttily convertit le hold en réservation, fige le prix et produit les événements de confirmation.
+7. Passness convertit le hold en réservation, fige le prix et produit les événements de confirmation.
 8. Le client reçoit confirmation, reçu, contrat et informations de retrait.
 
 ## Loueur — mise en ligne
@@ -29,7 +29,7 @@
 
 ## Webhook de paiement
 
-1. Uttily vérifie la signature du webhook.
+1. Passness vérifie la signature du webhook.
 2. L'événement fournisseur est enregistré avec son identifiant unique.
 3. Un événement déjà reçu ne produit aucun second effet.
 4. Un paiement réussi confirme la réservation correspondante dans une transaction.

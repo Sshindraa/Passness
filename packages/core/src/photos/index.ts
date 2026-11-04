@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Photos (G7F-A2).
+ * @passness/core — Module Photos (G7F-A2).
  *
  * Métadonnées photo produit, validation binaire, upload idempotent, gate de
  * publication publique et suppression de photos.

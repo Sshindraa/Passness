@@ -2,8 +2,8 @@
 
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import { Badge, Button, PageHeader } from '@uttily/ui';
-import type { CounterAvailableItem } from '@uttily/core';
+import { Badge, Button, PageHeader } from '@passness/ui';
+import type { CounterAvailableItem } from '@passness/core';
 import {
   createCounterBookingAction,
   getCounterAvailableItemsAction,

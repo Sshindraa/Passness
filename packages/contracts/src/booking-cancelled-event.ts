@@ -1,5 +1,5 @@
 /**
- * @uttily/contracts — Contrat de l'événement BOOKING_CANCELLED.v1.
+ * @passness/contracts — Contrat de l'événement BOOKING_CANCELLED.v1.
  *
  * Émis dans outbox_events par cancelConfirmedBooking lors de l'annulation
  * d'une réservation confirmée (Chantier 12/12.2).

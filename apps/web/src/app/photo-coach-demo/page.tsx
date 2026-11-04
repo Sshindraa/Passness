@@ -1,10 +1,10 @@
 'use client';
 
 import { type ChangeEvent, type ReactElement, useRef, useState } from 'react';
-import { BIKE_PHOTO_SLOTS, type PhotoSlotType } from '@uttily/contracts';
+import { BIKE_PHOTO_SLOTS, type PhotoSlotType } from '@passness/contracts';
 import { PhotoCoachModal } from '@/components/photo-coach';
 import { DEMO_PHOTO_COACH_ORG_ID } from '@/lib/photo-coach-constants';
-import type { ProductPhotoSummary } from '@uttily/core';
+import type { ProductPhotoSummary } from '@passness/core';
 import styles from './page.module.css';
 
 interface StepDefinition {
@@ -416,7 +416,7 @@ export default function PhotoCoachDemoPage(): ReactElement {
           <span className={styles.overline}>Prise de vue guidée</span>
           <h1 className={styles.title}>Photographiez votre vélo en quelques étapes</h1>
           <p className={styles.subtitle}>
-            2 vues requises, 1 vue libre optionnelle. Uttily vous guide pour obtenir des photos
+            2 vues requises, 1 vue libre optionnelle. Passness vous guide pour obtenir des photos
             claires et cohérentes.
           </p>
         </header>
@@ -644,7 +644,7 @@ export default function PhotoCoachDemoPage(): ReactElement {
 
         {/* Outils développeur discrets en footer */}
         <footer className={styles.devFooter}>
-          <span>Uttily Assistant de Capture · Standard Visuel Pro</span>
+          <span>Passness Assistant de Capture · Standard Visuel Pro</span>
           <button
             type="button"
             className={styles.devToggleBtn}

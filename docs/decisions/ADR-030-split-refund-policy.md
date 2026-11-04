@@ -57,13 +57,13 @@ Pour une baisse, les montants positifs à traiter sont donc :
 ```text
 remboursement client = max(0, totalClientAvant − totalClientAprès)
 reprise loueur       = max(0, netLoueurAvant − netLoueurAprès)
-restitution Uttily   = max(0, fraisUttilyAvant − fraisUttilyAprès)
+restitution Passness   = max(0, fraisPassnessAvant − fraisPassnessAprès)
 ```
 
 L'invariant économique attendu est :
 
 ```text
-remboursement client = reprise loueur + restitution Uttily
+remboursement client = reprise loueur + restitution Passness
 ```
 
 La projection `getEffectiveBooking` reste l'autorité de lecture de l'état
@@ -78,11 +78,11 @@ Pour une baisse de réservation :
   ses frais de service de 7 % ;
 - le loueur ne reçoit pas un remboursement : son droit économique est ramené au
   nouveau net `base − frais loueur de 13 %` ; si un transfert a déjà eu lieu,
-  Uttily reprend uniquement la baisse de ce net ;
-- Uttily restitue la baisse de son application fee, égale à la baisse des frais
+  Passness reprend uniquement la baisse de ce net ;
+- Passness restitue la baisse de son application fee, égale à la baisse des frais
   loueur et des frais client.
 
-Les frais de traitement Stripe non récupérables restent un coût Uttily séparé.
+Les frais de traitement Stripe non récupérables restent un coût Passness séparé.
 Ils ne peuvent pas être retranchés silencieusement du remboursement client ou
 du net loueur. Le traitement comptable et la preuve de ce coût font partie du
 sign-off Finance.
@@ -114,7 +114,7 @@ Trois états sont distingués :
    effacée rétroactivement. Sa résolution manuelle est auditée et peut aboutir
    à `SETTLED_OFF_PLATFORM` conformément à l'ADR-023.
 3. **Désaccord commercial** : le dossier passe en traitement manuel. Le loueur
-   fournit les éléments, mais seul le support Uttily doit pouvoir clôturer le
+   fournit les éléments, mais seul le support Passness doit pouvoir clôturer le
    dossier financièrement ou déclarer un règlement hors plateforme avec une
    preuve d'audit. Cette capacité n'est pas une action automatisée du
    back-office V1 (ADR-028) tant que la présente ADR n'est pas approuvée.
@@ -164,8 +164,8 @@ cinq à dix jours ouvrés.
 Cette politique rend le calcul des baisses déterministe pour les amendements
 successifs et conserve une preuve complète de chaque état. Elle nécessite en
 contrepartie un flux provider et une projection financière capables de
-représenter la répartition client/loueur/Uttily, ainsi qu'un suivi séparé des
-frais Stripe supportés par Uttily.
+représenter la répartition client/loueur/Passness, ainsi qu'un suivi séparé des
+frais Stripe supportés par Passness.
 
 La présence de cette ADR ne vaut pas approbation Finance/Juridique et ne débloque
 pas l'exécution LIVE. Le code actuel doit continuer à échouer fermé sur les
@@ -191,7 +191,7 @@ Avant toute activation, il faut obtenir :
 1. Versionner la politique approuvée et son identifiant de règle.
 2. Construire les états effectifs avant/après depuis les snapshots append-only.
 3. Utiliser `FINAL_STATE_DELTA_PER_COMPONENT` pour produire les obligations
-   client, loueur et Uttily sans double remboursement.
+   client, loueur et Passness sans double remboursement.
 4. Adapter les ports/adapters Stripe et la projection webhook au flux
    composant par composant.
 5. Ajouter le ledger ou les champs d'audit nécessaires pour les frais Stripe

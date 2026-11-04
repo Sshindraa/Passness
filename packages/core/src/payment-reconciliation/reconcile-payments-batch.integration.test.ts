@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'intégration PostgreSQL du moteur de réconciliation
+ * @passness/core — Tests d'intégration PostgreSQL du moteur de réconciliation
  * (Phase 7A, ADR-010 §12).
  *
  * 29 scénarios couvrant : batch vide, revendication, lease, concurrence,
@@ -12,7 +12,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { randomUUID } from 'node:crypto';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -215,7 +215,7 @@ function makeFinancialTermsConfig(connectedAccountId = 'acct_test_123'): Financi
       status: 'NOT_APPLICABLE',
       amountMinor: null,
       rateBps: null,
-      invoiceIssuer: 'Uttily',
+      invoiceIssuer: 'Passness',
     },
     commission: {
       version: 'v1',

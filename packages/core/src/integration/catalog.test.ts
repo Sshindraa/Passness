@@ -5,7 +5,7 @@ import {
   shouldSkipIntegrationTests,
   type IntegrationTestContext,
 } from './setup';
-import { createDatabase } from '@uttily/database';
+import { createDatabase } from '@passness/database';
 import {
   createOrganizationForUser,
   createLocation,
@@ -127,7 +127,7 @@ async function createProductForOrg(
   // Sinon, résoudre par slug (catégorie seedée).
   let categoryId = categoryIdOrSlug;
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(categoryIdOrSlug)) {
-    const { categories } = await import('@uttily/database');
+    const { categories } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     const [cat] = await db
       .select()
@@ -228,7 +228,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
       'taxonomy-enforcement@example.com',
       'Taxonomy Enforcement Org',
     );
-    const { categories: categoriesTable } = await import('@uttily/database');
+    const { categories: categoriesTable } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     const categoryRows = await db.select().from(categoriesTable);
     const categoryBySlug = new Map(categoryRows.map((category) => [category.slug, category]));
@@ -574,7 +574,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
     const { product, variantId } = await createProductForOrg(organizationId, 'Product One');
     const { product: product2 } = await createProductForOrg(organizationId, 'Product Two');
     // Tente de changer product_id via UPDATE direct.
-    const { productVariants } = await import('@uttily/database');
+    const { productVariants } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     await expect(
       db
@@ -872,7 +872,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
       idempotencyKey: 'append-1',
     });
     const movements = await listMovements(db, organizationId, item.id);
-    const { inventoryMovements } = await import('@uttily/database');
+    const { inventoryMovements } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     await expect(
       db
@@ -896,7 +896,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
   it("désactivation catégorie refusée si produit PUBLISHED l'utilise", async () => {
     if (!ctx || !db) return;
     const { organizationId } = await setupOrgWithLocation('cat-deact@example.com', 'Cat Deact Org');
-    const { categories: categoriesTable } = await import('@uttily/database');
+    const { categories: categoriesTable } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     const [cat] = await db
       .select()
@@ -915,7 +915,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
       'cat-deact-ok@example.com',
       'Cat Deact OK Org',
     );
-    const { categories: categoriesTable } = await import('@uttily/database');
+    const { categories: categoriesTable } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     const [cat] = await db
       .select()
@@ -1046,7 +1046,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
     // T2 ne peut donc pas désactiver le parent pendant que T1 crée l'enfant.
     // Inversement, si T2 passe d'abord, T1 verra parent inactif et sera rejetée.
     // Dans tous les cas, l'invariant (pas d'enfant actif sous parent inactif) est respecté.
-    const { categories: categoriesTable } = await import('@uttily/database');
+    const { categories: categoriesTable } = await import('@passness/database');
     const { eq, sql } = await import('drizzle-orm');
 
     const results = await Promise.allSettled([
@@ -1261,7 +1261,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
     const cat1 = await createCategory(db, { slug: 'cycle-1', name: 'Cycle 1' });
     const cat2 = await createCategory(db, { slug: 'cycle-2', name: 'Cycle 2', parentId: cat1.id });
     // Tente de mettre cat1 sous cat2 (créerait un cycle cat1 → cat2 → cat1).
-    const { categories } = await import('@uttily/database');
+    const { categories } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     await expect(
       db.update(categories).set({ parentId: cat2.id }).where(eq(categories.id, cat1.id)),
@@ -1337,7 +1337,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
       'conc-pub-cat@example.com',
       'Conc Pub Cat Org',
     );
-    const { categories: categoriesTable } = await import('@uttily/database');
+    const { categories: categoriesTable } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     const [cat] = await db
       .select()
@@ -1367,7 +1367,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
     //
     // Invariant final interdit : publicationStatus === 'PUBLISHED'
     //   ET category.isActive === false (publication sur catégorie désactivée).
-    const { products: productsTable } = await import('@uttily/database');
+    const { products: productsTable } = await import('@passness/database');
 
     const results = await Promise.allSettled([
       // T1 : publication du produit (verrou FOR UPDATE sur produit + catégorie).
@@ -1421,7 +1421,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
       'Conc Upd Cat Org',
     );
     // Deux familles commerciales actives distinctes.
-    const { categories: categoriesTable } = await import('@uttily/database');
+    const { categories: categoriesTable } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     const [cat1] = await db
       .select()
@@ -1458,7 +1458,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Catalog integration — multi-ten
     //
     // Invariant final interdit : produit PUBLISHED avec categoryId === cat2.id
     //   ET cat2.isActive === false (produit publié sur catégorie désactivée).
-    const { products: productsTable } = await import('@uttily/database');
+    const { products: productsTable } = await import('@passness/database');
 
     const results = await Promise.allSettled([
       // T1 : déplacement du produit vers cat2 (verrou FOR UPDATE sur produit + cat2).

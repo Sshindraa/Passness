@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Gestion des événements non-succès (Lot 5, ADR-010 §11).
+ * @passness/core — Gestion des événements non-succès (Lot 5, ADR-010 §11).
  *
  * Gère payment_intent.payment_failed, payment_intent.canceled et
  * payment_intent.processing dans des transactions séparées selon le type.
@@ -27,7 +27,7 @@ import {
   paymentWebhookEvents,
   payments,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import type {
   PaymentIntentEventData,
   ResolvedAttempt,

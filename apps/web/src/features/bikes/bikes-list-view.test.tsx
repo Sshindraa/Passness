@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import type { UnifiedBikeSummary } from '@uttily/core';
+import type { UnifiedBikeSummary } from '@passness/core';
 import { BikesListView } from './bikes-list-view';
 
 const summary = (categorySlug: string): UnifiedBikeSummary => ({

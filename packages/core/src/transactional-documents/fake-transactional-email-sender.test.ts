@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests unitaires du FakeTransactionalEmailSender (G5H-C2B, ADR-013 §13.4).
+ * @passness/core — Tests unitaires du FakeTransactionalEmailSender (G5H-C2B, ADR-013 §13.4).
  *
  * Tests PURS : aucun PostgreSQL requis. Vérifient l'idempotence, la déduplication,
  * la détection de conflit, l'injection de résultats, la copie défensive, l'absence

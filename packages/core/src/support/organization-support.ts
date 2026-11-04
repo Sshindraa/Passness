@@ -1,5 +1,5 @@
 import { and, count, desc, eq, inArray, isNull, ne, or } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
 import {
   bookings,
   damageReports,
@@ -17,7 +17,7 @@ import {
   products,
   productVariants,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import { getOrganizationOnboardingReadiness } from '../dashboard/onboarding-readiness';
 import type { OrganizationSupportDetails } from './types';
 

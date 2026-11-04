@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getOperationalBookingDetails } from '@uttily/core';
+import { getOperationalBookingDetails } from '@passness/core';
 import { BookingDetailView } from '@/features/operations';
 import { requireFulfillmentOperatorOf } from '@/lib/fulfillment-auth';
 import { isValidUuid } from '@/lib/operations-helpers';

@@ -82,7 +82,7 @@ function makeMockDb(state: MockDbState) {
   return {
     select: selectMock,
     insert: insertMock,
-  } as unknown as import('@uttily/database').DatabaseClient;
+  } as unknown as import('@passness/database').DatabaseClient;
 }
 
 function makeMockProvider(

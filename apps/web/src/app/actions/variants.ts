@@ -14,8 +14,8 @@ import {
   deactivateVariant,
   type ProductVariantRecord,
   type CreateVariantInput,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 import { parseUpdateVariant, type ParsedFailure } from './parsers';
 
 // ---------------------------------------------------------------------------

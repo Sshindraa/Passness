@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {
   type OrganizationOnboardingReadiness,
   resolveUnifiedOnboardingProgress,
-} from '@uttily/core';
+} from '@passness/core';
 import styles from './onboarding-readiness-card.module.css';
 
 interface OnboardingReadinessCardProps {
@@ -61,7 +61,7 @@ export function OnboardingReadinessCard({
       <div className={styles.headerRow}>
         <div className={styles.titleBlock}>
           <h2 id="readiness-card-title" className={styles.title}>
-            <span>⚡</span> Créer ma boutique Uttily
+            <span>⚡</span> Créer ma boutique Passness
           </h2>
           <p className={styles.subtitle}>
             {progress.completedCount} sur {progress.totalCount} étapes complétées pour ouvrir votre

@@ -1,6 +1,6 @@
-import { CatalogError, AuthorizationError, FulfillmentError, PhotoError } from '@uttily/core';
-import type { FulfillmentErrorCode } from '@uttily/core';
-import type { ActionResult, ActionErrorCode } from '@uttily/contracts';
+import { CatalogError, AuthorizationError, FulfillmentError, PhotoError } from '@passness/core';
+import type { FulfillmentErrorCode } from '@passness/core';
+import type { ActionResult, ActionErrorCode } from '@passness/contracts';
 
 /**
  * Helper de mapping erreurs → ActionResult.

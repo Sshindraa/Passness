@@ -13,7 +13,7 @@ import { runMigrations, assertLocalhost } from '../src/index';
  * skip si pas DATABASE_URL en local.
  */
 
-const TEST_DB_NAME = 'uttily_test_lot6';
+const TEST_DB_NAME = 'passness_test_lot6';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

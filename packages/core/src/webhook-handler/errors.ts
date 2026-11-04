@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Erreurs du module Webhook Handler (Lot 5, ADR-010 §9, §10, §14).
+ * @passness/core — Erreurs du module Webhook Handler (Lot 5, ADR-010 §9, §10, §14).
  *
  * Codes d'erreur fermés pour le traitement des webhooks Stripe. Suivent le
  * même pattern que payment-initiation/errors.ts : une classe d'erreur typée
@@ -8,7 +8,7 @@
  * Aucune donnée de carte ou secret n'apparaît dans les messages.
  */
 
-import type { ActionErrorCode, FieldErrors } from '@uttily/contracts';
+import type { ActionErrorCode, FieldErrors } from '@passness/contracts';
 
 /** Codes d'erreur fermés du module webhook-handler. */
 export type WebhookHandlerErrorCode =

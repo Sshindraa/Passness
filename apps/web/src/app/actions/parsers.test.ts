@@ -4,7 +4,7 @@ import type {
   UpdateProductInput,
   UpdateVariantInput,
   UpdateInventoryItemInput,
-} from '@uttily/core';
+} from '@passness/core';
 
 type SuccessResult<T> = { input: T };
 

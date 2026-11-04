@@ -4,7 +4,7 @@
 - **Statut** : Accepted
 - **Date** : 2026-08-06
 - **Phase** : G5J-A (étude, décision et acceptation) + G5J-B (implémentation)
-- **Décideurs** : Équipe engineering Uttily
+- **Décideurs** : Équipe engineering Passness
 - **Relie à** : ADR-006, ADR-011
 
 ## 1. Contexte
@@ -14,7 +14,7 @@ migration 0008 (`packages/database/drizzle/0008_create_audit_log.sql`) contient
 le commentaire explicite :
 
 ```text
--- Append-only : les actions de l'admin Uttily sont auditées (invariant §3).
+-- Append-only : les actions de l'admin Passness sont auditées (invariant §3).
 -- Aucune UPDATE ni DELETE ne doit être appliquée à cette table.
 ```
 
@@ -28,7 +28,7 @@ Un précédent existe déjà dans le schéma : la table `inventory_movements`
 (migration 0014, `packages/database/drizzle/0014_create_inventory_movements.sql`)
 possède un trigger `prevent_update_delete_movements` qui lève une exception sur
 toute tentative d'`UPDATE` ou de `DELETE`. Ce précédent démontre que le pattern
-est déjà utilisé et accepté dans la base Uttily.
+est déjà utilisé et accepté dans la base Passness.
 
 L'ADR-011 §7 (note sur `audit_log`, lignes 141-146) reconnaît explicitement ce
 manque :
@@ -68,7 +68,7 @@ L'invariant retenu pour le MVP est le suivant :
 Deux possibilités ont été envisagées :
 
 **A. Trigger `UPDATE`/`DELETE` uniquement (recommandé pour le MVP)** :
-- Cohérent avec les autres tables append-only Uttily (`inventory_movements`).
+- Cohérent avec les autres tables append-only Passness (`inventory_movements`).
 - TRUNCATE reste une opération privilégiée de maintenance.
 - Le rôle runtime de production ne devra pas posséder le privilège TRUNCATE.
 
@@ -254,7 +254,7 @@ puis créer un trigger `BEFORE UPDATE OR DELETE` bloquant toute mutation.
 - `actor_user_id` devient une **référence historique non garantie** : la colonne
   peut contenir un UUID qui ne pointe vers aucun utilisateur existant (UUID
   orphelin).
-- Perte d'intégrité référentielle, incohérent avec le reste du schéma Uttily où
+- Perte d'intégrité référentielle, incohérent avec le reste du schéma Passness où
   toutes les FK sont explicites et contraintes.
 - Migration : `DROP CONSTRAINT` sur la FK, puis création du trigger.
 - Risque : `actor_user_id` peut pointer vers un utilisateur inexistant sans

@@ -32,7 +32,7 @@ export async function getEffectiveBooking(
 ): Promise<GetEffectiveBookingResult>;
 ```
 
-`DbExecutor` (importé depuis `@uttily/database`) accepte soit un `DatabaseClient`, soit une `DatabaseTransaction` active. Aucune transaction interne n'est créée — la projection est read-only et peut être appelée dans la transaction d'un appelant (G7M-B2 l'utilisera dans sa propre transaction pour la vérification d'optimistic locking).
+`DbExecutor` (importé depuis `@passness/database`) accepte soit un `DatabaseClient`, soit une `DatabaseTransaction` active. Aucune transaction interne n'est créée — la projection est read-only et peut être appelée dans la transaction d'un appelant (G7M-B2 l'utilisera dans sa propre transaction pour la vérification d'optimistic locking).
 
 ### Résultat
 
@@ -189,14 +189,14 @@ const result = await db.transaction(async (tx) => {
 
 ## Exports publics
 
-### Exposés depuis `@uttily/core`
+### Exposés depuis `@passness/core`
 
 - `getEffectiveBooking` (fonction)
 - `EffectiveBookingError` (classe)
 - `EffectiveBookingErrorCode` (type)
 - `EffectiveBooking`, `EffectiveLine`, `EffectiveAllocation`, `EffectiveFinancials`, `AmendmentSummary`, `GetEffectiveBookingResult` (types)
 
-### Non exposés depuis `@uttily/core`
+### Non exposés depuis `@passness/core`
 
 - `parseFinancialSnapshot` (helper interne, exporté uniquement depuis `get-effective-booking.ts` pour les tests unitaires colocalisés)
 - `normalizeAggregateAmount` (helper interne, exporté uniquement depuis `get-effective-booking.ts` pour les tests unitaires colocalisés)
@@ -237,7 +237,7 @@ Le code `UNKNOWN` a été supprimé de `EffectiveBookingErrorCode`. Il n'était 
 - `EffectiveBookingError` : code, message, instance de Error
 - `getEffectiveBooking` validation UUID : organizationId invalide, bookingId invalide, les deux invalides
 - `assertFinancialInvariant` : égalité exacte acceptée, égalité avec zéros acceptée, solde supérieur rejeté, solde inférieur rejeté, non-entier rejeté, >MAX_SAFE_INTEGER rejeté, négatif rejeté, pas de PII ni donnée provider dans le message
-- Exports publics : `parseFinancialSnapshot` non exposé depuis barrel, `normalizeAggregateAmount` non exposé depuis barrel, `assertFinancialInvariant` non exposé depuis barrel, `isEffectiveBookingErrorCode` non exposé depuis barrel, `FinancialSnapshot` non exposé depuis barrel, `parseFinancialSnapshot`/`normalizeAggregateAmount`/`assertFinancialInvariant`/`isEffectiveBookingErrorCode` non exposés depuis `@uttily/core`, `getEffectiveBooking` exposé, `EffectiveBookingError` exposé, `UNKNOWN` pas dans les codes publics, `FINANCIAL_INVARIANT_VIOLATION` est un code valide
+- Exports publics : `parseFinancialSnapshot` non exposé depuis barrel, `normalizeAggregateAmount` non exposé depuis barrel, `assertFinancialInvariant` non exposé depuis barrel, `isEffectiveBookingErrorCode` non exposé depuis barrel, `FinancialSnapshot` non exposé depuis barrel, `parseFinancialSnapshot`/`normalizeAggregateAmount`/`assertFinancialInvariant`/`isEffectiveBookingErrorCode` non exposés depuis `@passness/core`, `getEffectiveBooking` exposé, `EffectiveBookingError` exposé, `UNKNOWN` pas dans les codes publics, `FINANCIAL_INVARIANT_VIOLATION` est un code valide
 
 ### Tests PostgreSQL (34)
 
@@ -278,7 +278,7 @@ Le code `UNKNOWN` a été supprimé de `EffectiveBookingErrorCode`. Il n'était 
 
 ### Stratégie de test
 
-- Base de test dédiée `uttily_test_g7m_b1` (pattern identique à `schema-g7m-a-amendments.test.ts`)
+- Base de test dédiée `passness_test_g7m_b1` (pattern identique à `schema-g7m-a-amendments.test.ts`)
 - Skip en local si `DATABASE_URL` absente ; échec explicite en CI
 - Triggers réels de 0036 actifs (INSERT `READY_TO_APPLY` pour NEUTRAL/REFUND, INSERT `HOLD_PENDING` pour SUPPLEMENT avec transition `HOLD_PENDING → READY_TO_APPLY → APPLIED`, INSERT `PROPOSED` pour allocations avec transition `PROPOSED → CONVERTED/RELEASED`, INSERT `PENDING_PROVIDER` pour amendment_payments avec transition vers `SUCCEEDED/FAILED/CANCELLED`, immutabilité)
 - Aucune désactivation de contrainte ou de trigger

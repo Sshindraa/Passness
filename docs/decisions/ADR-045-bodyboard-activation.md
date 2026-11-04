@@ -12,7 +12,7 @@ un loueur de publier une offre bodyboard comme équipement distinct, alors que
 les usages, les stocks et les prix peuvent être gérés séparément d’une planche
 de surf.
 
-La taxonomie Uttily distingue les familles commerciales des sous-types. Il
+La taxonomie Passness distingue les familles commerciales des sous-types. Il
 faut donc choisir un slug canonique sans modifier les produits historiques.
 
 ## Décision

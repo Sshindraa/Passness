@@ -2,7 +2,7 @@
 
 - **Statut** : Accepted
 - **Date** : 2026-08-17
-- **Décideurs** : Porteur produit Uttily, engineering
+- **Décideurs** : Porteur produit Passness, engineering
 - **Relie à** : [ADR-010 — Stripe Connect, paiement, confirmation et réconciliation](./ADR-010-stripe-connect-payment-confirmation-and-reconciliation.md), [ADR-014 — Fournisseurs de production et déploiement du worker](./ADR-014-production-providers-and-worker-deployment.md), [ADR-029 — Split des frais marketplace](./ADR-029-marketplace-fee-split-13-7.md), [ADR-030 — Politique proposée de remboursement split](./ADR-030-split-refund-policy.md)
 
 ## 1. Contexte
@@ -19,14 +19,14 @@ mais elle n'est pas exploitable pour le MVP français : Stripe refuse en France 
 comptes configurés avec `controller.requirement_collection=application` lorsque la
 plateforme ne fournit pas les Account Tokens requis.
 
-Le MVP a déjà choisi l'onboarding hébergé par Stripe. Uttily ne construit donc pas
+Le MVP a déjà choisi l'onboarding hébergé par Stripe. Passness ne construit donc pas
 de formulaire KYC et ne stocke pas de données KYC. Le compte et son état de
 readiness sont projetés localement à partir des événements Connect, sans faire de
 la page de retour d'onboarding une preuve de capacité de paiement.
 
 ## 2. Décision
 
-Pour la France au MVP, Uttily conserve Accounts v1 et les controller properties,
+Pour la France au MVP, Passness conserve Accounts v1 et les controller properties,
 mais adopte la combinaison compatible avec Stripe Connect Express suivante :
 
 | Responsabilité locale | Paramètre Stripe Accounts v1 | Valeur retenue |
@@ -46,7 +46,7 @@ plateforme et `transfer_data.destination` désigne le compte du loueur. Sur le
 chemin legacy, `application_fee_amount` porte la commission figée ; sur le
 chemin split, il porte l'application fee issue du snapshot 13/7 conformément à
 l'ADR-029. L'onboarding reste Stripe-hosted, avec les liens de rafraîchissement
-et de retour existants ; Uttily ne collecte ni ne persiste le KYC.
+et de retour existants ; Passness ne collecte ni ne persiste le KYC.
 
 ### Relation avec ADR-010
 
@@ -75,7 +75,7 @@ pour le parcours France. Cette capsule ne modifie pas l'ADR-010.
    retries ne créent ni second compte local ni seconde projection d'un même
    événement.
 4. **Minimisation des données** : aucun KYC, document justificatif ou donnée
-   sensible collectée par Stripe n'est stocké par Uttily. Le stockage local reste
+   sensible collectée par Stripe n'est stocké par Passness. Le stockage local reste
    limité aux identifiants provider, aux statuts et au read model technique de
    readiness nécessaires au fonctionnement du paiement.
 5. **Garde-fou LIVE** : `PAYMENTS_LIVE_ENABLED=false` tant que les verrous
@@ -89,7 +89,7 @@ pour le parcours France. Cette capsule ne modifie pas l'ADR-010.
 - Le parcours est compatible avec les contraintes Stripe applicables aux
   plateformes françaises sans introduire les Account Tokens.
 - Stripe collecte les exigences dans son parcours hébergé et fournit le Dashboard
-  Express ; Uttily évite de construire et de maintenir un parcours KYC.
+  Express ; Passness évite de construire et de maintenir un parcours KYC.
 - La décision réutilise le contrat local Accounts v1, les champs de readiness et
   le flux `account.updated` déjà prévus par l'ADR-010.
 - Les destination charges et la responsabilité financière déjà choisie pour le
@@ -98,7 +98,7 @@ pour le parcours France. Cette capsule ne modifie pas l'ADR-010.
 
 ### 4.2 Conséquences négatives
 
-- Uttily dépend de l'UX, des exigences et de la disponibilité de l'onboarding et
+- Passness dépend de l'UX, des exigences et de la disponibilité de l'onboarding et
   du Dashboard Stripe Express ; la personnalisation du KYC est limitée.
 - La readiness est éventuellement cohérente après réception du webhook, et non
   instantanément au retour du navigateur ; les retries, déduplications et
@@ -106,7 +106,7 @@ pour le parcours France. Cette capsule ne modifie pas l'ADR-010.
 - La plateforme conserve l'exposition financière associée aux frais, pertes,
   remboursements et litiges des destination charges. Les verrous finance et
   juridique de l'ADR-010 restent donc nécessaires avant LIVE.
-- Un besoin futur de collecte contrôlée par Uttily devra faire l'objet d'un
+- Un besoin futur de collecte contrôlée par Passness devra faire l'objet d'un
   nouveau parcours Account Tokens et d'une décision dédiée.
 
 ## 5. Options rejetées

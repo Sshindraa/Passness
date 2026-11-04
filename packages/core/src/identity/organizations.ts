@@ -1,6 +1,6 @@
 import { eq, and, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { organizations, organizationMemberships, auditLog } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { organizations, organizationMemberships, auditLog } from '@passness/database';
 import { isValidSlug, slugify } from './slug';
 import type { AuthenticatedUser, OrganizationRecord } from './types';
 import { AuthorizationError } from './permissions';

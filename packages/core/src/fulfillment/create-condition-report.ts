@@ -1,13 +1,13 @@
 import { eq, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookings,
   bookingItems,
   conditionReports,
   inventoryItems,
   outboxEvents,
-} from '@uttily/database';
-import { lockOrganization } from '@uttily/database';
+} from '@passness/database';
+import { lockOrganization } from '@passness/database';
 import { reserveKey, lockKey, completeKey } from '../idempotency/idempotency';
 import type { IdempotencyRecordRow } from '../idempotency/types';
 import { writeAuditEntry } from '../identity/audit';
@@ -33,7 +33,7 @@ const MAX_NOTES_LENGTH = 5000;
 const MAX_IDEMPOTENCY_KEY_LENGTH = 200;
 
 /**
- * @uttily/core — Use case transactionnel de création de rapport d'état (G3B).
+ * @passness/core — Use case transactionnel de création de rapport d'état (G3B).
  *
  * Règles métier MVP :
  * - phase PICKUP : booking.status doit être READY_FOR_PICKUP

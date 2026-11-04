@@ -1,6 +1,6 @@
 import { eq, and, inArray, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { auditLog, paymentAttempts, payments } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { auditLog, paymentAttempts, payments } from '@passness/database';
 
 export interface ReconcilePaymentSupportInput {
   readonly paymentId: string;

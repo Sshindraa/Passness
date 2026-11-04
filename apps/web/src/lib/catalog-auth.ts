@@ -5,8 +5,8 @@ import {
   requireCatalogManager,
   requireCatalogViewer,
   type AuthenticatedUser,
-} from '@uttily/core';
-import type { DatabaseClient } from '@uttily/database';
+} from '@passness/core';
+import type { DatabaseClient } from '@passness/database';
 
 /**
  * Helpers d'autorisation partagés pour le module Catalog & Inventory.

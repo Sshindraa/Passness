@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Verrouillage des lignes métier (Phase 7A, ADR-010 §10).
+ * @passness/core — Verrouillage des lignes métier (Phase 7A, ADR-010 §10).
  *
  * Fonctions de verrouillage source-agnostiques partagées entre les handlers
  * webhook et le moteur de réconciliation. L'ordre de verrouillage respecte
@@ -19,7 +19,7 @@ import {
   paymentAttempts,
   payments,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import type { ResolvedAttempt } from '../webhook-handler/types';
 import { WebhookHandlerError } from '../webhook-handler/errors';
 import type { LockedBusinessRows, LockedPaymentRows } from './types';

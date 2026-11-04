@@ -11,7 +11,7 @@ import {
   requireMembership,
   ROLE_MANAGERS,
   type CreateOrganizationInput,
-} from '@uttily/core';
+} from '@passness/core';
 
 export async function createOrganizationAction(input: CreateOrganizationInput) {
   const user = await getAuthenticatedUser();

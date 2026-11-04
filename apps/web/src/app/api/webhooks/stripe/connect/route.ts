@@ -20,7 +20,7 @@
 import { NextResponse } from 'next/server';
 import { getDb } from '@/lib/db';
 import { getStripeAdapter } from '@/lib/stripe';
-import { handleWebhook } from '@uttily/core';
+import { handleWebhook } from '@passness/core';
 import { checkWebhookIpAllowlist } from '../_lib/ip-allowlist';
 import { isRateLimitAttested } from '../_lib/rate-limit-notice';
 import { resolveStripeEnvironment } from '@/lib/payment-config';

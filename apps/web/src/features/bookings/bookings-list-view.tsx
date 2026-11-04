@@ -3,9 +3,9 @@ import {
   type GroupedCustomerBookings,
   type CustomerBookingSummary,
   type CustomerBookingStatus,
-} from '@uttily/core';
-import { Card, Badge, LinkButton, Icon, PageHeader } from '@uttily/ui';
-import type { BadgeTone } from '@uttily/ui';
+} from '@passness/core';
+import { Card, Badge, LinkButton, Icon, PageHeader } from '@passness/ui';
+import type { BadgeTone } from '@passness/ui';
 import { getAccountCopy, type AccountCopy } from '@/lib/account-copy';
 import { getIntlLocale } from '@/lib/locale';
 

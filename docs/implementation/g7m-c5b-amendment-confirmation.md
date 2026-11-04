@@ -108,4 +108,4 @@ Parcours utilisateur exécuté :
    - `pnpm typecheck` : 100% vert sur tous les 8 packages/apps du workspace.
    - `pnpm lint` : 100% vert (0 warning, 0 error).
    - `pnpm format:check` : 100% vert.
-   - `pnpm --filter @uttily/web build` : 100% vert (Next.js 16.2.12).
+   - `pnpm --filter @passness/web build` : 100% vert (Next.js 16.2.12).

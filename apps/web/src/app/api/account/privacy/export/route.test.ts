@@ -16,8 +16,8 @@ vi.mock('@/lib/db', () => ({
   getDb: vi.fn(() => ({})),
 }));
 
-vi.mock('@uttily/core', async () => {
-  const actual = await vi.importActual<Record<string, unknown>>('@uttily/core');
+vi.mock('@passness/core', async () => {
+  const actual = await vi.importActual<Record<string, unknown>>('@passness/core');
   return {
     ...actual,
     buildPersonalDataCopy: buildPersonalDataCopyMock,
@@ -63,7 +63,9 @@ describe('GET /api/account/privacy/export', () => {
     const response = await GET(new Request('http://localhost/api/account/privacy/export'));
     expect(response.status).toBe(200);
     expect(response.headers.get('Content-Type')).toContain('application/json');
-    expect(response.headers.get('Content-Disposition')).toContain('uttily-personal-data-00000000-');
+    expect(response.headers.get('Content-Disposition')).toContain(
+      'passness-personal-data-00000000-',
+    );
     expect(response.headers.get('Cache-Control')).toContain('private');
 
     const body = await response.json();
@@ -84,7 +86,9 @@ describe('GET /api/account/privacy/export', () => {
       new Request('http://localhost/api/account/privacy/export?scope=portability'),
     );
     expect(response.status).toBe(200);
-    expect(response.headers.get('Content-Disposition')).toContain('uttily-portable-data-00000000-');
+    expect(response.headers.get('Content-Disposition')).toContain(
+      'passness-portable-data-00000000-',
+    );
 
     const body = await response.json();
     expect(body.uttily_export_version).toBe('1.0');

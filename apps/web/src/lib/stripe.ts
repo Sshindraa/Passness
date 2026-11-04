@@ -8,7 +8,7 @@
  * en TEST.
  */
 
-import { StripeAdapter, type StripeAdapterConfig } from '@uttily/core';
+import { StripeAdapter, type StripeAdapterConfig } from '@passness/core';
 import { resolveStripeEnvironment } from './payment-config';
 
 let cached: StripeAdapter | null = null;

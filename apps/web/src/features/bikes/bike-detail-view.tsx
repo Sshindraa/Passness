@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { UnifiedBike } from '@uttily/core';
+import type { UnifiedBike } from '@passness/core';
 import {
   formatMoneyAmount,
   getPricingPlanTypeLabel,

@@ -1,13 +1,13 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { assertLocalhost, createDatabase, runMigrations } from '@uttily/database';
+import { assertLocalhost, createDatabase, runMigrations } from '@passness/database';
 import type { ProductPhotoStorage, ProductPhotoStoragePutResult } from './storage';
 import { uploadProductPhoto } from './upload-product-photo';
 import { replaceProductPhoto } from './replace-product-photo';
 
 const sourceUrl = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
-const testDatabase = `uttily_test_g8b_photos_${Date.now()}`;
+const testDatabase = `passness_test_g8b_photos_${Date.now()}`;
 const shouldSkip = !sourceUrl && !ci;
 let testUrl: string | null = null;
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { DashboardError } from './errors';
 import {
   classifyMaintenanceBlock,

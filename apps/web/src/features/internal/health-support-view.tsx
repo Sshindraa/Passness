@@ -1,4 +1,4 @@
-import type { OperationalHealth, OperationalHealthStatus } from '@uttily/core';
+import type { OperationalHealth, OperationalHealthStatus } from '@passness/core';
 import styles from './health-support.module.css';
 
 export function HealthSupportView({
@@ -28,7 +28,7 @@ export function HealthSupportView({
       <section className={styles.header}>
         <h1 className={styles.title}>Santé opérationnelle</h1>
         <p className={styles.subtitle}>
-          Vue synthétique en lecture seule des traitements critiques déjà persistés par Uttily.
+          Vue synthétique en lecture seule des traitements critiques déjà persistés par Passness.
         </p>
         <p className={styles.timestamp}>Lecture : {formatReadAt(health.readAt)} UTC</p>
       </section>

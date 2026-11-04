@@ -730,7 +730,7 @@ Les tests suivants supposent un modèle de paiement qui n'existera pas au Lot 4.
 
 ### Réserves Lot 5 n'empêchant pas le Lot 4
 
-2. **Taxes, facturation et rôle légal d'Uttily** : nécessaire avant la confirmation réelle en Stripe LIVE, mais n'empêche ni le Lot 4 ni l'implémentation Stripe TEST encadrée par l'ADR-010 ; le brouillon conserve `tax_status = UNDETERMINED`.
+2. **Taxes, facturation et rôle légal d'Passness** : nécessaire avant la confirmation réelle en Stripe LIVE, mais n'empêche ni le Lot 4 ni l'implémentation Stripe TEST encadrée par l'ADR-010 ; le brouillon conserve `tax_status = UNDETERMINED`.
 3. **Mode Stripe Connect et responsabilité juridique** : nécessaire pour la commission au Lot 5, mais n'empêche pas le Lot 4 car `commission_amount_minor = null` (open-questions.md : OUVERT, Lot 5).
 4. **Compensation des paiements confirmés tardivement** : n'empêche pas le Lot 4 car la compensation est reportée au Lot 5 (open-questions.md : OUVERT, Lot 5).
 

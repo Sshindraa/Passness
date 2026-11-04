@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'intégration PostgreSQL du module Webhook Handler
+ * @passness/core — Tests d'intégration PostgreSQL du module Webhook Handler
  * (Lot 5, ADR-010 §10, §11, §13, §15).
  *
  * Tests PostgreSQL réels : confirmation nominale, multi-lignes, échecs
@@ -10,7 +10,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { randomUUID } from 'node:crypto';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -282,7 +282,7 @@ function makeFinancialTermsConfig(connectedAccountId = 'acct_test_123'): Financi
       status: 'NOT_APPLICABLE',
       amountMinor: null,
       rateBps: null,
-      invoiceIssuer: 'Uttily',
+      invoiceIssuer: 'Passness',
     },
     commission: {
       version: 'v1',

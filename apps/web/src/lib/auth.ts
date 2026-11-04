@@ -1,11 +1,11 @@
 import { currentUser } from '@clerk/nextjs/server';
 import { getDb } from './db';
-import { provisionUserFromOidc, type AuthenticatedUser } from '@uttily/core';
+import { provisionUserFromOidc, type AuthenticatedUser } from '@passness/core';
 
 /**
- * Récupère l'utilisateur Clerk courant et le synchronise dans la base Uttily.
+ * Récupère l'utilisateur Clerk courant et le synchronise dans la base Passness.
  *
- * Clerk gère l'identité (ADR-006) ; Uttily reste la source de vérité des rôles.
+ * Clerk gère l'identité (ADR-006) ; Passness reste la source de vérité des rôles.
  * Retourne null si l'utilisateur n'est pas authentifié.
  */
 export async function getAuthenticatedUser(): Promise<AuthenticatedUser | null> {

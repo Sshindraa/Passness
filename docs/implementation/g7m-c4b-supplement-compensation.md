@@ -2,7 +2,7 @@
 
 ## Statut
 **COMPLÉTÉ ET DURCI** — Conforme aux spécifications G7M-C4-B, à l'ADR-023
-§10.2, §11.2, §11.4 et aux règles architecturales du projet Uttily. C4-S,
+§10.2, §11.2, §11.4 et aux règles architecturales du projet Passness. C4-S,
 C4-A et C4-B sont livrés et validés ; G7M C1–C5 est fusionné sur `main` avec
 CI post-merge verte.
 
@@ -11,7 +11,7 @@ ou un paiement de supplément portant un snapshot split est bloqué avec
 `SPLIT_REFUND_UNRESOLVED` avant toute création ou soumission de refund, jusqu'au
 sign-off Finance/Juridique sur le traitement séparé des composants.
 
-- Use Case interne durci `compensateAmendmentPayment` (non exporté dans le barrel public `@uttily/core`).
+- Use Case interne durci `compensateAmendmentPayment` (non exporté dans le barrel public `@passness/core`).
 - Éligibilité stricte : refus de toute compensation anticipée avant la `holdDeadline` ou sur amendement `APPLIED`. Horloge unique capturée de manière finite.
 - Rejeu strict du refund et de l'outbox associé via validation fermée `parseRefundRequestedV1Event` (rejet de toute propriété payload supplémentaire, métadonnée racine incompatible, ou aggregateId divergent).
 - Validation autoritative fail-closed dans `verifyRefundRequest` (zéro appel provider externe en cas de divergence d'agrégat, d'organisation, de montant, de devise, de flags, de clé provider, de statut ou d'environnement).
@@ -28,7 +28,7 @@ sign-off Finance/Juridique sur le traitement séparé des composants.
   - `booking-amendments` : **15 suites, 256 / 256 tests passés (0 échec, 0 skip)**.
   - `pnpm run typecheck` : 0 erreur TypeScript sur l'ensemble du monorepo (8 packages / applications).
   - `pnpm run lint` : 0 avertissement, 0 erreur.
-  - `pnpm --filter @uttily/web build` : compilation Next.js réussie avec succès.
+  - `pnpm --filter @passness/web build` : compilation Next.js réussie avec succès.
   - `git diff --check` : 0 erreur d'espace ou de formatage.
 
 Aucune migration de schéma, aucun changement schema.ts, aucun package/lockfile modifié, aucun nouveau cron Vercel, aucune UI ajoutée.
@@ -134,7 +134,7 @@ Lors d'un succès tardif avec compensation :
 ## Preuves & Résultats de Test
 
 ### 1. Tests d'Intégration Core C4-B (`supplement-compensation.integration.test.ts`)
-- **Isolation de la base de test** : La suite dérive une connexion d'administration, crée une base dédiée `uttily_test_g7m_c4b_compensation`, applique l'ensemble des migrations Drizzle de manière autonome, et nettoie la base dédiée en fin de test. Aucune dépendance sur une base préalablement migrée en CI.
+- **Isolation de la base de test** : La suite dérive une connexion d'administration, crée une base dédiée `passness_test_g7m_c4b_compensation`, applique l'ensemble des migrations Drizzle de manière autonome, et nettoie la base dédiée en fin de test. Aucune dépendance sur une base préalablement migrée en CI.
 - **26 / 26 tests passés avec succès sur PostgreSQL réel** :
   1. `1.1 rejet explicite si l’amendement est actif avant sa deadline`
   2. `1.2 rejet explicite si l’amendement est APPLIED`
@@ -177,5 +177,5 @@ Lors d'un succès tardif avec compensation :
 - `packages/core/src/booking-amendments/` : **15 suites, 256 / 256 tests passés (100% verts)**.
 - `pnpm run typecheck` : **0 erreur**.
 - `pnpm run lint` : **0 erreur**.
-- `pnpm --filter @uttily/web build` : **compilation réussie**.
+- `pnpm --filter @passness/web build` : **compilation réussie**.
 - `git diff --check` : **0 erreur**.

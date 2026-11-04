@@ -86,7 +86,7 @@ Connectez-vous au Dashboard Stripe en mode **LIVE** (le toggle en haut à gauche
 Conformément à l'ADR-010 §14, le endpoint webhook applique une politique de défense en profondeur :
 
 ### 3.1. Allow-list IP des Webhooks Stripe (`STRIPE_WEBHOOK_IP_ALLOWLIST`)
-En environnement `LIVE`, le code d'Uttily applique un contrôle **fail-closed** : si la requête ne provient pas d'une adresse IP autorisée de Stripe, elle est immédiatement rejetée avec un code `HTTP 403 Forbidden`.
+En environnement `LIVE`, le code d'Passness applique un contrôle **fail-closed** : si la requête ne provient pas d'une adresse IP autorisée de Stripe, elle est immédiatement rejetée avec un code `HTTP 403 Forbidden`.
 
 1. Consulter la liste officielle des adresses IP des serveurs webhooks de Stripe ([Documentation Stripe](https://docs.stripe.com/ips#webhook-ips)).
 2. Les adresses IPv4 officielles actuelles pour les webhooks Stripe sont :
@@ -163,7 +163,7 @@ pnpm readiness:live
 ## 6. Phase 5 : Onboarding & Raccordement du Partenaire Pilote (`PARTNER-002`, `C2E-03`)
 
 1. **Invitation du loueur partenaire :**
-   Le représentant légal de l'organisation partenaire accède à son espace Uttily (`/dashboard/[orgId]/onboarding`).
+   Le représentant légal de l'organisation partenaire accède à son espace Passness (`/dashboard/[orgId]/onboarding`).
 2. **Onboarding Stripe Express :**
    Le loueur clique sur *Configurer les paiements* et complète la saisie de son identité, IBAN bancaire et justificatifs d'entreprise sur l'interface sécurisée Stripe Connect.
 3. **Réception du webhook `account.updated` :**

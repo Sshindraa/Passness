@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'intégration PostgreSQL du moteur d'exécution des
+ * @passness/core — Tests d'intégration PostgreSQL du moteur d'exécution des
  * compensations (Phase 8, ADR-010 §13).
  *
  * 25 scénarios couvrant : batch vide, claim + exécution succès, idempotence
@@ -20,7 +20,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { randomUUID } from 'node:crypto';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,

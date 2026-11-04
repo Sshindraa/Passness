@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   startPrivacyReviewAction,
   flagPrivacyIdentityCheckAction,
@@ -10,7 +10,7 @@ import {
   executeSupportErasureAction,
 } from './support-privacy';
 import * as supportAuth from '@/lib/support-auth';
-import * as core from '@uttily/core';
+import * as core from '@passness/core';
 
 vi.mock('@/lib/support-auth', () => ({
   requireSupportPlatformAdmin: vi.fn(),
@@ -26,8 +26,8 @@ vi.mock('@clerk/nextjs/server', () => ({
   ),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     startPrivacyRequestReview: vi.fn(),

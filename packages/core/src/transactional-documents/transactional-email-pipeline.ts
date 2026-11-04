@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Pipeline d'envoi d'emails transactionnels idempotent (G5E Round 2, ADR-013 §11).
+ * @passness/core — Pipeline d'envoi d'emails transactionnels idempotent (G5E Round 2, ADR-013 §11).
  *
  * Orchestrateur en trois phases pour les événements BOOKING_CONFIRMED.v1 dont
  * les 3 effets GENERATE_* sont COMPLETED et l'effet SEND_EMAIL est PENDING.
@@ -59,7 +59,7 @@
  */
 
 import { sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { TransactionalEmailSender } from './ports';
 import type { EmailSendResult } from './types';
 import type { OutboxEffectType } from './types';

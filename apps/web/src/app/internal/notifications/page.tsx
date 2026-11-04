@@ -1,4 +1,4 @@
-import { listNotificationsSupport } from '@uttily/core';
+import { listNotificationsSupport } from '@passness/core';
 import { NotificationsSupportView } from '@/features/internal';
 import { requireSupportPlatformAdmin } from '@/lib/support-auth';
 

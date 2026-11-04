@@ -1,4 +1,4 @@
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 
 let cached: DatabaseClient | null = null;
 

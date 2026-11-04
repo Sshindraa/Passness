@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { CreateManualBlockResult } from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+import type { CreateManualBlockResult } from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 import { createManualBlockAction } from '@/app/actions/availability';
 import styles from './fleet.module.css';
 

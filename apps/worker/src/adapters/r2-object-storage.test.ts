@@ -16,7 +16,7 @@ const VALID_CONFIG: R2Config = {
   accountId: 'testaccount123',
   accessKeyId: 'testaccesskey',
   secretAccessKey: 'testsecretkey',
-  bucketName: 'uttily-test-bucket',
+  bucketName: 'passness-test-bucket',
 };
 
 const TEST_KEY = 'documents/booking/test-key-123';
@@ -212,7 +212,7 @@ describe('R2ObjectStorage', () => {
           accountId: 'testaccount123',
           accessKeyId: 'testaccesskey',
           secretAccessKey: '',
-          bucketName: 'uttily-test-bucket',
+          bucketName: 'passness-test-bucket',
         });
       } catch (e) {
         caught = e;
@@ -236,10 +236,10 @@ describe('R2ObjectStorage', () => {
         R2_ACCOUNT_ID: 'testaccount123',
         R2_ACCESS_KEY_ID: 'testaccesskey',
         R2_SECRET_ACCESS_KEY: 'testsecretkey',
-        R2_BUCKET_NAME: 'uttily-test-bucket',
+        R2_BUCKET_NAME: 'passness-test-bucket',
       });
       expect(config.accountId).toBe('testaccount123');
-      expect(config.bucketName).toBe('uttily-test-bucket');
+      expect(config.bucketName).toBe('passness-test-bucket');
     });
 
     it('rejette si une variable est absente', () => {
@@ -883,7 +883,7 @@ describe('R2ObjectStorage', () => {
           accountId: 'testaccount123',
           accessKeyId: 'LEAKED_ACCESS_KEY',
           secretAccessKey: '',
-          bucketName: 'uttily-test-bucket',
+          bucketName: 'passness-test-bucket',
         });
       } catch (e) {
         caught = e;

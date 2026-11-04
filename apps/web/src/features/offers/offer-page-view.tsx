@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { PublicOfferDetails } from '@uttily/core';
+import type { PublicOfferDetails } from '@passness/core';
 import type { PublicUiLocale } from '@/lib/public-search';
 import { OfferBookingForm } from './offer-booking-form';
 import styles from './offer.module.css';
@@ -62,8 +62,8 @@ export function OfferPageView({
                     className={styles.verifiedBadge}
                     title={
                       fr
-                        ? 'Informations professionnelles et capacité de location vérifiées par Uttily.'
-                        : 'Professional information and rental capability verified by Uttily.'
+                        ? 'Informations professionnelles et capacité de location vérifiées par Passness.'
+                        : 'Professional information and rental capability verified by Passness.'
                     }
                   >
                     ✓ {fr ? 'Loueur professionnel vérifié' : 'Verified professional renter'}

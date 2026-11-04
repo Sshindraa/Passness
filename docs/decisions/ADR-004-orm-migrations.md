@@ -5,7 +5,7 @@
 
 ## Contexte
 
-Uttily repose sur PostgreSQL + PostGIS comme autorité transactionnelle. Les invariants critiques de disponibilité s'appuient sur une contrainte d'exclusion PostgreSQL (`InventoryBlock`) et sur des types géographiques PostGIS. L'ORM doit donc exposer le SQL sans le masquer, et les migrations doivent rester inspectables, versionnées et personnalisables (cf. `AGENTS.md` : « migrations versionnées ; aucune modification manuelle de production »).
+Passness repose sur PostgreSQL + PostGIS comme autorité transactionnelle. Les invariants critiques de disponibilité s'appuient sur une contrainte d'exclusion PostgreSQL (`InventoryBlock`) et sur des types géographiques PostGIS. L'ORM doit donc exposer le SQL sans le masquer, et les migrations doivent rester inspectables, versionnées et personnalisables (cf. `AGENTS.md` : « migrations versionnées ; aucune modification manuelle de production »).
 
 ## Décision
 

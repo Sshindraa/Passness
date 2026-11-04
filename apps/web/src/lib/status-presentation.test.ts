@@ -17,7 +17,7 @@ import {
   INVENTORY_STATUSES,
   PAYMENT_STATUSES,
   REFUND_STATUSES,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 
 describe('status-presentation', () => {
   it('fournit une présentation valide pour chaque BookingStatus', () => {

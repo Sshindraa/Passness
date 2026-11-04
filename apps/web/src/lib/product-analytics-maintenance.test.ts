@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import * as core from '@uttily/core';
+import * as core from '@passness/core';
 import {
   ANALYTICS_AGGREGATION_LOOKBACK_DAYS,
   ANALYTICS_MAINTENANCE_ENVIRONMENTS,
@@ -16,8 +16,8 @@ import {
  * `product-analytics-maintenance.integration.test.ts`.
  */
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     aggregateProductAnalyticsDays: vi.fn(async () => ({ daysProcessed: 3 })),

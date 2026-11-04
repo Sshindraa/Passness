@@ -1,6 +1,6 @@
 import { and, eq } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
-import { locationOpeningHours, locationScheduleExceptions } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
+import { locationOpeningHours, locationScheduleExceptions } from '@passness/database';
 
 export interface EffectiveScheduleSlot {
   openTime: string; // HH:MM:SS

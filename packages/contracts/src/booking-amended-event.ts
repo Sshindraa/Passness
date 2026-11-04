@@ -1,5 +1,5 @@
 /**
- * @uttily/contracts — Contrat de l'événement BOOKING_AMENDED.v1.
+ * @passness/contracts — Contrat de l'événement BOOKING_AMENDED.v1.
  *
  * Événement source du flux documentaire d'amendement (ADR-023). Inséré dans
  * outbox_events lors de la transaction atomique d'amendement de réservation.

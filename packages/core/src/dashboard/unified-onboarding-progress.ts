@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Modèle de progression d'onboarding unifié (Chantier 6).
+ * @passness/core — Modèle de progression d'onboarding unifié (Chantier 6).
  *
  * Mappe les 7 critères de readiness technique du Core en 4 étapes fluides pour
  * le loueur :

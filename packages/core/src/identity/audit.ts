@@ -1,9 +1,9 @@
-import type { DbExecutor } from '@uttily/database';
-import { auditLog } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
+import { auditLog } from '@passness/database';
 
 /**
  * Journal d'audit append-only (invariant §3).
- * Sert à la traçabilité transverse : actions de l'admin Uttily, transitions
+ * Sert à la traçabilité transverse : actions de l'admin Passness, transitions
  * terrain (fulfillment), rapports d'état et dommages, etc.
  * Aucune UPDATE ni DELETE ne doit être appliquée à audit_log.
  */

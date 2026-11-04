@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { runMigrations, assertLocalhost, createDatabase } from '@uttily/database';
+import { runMigrations, assertLocalhost, createDatabase } from '@passness/database';
 import { deleteProductPhoto } from '../photos/delete-product-photo';
 
 /**
@@ -15,7 +15,7 @@ import { deleteProductPhoto } from '../photos/delete-product-photo';
  * explicites et des barrières pg_advisory_lock pour contrôler l'ordre.
  */
 
-const TEST_DB_NAME = 'uttily_test_g7f_concurrency';
+const TEST_DB_NAME = 'passness_test_g7f_concurrency';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

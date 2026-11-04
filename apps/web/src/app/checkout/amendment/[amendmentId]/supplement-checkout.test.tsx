@@ -2,8 +2,8 @@ import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import * as auth from '@/lib/auth';
-import type { AuthenticatedUser } from '@uttily/core';
-import * as core from '@uttily/core';
+import type { AuthenticatedUser } from '@passness/core';
+import * as core from '@passness/core';
 import AmendmentCheckoutPage from './page';
 import {
   SupplementCheckoutClient,
@@ -28,8 +28,8 @@ vi.mock('@clerk/nextjs', () => ({
   UserButton: () => null,
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     getSupplementCheckoutSummary: vi.fn(),

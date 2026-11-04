@@ -1,12 +1,12 @@
 /**
- * @uttily/core — Validation runtime stricte fail-closed de BOOKING_CONFIRMED.v1 (G5C, ADR-013).
+ * @passness/core — Validation runtime stricte fail-closed de BOOKING_CONFIRMED.v1 (G5C, ADR-013).
  *
  * Le contenu lu depuis outbox_events n'est jamais trusté. Toute anomalie lève
  * DocumentRenderError. Aucune donnée métier n'est extraite du payload : seuls
  * les quatre UUIDs de déclenchement sont validés et recoupés.
  */
 
-import type { BookingConfirmedV1Payload } from '@uttily/contracts';
+import type { BookingConfirmedV1Payload } from '@passness/contracts';
 import { DocumentRenderError } from './errors';
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;

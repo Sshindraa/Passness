@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Photos (G7F-A2).
+ * @passness/core — Module Photos (G7F-A2).
  *
  * Implémentation PostgreSQL du publication gate (ADR-020 §D).
  *
@@ -18,10 +18,10 @@
  */
 
 import { sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { PublicProductPublicationGate } from '../public-search/types';
 import { PublicSearchError } from '../public-search/errors';
-import { REQUIRED_BIKE_PHOTO_SLOTS } from '@uttily/contracts';
+import { REQUIRED_BIKE_PHOTO_SLOTS } from '@passness/contracts';
 import { COMMERCIAL_EQUIPMENT_FAMILY_SLUGS } from '../catalog/equipment-taxonomy';
 
 export class PostgresPhotoPublicationGate implements PublicProductPublicationGate {

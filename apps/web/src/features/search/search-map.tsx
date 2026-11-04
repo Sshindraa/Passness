@@ -6,7 +6,7 @@ import type {
   PublicOfferSearchItem,
   PublicSearchDestinationOption,
   PublicSearchViewport,
-} from '@uttily/core';
+} from '@passness/core';
 import type { PublicUiLocale } from '@/lib/public-search';
 import styles from './search.module.css';
 

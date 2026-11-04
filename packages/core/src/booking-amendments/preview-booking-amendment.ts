@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Prévisualisation canonique de modification de réservation (G7M-C5-A).
+ * @passness/core — Prévisualisation canonique de modification de réservation (G7M-C5-A).
  *
  * ADR-023 §6 & G7M-C5-A : calcul déterministe et strictement read-only d'un devis
  * de modification avant soumission :
@@ -13,7 +13,7 @@
  */
 
 import { and, eq, inArray, isNull, not, exists, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookings,
   bookingAmendments,
@@ -22,7 +22,7 @@ import {
   locations,
   productVariants,
   products,
-} from '@uttily/database';
+} from '@passness/database';
 import { requireMembership, AuthorizationError, LOCATION_MANAGERS } from '../identity/permissions';
 import { getMembership } from '../identity/memberships';
 import type { AuthenticatedUser } from '../identity/types';

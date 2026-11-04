@@ -6,7 +6,7 @@ G7M-B2-B2A implémente le moteur Core du consumer de refunds issus d'un
 amendement `BOOKING_MODIFICATION`. Le lot ne branche ni cron, ni `apps/worker`,
 ni wiring de production : cela reste G7M-B2-B2B.
 
-API publique ajoutée dans `@uttily/core` :
+API publique ajoutée dans `@passness/core` :
 
 - `claimRefundRequestBatch`
 - `executeRefundRequest`

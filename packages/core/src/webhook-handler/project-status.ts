@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Projection monotone du statut de tentative (Lot 5, ADR-010 §11).
+ * @passness/core — Projection monotone du statut de tentative (Lot 5, ADR-010 §11).
  *
  * Fonction pure testable unitairement. Le statut local est une projection
  * monotone : un statut terminal ne régresse jamais. Un événement inconnu ou un

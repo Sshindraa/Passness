@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'intégration PostgreSQL du use case idempotent de
+ * @passness/core — Tests d'intégration PostgreSQL du use case idempotent de
  * création de snapshot de rendu (G5C, ADR-013).
  *
  * 38 scénarios couvrant : nominal, payload mal formé, champ supplémentaire,
@@ -22,7 +22,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { randomUUID } from 'node:crypto';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,

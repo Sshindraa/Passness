@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { getMembership, requireMembership, LOCATION_MANAGERS } from '@uttily/core';
+import { getMembership, requireMembership, LOCATION_MANAGERS } from '@passness/core';
 import { createLocationAction } from '@/app/actions/locations';
 import { NewLocationView, parseLocationFormData } from '@/features/locations';
 

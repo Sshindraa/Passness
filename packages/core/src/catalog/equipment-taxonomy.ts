@@ -1,5 +1,5 @@
 /**
- * Registre serveur fermé des familles d'équipements Uttily.
+ * Registre serveur fermé des familles d'équipements Passness.
  *
  * Ce contrat décrit le périmètre commercial et ne remplace pas la taxonomie
  * globale stockée en base. Le registre ne déplace aucune règle de publication,

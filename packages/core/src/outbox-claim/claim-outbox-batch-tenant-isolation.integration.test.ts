@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'intégration PostgreSQL d'isolation multi-tenant
+ * @passness/core — Tests d'intégration PostgreSQL d'isolation multi-tenant
  * pour claimOutboxBatch (G5F, ADR-013 §7).
  *
  * Audit de sécurité ciblé sur les sous-requêtes d'éligibilité dans
@@ -23,7 +23,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { sql } from 'drizzle-orm';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,

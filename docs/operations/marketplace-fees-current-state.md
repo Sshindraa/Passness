@@ -80,7 +80,7 @@ modèle 13/7.
 Le moteur de calcul d'annulation composant par composant est désormais
 implémenté conformément à [`ADR-030`](../decisions/ADR-030-split-refund-policy.md) :
 - `calculateSplitCancellationRefund` calcule la répartition exacte : remboursement
-  client, reprise loueur (13 %), restitution Uttily (13 % + 7 %) et montants retenus,
+  client, reprise loueur (13 %), restitution Passness (13 % + 7 %) et montants retenus,
   avec la règle d'arrondi `HALF_UP_PER_COMPONENT` ;
 - `previewBookingCancellation` et `cancelConfirmedBooking` autorisent l'annulation
   des réservations split et enregistrent le `marketplaceFeeDelta` dans la table

@@ -1,8 +1,8 @@
 /**
- * Modèle canonique de groupe et besoins fonctionnels d'Uttily (ADR-041).
+ * Modèle canonique de groupe et besoins fonctionnels d'Passness (ADR-041).
  *
- * Ce modèle appartient souverainement à @uttily/core.
- * Il peut être alimenté indifféremment par du langage naturel (via @uttily/intelligence),
+ * Ce modèle appartient souverainement à @passness/core.
+ * Il peut être alimenté indifféremment par du langage naturel (via @passness/intelligence),
  * par des formulaires UI, des conciergeries ou des intégrations partenaires.
  */
 

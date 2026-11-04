@@ -12,8 +12,8 @@ export async function generateMetadata({ params }: RentalTermsPageProps): Promis
   const fr = locale === 'fr';
   return {
     title: fr
-      ? 'Conditions Générales de Location (CGL) · Uttily'
-      : 'Rental Terms and Conditions · Uttily',
+      ? 'Conditions Générales de Location (CGL) · Passness'
+      : 'Rental Terms and Conditions · Passness',
     description: fr
       ? 'Conditions contractuelles régissant la réservation et la location d’équipements outdoor auprès des loueurs partenaires.'
       : 'Contractual terms governing booking and rental of outdoor equipment with partner rental operators.',
@@ -49,7 +49,7 @@ export default async function RentalTermsPage({
               régissent la relation contractuelle directe conclue entre le client locataire (le «{' '}
               <strong>Locataire</strong> ») et le loueur professionnel indépendant (le «{' '}
               <strong>Loueur</strong> ») pour toute réservation effectuée par l’intermédiaire de la
-              plateforme Uttily.
+              plateforme Passness.
             </p>
             <p>
               En confirmant sa réservation et en procédant au paiement, le Locataire accepte sans
@@ -70,7 +70,7 @@ export default async function RentalTermsPage({
                 et la période demandés ;
               </li>
               <li>
-                <strong>Les frais de service client Uttily</strong> (7 % TTC de la base de
+                <strong>Les frais de service client Passness</strong> (7 % TTC de la base de
                 location), rémunérant le fonctionnement de la plateforme technique, l’assistance et
                 la sécurisation des transactions (modèle de split 13/7 conforme à l’ADR-029).
               </li>
@@ -180,7 +180,7 @@ export default async function RentalTermsPage({
             <p>
               Le Loueur peut exiger la constitution d’un dépôt de garantie (caution) au moment du
               retrait du matériel (empreinte de carte bancaire, chèque ou caution en ligne selon ses
-              modalités déclarées). Cette caution n’est pas débitée par Uttily lors de la
+              modalités déclarées). Cette caution n’est pas débitée par Passness lors de la
               réservation en ligne et reste gérée sous la responsabilité directe du Loueur.
             </p>
           </section>
@@ -190,7 +190,7 @@ export default async function RentalTermsPage({
             <p>
               Les présentes CGL sont soumises au droit français. En cas de différend entre le
               Locataire et le Loueur, les parties s’engagent à rechercher en priorité un règlement
-              amiable avec le concours du service support d’Uttily.
+              amiable avec le concours du service support d’Passness.
             </p>
           </section>
         </>
@@ -202,7 +202,7 @@ export default async function RentalTermsPage({
               These Rental Terms and Conditions (the “<strong>Rental Terms</strong>”) govern the
               direct contractual relationship between the customer renting equipment (the “
               <strong>Renter</strong>”) and the independent professional rental operator (the “
-              <strong>Partner</strong>”) for any booking completed via the Uttily platform.
+              <strong>Partner</strong>”) for any booking completed via the Passness platform.
             </p>
             <p>
               By completing a booking and proceeding to checkout, the Renter unreservedly accepts
@@ -223,9 +223,9 @@ export default async function RentalTermsPage({
                 and period;
               </li>
               <li>
-                <strong>The Uttily customer service fee</strong> (7% inclusive of VAT on the rental
-                base), funding platform operations, support, and secure payments (under the 13/7 fee
-                split model per ADR-029).
+                <strong>The Passness customer service fee</strong> (7% inclusive of VAT on the
+                rental base), funding platform operations, support, and secure payments (under the
+                13/7 fee split model per ADR-029).
               </li>
             </ul>
             <p>
@@ -324,8 +324,8 @@ export default async function RentalTermsPage({
             <h2>7. Security Deposits</h2>
             <p>
               Partners may require a security deposit upon pickup (credit card hold, check, or
-              online deposit per their shop policy). Deposits are not collected by Uttily online and
-              remain under the Partner’s direct oversight.
+              online deposit per their shop policy). Deposits are not collected by Passness online
+              and remain under the Partner’s direct oversight.
             </p>
           </section>
 
@@ -333,7 +333,7 @@ export default async function RentalTermsPage({
             <h2>8. Applicable Law and Disputes</h2>
             <p>
               These Rental Terms are governed by French law. In case of dispute, the parties agree
-              to seek an amicable resolution with the assistance of Uttily customer support.
+              to seek an amicable resolution with the assistance of Passness customer support.
             </p>
           </section>
         </>

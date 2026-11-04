@@ -211,7 +211,7 @@ secret is whsec_...`). Le flag `--forward-connect-to` ne documente pas la
 génération d'un second secret : les événements Platform et Connect forwardés
 par la même session CLI sont signés avec ce secret unique.
 
-Les deux routes webhook Uttily (`/api/webhooks/stripe/platform` et
+Les deux routes webhook Passness (`/api/webhooks/stripe/platform` et
 `/api/webhooks/stripe/connect`) vérifient séparément leur variable
 d'environnement (`STRIPE_PLATFORM_WEBHOOK_SECRET` et
 `STRIPE_CONNECT_WEBHOOK_SECRET` respectivement, via

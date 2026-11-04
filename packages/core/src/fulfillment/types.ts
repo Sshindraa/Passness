@@ -3,7 +3,7 @@ import {
   type BookingStatus,
   FULFILLMENT_EVENT_TYPES,
   type FulfillmentEventType,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 
 export { BOOKING_STATUSES, type BookingStatus, FULFILLMENT_EVENT_TYPES, type FulfillmentEventType };
 

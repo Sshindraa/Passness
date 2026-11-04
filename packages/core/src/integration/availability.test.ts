@@ -4,7 +4,7 @@ import {
   shouldSkipIntegrationTests,
   type IntegrationTestContext,
 } from './setup';
-import { createDatabase } from '@uttily/database';
+import { createDatabase } from '@passness/database';
 import {
   createOrganizationForUser,
   createLocation,
@@ -100,7 +100,7 @@ async function createProductForOrg(
   if (!db) throw new Error('db not initialized');
   let categoryId = categoryIdOrSlug;
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(categoryIdOrSlug)) {
-    const { categories } = await import('@uttily/database');
+    const { categories } = await import('@passness/database');
     const { eq } = await import('drizzle-orm');
     const [cat] = await db
       .select()

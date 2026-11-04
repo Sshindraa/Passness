@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Orchestrateur de réconciliation par batch (Phase 7A, ADR-010 §12).
+ * @passness/core — Orchestrateur de réconciliation par batch (Phase 7A, ADR-010 §12).
  *
  * Orchestre la réconciliation d'un batch de tentatives de paiement :
  * 1. Valide batchLimit.
@@ -17,7 +17,7 @@
  */
 
 import { sql } from 'drizzle-orm';
-import { paymentAttempts, type DatabaseClient } from '@uttily/database';
+import { paymentAttempts, type DatabaseClient } from '@passness/database';
 import type {
   PaymentProviderAdapter,
   PaymentIntentResult,

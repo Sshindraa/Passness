@@ -1,5 +1,5 @@
 import { and, eq, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   categories,
   countries,
@@ -7,7 +7,7 @@ import {
   organizations,
   products,
   productVariants,
-} from '@uttily/database';
+} from '@passness/database';
 import {
   isCommerciallyActiveEquipmentFamily,
   resolveEquipmentFamily,

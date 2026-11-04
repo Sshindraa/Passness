@@ -1,6 +1,6 @@
-import type { PublicSearchFilterOptions } from '@uttily/core';
-import { isBikeSubtype, type BikeSubtype } from '@uttily/contracts';
-import type { CompiledPartyRequirement } from '@uttily/intelligence';
+import type { PublicSearchFilterOptions } from '@passness/core';
+import { isBikeSubtype, type BikeSubtype } from '@passness/contracts';
+import type { CompiledPartyRequirement } from '@passness/intelligence';
 import type { PublicSearchFormValues } from '@/lib/public-search';
 import { MAX_SEARCH_PEOPLE } from '@/lib/search-people';
 

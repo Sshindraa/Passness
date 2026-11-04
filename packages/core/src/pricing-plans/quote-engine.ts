@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Moteur de calcul PUR — aucune dépendance base de données, aucune écriture,
  * aucun Date.now(), aucun random, aucun float pour les montants.

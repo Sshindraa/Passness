@@ -9,7 +9,7 @@ import {
 } from './amend-booking-form';
 import { AmendmentPreviewResult, formatEuros, actionLabel } from './amendment-preview-result';
 import { getAmendmentEntryState } from '@/lib/amendment-auth';
-import type { PreviewBookingAmendmentSuccess } from '@uttily/core';
+import type { PreviewBookingAmendmentSuccess } from '@passness/core';
 
 describe('G7M-C5-A — Interface Loueur & Validation de Prévisualisation', () => {
   describe('buildPreviewBookingAmendmentInput (helper pur)', () => {
@@ -285,7 +285,7 @@ describe('G7M-C5-A — Interface Loueur & Validation de Prévisualisation', () =
       const html = renderToStaticMarkup(<AmendmentPreviewResult preview={preview} />);
 
       expect(html).toContain('Supplément à régler');
-      expect(html).toContain('Commission Uttily estimée :');
+      expect(html).toContain('Commission Passness estimée :');
       expect(html).toContain('2,50 €');
       expect(html).toContain('Net loueur estimé :');
       expect(html).toContain('47,50 €');

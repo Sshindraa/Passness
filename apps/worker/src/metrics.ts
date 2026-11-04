@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Port de métriques fermé pour le worker (G5F, ADR-013).
+ * @passness/worker — Port de métriques fermé pour le worker (G5F, ADR-013).
  *
  * Métriques à cardinalité strictement bornée. Les labels autorisés sont
  * uniquement : `pipeline: 'documents' | 'emails'`,

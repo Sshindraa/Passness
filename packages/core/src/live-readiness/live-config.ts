@@ -1,5 +1,5 @@
 /**
- * @uttily/core — LIVE Readiness — Variable Definitions (Chantier 20-A).
+ * @passness/core — LIVE Readiness — Variable Definitions (Chantier 20-A).
  *
  * Source centralisée unique définissant les variables d'environnement
  * nécessaires au passage LIVE. Aucun secret réel dans ce fichier.

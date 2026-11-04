@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Public Search (G7E-B).
+ * @passness/core — Module Public Search (G7E-B).
  *
  * Encodage/décodage/validation du curseur keyset opaque, versionné et authentifié.
  *
@@ -12,7 +12,7 @@
  */
 
 import { createHmac, timingSafeEqual } from 'node:crypto';
-import { isBikeSubtype, type BikeSubtype } from '@uttily/contracts';
+import { isBikeSubtype, type BikeSubtype } from '@passness/contracts';
 import type { PublicSearchIntent, KeysetTuple, PublicSearchViewport } from './types';
 import { PublicSearchError } from './errors';
 import { isValidPublicSearchViewport, normalizePublicSearchViewport } from './geo';

@@ -3,7 +3,7 @@ import {
   getOrganizationById,
   getOrganizationOnboardingReadiness,
   resolveUnifiedOnboardingProgress,
-} from '@uttily/core';
+} from '@passness/core';
 import { requireFulfillmentOperatorOf } from '@/lib/fulfillment-auth';
 import { UnifiedOnboardingView } from '@/features/onboarding';
 

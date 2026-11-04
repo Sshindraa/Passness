@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useTransition, useEffect } from 'react';
-import type { RankedPackCandidate, SolvedPackCandidate } from '@uttily/core';
+import type { RankedPackCandidate, SolvedPackCandidate } from '@passness/core';
 import { createPackBookingDraftAction } from '@/app/actions/pack-booking';
 import styles from './pack-confirmation-drawer.module.css';
 
@@ -87,7 +87,7 @@ export function PackConfirmationDrawer({
           return;
         }
 
-        // Redirection fluide vers le checkout officiel Uttily
+        // Redirection fluide vers le checkout officiel Passness
         window.location.href = res.data.redirectUrl;
       } catch (err) {
         setError(

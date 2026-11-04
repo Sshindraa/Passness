@@ -2,18 +2,18 @@
 
 import { requireCatalogManagerOf } from '@/lib/catalog-auth';
 import { runAction } from '@/lib/action-mapper';
-import type { ActionResult } from '@uttily/contracts';
+import type { ActionResult } from '@passness/contracts';
 import {
   OpenRouterEquipmentEnrichmentProvider,
   FakeEquipmentEnrichmentProvider,
   type EquipmentEnrichmentProposal,
-} from '@uttily/intelligence';
+} from '@passness/intelligence';
 
 /**
  * Server Action pour l'analyse intelligente d'une photo d'équipement (P0 Scan & List).
  *
  * Conforme à l'ADR-008 (validation manuelle explicite des entrées HTTP/FormData)
- * et à l'ADR-040 (délégation du traitement multimodal à @uttily/intelligence).
+ * et à l'ADR-040 (délégation du traitement multimodal à @passness/intelligence).
  */
 export async function scanEquipmentPhotoAction(
   organizationId: string,

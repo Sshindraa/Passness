@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import React from 'react';
 import { CompanySettingsView } from './company-settings-view';
-import type { OrganizationRecord } from '@uttily/core';
+import type { OrganizationRecord } from '@passness/core';
 
 describe('CompanySettingsView (Lot 21-O1)', () => {
   const baseOrg: OrganizationRecord = {

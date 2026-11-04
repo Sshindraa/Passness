@@ -1,5 +1,5 @@
 import { and, eq, isNull } from 'drizzle-orm';
-import { productPhotos } from '@uttily/database';
+import { productPhotos } from '@passness/database';
 import { requireCatalogViewerOf } from '@/lib/catalog-auth';
 import { getProductPhotoStorage } from '@/lib/product-photo-storage';
 

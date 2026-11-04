@@ -21,7 +21,7 @@ function findWorkspaceRoot(startDirectory: string): string {
 }
 
 setup(
-  'authenticate the dedicated Clerk TEST user and provision Uttily access',
+  'authenticate the dedicated Clerk TEST user and provision Passness access',
   async ({ page }) => {
     await clerkSetup();
 
@@ -47,7 +47,7 @@ setup(
       }),
     ).toHaveCount(0);
 
-    execFileSync('pnpm', ['--filter', '@uttily/database', 'db:ensure-browser-e2e-membership'], {
+    execFileSync('pnpm', ['--filter', '@passness/database', 'db:ensure-browser-e2e-membership'], {
       cwd: findWorkspaceRoot(packageRoot),
       env: process.env,
       stdio: 'inherit',

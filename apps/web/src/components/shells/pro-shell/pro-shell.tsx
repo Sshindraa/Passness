@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type * as React from 'react';
-import { Icon } from '@uttily/ui';
-import { UttilyBrand } from '@/components/brand';
+import { Icon } from '@passness/ui';
+import { PassnessBrand } from '@/components/brand';
 import styles from './pro-shell.module.css';
 
 type ProShellProps = {
@@ -95,9 +95,9 @@ export function ProShell({
   return (
     <div className={styles.shell}>
       <header className={styles.mobileHeader}>
-        <UttilyBrand
+        <PassnessBrand
           href={`/dashboard/${orgId}`}
-          ariaLabel="Uttily Pro, accueil"
+          ariaLabel="Passness Pro, accueil"
           className={styles.brand}
           logoClassName={styles.brandLogo}
           suffix="Pro"
@@ -130,9 +130,9 @@ export function ProShell({
         inert={mobileViewport && !mobileOpen ? true : undefined}
       >
         <div className={styles.sidebarTop}>
-          <UttilyBrand
+          <PassnessBrand
             href={`/dashboard/${orgId}`}
-            ariaLabel="Uttily Pro, accueil"
+            ariaLabel="Passness Pro, accueil"
             className={styles.brand}
             logoClassName={styles.brandLogo}
             suffix="Pro"

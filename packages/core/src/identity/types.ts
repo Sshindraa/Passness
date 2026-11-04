@@ -11,7 +11,7 @@ export const ORGANIZATION_STATUSES = ['ACTIVE', 'SUSPENDED', 'CLOSED'] as const;
 export type OrganizationStatus = (typeof ORGANIZATION_STATUSES)[number];
 
 export interface AuthenticatedUser {
-  /** Identifiant Uttily (table users). */
+  /** Identifiant Passness (table users). */
   id: string;
   /** Sujet OIDC (Clerk user id). */
   oidcSubject: string;

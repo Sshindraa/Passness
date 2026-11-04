@@ -1,6 +1,6 @@
 import { type ReactElement } from 'react';
 import Link from 'next/link';
-import type { OrganizationRecord, UnifiedOnboardingProgress } from '@uttily/core';
+import type { OrganizationRecord, UnifiedOnboardingProgress } from '@passness/core';
 import styles from './unified-onboarding.module.css';
 
 export interface UnifiedOnboardingViewProps {
@@ -20,7 +20,7 @@ export function UnifiedOnboardingView({
       <main className={styles.container}>
         <div className={styles.successCard}>
           <span style={{ fontSize: '3rem' }}>🎉</span>
-          <h1 className={styles.successTitle}>Votre boutique Uttily est prête !</h1>
+          <h1 className={styles.successTitle}>Votre boutique Passness est prête !</h1>
           <p className={styles.successSubtitle}>
             Toutes les étapes d'activation sont validées. Votre premier équipement est en ligne et
             vous pouvez recevoir des réservations réelles.
@@ -69,7 +69,7 @@ export function UnifiedOnboardingView({
         <Link href={`/dashboard/${organizationId}`} className={styles.backLink}>
           ← Retour au tableau de bord
         </Link>
-        <h1 className={styles.title}>Créer ma boutique Uttily</h1>
+        <h1 className={styles.title}>Créer ma boutique Passness</h1>
         <p className={styles.subtitle}>
           Configuration initiale de votre espace loueur en 4 étapes simples.
         </p>

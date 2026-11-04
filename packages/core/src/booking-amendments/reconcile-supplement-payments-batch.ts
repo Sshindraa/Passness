@@ -19,7 +19,7 @@ import {
   lockOrganization,
   type DatabaseClient,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import type {
   CreatePaymentIntentParams,
   PaymentIntentResult,

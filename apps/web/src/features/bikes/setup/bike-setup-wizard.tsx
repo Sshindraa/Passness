@@ -10,7 +10,7 @@ import {
   MAX_BULK_INVENTORY_ITEMS,
   type BikeSubtype,
   type PhotoSlotType,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 import { PhotoCoachModal } from '@/components/photo-coach/PhotoCoachModal';
 import { updateProductAction, publishFirstEquipmentFromSetupAction } from '@/app/actions/products';
 import { updateVariantAction } from '@/app/actions/variants';
@@ -927,7 +927,7 @@ export function BikeSetupWizard({
             <h2 className={styles.stepTitle}>🧰 Combien d’exemplaires avez-vous en stock ?</h2>
             <p className={styles.stepSubtitle}>
               Indiquez le nombre d’exemplaires disponibles et leur lieu de retrait. Chaque
-              exemplaire sera suivi individuellement par Uttily.
+              exemplaire sera suivi individuellement par Passness.
             </p>
           </div>
 

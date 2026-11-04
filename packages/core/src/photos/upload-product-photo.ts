@@ -1,7 +1,7 @@
 import { and, desc, eq, isNull } from 'drizzle-orm';
-import type { DatabaseClient, ProductPhotoRecord } from '@uttily/database';
-import { productPhotos, products } from '@uttily/database';
-import type { PhotoSlotType } from '@uttily/contracts';
+import type { DatabaseClient, ProductPhotoRecord } from '@passness/database';
+import { productPhotos, products } from '@passness/database';
+import type { PhotoSlotType } from '@passness/contracts';
 import { PhotoError } from './errors';
 import type { ProductPhotoStorage } from './storage';
 import { validateProductPhoto } from './validate-product-photo';

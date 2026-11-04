@@ -1,6 +1,6 @@
 import { and, eq, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { inventoryBlocks, inventoryItems } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { inventoryBlocks, inventoryItems } from '@passness/database';
 import type {
   InventoryBlockRecord,
   InventoryBlockStatus,

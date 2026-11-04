@@ -2,7 +2,7 @@
  * Instrumentation Produit & Métriques Pack Orchestrator (ADR-041).
  *
  * Mesure l'utilité réelle et la promesse produit :
- * « Quel pourcentage des intentions multi-besoins Uttily transforme-t-il
+ * « Quel pourcentage des intentions multi-besoins Passness transforme-t-il
  *   en une solution mono-loueur réellement réservable ? »
  */
 

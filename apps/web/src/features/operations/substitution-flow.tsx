@@ -6,8 +6,8 @@ import {
   getSubstitutionCandidatesAction,
   substituteBookingItemAction,
 } from '@/app/actions/fulfillment';
-import type { SubstitutionCandidateOption } from '@uttily/core';
-import { Button } from '@uttily/ui';
+import type { SubstitutionCandidateOption } from '@passness/core';
+import { Button } from '@passness/ui';
 import { FlowDrawer } from './flow-drawer';
 
 interface SubstitutionFlowProps {
