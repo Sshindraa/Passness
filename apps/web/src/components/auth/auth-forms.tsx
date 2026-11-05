@@ -110,6 +110,12 @@ export function SignInForm(): React.ReactElement {
       <p className={styles.links}>
         <Link href="/forgot-password">Mot de passe oublié ?</Link>
       </p>
+      <p className={styles.links}>
+        Pas encore de compte ?{' '}
+        <Link href={`/sign-up?redirect_url=${encodeURIComponent(redirectUrl)}`}>
+          Créer un compte
+        </Link>
+      </p>
     </form>
   );
 }
@@ -177,6 +183,9 @@ export function SignUpForm(): React.ReactElement {
       <Button type="submit" disabled={s.pending || (captchaRequired && !token)}>
         {s.pending ? 'Création…' : 'Créer mon compte'}
       </Button>
+      <p className={styles.links}>
+        Déjà un compte ? <Link href="/sign-in">Se connecter</Link>
+      </p>
     </form>
   );
 }
