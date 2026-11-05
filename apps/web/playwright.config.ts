@@ -9,7 +9,7 @@ if (!/^\d{1,5}$/.test(testPort) || Number(testPort) < 1 || Number(testPort) > 65
 
 const baseURL = process.env.PLAYWRIGHT_TEST_BASE_URL ?? `http://localhost:${testPort}`;
 const packageRoot = dirname(fileURLToPath(import.meta.url));
-const clerkAuthFile = join(packageRoot, 'playwright', '.clerk', 'user.json');
+const authFile = join(packageRoot, 'playwright', '.auth', 'user.json');
 
 const publicProjects = [
   {
@@ -37,48 +37,53 @@ const publicProjects = [
   },
 ];
 
-const clerkBrowserConfigured =
-  /^pk_test_[A-Za-z0-9_-]{16,}$/.test(process.env.CLERK_PUBLISHABLE_KEY ?? '') &&
-  /^sk_test_[A-Za-z0-9_-]{16,}$/.test(process.env.CLERK_SECRET_KEY ?? '') &&
-  (process.env.E2E_CLERK_USER_EMAIL?.trim().length ?? 0) > 0;
+const authBrowserConfigured =
+  (process.env.E2E_USER_EMAIL?.trim().length ?? 0) > 0 &&
+  (process.env.E2E_USER_PASSWORD?.length ?? 0) >= 12;
 
 const proProjects = [
   {
     name: 'Pro Mobile (375x812)',
     testMatch: /pro-authenticated\.spec\.ts$/,
-    dependencies: ['Clerk auth setup'],
+    dependencies: ['Auth setup'],
     use: {
       viewport: { width: 375, height: 812 },
       userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15',
-      storageState: clerkAuthFile,
+      storageState: authFile,
     },
   },
   {
     name: 'Pro Tablet (768x1024)',
     testMatch: /pro-authenticated\.spec\.ts$/,
-    dependencies: ['Clerk auth setup'],
-    use: { viewport: { width: 768, height: 1024 }, storageState: clerkAuthFile },
+    dependencies: ['Auth setup'],
+    use: { viewport: { width: 768, height: 1024 }, storageState: authFile },
   },
   {
     name: 'Pro Small Desktop (1024x768)',
     testMatch: /pro-authenticated\.spec\.ts$/,
-    dependencies: ['Clerk auth setup'],
-    use: { viewport: { width: 1024, height: 768 }, storageState: clerkAuthFile },
+    dependencies: ['Auth setup'],
+    use: { viewport: { width: 1024, height: 768 }, storageState: authFile },
   },
   {
     name: 'Pro Desktop (1440x900)',
     testMatch: /pro-authenticated\.spec\.ts$/,
-    dependencies: ['Clerk auth setup'],
-    use: { viewport: { width: 1440, height: 900 }, storageState: clerkAuthFile },
+    dependencies: ['Auth setup'],
+    use: { viewport: { width: 1440, height: 900 }, storageState: authFile },
   },
 ];
 
-const authenticatedProjects = clerkBrowserConfigured
+const authenticatedProjects = authBrowserConfigured
   ? [
       {
-        name: 'Clerk auth setup',
-        testMatch: /clerk\.setup\.ts$/,
+        name: 'Auth setup',
+        testMatch: /auth\.setup\.ts$/,
         use: { baseURL },
+      },
+      {
+        name: 'Auth UI',
+        testMatch: /auth-ui\.spec\.ts$/,
+        dependencies: ['Auth setup'],
+        use: { viewport: { width: 1024, height: 768 } },
       },
       ...proProjects,
     ]

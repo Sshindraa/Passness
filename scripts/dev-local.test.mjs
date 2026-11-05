@@ -27,19 +27,10 @@ const LOCAL_PROVIDER_VARIABLES = [
   'RESEND_FROM_EMAIL',
   'RESEND_BOOKING_CONFIRMED_TEMPLATE_ID',
 ];
-const LOCAL_WEBHOOK_VARIABLES = [
-  'CLERK_WEBHOOK_SECRET',
-  'STRIPE_PLATFORM_WEBHOOK_SECRET',
-  'STRIPE_CONNECT_WEBHOOK_SECRET',
-];
+const LOCAL_WEBHOOK_VARIABLES = ['STRIPE_PLATFORM_WEBHOOK_SECRET', 'STRIPE_CONNECT_WEBHOOK_SECRET'];
 const INSPECTED_DOCKER_ENDPOINT = 'unix:///tmp/passness-docker.sock';
-const VALID_CLERK_KEYS = {
-  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: `pk_test_${'A'.repeat(32)}`,
-  CLERK_SECRET_KEY: `sk_test_${'B'.repeat(32)}`,
-};
-
 function createTestLocalEnvironment(overrides = {}) {
-  return createLocalEnvironment({ ...VALID_CLERK_KEYS, ...overrides });
+  return createLocalEnvironment(overrides);
 }
 
 function isProcessAlive(pid) {
@@ -186,80 +177,20 @@ test('conserve uniquement les clés Stripe TEST validées', () => {
   assert.equal(environment.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, 'pk_test_fixture_only');
 });
 
-test('refuse les clés Clerk absentes ou vides', () => {
-  assert.throws(
-    () => createLocalEnvironment({}),
-    (error) => {
-      assert.match(
-        error.message,
-        /configuration Clerk TEST invalide pour NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY/,
-      );
-      assert.doesNotMatch(error.message, /pk_test_local_dev|sk_test_local_dev/);
-      return true;
-    },
-  );
+test('fixe un environnement d’authentification local sans clé externe', () => {
+  const environment = createLocalEnvironment({
+    BETTER_AUTH_SECRET: 'inherited',
+    TURNSTILE_SECRET_KEY: 'inherited',
+  });
 
-  assert.throws(
-    () => createTestLocalEnvironment({ CLERK_SECRET_KEY: '' }),
-    /configuration Clerk TEST invalide pour CLERK_SECRET_KEY/,
-  );
-});
-
-test('refuse les placeholders Clerk TEST trop courts', () => {
-  for (const [variable, prefix] of [
-    ['NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY', 'pk_test_'],
-    ['CLERK_SECRET_KEY', 'sk_test_'],
-  ]) {
-    const placeholder = `${prefix}local_dev`;
-    assert.throws(
-      () => createTestLocalEnvironment({ [variable]: placeholder }),
-      (error) => {
-        assert.match(error.message, /configuration Clerk TEST invalide/);
-        assert.doesNotMatch(error.message, new RegExp(placeholder));
-        return true;
-      },
-    );
-  }
-});
-
-test('refuse une clé Clerk publique LIVE héritée sans révéler sa valeur', () => {
-  const liveKey = 'pk_live_fixture_only';
-
-  assert.throws(
-    () => createTestLocalEnvironment({ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: liveKey }),
-    (error) => {
-      assert.match(error.message, /configuration Clerk TEST invalide/);
-      assert.doesNotMatch(error.message, new RegExp(liveKey));
-      return true;
-    },
-  );
-});
-
-test('refuse une clé Clerk secrète LIVE héritée sans révéler sa valeur', () => {
-  const liveKey = 'sk_live_fixture_only';
-
-  assert.throws(
-    () => createTestLocalEnvironment({ CLERK_SECRET_KEY: liveKey }),
-    (error) => {
-      assert.match(error.message, /configuration Clerk TEST invalide/);
-      assert.doesNotMatch(error.message, new RegExp(liveKey));
-      return true;
-    },
-  );
-});
-
-test('accepte et transmet des clés Clerk TEST synthétiques suffisamment longues', () => {
-  const environment = createLocalEnvironment(VALID_CLERK_KEYS);
-
-  assert.equal(
-    environment.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    VALID_CLERK_KEYS.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-  );
-  assert.equal(environment.CLERK_SECRET_KEY, VALID_CLERK_KEYS.CLERK_SECRET_KEY);
+  assert.match(environment.BETTER_AUTH_SECRET, /^passness-local-dev-/);
+  assert.equal(environment.BETTER_AUTH_URL, 'http://localhost:3000');
+  assert.equal(environment.NEXT_PUBLIC_TURNSTILE_SITE_KEY, '1x00000000000000000000AA');
+  assert.equal(environment.TURNSTILE_SECRET_KEY, '1x0000000000000000000000000000000AA');
   assert.equal(environment.CRON_SECRET, 'dev-cron-secret-local');
 });
 
-test('neutralise les webhooks hérités et fixe le cron local avec des clés Clerk TEST valides', () => {
+test('neutralise les webhooks hérités et fixe le cron local ', () => {
   const environment = createTestLocalEnvironment({
     ...Object.fromEntries(
       LOCAL_WEBHOOK_VARIABLES.map((variable) => [variable, 'inherited-secret']),

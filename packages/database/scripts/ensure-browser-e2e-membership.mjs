@@ -9,20 +9,20 @@ export function isBrowserE2eEnvironment(environment = process.env) {
   return (
     environment?.PASSNESS_BROWSER_E2E === '1' &&
     environment?.NODE_ENV !== 'production' &&
-    typeof environment?.E2E_CLERK_USER_EMAIL === 'string' &&
-    environment.E2E_CLERK_USER_EMAIL.trim().length > 0
+    typeof environment?.E2E_USER_EMAIL === 'string' &&
+    environment.E2E_USER_EMAIL.trim().length > 0
   );
 }
 
 export function assertBrowserE2eEnvironment(environment = process.env) {
   if (!isBrowserE2eEnvironment(environment)) {
     throw new Error(
-      'Le fixture membership E2E exige PASSNESS_BROWSER_E2E=1, un environnement non production et E2E_CLERK_USER_EMAIL.',
+      'Le fixture membership E2E exige PASSNESS_BROWSER_E2E=1, un environnement non production et E2E_USER_EMAIL.',
     );
   }
 
-  if (!/^[^\s@+]+\+clerk_test@[^\s@]+$/i.test(environment.E2E_CLERK_USER_EMAIL.trim())) {
-    throw new Error('E2E_CLERK_USER_EMAIL doit être une adresse Clerk de test dédiée.');
+  if (!/^[^\s@+]+\+e2e@[^\s@]+$/i.test(environment.E2E_USER_EMAIL.trim())) {
+    throw new Error('E2E_USER_EMAIL doit être une adresse de test dédiée (suffixe +e2e).');
   }
 }
 
@@ -52,7 +52,7 @@ function resolveLocalDatabaseUrl(environment = process.env) {
 
 export async function ensureBrowserE2eMembership(environment = process.env) {
   assertBrowserE2eEnvironment(environment);
-  const email = environment.E2E_CLERK_USER_EMAIL.trim().toLowerCase();
+  const email = environment.E2E_USER_EMAIL.trim().toLowerCase();
   const sql = postgres(resolveLocalDatabaseUrl(environment), { max: 1 });
 
   try {
@@ -62,13 +62,13 @@ export async function ensureBrowserE2eMembership(environment = process.env) {
         FROM "users"
         WHERE "email" = ${email}
           AND "deleted_at" IS NULL
-          AND "oidc_provider" = 'clerk'
+          AND "oidc_provider" = 'better-auth'
           AND "oidc_subject" IS NOT NULL
         LIMIT 1
         FOR UPDATE
       `;
       if (users.length !== 1) {
-        throw new Error('Utilisateur Clerk E2E non provisionné dans la base locale.');
+        throw new Error('Utilisateur E2E non provisionné dans la base locale.');
       }
 
       const organizations = await tx`
@@ -120,6 +120,36 @@ export async function ensureBrowserE2eMembership(environment = process.env) {
   }
 }
 
+/** Repart d'un compte E2E vierge : supprime l'identité Better Auth et détache `users` (base locale uniquement). */
+export async function resetBrowserE2eAuthUser(environment = process.env) {
+  assertBrowserE2eEnvironment(environment);
+  const email = environment.E2E_USER_EMAIL.trim().toLowerCase();
+  const sql = postgres(resolveLocalDatabaseUrl(environment), { max: 1 });
+  try {
+    await sql.begin(async (tx) => {
+      await tx`DELETE FROM "auth_users" WHERE "email" = ${email}`;
+      await tx`
+        UPDATE "organization_memberships" SET "status" = 'REMOVED', "removed_at" = now()
+        WHERE "user_id" IN (SELECT "id" FROM "users" WHERE "email" = ${email})`;
+      await tx`UPDATE "users" SET "oidc_subject" = NULL, "oidc_provider" = NULL WHERE "email" = ${email}`;
+    });
+  } finally {
+    await sql.end();
+  }
+}
+
+/** La livraison d'e-mail n'existe pas en E2E : marque l'adresse du compte de test comme vérifiée. */
+export async function verifyBrowserE2eEmail(environment = process.env) {
+  assertBrowserE2eEnvironment(environment);
+  const email = environment.E2E_USER_EMAIL.trim().toLowerCase();
+  const sql = postgres(resolveLocalDatabaseUrl(environment), { max: 1 });
+  try {
+    await sql`UPDATE "auth_users" SET "email_verified" = true WHERE "email" = ${email}`;
+  } finally {
+    await sql.end();
+  }
+}
+
 function isMainModule() {
   return (
     process.argv[1] !== undefined && fileURLToPath(import.meta.url) === resolve(process.argv[1])
@@ -127,9 +157,15 @@ function isMainModule() {
 }
 
 if (isMainModule()) {
-  ensureBrowserE2eMembership()
+  const action = process.argv[2] ?? 'membership';
+  const actions = {
+    membership: ensureBrowserE2eMembership,
+    reset: resetBrowserE2eAuthUser,
+    'verify-email': verifyBrowserE2eEmail,
+  };
+  (actions[action] ?? (() => Promise.reject(new Error('action inconnue'))))()
     .then(() => {
-      console.log('Browser E2E membership fixture applied.');
+      console.log(`Browser E2E fixture applied: ${action}.`);
     })
     .catch(() => {
       console.error('Browser E2E membership fixture failed.');

@@ -74,7 +74,7 @@ export default async function PrivacyPage({
               </li>
               <li>
                 <strong>Données techniques de connexion :</strong> adresse IP, logs de connexion et
-                identifiants de session technique (authentification Clerk).
+                identifiants de session technique (authentification Passness).
               </li>
             </ul>
             <div className="callout">
@@ -121,10 +121,6 @@ export default async function PrivacyPage({
                 <strong>À nos sous-traitants techniques</strong> agissant sous contrat de conformité
                 stricte au RGPD :
                 <ul>
-                  <li>
-                    <strong>Clerk Inc.</strong> : gestion de l’authentification et des sessions
-                    sécurisées ;
-                  </li>
                   <li>
                     <strong>Stripe Payments Europe Ltd</strong> : paiement en ligne sécurisé et
                     séquestre ;
@@ -220,7 +216,7 @@ export default async function PrivacyPage({
               </li>
               <li>
                 <strong>Technical connection data:</strong> IP addresses, access logs, and technical
-                session identifiers (managed via Clerk).
+                session identifiers (managed by Passness).
               </li>
             </ul>
             <div className="callout">
@@ -264,9 +260,6 @@ export default async function PrivacyPage({
                 <strong>Qualified technical subprocessors</strong> bound by strict GDPR data
                 processing agreements:
                 <ul>
-                  <li>
-                    <strong>Clerk Inc.</strong>: user authentication and session management;
-                  </li>
                   <li>
                     <strong>Stripe Payments Europe Ltd</strong>: payment processing and escrow;
                   </li>

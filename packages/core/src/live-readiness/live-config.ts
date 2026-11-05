@@ -87,14 +87,14 @@ export const REQUIRED_LIVE_VARIABLES: readonly LiveVariableRule[] = [
 
   // --- Authentification ---
   {
-    name: 'CLERK_SECRET_KEY',
-    description: 'Clé secrète Clerk LIVE',
-    prefixCheck: 'sk_live_',
+    name: 'BETTER_AUTH_SECRET',
+    description: 'Secret Better Auth (min 32 octets, distinct par environnement)',
+    minLength: 32,
   },
   {
-    name: 'NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY',
-    description: 'Clé publishable Clerk LIVE',
-    prefixCheck: 'pk_live_',
+    name: 'TURNSTILE_SECRET_KEY',
+    description: 'Clé secrète Cloudflare Turnstile (anti-faux comptes)',
+    minLength: 1,
   },
   {
     name: 'INVITATION_SECRET',

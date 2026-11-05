@@ -13,7 +13,7 @@ export type OrganizationStatus = (typeof ORGANIZATION_STATUSES)[number];
 export interface AuthenticatedUser {
   /** Identifiant Passness (table users). */
   id: string;
-  /** Sujet OIDC (Clerk user id). */
+  /** Identifiant du fournisseur d'identité (`auth_users.id` Better Auth, ADR-047). */
   oidcSubject: string;
   email: string;
   emailVerified: boolean;
@@ -143,5 +143,17 @@ export class AccountDeletedError extends Error {
   constructor(message = 'Ce compte utilisateur a été supprimé et ne peut plus être utilisé.') {
     super(message);
     this.name = 'AccountDeletedError';
+  }
+}
+
+/**
+ * Un `users` existant ne peut pas être repris par une nouvelle identité sur la
+ * seule base de l'e-mail (ADR-047) : compte `counter`, compte déjà lié à une
+ * autre identité, ou e-mail non vérifié.
+ */
+export class AccountLinkRefusedError extends Error {
+  constructor(message = 'Ce compte existe déjà et ne peut pas être rattaché automatiquement.') {
+    super(message);
+    this.name = 'AccountLinkRefusedError';
   }
 }

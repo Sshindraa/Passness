@@ -172,15 +172,10 @@ refuse toute clé Stripe non-TEST, accepte une chaîne vide comme absence, impos
 `STRIPE_ENVIRONMENT=TEST` et `PAYMENTS_LIVE_ENABLED=false`, et transmet
 explicitement des clés TEST ou des chaînes vides aux processus enfants. Toute
 clé Stripe LIVE Web est ainsi désactivée, y compris celle qui pourrait être
-présente dans `.env.local`. `pnpm dev:full` exige que
-`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` et `CLERK_SECRET_KEY` soient exportées avec
-de vraies clés Clerk TEST valides (`pk_test_...` et `sk_test_...`). Les valeurs
-absentes, vides, trop courtes ou LIVE sont refusées avant Docker et les
-migrations, sans afficher les clés ; il n'existe aucun fallback placeholder.
-Sans ces clés TEST réelles, seules les validations statiques du dépôt passent
-et le Web ne démarre pas : aucune route, publique ou authentifiée, n'est
-promise avec des placeholders. Les clés Clerk TEST validées sont transmises
-aux processus Web et worker. Les secrets de webhook Clerk/Stripe hérités sont
+présente dans `.env.local`. `pnpm dev:full` n'exige aucune clé d'authentification : il fixe un secret Better Auth de
+développement et les clés Turnstile de test publiées par Cloudflare (toujours valides). Les
+e-mails d'authentification ne sont pas envoyés en local : le lien de vérification ou de
+réinitialisation s'affiche dans la console du Web. Les secrets de webhook Stripe hérités sont
 neutralisés par des chaînes vides et `CRON_SECRET` est fixé à
 `dev-cron-secret-local`. Les variables de credentials R2 et Resend héritées
 sont également neutralisées par une chaîne vide dans l'environnement enfant ;

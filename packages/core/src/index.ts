@@ -2,7 +2,7 @@
  * @passness/core — Module Identity & Organizations (Lot 1).
  *
  * Source de vérité des rôles, permissions et invariants métier.
- * Indépendant de Next.js et de Clerk. Les actions serveur de apps/web
+ * Indépendant de Next.js et du fournisseur d'identité. Les actions serveur de apps/web
  * délèguent à ce module.
  */
 
@@ -18,6 +18,7 @@ export * from './identity/schedule';
 export * from './identity/public-app-url';
 export * from './identity/audit';
 export * from './identity/provisioning';
+export * from './identity/two-factor-policy';
 export * from './identity/legal-identity-validation';
 
 // Lot 2A — Catalogue et inventaire physique.

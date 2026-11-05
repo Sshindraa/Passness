@@ -30,35 +30,6 @@
   line-height: var(--ut-leading-body);
 }
 
-.clerk {
-  width: 100%;
-}
-
-.clerk :global(.cl-rootBox),
-.clerk :global(.cl-cardBox),
-.clerk :global(.cl-card) {
-  width: 100% !important;
-  box-shadow: none !important;
-  border: none !important;
-  background: transparent !important;
-}
-
-.clerk :global(.cl-card) {
-  padding: 0 !important;
-}
-
-.clerk :global(.cl-header),
-.clerk :global(.cl-headerTitle),
-.clerk :global(.cl-headerSubtitle) {
-  display: none !important;
-}
-
-.clerk :global(.cl-footer) {
-  background: transparent !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
 @media (max-width: 40rem) {
   .page {
     padding: 2rem 1rem 4rem;

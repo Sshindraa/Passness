@@ -340,7 +340,7 @@ export async function expireDueInvitations(db: DatabaseClient): Promise<number> 
 
 /**
  * Accepte une invitation : crée la membership ACTIVE et marque l'invitation ACCEPTED.
- * Transaction atomique. L'utilisateur doit exister (créé via Clerk à l'auth).
+ * Transaction atomique. L'utilisateur doit exister (créé à la première connexion).
  */
 export async function acceptInvitation(
   db: DatabaseClient,

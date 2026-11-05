@@ -1,11 +1,11 @@
-import type { ReactNode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-vi.mock('@clerk/nextjs', () => ({
-  SignedIn: () => null,
-  SignedOut: ({ children }: { children: ReactNode }) => children,
-  UserButton: () => <span>Gestion du compte Clerk</span>,
+vi.mock('@/lib/auth-client', () => ({
+  authClient: {
+    useSession: () => ({ data: null, isPending: false }),
+    signOut: vi.fn(),
+  },
 }));
 
 vi.mock('next/navigation', () => ({
@@ -90,7 +90,7 @@ describe('Pages légales et contractuelles (21-L1)', () => {
 
       expect(html).toContain('Politique de Confidentialité et Protection des Données');
       expect(html).toContain('privacy@passness.com');
-      expect(html).toContain('Clerk Inc.');
+      expect(html).not.toContain('Clerk');
       expect(html).toContain('Stripe Payments Europe Ltd');
       expect(html).toContain('Neon Inc.');
       expect(html).toContain('Cloudflare Inc.');

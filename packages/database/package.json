@@ -13,6 +13,7 @@
     "build": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
+    "db:migrate-clerk-accounts": "node scripts/migrate-clerk-accounts.mjs",
     "db:seed:local": "node scripts/seed-local.mjs",
     "db:seed:preview": "node scripts/seed-local-preview.mjs",
     "db:seed:browser": "node scripts/seed-browser-e2e.mjs",

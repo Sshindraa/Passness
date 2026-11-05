@@ -38,5 +38,5 @@ persistées. Les renommer dans le code sans migrer la ressource casserait stagin
    `/tmp`), nouveau tag d'image, puis déplacer `/home/deploy/uttily-staging-worker`. Ne rien faire
    sur la production ni sur les ressources Suppernote du même hôte sans validation.
 7. Base : migrer les e-mails `anonymized.uttily.local`, puis ajouter `passness_export_version`.
-8. Clerk/GitHub/local : utilisateur de test, organisation de démo, dépôt GitHub, dossier local, base
-   Postgres locale.
+8. GitHub/local : organisation de démo, dépôt GitHub, dossier local, base Postgres locale.
+   (Clerk est retiré par ADR-047 : plus aucun réglage Clerk à faire pour le renommage.)

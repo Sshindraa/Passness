@@ -1,0 +1,27 @@
+.form {
+  display: grid;
+  gap: var(--ut-space-4);
+}
+
+.links {
+  margin: 0;
+  font-size: var(--ut-text-sm);
+}
+
+.linkButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ut-color-primary);
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}
+
+.codes {
+  padding: var(--ut-space-3);
+  border: var(--ut-border-thin);
+  border-radius: var(--ut-radius-md);
+  background: var(--ut-color-surface-raised);
+  font-size: var(--ut-text-sm);
+}

@@ -3,10 +3,11 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import React from 'react';
 import { PrivacyView } from './privacy-view';
 
-vi.mock('@clerk/nextjs', () => ({
-  useClerk: () => ({
+vi.mock('@/lib/auth-client', () => ({
+  authClient: {
+    useSession: () => ({ data: null, isPending: false }),
     signOut: vi.fn(),
-  }),
+  },
 }));
 
 vi.mock('@/app/actions/privacy', () => ({

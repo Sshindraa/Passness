@@ -19,16 +19,16 @@ import {
 import { eq, sql } from 'drizzle-orm';
 
 // ---------------------------------------------------------------------------
-// Mocks : Clerk, getDb, next/cache et @/lib/stripe.
+// Mocks : session Better Auth, getDb, next/cache et @/lib/stripe.
 //
-// Les Server Actions d'onboarding dépendent de Clerk (`getAuthenticatedUser`),
+// Les Server Actions d'onboarding dépendent de la session Better Auth (`getAuthenticatedUser`),
 // du singleton `getDb()` et de `getStripeAdapter()`. On mocke les trois pour
 // contrôler l'identité, brancher une base de test PostgreSQL réelle et
 // substituer le FakeStripeAdapter (déterministe, aucune API Stripe réelle).
 // ---------------------------------------------------------------------------
 
-vi.mock('@clerk/nextjs/server', () => ({
-  currentUser: vi.fn<() => Promise<unknown>>(),
+vi.mock('@/lib/auth-session', () => ({
+  getSessionIdentity: vi.fn<() => Promise<unknown>>(),
 }));
 
 vi.mock('next/cache', () => ({
@@ -62,7 +62,7 @@ vi.mock('@/lib/stripe', () => ({
 }));
 
 // Importe les actions APRÈS les mocks.
-const { currentUser } = await import('@clerk/nextjs/server');
+const { getSessionIdentity } = await import('@/lib/auth-session');
 const {
   getConnectedAccountReadinessAction,
   createConnectedAccountAction,
@@ -152,7 +152,7 @@ afterAll(async () => {
 
 beforeEach(async () => {
   if (!testDb) return;
-  vi.mocked(currentUser).mockReset();
+  vi.mocked(getSessionIdentity).mockReset();
   // Réinitialise les tables liées à l'onboarding. Les catégories seedées
   // ne sont pas touchées.
   await testDb.execute(
@@ -164,25 +164,25 @@ beforeEach(async () => {
 // Helpers de test.
 // ---------------------------------------------------------------------------
 
-function mockClerkUser(user: AuthenticatedUser | null): void {
+function mockSessionUser(user: AuthenticatedUser | null): void {
   if (!user) {
-    vi.mocked(currentUser).mockResolvedValue(null as never);
+    vi.mocked(getSessionIdentity).mockResolvedValue(null as never);
     return;
   }
-  vi.mocked(currentUser).mockResolvedValue({
-    id: user.oidcSubject,
-    primaryEmailAddress: {
-      emailAddress: user.email,
-      verification: { status: user.emailVerified ? 'verified' : 'unverified' },
-    },
+  vi.mocked(getSessionIdentity).mockResolvedValue({
+    subject: user.oidcSubject,
+    email: user.email,
+    emailVerified: user.emailVerified,
+    displayName: null,
+    twoFactorEnabled: true,
   } as never);
 }
 
 async function makeUser(email: string): Promise<AuthenticatedUser> {
   if (!testDb) throw new Error('db not initialized');
   return provisionUserFromOidc(testDb, {
-    oidcSubject: `clerk-${email}`,
-    oidcProvider: 'clerk',
+    oidcSubject: `auth-${email}`,
+    oidcProvider: 'better-auth',
     email,
     emailVerified: true,
   });
@@ -240,7 +240,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       if (!testDb) return;
       const owner = await makeUser('owner-readiness@example.com');
       const { organizationId } = await makeOrg(owner, 'Readiness Org');
-      mockClerkUser(owner);
+      mockSessionUser(owner);
 
       const readiness = await getConnectedAccountReadinessAction(organizationId);
       expect(readiness.notConfigured).toBe(true);
@@ -253,7 +253,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       if (!testDb) return;
       const owner = await makeUser('owner-create@example.com');
       const { organizationId } = await makeOrg(owner, 'Create Org');
-      mockClerkUser(owner);
+      mockSessionUser(owner);
 
       const result = await createConnectedAccountAction(organizationId, {
         country: 'FR',
@@ -273,7 +273,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       if (!testDb) return;
       const owner = await makeUser('owner-duplicate@example.com');
       const { organizationId } = await makeOrg(owner, 'Duplicate Org');
-      mockClerkUser(owner);
+      mockSessionUser(owner);
 
       await createConnectedAccountAction(organizationId, {
         country: 'FR',
@@ -299,7 +299,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       const staff = await makeUser('staff2@example.com');
       // ROLE_MANAGERS = ['OWNER'] uniquement — STAFF n'est pas autorisé.
       await addMember(organizationId, staff, 'STAFF');
-      mockClerkUser(staff);
+      mockSessionUser(staff);
 
       try {
         await createConnectedAccountAction(organizationId, {
@@ -316,7 +316,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       if (!testDb) return;
       const owner = await makeUser('owner-link@example.com');
       const { organizationId } = await makeOrg(owner, 'Link Org');
-      mockClerkUser(owner);
+      mockSessionUser(owner);
 
       await createConnectedAccountAction(organizationId, {
         country: 'FR',
@@ -343,7 +343,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       if (!testDb) return;
       const owner = await makeUser('owner-nolink@example.com');
       const { organizationId } = await makeOrg(owner, 'No Account Org');
-      mockClerkUser(owner);
+      mockSessionUser(owner);
 
       // Aucun compte connecté créé pour cette org.
       try {
@@ -362,7 +362,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       if (!testDb) return;
       const owner = await makeUser('owner-enabled@example.com');
       const { organizationId } = await makeOrg(owner, 'Enabled Org');
-      mockClerkUser(owner);
+      mockSessionUser(owner);
 
       await createConnectedAccountAction(organizationId, {
         country: 'FR',
@@ -391,7 +391,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       if (!testDb) return;
       const owner = await makeUser('owner-pending@example.com');
       const { organizationId } = await makeOrg(owner, 'Pending Org');
-      mockClerkUser(owner);
+      mockSessionUser(owner);
 
       await createConnectedAccountAction(organizationId, {
         country: 'FR',
@@ -413,14 +413,14 @@ describe.skipIf(shouldSkipIntegrationTests())(
       const { organizationId: orgB } = await makeOrg(ownerB, 'Org B');
 
       // Org A crée son compte.
-      mockClerkUser(ownerA);
+      mockSessionUser(ownerA);
       await createConnectedAccountAction(orgA, {
         country: 'FR',
         idempotencyKey: 'create-ca-orgA-1',
       });
 
       // Org B interroge sa readiness — ne doit pas voir le compte de A.
-      mockClerkUser(ownerB);
+      mockSessionUser(ownerB);
       const readinessB = await getConnectedAccountReadinessAction(orgB);
       expect(readinessB.notConfigured).toBe(true);
       expect(readinessB.providerAccountId).toBeNull();
@@ -437,7 +437,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       if (!testDb) return;
       const owner = await makeUser('owner-env@example.com');
       const { organizationId } = await makeOrg(owner, 'Env Isolation Org');
-      mockClerkUser(owner);
+      mockSessionUser(owner);
 
       // Crée le compte en environnement TEST.
       await createConnectedAccountAction(organizationId, {
