@@ -1,7 +1,7 @@
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { nextCookies } from 'better-auth/next-js';
-import { captcha, haveIBeenPwned, twoFactor } from 'better-auth/plugins';
+import { captcha, twoFactor } from 'better-auth/plugins';
 import {
   authAccounts,
   authRateLimits,
@@ -104,7 +104,6 @@ export function createAuth(
     },
     plugins: [
       twoFactor({ issuer: 'Passness' }),
-      haveIBeenPwned({ enabled: production }),
       ...(turnstileSecret
         ? [captcha({ provider: 'cloudflare-turnstile', secretKey: turnstileSecret })]
         : []),

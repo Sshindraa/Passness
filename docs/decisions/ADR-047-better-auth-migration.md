@@ -42,8 +42,9 @@ compte avec la même adresse ; un parcours de réclamation explicite reste à co
 
 ## Sécurité (à la charge de Passness)
 
-- Mot de passe ≥ 12 caractères, haché par scrypt (défaut Better Auth) ; mots de passe compromis refusés
-  (Have I Been Pwned, activé en production).
+- Mot de passe ≥ 12 caractères, haché par scrypt (défaut Better Auth). Le refus des mots de passe compromis
+  (Have I Been Pwned), proposé par Clerk, est **volontairement désactivé** (décision produit du 2026-11-05) :
+  risque accepté de comptes protégés par un mot de passe déjà fuité ; réactivable avec `haveIBeenPwned()`.
 - Vérification d'e-mail obligatoire avant toute session ; réinitialisation : jeton à usage unique de 1 h,
   toutes les sessions révoquées.
 - Anti-faux comptes : Cloudflare Turnstile sur inscription, connexion et demande de réinitialisation

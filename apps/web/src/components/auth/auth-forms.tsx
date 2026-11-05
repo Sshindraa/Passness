@@ -139,11 +139,9 @@ export function SignUpForm(): React.ReactElement {
       });
       if (res.error) {
         s.setError(
-          res.error.code === 'PASSWORD_COMPROMISED'
-            ? 'Ce mot de passe figure dans une fuite de données. Choisissez-en un autre.'
-            : res.error.code === 'PASSWORD_TOO_SHORT'
-              ? 'Le mot de passe doit contenir au moins 12 caractères.'
-              : 'Inscription impossible. Vérifiez les informations saisies.',
+          res.error.code === 'PASSWORD_TOO_SHORT'
+            ? 'Le mot de passe doit contenir au moins 12 caractères.'
+            : 'Inscription impossible. Vérifiez les informations saisies.',
         );
         return;
       }
@@ -252,11 +250,7 @@ export function ResetPasswordForm(): React.ReactElement {
     void s.run(async () => {
       const res: Result = await authClient.resetPassword({ newPassword, token });
       if (res.error) {
-        s.setError(
-          res.error.code === 'PASSWORD_COMPROMISED'
-            ? 'Ce mot de passe figure dans une fuite de données. Choisissez-en un autre.'
-            : 'Réinitialisation impossible. Le lien a peut-être expiré.',
-        );
+        s.setError('Réinitialisation impossible. Le lien a peut-être expiré.');
         return;
       }
       setDone(true);
