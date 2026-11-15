@@ -1,7 +1,7 @@
 import type { Appearance } from '@stripe/stripe-js';
 
 // Embedded providers cannot inherit the host page's CSS variables or font faces.
-export const UTTILY_FONT_FAMILY = 'Sora, system-ui, sans-serif';
+export const PASSNESS_FONT_FAMILY = 'Sora, system-ui, sans-serif';
 
 export const PAYMENT_APPEARANCE: Appearance = {
   theme: 'stripe',

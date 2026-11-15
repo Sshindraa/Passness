@@ -15,8 +15,8 @@ describe('Sora typography integration', () => {
   });
 
   it('gives embedded providers an absolute same-origin font stylesheet without secrets', () => {
-    expect(getEmbeddedFonts('https://uttily.example')).toEqual([
-      { cssSrc: 'https://uttily.example/fonts/sora/sora.css' },
+    expect(getEmbeddedFonts('https://passness.example')).toEqual([
+      { cssSrc: 'https://passness.example/fonts/sora/sora.css' },
     ]);
     expect(getEmbeddedFonts('http://localhost:3000')).toEqual([
       { cssSrc: 'http://localhost:3000/fonts/sora/sora.css' },

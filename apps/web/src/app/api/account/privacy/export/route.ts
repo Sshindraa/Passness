@@ -35,6 +35,7 @@ export async function GET(request: Request): Promise<Response> {
     const portableData = await buildPortableData(db, user.id);
     const body = {
       exportedAt: nowIso,
+      passness_export_version: '1.0' as const,
       uttily_export_version: '1.0' as const,
       article20_portable_data: portableData,
     };
@@ -56,6 +57,7 @@ export async function GET(request: Request): Promise<Response> {
 
   const exportPayload: PersonalDataExport = {
     exportedAt: nowIso,
+    passness_export_version: '1.0',
     uttily_export_version: '1.0',
     article15_personal_data_copy: personalDataCopy,
     article20_portable_data: portableData,

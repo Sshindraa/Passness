@@ -5,8 +5,8 @@
 **Statut du test d'intégration :** `PASS` (100% vert, exécution en ~1.1s)  
 **Commande de reproduction :** `DATABASE_URL=postgresql://uttily:uttily@127.0.0.1:5432/uttily pnpm drill:saturday`  
 **Fichiers de preuve :**
-- Test d'intégration automatisé : [`packages/core/src/integration/saturday-drill.integration.test.ts`](file:///Users/hamza/Projects/Uttily/packages/core/src/integration/saturday-drill.integration.test.ts)
-- Script runner autonome : [`scripts/saturday-drill.mjs`](file:///Users/hamza/Projects/Uttily/scripts/saturday-drill.mjs)
+- Test d'intégration automatisé : [`packages/core/src/integration/saturday-drill.integration.test.ts`](file:///Users/hamza/Projects/Passness/packages/core/src/integration/saturday-drill.integration.test.ts)
+- Script runner autonome : [`scripts/saturday-drill.mjs`](file:///Users/hamza/Projects/Passness/scripts/saturday-drill.mjs)
 
 ---
 

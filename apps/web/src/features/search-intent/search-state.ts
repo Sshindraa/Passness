@@ -1,5 +1,5 @@
-import type { PublicSearchFilterOptions } from '@uttily/core';
-import type { CompiledPartyRequirement } from '@uttily/intelligence';
+import type { PublicSearchFilterOptions } from '@passness/core';
+import type { CompiledPartyRequirement } from '@passness/intelligence';
 import type { PublicSearchFormValues } from '@/lib/public-search';
 import { MAX_SEARCH_PEOPLE } from '@/lib/search-people';
 

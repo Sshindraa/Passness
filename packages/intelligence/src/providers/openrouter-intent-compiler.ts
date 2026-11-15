@@ -149,7 +149,7 @@ Compulse cette intention sous forme JSON :
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://uttily.com',
+          'HTTP-Referer': 'https://passness.com',
           'X-Title': 'Passness Intent Compiler',
         },
         body: JSON.stringify({

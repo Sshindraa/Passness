@@ -8,7 +8,7 @@
  * L'erreur originale est préservée via `cause` pour le logging/debug.
  */
 
-import type { DbExecutor } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
 import type { QuoteFlexiblePricingInput, QuoteFlexiblePricingResult } from './types';
 import { FlexiblePricingError } from './errors';
 import { loadPricingContext } from './load-pricing-context';

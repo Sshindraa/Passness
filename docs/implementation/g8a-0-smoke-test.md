@@ -27,7 +27,7 @@ de test. La projection Connect a confirmé `charges_enabled=true`, `payouts_enab
 
 ## Vérifications de livraison
 
-- [CI complète GitHub Actions](https://github.com/Sshindraa/Uttily/actions/runs/33003910905) : verte, qualité, build, PostgreSQL, Web et worker.
+- [CI complète GitHub Actions](https://github.com/Sshindraa/Passness/actions/runs/33003910905) : verte, qualité, build, PostgreSQL, Web et worker.
 - [Déploiement Vercel staging](https://vercel.com/uttily/uttily-staging/G1w2ffUJyMrnbCD8Po1td3V4fU8a) : `READY`.
 - [Application staging](https://uttily-staging.vercel.app) : parcours exécuté sur l'alias stable.
 

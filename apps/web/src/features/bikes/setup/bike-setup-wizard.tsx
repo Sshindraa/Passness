@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import type { PhotoSlotType } from '@uttily/contracts';
-import { MAX_BULK_INVENTORY_ITEMS } from '@uttily/contracts';
+import type { PhotoSlotType } from '@passness/contracts';
+import { MAX_BULK_INVENTORY_ITEMS } from '@passness/contracts';
 import { PhotoCoachModal } from '@/components/photo-coach/PhotoCoachModal';
 import { updateProductAction, publishFirstEquipmentFromSetupAction } from '@/app/actions/products';
 import { saveDailyPricingPlanDraftAction } from '@/app/actions/pricing';

@@ -22,8 +22,8 @@ import {
   duplicateProduct,
   type ProductRecord,
   type CreateProductInput,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 import { parseUpdateProduct, type ParsedFailure } from './parsers';
 
 // ---------------------------------------------------------------------------

@@ -9,7 +9,7 @@ import {
   type SearchPublicOffersResult,
   type PublicOfferSearchItem,
   type PublicSearchViewport,
-} from '@uttily/core';
+} from '@passness/core';
 import { and, eq, inArray, isNull } from 'drizzle-orm';
 import { type DatabaseClient, productPhotos, products } from '@passness/database';
 import { parseSearchPeople } from './search-people';

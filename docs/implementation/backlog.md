@@ -214,7 +214,7 @@ recherche Annecy → hold → paiement Stripe TEST → webhook signé → réser
 `CONFIRMED`. Le compte Connect a été projeté `ENABLED` après confirmation des
 capacités Stripe. La preuve détaillée, sans secret ni donnée de carte, est conservée
 dans `docs/implementation/g8a-0-smoke-test.md`. La CI complète post-merge est verte
-au run [33003910905](https://github.com/Sshindraa/Uttily/actions/runs/33003910905).
+au run [33003910905](https://github.com/Sshindraa/Passness/actions/runs/33003910905).
 
 **Après ce lot uniquement** : G8A déploiera Vercel, Neon, Clerk, Stripe TEST,
 R2 et Resend pour un test staging réel.
@@ -269,7 +269,7 @@ lint, format, typecheck, builds, smoke worker et Playwright public (16/16) sont
 validés. Après rebase sur `origin/main=aa1350d`, les quatre commits sont
 `ee382ac`, `04a9b88`, `4426da7` et `200a2f3`, avec un arbre fonctionnel inchangé
 par rapport à la sauvegarde `05ac1c3`. La CI parallèle est entièrement verte au
-run [#33498404591](https://github.com/Sshindraa/Uttily/actions/runs/33498404591),
+run [#33498404591](https://github.com/Sshindraa/Passness/actions/runs/33498404591),
 y compris les six shards Core et Browser acceptance ; les E2E authentifiés ont
 été validés avec les credentials Clerk TEST de la CI. La PR #40 est mergeable et
 aucune tâche de Phase 1 n'est engagée.

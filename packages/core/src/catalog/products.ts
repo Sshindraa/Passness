@@ -7,8 +7,8 @@ import {
   productPhotos,
   pricingPlans,
   inventoryItems,
-} from '@uttily/database';
-import { REQUIRED_BIKE_PHOTO_SLOTS } from '@uttily/contracts';
+} from '@passness/database';
+import { REQUIRED_BIKE_PHOTO_SLOTS } from '@passness/contracts';
 import type {
   ProductRecord,
   CreateProductInput,

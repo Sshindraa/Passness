@@ -1,4 +1,4 @@
-import { Card, Icon } from '@uttily/ui';
+import { Card, Icon } from '@passness/ui';
 import { HomeHero } from './home-hero';
 import styles from './home-page-view.module.css';
 
@@ -14,7 +14,7 @@ export function HomePageView({ locale }: { locale: 'fr' | 'en' }): React.ReactEl
           <p className={styles.eyebrow}>
             {fr ? 'Simple et transparent' : 'Simple and transparent'}
           </p>
-          <h2 id="how-it-works-heading">{fr ? 'Comment fonctionne Uttily' : 'How Uttily works'}</h2>
+          <h2 id="how-it-works-heading">{fr ? 'Comment fonctionne Passness' : 'How Passness works'}</h2>
         </div>
         <div className={styles.stepsGrid}>
           <Card className={styles.stepCard}>
@@ -49,7 +49,7 @@ export function HomePageView({ locale }: { locale: 'fr' | 'en' }): React.ReactEl
 
       <section
         className={styles.valueGrid}
-        aria-label={fr ? 'Pourquoi choisir Uttily' : 'Why choose Uttily'}
+        aria-label={fr ? 'Pourquoi choisir Passness' : 'Why choose Passness'}
       >
         <Card>
           <span className={styles.valueIcon}>
