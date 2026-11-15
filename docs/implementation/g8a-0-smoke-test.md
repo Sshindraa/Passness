@@ -1,7 +1,7 @@
 # G8A-0 — Preuve du smoke test connecté
 
 **Date** : 2026-08-26  
-**Environnement** : staging Vercel, base Neon production de `Passness-dev`  
+**Environnement** : staging Vercel, base Neon production de `Passness-dev`<br>
 **Fournisseurs** : Clerk TEST, Stripe TEST uniquement
 
 ## Identité et périmètre
