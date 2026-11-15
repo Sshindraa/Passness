@@ -41,12 +41,12 @@ import {
  * docs/implementation/stripe-test-setup.md (test manuel).
  *
  * Exécution :
- *   DATABASE_URL=postgresql://uttily:uttily@localhost:5432/uttuly \
+ *   DATABASE_URL=postgresql://uttily:uttily@localhost:5432/uttily \
  *   pnpm --filter @passness/web test:harness
  */
 
 const isCi = process.env.CI === '1' || process.env.CI === 'true';
-const TEST_DB_NAME = 'uttuly_test_e2e_harness';
+const TEST_DB_NAME = 'passness_test_e2e_harness';
 
 process.env.STRIPE_ENVIRONMENT = 'TEST';
 
