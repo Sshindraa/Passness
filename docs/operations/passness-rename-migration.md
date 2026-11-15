@@ -4,6 +4,7 @@
 
 - Le code visible, les paquets (`@passness/*`), les textes, les emails, les images et les noms de fichiers utilisent Passness.
 - Le dépôt GitHub et le dossier local sont renommés en Passness; `origin` pointe sur `Sshindraa/Passness`.
+- Les bases PostgreSQL temporaires de GitHub Actions utilisent maintenant des identifiants Passness; elles sont recréées à chaque workflow et ne partagent aucun volume local ou de production.
 - Le projet Vercel staging est `passness-staging`. L'alias vérifié `passness-staging.vercel.app` est attaché à la branche `staging` et sert la version Passness. L'ancien alias Vercel reste attaché pour préserver les consommateurs existants.
 - Le code Wrangler porte le nom `passness-staging-cron` et cible `https://passness-staging.vercel.app`. Le Worker Cloudflare n'a pas été redéployé ni vérifié après ce changement.
 

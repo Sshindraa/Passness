@@ -15,7 +15,7 @@ permissions:
   contents: read
 
 env:
-  DATABASE_URL: postgresql://uttily:uttily@localhost:5432/uttily
+  DATABASE_URL: postgresql://passness:passness@localhost:5432/passness
 
 jobs:
   quality:
@@ -109,13 +109,13 @@ jobs:
       postgres:
         image: postgis/postgis:16-3.4
         env:
-          POSTGRES_USER: uttily
-          POSTGRES_PASSWORD: uttily
-          POSTGRES_DB: uttily
+          POSTGRES_USER: passness
+          POSTGRES_PASSWORD: passness
+          POSTGRES_DB: passness
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U uttily -d uttily"
+          --health-cmd "pg_isready -U passness -d passness"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
@@ -184,13 +184,13 @@ jobs:
       postgres:
         image: postgis/postgis:16-3.4
         env:
-          POSTGRES_USER: uttily
-          POSTGRES_PASSWORD: uttily
-          POSTGRES_DB: uttily
+          POSTGRES_USER: passness
+          POSTGRES_PASSWORD: passness
+          POSTGRES_DB: passness
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U uttily -d uttily"
+          --health-cmd "pg_isready -U passness -d passness"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 10
@@ -229,12 +229,12 @@ jobs:
       - name: Run migrations
         run: pnpm --filter @passness/database db:migrate
         env:
-          DATABASE_URL: postgresql://uttily:uttily@localhost:5432/uttily
+          DATABASE_URL: postgresql://passness:passness@localhost:5432/passness
 
       - name: Seed deterministic browser fixture
         run: pnpm db:seed:browser
         env:
-          DATABASE_URL: postgresql://uttily:uttily@localhost:5432/uttily
+          DATABASE_URL: postgresql://passness:passness@localhost:5432/passness
 
       - name: Install Playwright Browsers with OS dependencies
         run: pnpm --filter @passness/web exec playwright install --with-deps chromium
@@ -242,7 +242,7 @@ jobs:
       - name: Run Playwright tests
         run: pnpm --filter @passness/web test:browser
         env:
-          DATABASE_URL: postgresql://uttily:uttily@localhost:5432/uttily
+          DATABASE_URL: postgresql://passness:passness@localhost:5432/passness
   verify:
     name: Lint, typecheck, test, build
     if: ${{ always() }}
