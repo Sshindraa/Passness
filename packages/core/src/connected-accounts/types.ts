@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Connected Accounts (Lot 5, ADR-010 §3.3, §16 étape 4).
+ * @passness/core — Module Connected Accounts (Lot 5, ADR-010 §3.3, §16 étape 4).
  *
  * Use cases d'onboarding Stripe Connect (Stripe-hosted) et projection de
  * readiness du compte connecté.
@@ -14,7 +14,7 @@
  *   exigences (onboarding Express hébergé).
  */
 
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type {
   ConnectedAccountControllerConfig,
   PaymentProviderAdapter,

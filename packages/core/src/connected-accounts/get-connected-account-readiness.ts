@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Read model getConnectedAccountReadiness
+ * @passness/core — Read model getConnectedAccountReadiness
  * (Lot 5, ADR-010 §3.3, §16 étape 4).
  *
  * Retourne l'état de readiness du compte connecté pour une organisation et un
@@ -13,7 +13,7 @@
  */
 
 import { and, eq } from 'drizzle-orm';
-import { organizationPaymentAccounts } from '@uttily/database';
+import { organizationPaymentAccounts } from '@passness/database';
 import type { ConnectedAccountDependencies } from './types';
 import type { ConnectedAccountReadiness } from './types';
 import type { StripeEnvironment } from '../payments/types';

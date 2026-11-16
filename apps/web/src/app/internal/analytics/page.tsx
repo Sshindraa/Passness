@@ -1,7 +1,7 @@
 import { requireSupportPlatformAdmin } from '@/lib/support-auth';
 import { getAnalyticsEnvironment } from '@/lib/product-analytics';
-import { getProductAnalyticsSummary } from '@uttily/core';
-import type { ProductAnalyticsSummary } from '@uttily/core';
+import { getProductAnalyticsSummary } from '@passness/core';
+import type { ProductAnalyticsSummary } from '@passness/core';
 import type { MaintenanceAnalyticsEnvironment } from '@/lib/product-analytics-maintenance';
 import {
   AnalyticsSupportView,
@@ -14,7 +14,7 @@ import {
 export const dynamic = 'force-dynamic';
 
 /**
- * Surface interne Uttily — funnel produit agrégé (Chantier 18-A).
+ * Surface interne Passness — funnel produit agrégé (Chantier 18-A).
  *
  * Strictement réservée à l'équipe interne : la garde `requireSupportPlatformAdmin`
  * est ré-appliquée ici (défense en profondeur en plus du layout /internal).

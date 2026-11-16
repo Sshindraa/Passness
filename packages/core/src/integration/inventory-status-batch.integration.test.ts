@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { eq, inArray, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { categories, createDatabase, inventoryMovements } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { categories, createDatabase, inventoryMovements } from '@passness/database';
 import {
   COMMERCIAL_EQUIPMENT_FAMILY_SLUGS,
   createInventoryItem,

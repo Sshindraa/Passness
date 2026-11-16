@@ -5,8 +5,8 @@ import {
   assertLocalhost,
   type DatabaseClient,
   createDatabase,
-} from '@uttily/database';
-import { parseBookingAmendedV1Event } from '@uttily/contracts';
+} from '@passness/database';
+import { parseBookingAmendedV1Event } from '@passness/contracts';
 import { createNeutralBookingAmendment } from './create-neutral-booking-amendment';
 import type { NeutralAmendmentCommand } from './types-amendment';
 import type { AuthenticatedUser } from '../identity/types';
@@ -15,7 +15,7 @@ import type { AuthenticatedUser } from '../identity/types';
  * Tests d'intégration PostgreSQL pour createNeutralBookingAmendment (G7M-B2-A).
  */
 
-const TEST_DB_NAME = 'uttily_test_g7m_b2a';
+const TEST_DB_NAME = 'passness_test_g7m_b2a';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

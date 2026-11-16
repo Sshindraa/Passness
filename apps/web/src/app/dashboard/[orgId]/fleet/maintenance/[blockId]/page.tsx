@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getMaintenanceCaseDetails } from '@uttily/core';
+import { getMaintenanceCaseDetails } from '@passness/core';
 import { requireCatalogViewerOf } from '@/lib/catalog-auth';
 import { isValidUuid } from '@/lib/operations-helpers';
 import { MaintenanceCaseDetailView } from '@/features/fleet';

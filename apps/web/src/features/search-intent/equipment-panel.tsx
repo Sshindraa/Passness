@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import type { PublicSearchCategoryOption } from '@uttily/core';
-import { Button, Icon } from '@uttily/ui';
+import type { PublicSearchCategoryOption } from '@passness/core';
+import { Button, Icon } from '@passness/ui';
 import { getPublicCategoryLabel } from '@/lib/public-search-labels';
 import {
   categoryBreadcrumb,

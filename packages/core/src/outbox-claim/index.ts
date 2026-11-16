@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module commun de revendication d'événements outbox (G5D, ADR-013 §7).
+ * @passness/core — Module commun de revendication d'événements outbox (G5D, ADR-013 §7).
  *
  * Module partagé entre le worker de compensation (ADR-010 §13) et le worker de
  * documents transactionnels (ADR-013 §7). Fournit :

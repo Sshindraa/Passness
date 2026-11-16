@@ -1,6 +1,6 @@
 import { and, eq, inArray, isNull, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { inventoryBlocks, inventoryItems } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { inventoryBlocks, inventoryItems } from '@passness/database';
 
 export class PackAllocationError extends Error {
   constructor(

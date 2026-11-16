@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import type { AuthenticatedUser } from '@uttily/core';
-import type { DatabaseClient } from '@uttily/database';
+import type { AuthenticatedUser } from '@passness/core';
+import type { DatabaseClient } from '@passness/database';
 import * as auth from '@/lib/auth';
 import * as dbLib from '@/lib/db';
 import { previewMyBookingCancellationAction, cancelMyBookingAction } from './customer-bookings';
@@ -13,8 +13,8 @@ vi.mock('@/lib/db', () => ({
   getDb: vi.fn(),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     previewBookingCancellation: vi.fn(),
@@ -128,7 +128,7 @@ describe('Customer Bookings Server Actions', () => {
     };
     vi.spyOn(dbLib, 'getDb').mockReturnValueOnce(fakeDb as unknown as DatabaseClient);
 
-    const { CatalogError, cancelConfirmedBooking } = await import('@uttily/core');
+    const { CatalogError, cancelConfirmedBooking } = await import('@passness/core');
     vi.mocked(cancelConfirmedBooking).mockRejectedValueOnce(
       new CatalogError('PREVIEW_STALE', 'Les conditions financières ont évolué.'),
     );

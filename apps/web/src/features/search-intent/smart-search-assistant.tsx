@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useTransition, type FormEvent } from 'react';
-import { abstain, confident, type IntentProposal } from '@uttily/intelligence';
+import { abstain, confident, type IntentProposal } from '@passness/intelligence';
 
 import { compileSearchIntentAction } from '@/app/actions/intent-search';
 import styles from './smart-search-assistant.module.css';

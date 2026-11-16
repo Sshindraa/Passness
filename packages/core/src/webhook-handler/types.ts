@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Webhook Handler (Lot 5, ADR-010 §9, §10, §11, §13, §14).
+ * @passness/core — Module Webhook Handler (Lot 5, ADR-010 §9, §10, §11, §13, §14).
  *
  * Types publics du use case de traitement des webhooks Stripe. Le webhook
  * signé est l'autorité de l'état externe du paiement ; PostgreSQL reste
@@ -13,7 +13,7 @@
  * - Le `client_secret` n'est JAMAIS persisté, loggé ou inclus dans une réponse.
  */
 
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type {
   PaymentProviderAdapter,
   StripeEnvironment,

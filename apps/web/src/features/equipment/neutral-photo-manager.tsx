@@ -1,4 +1,4 @@
-import type { UnifiedBike } from '@uttily/core';
+import type { UnifiedBike } from '@passness/core';
 
 interface NeutralPhotoManagerProps {
   photos: UnifiedBike['photos'];

@@ -1,8 +1,8 @@
-import { conditionReportPhase } from '@uttily/database';
+import { conditionReportPhase } from '@passness/database';
 import { INVENTORY_CONDITIONS, type InventoryCondition } from '../catalog/types';
 
 /**
- * @uttily/core — Types partagés pour les rapports d'état et de dommages (G3B).
+ * @passness/core — Types partagés pour les rapports d'état et de dommages (G3B).
  *
  * Les enums sont dérivées du schéma Drizzle via `enumValues`. Ces imports sont
  * des descriptions de schéma versionnées : aucune connexion PostgreSQL, aucune

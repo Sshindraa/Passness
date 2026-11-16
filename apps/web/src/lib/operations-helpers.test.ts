@@ -5,7 +5,7 @@ import {
   type InventoryCondition,
   type ConditionReportPhase,
   type FulfillmentEventType,
-} from '@uttily/core';
+} from '@passness/core';
 import {
   bookingStatusLabel,
   buildFilterUrl,

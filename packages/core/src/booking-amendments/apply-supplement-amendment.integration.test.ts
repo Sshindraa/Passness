@@ -6,7 +6,7 @@ import {
   createDatabase,
   runMigrations,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import { getEffectiveBooking } from './get-effective-booking';
 import { initiateSupplementPayment } from './initiate-supplement-payment';
 import { FakeStripeAdapter } from '../payments/fake-stripe-adapter';
@@ -15,7 +15,7 @@ import type { WebhookHandlerDeps, WebhookHandlerInput } from '../webhook-handler
 import type { CreatePaymentIntentParams, PaymentIntentResult } from '../payments/types';
 
 const sourceUrl = process.env.DATABASE_URL;
-const testDatabase = 'uttily_test_g7m_c3';
+const testDatabase = 'passness_test_g7m_c3';
 const shouldSkip = !sourceUrl && process.env.CI !== '1' && process.env.CI !== 'true';
 const PLATFORM_SECRET = 'whsec_c3_platform';
 const BASE_START = '2026-05-10T09:00:00.000Z';

@@ -8,28 +8,28 @@
 
 ## 1. Contexte
 
-Uttily dispose d'une infrastructure transactionnelle mature et éprouvée :
+Passness dispose d'une infrastructure transactionnelle mature et éprouvée :
 - Concurrence stricte spatio-temporelle via contraintes PostgreSQL `EXCLUDE USING gist` empêchant tout surbooking.
 - Moteur financier Stripe Connect split 13/7 conforme aux règles comptables et fiscales.
 - Conformité RGPD régalienne (scellement probatoire, effacement Article 17, exports Article 15/20).
-- Monolithe modulaire TypeScript avec séparation stricte des domaines (`@uttily/core`, `@uttily/database`, `@uttily/contracts`, etc.).
+- Monolithe modulaire TypeScript avec séparation stricte des domaines (`@passness/core`, `@passness/database`, `@passness/contracts`, etc.).
 
 Cependant, l'expérience utilisateur reste celle d'un SaaS/marketplace CRUD classique :
 - **Côté loueur :** La création d'un équipement impose un parcours rébarbatif en 5 étapes (formulaires, saisie de la marque, modèle, caractéristiques techniques, photos, plans tarifaires).
 - **Côté client :** La recherche impose une suite de listes déroulantes et de filtres rigides.
 
 L'[ADR-019](ADR-019-ai-native-global-rental-infrastructure.md) a posé la direction stratégique d'une infrastructure mondiale de location compatible avec l'ère de l'intelligence artificielle, tout en fixant un principe directeur intangible :
-> *« PostgreSQL et les use cases Uttily restent l'autorité pour la disponibilité, les autorisations, les prix et les états. Une IA peut proposer, classer, expliquer ou préparer. Elle ne contourne jamais ces autorités. »*
+> *« PostgreSQL et les use cases Passness restent l'autorité pour la disponibilité, les autorisations, les prix et les états. Une IA peut proposer, classer, expliquer ou préparer. Elle ne contourne jamais ces autorités. »*
 
-Les fondations déterministes étant achevées, Uttily doit désormais déployer sa couche d'intelligence opérationnelle (**Uttily Intelligence v1**) pour supprimer les frictions manuelles, en commençant par le supply (**P0 — Scan & List / AI Equipment Copilot**).
+Les fondations déterministes étant achevées, Passness doit désormais déployer sa couche d'intelligence opérationnelle (**Passness Intelligence v1**) pour supprimer les frictions manuelles, en commençant par le supply (**P0 — Scan & List / AI Equipment Copilot**).
 
 ---
 
 ## 2. Principes architecturaux non négociables
 
-### 2.1. `@uttily/intelligence` sans accès direct à la base de données
+### 2.1. `@passness/intelligence` sans accès direct à la base de données
 Le package `packages/intelligence` est une bibliothèque pure d'interfaces, de schémas, de prompts, d'évaluations et d'adaptateurs de fournisseurs d'IA.
-- **Règle absolue :** Aucune dépendance vers `@uttily/database`, Drizzle ORM ou un pool PostgreSQL n'est autorisée dans `@uttily/intelligence`.
+- **Règle absolue :** Aucune dépendance vers `@passness/database`, Drizzle ORM ou un pool PostgreSQL n'est autorisée dans `@passness/intelligence`.
 - **Flux transactionnel unilatéral :**
   ```text
   Image / Document / Prompt
@@ -44,7 +44,7 @@ Le package `packages/intelligence` est une bibliothèque pure d'interfaces, de s
     Revue et validation humaine (Interface utilisateur / Server Action)
               │
               ▼
-    Use cases déterministes de @uttily/core
+    Use cases déterministes de @passness/core
               │
               ▼
     PostgreSQL (Stock, Contrats, Photos, Provenance)
@@ -52,7 +52,7 @@ Le package `packages/intelligence` est une bibliothèque pure d'interfaces, de s
 
 ### 2.2. Encadrement de Zod et respect d'ADR-008
 - L'[ADR-008](ADR-008-server-actions-contract.md) impose une validation manuelle et explicite des entrées HTTP/FormData au niveau des Server Actions (pas de Zod aux frontières web).
-- **Décision d'encadrement :** L'usage de Zod est autorisé et réservé **exclusivement** à l'intérieur de `@uttily/intelligence` pour valider et contraindre les sorties probabilistes structurées des modèles (VLM / LLM). Cette autorisation n'amende pas l'ADR-008 et n'introduit aucun Zod dans les Server Actions ou dans `@uttily/contracts`.
+- **Décision d'encadrement :** L'usage de Zod est autorisé et réservé **exclusivement** à l'intérieur de `@passness/intelligence` pour valider et contraindre les sorties probabilistes structurées des modèles (VLM / LLM). Cette autorisation n'amende pas l'ADR-008 et n'introduit aucun Zod dans les Server Actions ou dans `@passness/contracts`.
 
 ### 2.3. Politique d'abstention explicite : `Abstention > hallucination`
 Pour mériter la confiance des professionnels, un modèle VLM doit pouvoir déclarer qu'une information n'est pas déterminable.
@@ -75,7 +75,7 @@ Pour mériter la confiance des professionnels, un modèle VLM doit pouvoir décl
 ### 2.5. Conservation du workflow manuel déterministe
 - Le parcours d'ajout d'équipement en 5 étapes existant (`/dashboard/[orgId]/bikes/new`) est conservé intact comme repli déterministe intégral.
 - L'entrée devient une bifurcation claire :
-  1. `📷 Ajouter avec Uttily Intelligence` (Scan & List par photo/facture) ;
+  1. `📷 Ajouter avec Passness Intelligence` (Scan & List par photo/facture) ;
   2. `Ajouter manuellement` (parcours formulaire pas-à-pas).
 - En cas d'indisponibilité du fournisseur IA, de dépassement de budget, de timeout réseau ou de rejet d'une image inexploitable, le loueur peut instantanément basculer sur le parcours manuel sans blocage.
 
@@ -93,7 +93,7 @@ Pour mériter la confiance des professionnels, un modèle VLM doit pouvoir décl
 
 ## 3. Registre de provenance et auditabilité des inférences
 
-Pour bâtir le futur **Equipment Graph propriétaire** et respecter les exigences de gouvernance des données, chaque inférence IA consommée est enregistrée dans une table d'audit dédiée, gérée par `@uttily/database` :
+Pour bâtir le futur **Equipment Graph propriétaire** et respecter les exigences de gouvernance des données, chaque inférence IA consommée est enregistrée dans une table d'audit dédiée, gérée par `@passness/database` :
 
 ```sql
 CREATE TABLE intelligence_inferences (
@@ -143,16 +143,16 @@ Le succès du déploiement de Scan & List est mesuré par des indicateurs d'effi
 
 ---
 
-## 5. Découpage du chantier Uttily Intelligence v1
+## 5. Découpage du chantier Passness Intelligence v1
 
 1. **Jour 1 — Architecture & Contrats (Le présent lot) :**
    - Approbation d'ADR-041.
    - Initialisation de `packages/intelligence` avec ports agnostiques, schémas Zod avec gestion de l'abstention (`ConfidentField`), fake déterministe de test et tests Vitest.
 2. **Jours 2–3 — Adaptateur Fournisseur & Registre de Provenance :**
    - Implémentation du provider VLM multimodal avec structured outputs.
-   - Migration de la table `intelligence_inferences` dans `@uttily/database`.
+   - Migration de la table `intelligence_inferences` dans `@passness/database`.
    - Tests d'intégration et benchmark sur corpus réel d'équipements.
 3. **Jours 4–5 — Expérience Pro Scan & List :**
    - Interface loueur `ScanAndListZone` dans `/dashboard/[orgId]/bikes/new`.
    - Carte de révision interactive Human-in-the-Loop.
-   - Branchement direct sur les use cases `@uttily/core` existants.
+   - Branchement direct sur les use cases `@passness/core` existants.

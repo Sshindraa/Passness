@@ -1,9 +1,9 @@
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { requireSupportPlatformAdmin } from './support-auth';
 import * as auth from './auth';
 import * as dbMod from './db';
-import { AuthorizationError } from '@uttily/core';
+import { AuthorizationError } from '@passness/core';
 
 vi.mock('./auth', () => ({
   getAuthenticatedUser: vi.fn(),
@@ -43,7 +43,7 @@ describe('requireSupportPlatformAdmin (Garde Support Back-Office)', () => {
   it('succède et retourne le contexte si l’utilisateur est isPlatformAdmin = true', async () => {
     const adminUser = {
       id: userId,
-      email: 'support@uttily.com',
+      email: 'support@passness.com',
       oidcSubject: 'sub_support_admin',
       emailVerified: true,
       isPlatformAdmin: true,

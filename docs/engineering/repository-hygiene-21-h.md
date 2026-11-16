@@ -34,11 +34,11 @@ contrat d'URL.
 Les manifests racine et workspaces ont été comparés aux imports applicatifs.
 À la date de cet audit, aucune dépendance ou export public n'avait une preuve
 suffisante d'inutilité et aucune mise à niveau n'était effectuée. À cette date,
-`@uttily/ui` n'était pas encore consommé : il gardait uniquement ses métadonnées,
+`@passness/ui` n'était pas encore consommé : il gardait uniquement ses métadonnées,
 son `tsconfig` et `src/index.ts`. Le test vide de point d'entrée avait été
 supprimé, car il ne protégeait aucun contrat.
 
-Depuis, la branche courante consomme `@uttily/ui` dans `apps/web` pour les
+Depuis, la branche courante consomme `@passness/ui` dans `apps/web` pour les
 primitives, les boutons, les cartes, les badges et les en-têtes. Le package est
 donc conservé et ne constitue pas un candidat de nettoyage.
 

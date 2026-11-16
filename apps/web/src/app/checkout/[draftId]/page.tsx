@@ -2,14 +2,14 @@ import { redirect } from 'next/navigation';
 import { eq } from 'drizzle-orm';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { parseMarketplaceFeeSnapshot } from '@uttily/core';
+import { parseMarketplaceFeeSnapshot } from '@passness/core';
 import {
   bookingDrafts,
   bookingDraftLines,
   productVariants,
   products,
   organizations,
-} from '@uttily/database';
+} from '@passness/database';
 import { getPublicAppUrl } from '@/lib/public-app-url';
 import { ClientShell } from '@/components/shells/client-shell';
 import { getCheckoutCopy } from '@/lib/checkout-copy';

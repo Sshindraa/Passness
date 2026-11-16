@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { ProfessionalVerificationCard } from '@/features/dashboard/components/professional-verification-card';
-import type { ProfessionalVerificationResult } from '@uttily/core';
+import type { ProfessionalVerificationResult } from '@passness/core';
 
 const baseVerification: ProfessionalVerificationResult = {
   status: 'pending',

@@ -9,7 +9,7 @@ import {
 } from './amend-booking-form';
 import { AmendmentPreviewResult, formatEuros, actionLabel } from './amendment-preview-result';
 import { getAmendmentEntryState } from '@/lib/amendment-auth';
-import type { PreviewBookingAmendmentSuccess } from '@uttily/core';
+import type { PreviewBookingAmendmentSuccess } from '@passness/core';
 
 describe('G7M-C5-A — Interface Loueur & Validation de Prévisualisation', () => {
   describe('buildPreviewBookingAmendmentInput (helper pur)', () => {
@@ -285,7 +285,7 @@ describe('G7M-C5-A — Interface Loueur & Validation de Prévisualisation', () =
       const html = renderToStaticMarkup(<AmendmentPreviewResult preview={preview} />);
 
       expect(html).toContain('Supplément à régler');
-      expect(html).toContain('Commission Uttily estimée :');
+      expect(html).toContain('Commission Passness estimée :');
       expect(html).toContain('2,50 €');
       expect(html).toContain('Net loueur estimé :');
       expect(html).toContain('47,50 €');
@@ -374,14 +374,14 @@ describe('G7M-C5-A — Interface Loueur & Validation de Prévisualisation', () =
   });
   describe('G7M-C5-C : handoff loueur et lien de paiement sécurisé', () => {
     const amendmentId = '11111111-1111-4111-8111-111111111111';
-    const origin = 'https://app.uttily.fr';
+    const origin = 'https://passness.com';
 
     it('1. copie l URL absolue exacte dans le presse-papier et affiche un statut accessible', async () => {
       const mockWriteText = vi.fn().mockResolvedValue(undefined);
       const res = await copyPaymentLinkToClipboard(amendmentId, origin, mockWriteText);
 
       expect(mockWriteText).toHaveBeenCalledWith(
-        'https://app.uttily.fr/checkout/amendment/11111111-1111-4111-8111-111111111111',
+        'https://passness.com/checkout/amendment/11111111-1111-4111-8111-111111111111',
       );
       expect(res.ok).toBe(true);
       expect(res.feedback).toBe('Lien de paiement copié !');

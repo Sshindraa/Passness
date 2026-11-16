@@ -5,7 +5,7 @@ import {
   runMigrations,
   assertLocalhost,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import {
   createBookingDraftWithHold,
   createConnectedAccount,
@@ -19,7 +19,7 @@ import {
   type WebhookHandlerInput,
   type FinancialTermsConfig,
   type TermsAcceptanceProof,
-} from '@uttily/core';
+} from '@passness/core';
 
 /**
  * Harness fake contractuel déterministe pour le flux checkout Stripe.
@@ -41,12 +41,12 @@ import {
  * docs/implementation/stripe-test-setup.md (test manuel).
  *
  * Exécution :
- *   DATABASE_URL=postgresql://uttily:uttily@localhost:5432/uttuly \
- *   pnpm --filter @uttily/web test:harness
+ *   DATABASE_URL=postgresql://uttily:uttily@localhost:5432/uttily \
+ *   pnpm --filter @passness/web test:harness
  */
 
 const isCi = process.env.CI === '1' || process.env.CI === 'true';
-const TEST_DB_NAME = 'uttuly_test_e2e_harness';
+const TEST_DB_NAME = 'passness_test_e2e_harness';
 
 process.env.STRIPE_ENVIRONMENT = 'TEST';
 
@@ -203,7 +203,7 @@ function makeFinancialTermsConfig(connectedAccountId: string): FinancialTermsCon
       status: 'NOT_APPLICABLE',
       amountMinor: null,
       rateBps: null,
-      invoiceIssuer: 'Uttily',
+      invoiceIssuer: 'Passness',
     },
     commission: {
       version: 'v1',

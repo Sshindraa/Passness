@@ -1,6 +1,6 @@
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import { createHash } from 'node:crypto';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookingCancellations,
   bookingItems,
@@ -8,7 +8,7 @@ import {
   inventoryBlocks,
   outboxEvents,
   refunds,
-} from '@uttily/database';
+} from '@passness/database';
 import { CatalogError } from '../catalog/errors';
 import { reserveKey, lockKey, completeKey, failKey } from '../idempotency/idempotency';
 import { scheduleBookingCancelledNotifications } from '../notifications/scheduling';

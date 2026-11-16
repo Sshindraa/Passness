@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { auditLog, notifications } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { auditLog, notifications } from '@passness/database';
 import type { SupportActionContext } from '../types';
 import { NotificationActionError } from './retry-notification';
 

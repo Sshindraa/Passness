@@ -10,7 +10,7 @@ export function runSaturdayDrill(options = {}) {
 
   const args = [
     '--filter',
-    '@uttily/core',
+    '@passness/core',
     'test',
     'src/integration/saturday-drill.integration.test.ts',
     ...(options.extraArgs ?? []),

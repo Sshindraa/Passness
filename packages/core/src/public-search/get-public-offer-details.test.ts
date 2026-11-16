@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getPublicOfferDetails } from './get-public-offer-details';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 
 describe('getPublicOfferDetails — unit tests', () => {
   const fakeDb = {} as DatabaseClient;

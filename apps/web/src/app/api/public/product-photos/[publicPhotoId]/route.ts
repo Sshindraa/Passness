@@ -1,6 +1,6 @@
 import { and, eq, inArray, isNull } from 'drizzle-orm';
-import { categories, productPhotos, products } from '@uttily/database';
-import { COMMERCIAL_EQUIPMENT_FAMILY_SLUGS } from '@uttily/core';
+import { categories, productPhotos, products } from '@passness/database';
+import { COMMERCIAL_EQUIPMENT_FAMILY_SLUGS } from '@passness/core';
 import { getDb } from '@/lib/db';
 import { getProductPhotoStorage } from '@/lib/product-photo-storage';
 import { isValidUuid } from '@/lib/validation';

@@ -7,7 +7,7 @@ import {
   ROLE_MANAGERS,
   resolvePayoutAccountStatus,
   getMerchantFinanceOverview,
-} from '@uttily/core';
+} from '@passness/core';
 import { getConnectedAccountReadinessAction } from '@/app/actions/connected-accounts';
 import { FinancesHub } from '@/features/finances';
 

@@ -1,4 +1,4 @@
-# Boska — Uttily hero
+# Boska — Passness hero
 
 Source: https://www.fontshare.com/fonts/boska
 

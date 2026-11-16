@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Use case createConnectedAccount (Lot 5, ADR-010 §3.3, §16 étape 4).
+ * @passness/core — Use case createConnectedAccount (Lot 5, ADR-010 §3.3, §16 étape 4).
  *
  * Crée un compte connecté Stripe ET l'enregistre localement dans
  * `organization_payment_accounts`.
@@ -21,7 +21,7 @@
  */
 
 import { and, eq } from 'drizzle-orm';
-import { organizationPaymentAccounts } from '@uttily/database';
+import { organizationPaymentAccounts } from '@passness/database';
 import { validateControllerConfiguration } from '../payments/controller-config';
 import { PaymentProviderError } from '../payments/errors';
 import type { ConnectedAccountResult } from '../payments/types';

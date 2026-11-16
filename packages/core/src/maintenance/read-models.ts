@@ -1,5 +1,5 @@
 import { and, desc, eq, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   maintenanceCases,
   inventoryBlocks,
@@ -9,7 +9,7 @@ import {
   categories,
   locations,
   damageReports,
-} from '@uttily/database';
+} from '@passness/database';
 import type { MaintenanceCaseSummary, MaintenanceCaseStatus } from './types';
 
 export async function listMaintenanceCases(

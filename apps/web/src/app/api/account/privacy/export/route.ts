@@ -1,6 +1,6 @@
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { buildPersonalDataCopy, buildPortableData, type PersonalDataExport } from '@uttily/core';
+import { buildPersonalDataCopy, buildPortableData, type PersonalDataExport } from '@passness/core';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -35,6 +35,7 @@ export async function GET(request: Request): Promise<Response> {
     const portableData = await buildPortableData(db, user.id);
     const body = {
       exportedAt: nowIso,
+      passness_export_version: '1.0' as const,
       uttily_export_version: '1.0' as const,
       article20_portable_data: portableData,
     };
@@ -42,7 +43,7 @@ export async function GET(request: Request): Promise<Response> {
       status: 200,
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
-        'Content-Disposition': `attachment; filename="uttily-portable-data-${userIdShort}-${dateShort}.json"`,
+        'Content-Disposition': `attachment; filename="passness-portable-data-${userIdShort}-${dateShort}.json"`,
         'Cache-Control': 'private, no-cache, no-store, must-revalidate',
         'X-Content-Type-Options': 'nosniff',
       },
@@ -56,6 +57,7 @@ export async function GET(request: Request): Promise<Response> {
 
   const exportPayload: PersonalDataExport = {
     exportedAt: nowIso,
+    passness_export_version: '1.0',
     uttily_export_version: '1.0',
     article15_personal_data_copy: personalDataCopy,
     article20_portable_data: portableData,
@@ -65,7 +67,7 @@ export async function GET(request: Request): Promise<Response> {
     status: 200,
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
-      'Content-Disposition': `attachment; filename="uttily-personal-data-${userIdShort}-${dateShort}.json"`,
+      'Content-Disposition': `attachment; filename="passness-personal-data-${userIdShort}-${dateShort}.json"`,
       'Cache-Control': 'private, no-cache, no-store, must-revalidate',
       'X-Content-Type-Options': 'nosniff',
     },

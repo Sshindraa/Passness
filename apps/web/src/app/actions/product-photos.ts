@@ -10,8 +10,8 @@ import {
   replaceProductPhoto,
   uploadProductPhoto,
   type ProductPhotoSummary,
-} from '@uttily/core';
-import type { ActionResult, PhotoSlotType } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult, PhotoSlotType } from '@passness/contracts';
 import { parseProductPhotoSlotType } from './product-photo-slot';
 import { DEMO_PHOTO_COACH_ORG_ID } from '@/lib/photo-coach-constants';
 

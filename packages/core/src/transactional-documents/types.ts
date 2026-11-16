@@ -1,7 +1,7 @@
 /**
- * @uttily/core — Types des documents transactionnels (Lot 6 G5B, ADR-013).
+ * @passness/core — Types des documents transactionnels (Lot 6 G5B, ADR-013).
  *
- * La source de vérité des enums est l'enum Drizzle dans @uttily/database.
+ * La source de vérité des enums est l'enum Drizzle dans @passness/database.
  * Les types TypeScript sont derives via enumValues pour garantir la coherence
  * avec le schema PostgreSQL.
  */
@@ -12,7 +12,7 @@ import {
   outboxEffectStatus,
   notificationDeliveryStatus,
   documentProcessingFailureCode,
-} from '@uttily/database';
+} from '@passness/database';
 
 export const DOCUMENT_TYPES = documentType.enumValues;
 export type DocumentType = (typeof DOCUMENT_TYPES)[number];

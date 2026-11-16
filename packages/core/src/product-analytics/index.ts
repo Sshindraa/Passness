@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-A).
+ * @passness/core — Module Product Analytics (G7H-A).
  *
  * Fondations privacy-first des quatre mesures produit : recherches,
  * résultats disponibles, tentatives de réservation et réservations confirmées.

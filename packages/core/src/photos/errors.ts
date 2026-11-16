@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Photos (G7F-A2).
+ * @passness/core — Module Photos (G7F-A2).
  *
  * Erreur métier typée pour les opérations sur les photos produit.
  * Les codes sont spécifiques au domaine photos et distincts des autres

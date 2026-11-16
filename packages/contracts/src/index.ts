@@ -1,5 +1,5 @@
 /**
- * @uttily/contracts — DTO, validation et contrats d'événements.
+ * @passness/contracts — DTO, validation et contrats d'événements.
  *
  * Vide au Lot 0. Les DTO et schémas d'événements d'outbox seront
  * introduits à partir du Lot 1.

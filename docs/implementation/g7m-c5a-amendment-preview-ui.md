@@ -10,7 +10,7 @@ Depuis la fiche d'une réservation `CONFIRMED`, un loueur autorisé (`OWNER`, `A
 3. Obtenir une prévisualisation déterministe et strictement en lecture seule des changements :
    - Comparaison Avant / Après (dates effectives, quantités par article, totaux contractuels en unités mineures et affichage formaté en euros).
    - Classification de la modification (`NEUTRAL`, `REFUND`, `SUPPLEMENT`).
-   - Estimation de la commission Uttily, calculée proportionnellement au taux effectif de la réservation originale en unités mineures, et du net loueur pour les suppléments.
+   - Estimation de la commission Passness, calculée proportionnellement au taux effectif de la réservation originale en unités mineures, et du net loueur pour les suppléments.
    - Vérification de la disponibilité physique sans pose de verrous, de holds ou d'écritures en base (fail-closed strict).
 
 ## 2. Architecture et composants livrés
@@ -77,4 +77,4 @@ Depuis la fiche d'une réservation `CONFIRMED`, un loueur autorisé (`OWNER`, `A
    - `pnpm typecheck` : 100% vert sur les 8 packages/apps du monorepo.
    - `pnpm lint` : 100% vert (0 warning, 0 error).
    - `pnpm format:check` : 100% vert.
-   - `pnpm --filter @uttily/web build` : 100% vert (Next.js 16.2.12).
+   - `pnpm --filter @passness/web build` : 100% vert (Next.js 16.2.12).

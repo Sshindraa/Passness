@@ -5,13 +5,13 @@ import {
   createDatabase,
   runMigrations,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import { FakeStripeAdapter } from '../payments/fake-stripe-adapter';
 import type { CreatePaymentIntentParams, PaymentIntentResult } from '../payments/types';
 import { initiateSupplementPayment } from './initiate-supplement-payment';
 
 const sourceUrl = process.env.DATABASE_URL;
-const testDatabase = 'uttily_test_g7m_c2';
+const testDatabase = 'passness_test_g7m_c2';
 const shouldSkip = !sourceUrl && process.env.CI !== '1' && process.env.CI !== 'true';
 
 let db: DatabaseClient | null = null;

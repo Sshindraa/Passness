@@ -6,8 +6,8 @@ import {
   type PhotoSlotType,
   type PhotoQualityAssessment,
   type DetectedEquipmentFeatures,
-} from '@uttily/contracts';
-import type { ProductPhotoSummary } from '@uttily/core';
+} from '@passness/contracts';
+import type { ProductPhotoSummary } from '@passness/core';
 import { uploadProductPhotoAction } from '@/app/actions/product-photos';
 import {
   analyzePhotoQualityAction,
@@ -30,7 +30,7 @@ export interface PhotoCoachModalProps {
 
 type PhotoCoachStep = 'INTRO' | 'CAMERA' | 'INSPECTION' | 'CHECKLIST' | 'SAVING';
 
-const EXPERT_MODE_STORAGE_KEY = 'uttily_photo_coach_expert_mode';
+const EXPERT_MODE_STORAGE_KEY = 'passness_photo_coach_expert_mode';
 
 export function PhotoCoachModal({
   orgId,
@@ -262,7 +262,7 @@ export function PhotoCoachModal({
       <div className={styles.modal}>
         <div className={styles.header}>
           <div id="photo-coach-title" className={styles.headerTitle}>
-            <span>Photo Coach Uttily</span>
+            <span>Photo Coach Passness</span>
             <span
               style={{
                 fontSize: '0.85rem',

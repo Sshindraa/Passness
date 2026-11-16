@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import type { PhotoSlotType } from '@uttily/contracts';
-import { MAX_BULK_INVENTORY_ITEMS } from '@uttily/contracts';
+import type { PhotoSlotType } from '@passness/contracts';
+import { MAX_BULK_INVENTORY_ITEMS } from '@passness/contracts';
 import { PhotoCoachModal } from '@/components/photo-coach/PhotoCoachModal';
 import { updateProductAction, publishFirstEquipmentFromSetupAction } from '@/app/actions/products';
 import { saveDailyPricingPlanDraftAction } from '@/app/actions/pricing';
@@ -852,7 +852,7 @@ export function BikeSetupWizard({
             <h2 className={styles.stepTitle}>🧰 Combien d’exemplaires avez-vous en stock ?</h2>
             <p className={styles.stepSubtitle}>
               Indiquez le nombre d’exemplaires disponibles et leur lieu de retrait. Chaque
-              exemplaire sera suivi individuellement par Uttily.
+              exemplaire sera suivi individuellement par Passness.
             </p>
           </div>
 

@@ -19,7 +19,7 @@ Le registre serveur fermé expose une seule règle active : `split-13-7-v1`.
 - base marketplace : `subtotalAmountMinor + mandatoryFeesAmountMinor` ;
 - frais plateforme loueur : 13 % (`1300` bps), arrondi `HALF_UP_PER_COMPONENT` ;
 - frais de service client : 7 % (`700` bps), avec le même arrondi ;
-- aucun frais fixe ; frais mensuel Uttily OS : `0` ;
+- aucun frais fixe ; frais mensuel Passness OS : `0` ;
 - total client : base + frais de service ;
 - net de la base loueur : base - frais plateforme loueur ;
 - `platformApplicationFeeAmountMinor` : somme des deux composants ;

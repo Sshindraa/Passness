@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { executeRefundRequestBatch } from './execute-refund-request-batch';
 import { RefundRequestError } from './errors';
 import { getBackoffIntervalSeconds, validateBatchLimit } from './scheduling';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { PaymentProviderAdapter } from '../payments/types';
 
 describe('refund-request-execution — contrat de planification', () => {

@@ -1,14 +1,14 @@
 # G8A-0 — Preuve du smoke test connecté
 
 **Date** : 2026-08-26  
-**Environnement** : staging Vercel, base Neon production de `Uttily-dev`  
+**Environnement** : staging Vercel, base Neon production de `Passness-dev`<br>
 **Fournisseurs** : Clerk TEST, Stripe TEST uniquement
 
 ## Identité et périmètre
 
 - Utilisateur Clerk TEST dédié : `uttily-staging-e2e+clerk_test@example.com`.
 - Organisation Uttily : `Uttily Demo Rental` (`uttily-demo-rental`).
-- Permission Uttily : membre `OWNER` actif dans la base de données.
+- Permission Passness : membre `OWNER` actif dans la base de données.
 - Aucun contournement d'authentification ni utilisateur factice n'a été ajouté au produit.
 
 ## Parcours exécuté
@@ -27,14 +27,14 @@ de test. La projection Connect a confirmé `charges_enabled=true`, `payouts_enab
 
 ## Vérifications de livraison
 
-- [CI complète GitHub Actions](https://github.com/Sshindraa/Uttily/actions/runs/33003910905) : verte, qualité, build, PostgreSQL, Web et worker.
+- [CI complète GitHub Actions](https://github.com/Sshindraa/Passness/actions/runs/33003910905) : verte, qualité, build, PostgreSQL, Web et worker.
 - [Déploiement Vercel staging](https://vercel.com/uttily/uttily-staging/G1w2ffUJyMrnbCD8Po1td3V4fU8a) : `READY`.
 - [Application staging](https://uttily-staging.vercel.app) : parcours exécuté sur l'alias stable.
 
 ## Sécurité et limites
 
 - Les clés, cartes et fournisseurs LIVE n'ont pas été utilisés.
-- La carte utilisée était une carte Stripe TEST ; aucune donnée de carte n'est stockée par Uttily.
+- La carte utilisée était une carte Stripe TEST ; aucune donnée de carte n'est stockée par Passness.
 - Le webhook a été livré sur l'endpoint Connect puis l'endpoint plateforme avec validation de signature.
 - G8A-0 est clôturé. Le déploiement multi-fournisseurs de staging réel (R2 et Resend notamment)
   est le lot distinct suivant : **G8A — staging réel**.

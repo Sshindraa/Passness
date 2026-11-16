@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import type { AuthenticatedUser } from '@uttily/core';
-import type { DatabaseClient } from '@uttily/database';
+import type { AuthenticatedUser } from '@passness/core';
+import type { DatabaseClient } from '@passness/database';
 import * as auth from '@/lib/auth';
 import * as dbLib from '@/lib/db';
 import { getCounterAvailableItemsAction, createCounterBookingAction } from './counter-bookings';
@@ -17,8 +17,8 @@ vi.mock('@/lib/db', () => ({
   getDb: vi.fn(),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     getMembership: vi.fn().mockResolvedValue({
@@ -68,7 +68,7 @@ describe('Counter Bookings Server Actions (Lot 21-U2-AD)', () => {
       vi.spyOn(auth, 'getAuthenticatedUser').mockResolvedValueOnce(user);
       vi.spyOn(dbLib, 'getDb').mockReturnValueOnce({} as DatabaseClient);
 
-      const { getCounterAvailableItems } = await import('@uttily/core');
+      const { getCounterAvailableItems } = await import('@passness/core');
       vi.mocked(getCounterAvailableItems).mockResolvedValueOnce({
         location: {
           id: '00000000-0000-0000-0000-000000000020',
@@ -114,7 +114,7 @@ describe('Counter Bookings Server Actions (Lot 21-U2-AD)', () => {
       vi.spyOn(auth, 'getAuthenticatedUser').mockResolvedValueOnce(user);
       vi.spyOn(dbLib, 'getDb').mockReturnValueOnce({} as DatabaseClient);
 
-      const { createCounterBooking } = await import('@uttily/core');
+      const { createCounterBooking } = await import('@passness/core');
       vi.mocked(createCounterBooking).mockResolvedValueOnce({
         bookingId: '00000000-0000-0000-0000-000000000088',
         bookingReference: '#UT-12ABCD',

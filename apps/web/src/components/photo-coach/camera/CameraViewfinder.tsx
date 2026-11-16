@@ -1,7 +1,7 @@
 'use client';
 
 import { type ChangeEvent, type ReactElement, useEffect, useRef } from 'react';
-import type { PhotoSlotDefinition } from '@uttily/contracts';
+import type { PhotoSlotDefinition } from '@passness/contracts';
 import { PhotoGuideAnimationAdapter } from '../adapter';
 import { captureVideoFrame, sanitizeClientImage } from './captureFrame';
 import { useCamera } from './useCamera';

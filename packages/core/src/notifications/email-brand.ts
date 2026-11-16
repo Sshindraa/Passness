@@ -1,8 +1,8 @@
 import { getPublicAppUrl } from '../identity/public-app-url';
 
 const DEFAULT_EMAIL_BRAND = {
-  publicAppUrl: 'https://uttily.com',
-  supportEmail: 'support@uttily.com',
+  publicAppUrl: 'https://passness.com',
+  supportEmail: 'support@passness.com',
 } as const;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

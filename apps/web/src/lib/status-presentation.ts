@@ -4,10 +4,10 @@ import type {
   InventoryStatus,
   PaymentStatus,
   RefundStatus,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 
 /**
- * Présentation visuelle unifiée des statuts métier Uttily (Chantier 17).
+ * Présentation visuelle unifiée des statuts métier Passness (Chantier 17).
  *
  * Règles :
  * - Un libellé français clair et humain pour chaque statut

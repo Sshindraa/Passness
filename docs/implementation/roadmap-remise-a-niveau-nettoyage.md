@@ -52,7 +52,7 @@ travaux engineering à déclencher autour de ce plan.
 - [x] Cartographie des scripts et suites de tests corrigée ; aucun script
   opérationnel, test métier, migration ou document supprimable n'a été confirmé.
 - [x] Nettoyage différentiel des manifests effectué : six déclarations inutilisées
-  de `@uttily/config` et le script worker redondant `test:e2e` ont été retirés,
+  de `@passness/config` et le script worker redondant `test:e2e` ont été retirés,
   avec lockfile réaligné.
 - [x] Frontières de tests fiabilisées : le flag de reproductibilité redondant a
   été retiré, le test de migration split respecte `SKIP_INTEGRATION_TESTS` et un
@@ -127,12 +127,12 @@ dans l'arbre de travail.
 | `.devin`, `.pnpm-store`, `node_modules`, `.next`, `dist`, `coverage` | Ignorés ou générés ; aucun fichier généré suivi | Conserver les règles d'exclusion, ne pas versionner |
 | Scripts root (`dev-local`, `readiness-live`, recovery) | Appelés par les commandes root, la CI ou les runbooks | Conserver |
 | Scripts database/worker et leurs fixtures | Appelés par les manifests, la CI ou les runners de test | Conserver jusqu'à preuve contraire |
-| `@uttily/config` dans `apps/worker` et `packages/{auth,contracts,core,database,ui}` | Aucune importation ni référence de configuration ; les `tsconfig` utilisent le chemin relatif partagé | Retirer des manifests et du lockfile ; conserver le package partagé utilisé par Web et ESLint racine |
+| `@passness/config` dans `apps/worker` et `packages/{auth,contracts,core,database,ui}` | Aucune importation ni référence de configuration ; les `tsconfig` utilisent le chemin relatif partagé | Retirer des manifests et du lockfile ; conserver le package partagé utilisé par Web et ESLint racine |
 | `apps/worker` — script `test:e2e` | Aucune référence externe ; exécution identique à `test` depuis `fileParallelism: false` dans la configuration Vitest | Supprimer ; utiliser `test` pour la suite complète et `smoke:verify` pour le bundle |
 | `SKIP_REPRODUCIBILITY` dans la commande root `test:fast` | Le seul test concerné est déjà exclu par `apps/worker` ; le flag n'avait plus d'effet | Retirer le flag ; conserver l'exclusion explicite du test lourd |
 | `split-marketplace-fees.migration.test.ts` | Test PostgreSQL exécuté par `database/test:fast` ; son ancien garde ignorait `SKIP_INTEGRATION_TESTS` si `DATABASE_URL` était héritée | Respecter le skip local ; la CI garde l'exécution obligatoire avec `CI=1` |
 | Références de fichiers dans les scripts workspace | Les chemins locaux sont contrôlables statiquement sans exécuter de service externe | Ajouter `pnpm test:scripts` et `pnpm check:scripts` dans la boucle locale et la CI |
-| `@uttily/ui` | Consommé par `apps/web` pour les primitives, boutons, cartes, badges et en-têtes | Conserver ; package actif, non candidat au nettoyage |
+| `@passness/ui` | Consommé par `apps/web` pour les primitives, boutons, cartes, badges et en-têtes | Conserver ; package actif, non candidat au nettoyage |
 | Migrations SQL, métadonnées Drizzle, ADR et tests de compatibilité | Preuves de schéma, décisions ou invariants | Conservation obligatoire |
 | Rapports de chantiers historiques | Références utiles aux décisions et aux régressions | Conserver et baliser l'état historique |
 | `apps/web/next-env.d.ts` | Modification locale utilisateur préexistante | Hors périmètre ; ne pas toucher |

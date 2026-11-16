@@ -5,7 +5,7 @@ import {
   createDatabase,
   runMigrations,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import type { PaymentIntentResult } from '../payments/types';
 import { FakeStripeAdapter } from '../payments/fake-stripe-adapter';
 import {
@@ -19,7 +19,7 @@ import {
 } from './reconcile-supplement-payments-batch';
 
 const sourceUrl = process.env.DATABASE_URL;
-const testDbName = 'uttily_test_g7m_c4a_lifecycle';
+const testDbName = 'passness_test_g7m_c4a_lifecycle';
 const shouldSkip = !sourceUrl && process.env.CI !== '1' && process.env.CI !== 'true';
 
 let db: DatabaseClient | null = null;

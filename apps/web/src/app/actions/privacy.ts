@@ -10,7 +10,7 @@ import {
   UserErasureError,
   VALID_PRIVACY_REQUEST_TYPES,
   type PrivacyRequestType,
-} from '@uttily/core';
+} from '@passness/core';
 
 export type PrivacyActionResult<T> =
   { ok: true; data: T } | { ok: false; error: string; message: string };
@@ -85,7 +85,7 @@ export interface EraseAccountActionResult {
 
 /**
  * Server Action pour l'effacement autonome et immédiat de son propre compte (Art. 17 RGPD).
- * Neutralise le compte dans Uttily, crée le scellé probatoire et supprime l'identité dans Clerk.
+ * Neutralise le compte dans Passness, crée le scellé probatoire et supprime l'identité dans Clerk.
  */
 export async function eraseMyAccountAction(): Promise<
   PrivacyActionResult<EraseAccountActionResult>

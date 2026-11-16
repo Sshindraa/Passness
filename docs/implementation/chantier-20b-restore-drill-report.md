@@ -2,7 +2,7 @@
 
 - Date UTC : `2026-08-28T21:11Z`
 - Base Git : `bd0450d05a56ccf7a7c058c7d42ac496894fa4bb`
-- Worktree : `/Users/hamza/Projects/Uttily-worktrees/20-B`
+- Worktree : `/Users/hamza/Projects/Passness-worktrees/20-B`
 - Environnement : PostgreSQL/PostGIS local, bases éphémères générées par le script
 - Production/Neon/Stripe LIVE : non utilisés
 
@@ -13,7 +13,7 @@
 Commande exécutée :
 
 ```bash
-UTTILY_RECOVERY_DRILL=1 NODE_ENV=test pnpm recovery:restore-drill
+PASSNESS_RECOVERY_DRILL=1 NODE_ENV=test pnpm recovery:restore-drill
 ```
 
 Mécanisme : `pg_dump --format=custom --no-owner --no-privileges` puis

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Erreur métier typée pour le moteur de tarification flexible.
  * Les codes sont spécifiques au domaine pricing-plans et distincts

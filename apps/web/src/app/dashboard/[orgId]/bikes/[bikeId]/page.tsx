@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getUnifiedBike, listCommerciallyActiveCategories, listLocations } from '@uttily/core';
+import { getUnifiedBike, listCommerciallyActiveCategories, listLocations } from '@passness/core';
 import { requireCatalogViewerOf } from '@/lib/catalog-auth';
 import { BikeDetailView } from '@/features/bikes';
 

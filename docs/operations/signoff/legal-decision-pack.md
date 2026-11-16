@@ -109,7 +109,7 @@ contrat Pro doit notamment demander une réponse sur :
 - dommages, perte, vol, retard et procédure contradictoire ;
 - assurance, plafonds, exclusions et recours ;
 - annulation par le loueur et information du client ;
-- responsabilités respectives d'Uttily, du loueur et du client ;
+- responsabilités respectives d'Passness, du loueur et du client ;
 - conservation et accès aux preuves nécessaires.
 
 Le mécanisme d'acceptation Pro n'existe pas dans le code actuel. La décision

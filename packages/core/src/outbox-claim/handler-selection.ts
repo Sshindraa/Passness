@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Sélection de handler pour la revendication d'événements outbox
+ * @passness/core — Sélection de handler pour la revendication d'événements outbox
  * (G5D, ADR-013 §7).
  *
  * La sélection est un type union FERMÉ. Un handler ne doit jamais prendre un

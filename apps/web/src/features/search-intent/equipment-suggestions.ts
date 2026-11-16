@@ -1,4 +1,4 @@
-import type { PublicSearchCategoryOption } from '@uttily/core';
+import type { PublicSearchCategoryOption } from '@passness/core';
 import { normalizeDestinationQuery } from '@/lib/destination-suggestions';
 import { getPublicCategoryLabel } from '@/lib/public-search-labels';
 import type { SearchLocale } from './search-state';

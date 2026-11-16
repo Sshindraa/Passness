@@ -20,7 +20,7 @@ const RULES: Readonly<Record<string, MarketplaceFeeRule>> = Object.freeze({
     customerRateBps: CUSTOMER_SERVICE_FEE_RATE_BPS,
     roundingRule: MARKETPLACE_FEE_ROUNDING_RULE,
     noFixedFee: true,
-    uttilyOsMonthlyFeeAmountMinor: 0,
+    passnessOsMonthlyFeeAmountMinor: 0,
   }),
 });
 

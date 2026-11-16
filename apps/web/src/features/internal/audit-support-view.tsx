@@ -1,4 +1,4 @@
-import type { AuditLogSupportListItem } from '@uttily/core';
+import type { AuditLogSupportListItem } from '@passness/core';
 import styles from './audit-support.module.css';
 
 export interface AuditSupportViewProps {

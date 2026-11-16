@@ -4,7 +4,7 @@ import {
   resolveBikeSetupProgress,
   listCommerciallyActiveCategories,
   listLocations,
-} from '@uttily/core';
+} from '@passness/core';
 import { requireCatalogManagerOf } from '@/lib/catalog-auth';
 import type { PricingPlanType } from '@/lib/status-presentation';
 import { BikeSetupWizard, type SetupBikeDTO } from '@/features/bikes';

@@ -4,7 +4,7 @@ import {
   resolveProfessionalVerification,
 } from './get-professional-verification';
 import type { ProfessionalVerificationFacts } from './types';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 
 const completeFacts: ProfessionalVerificationFacts = {
   organizationExists: true,

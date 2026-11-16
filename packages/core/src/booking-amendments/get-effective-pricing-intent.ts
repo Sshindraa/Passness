@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Résolution de l'intention tarifaire effective (G7M-C5-A).
+ * @passness/core — Résolution de l'intention tarifaire effective (G7M-C5-A).
  *
  * ADR-023 §6 & G7M-C5-A : lecture canonique tenant-scoped de l'intention tarifaire
  * active sur une réservation pour préserver fidèlement son type (TIME_RANGE / DAY_RANGE) :
@@ -9,8 +9,8 @@
  */
 
 import { and, desc, eq } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { bookings, bookingAmendments, bookingAmendmentLines } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { bookings, bookingAmendments, bookingAmendmentLines } from '@passness/database';
 import type { NeutralAmendmentIntent } from './types-amendment';
 
 const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;

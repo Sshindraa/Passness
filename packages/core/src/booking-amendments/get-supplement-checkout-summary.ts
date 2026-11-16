@@ -1,12 +1,12 @@
 import { and, eq } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookingAmendments,
   bookings,
   locations,
   amendmentPayments,
   amendmentPaymentAttempts,
-} from '@uttily/database';
+} from '@passness/database';
 import type {
   GetSupplementCheckoutInput,
   GetSupplementCheckoutOptions,

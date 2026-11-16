@@ -72,7 +72,7 @@ test.describe('Pack Orchestrator E2E Real Browser Journeys', () => {
 
     // La page charge en 200 sans aucune erreur de parsing
     const title = await page.title();
-    expect(title).toContain('Uttily');
+    expect(title).toContain('Passness');
   });
 
   test('Parcours 4 : Accessibilité clavier du tiroir de confirmation (fermeture Escape)', async ({

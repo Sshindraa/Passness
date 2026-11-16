@@ -1,6 +1,6 @@
 import { and, count, eq } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
-import { lockOrganization, organizationMemberships } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
+import { lockOrganization, organizationMemberships } from '@passness/database';
 import type { MembershipRecord, MembershipRole } from './types';
 import { AuthorizationError, can } from './permissions';
 

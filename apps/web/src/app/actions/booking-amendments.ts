@@ -1,8 +1,8 @@
 'use server';
 
-import type { ActionResult } from '@uttily/contracts';
+import type { ActionResult } from '@passness/contracts';
 import { eq, and } from 'drizzle-orm';
-import { bookingAmendments, bookings } from '@uttily/database';
+import { bookingAmendments, bookings } from '@passness/database';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import { getStripeAdapter } from '@/lib/stripe';
@@ -16,7 +16,7 @@ import {
   type ConfirmBookingAmendmentCommand,
   type ConfirmBookingAmendmentSuccess,
   type NeutralAmendmentIntent,
-} from '@uttily/core';
+} from '@passness/core';
 import { requireAmendmentManagerOf } from '@/lib/amendment-auth';
 import { isValidUuid } from '@/lib/operations-helpers';
 

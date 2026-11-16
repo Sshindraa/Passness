@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { UttilyBrand } from '@/components/brand';
+import { PassnessBrand } from '@/components/brand';
 import styles from './support-shell.module.css';
 
 type SupportShellProps = {
@@ -19,7 +19,8 @@ export function SupportShell({
       <div className={styles.deniedState}>
         <h1>⛔ Accès Interne Refusé</h1>
         <p>
-          Cette zone est strictement réservée à l’équipe support et administration interne d’Uttily.
+          Cette zone est strictement réservée à l’équipe support et administration interne
+          d’Passness.
         </p>
         <Link href="/dashboard">Retourner à l’Espace Pro</Link>
       </div>
@@ -31,9 +32,9 @@ export function SupportShell({
       <header className={styles.topBar}>
         <div className={styles.topBarInner}>
           <div className={styles.brandGroup}>
-            <UttilyBrand
+            <PassnessBrand
               href="/internal"
-              ariaLabel="Uttily Support, accueil"
+              ariaLabel="Passness Support, accueil"
               className={styles.brandLogo}
               logoClassName={styles.brandSymbol}
               suffix="Support"
@@ -81,7 +82,7 @@ export function SupportShell({
       <main className={styles.mainContent}>{children}</main>
 
       <footer className={styles.footer}>
-        <p>Uttily Back-office Support Interne V1 — Accès et actions sécurisés & audités.</p>
+        <p>Passness Back-office Support Interne V1 — Accès et actions sécurisés & audités.</p>
       </footer>
     </div>
   );

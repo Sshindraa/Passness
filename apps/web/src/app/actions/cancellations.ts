@@ -12,7 +12,7 @@ import {
   type CancellationActorReason,
   type CancellationPreviewResult,
   type CancelConfirmedBookingResult,
-} from '@uttily/core';
+} from '@passness/core';
 
 export async function previewBookingCancellationAction(
   organizationId: string,

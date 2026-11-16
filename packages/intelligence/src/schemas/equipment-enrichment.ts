@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { PHOTO_SLOT_TYPES, INVENTORY_CONDITIONS } from '@uttily/contracts';
+import { PHOTO_SLOT_TYPES, INVENTORY_CONDITIONS } from '@passness/contracts';
 import { createConfidentFieldSchema } from './confidence';
 
 /**
@@ -52,7 +52,7 @@ export const EquipmentEnrichmentProposalSchema = z.object({
   /** Modèle commercial exact (ex: Turbo Levo Comp Alloy) */
   model: createConfidentFieldSchema(z.string().min(1).max(150)),
 
-  /** Famille taxonomique fermée Uttily (ex: bike, kayak, surf, ski, etc.) */
+  /** Famille taxonomique fermée Passness (ex: bike, kayak, surf, ski, etc.) */
   categorySlug: createConfidentFieldSchema(z.string().min(1).max(50)),
 
   /** Sous-type descriptif d'équipement (ex: electric_mountain, road, all_mountain) */

@@ -6,8 +6,8 @@ import {
   previewMyBookingCancellationAction,
   cancelMyBookingAction,
 } from '@/app/actions/customer-bookings';
-import type { CancellationPreviewResult } from '@uttily/core';
-import { Dialog, Button } from '@uttily/ui';
+import type { CancellationPreviewResult } from '@passness/core';
+import { Dialog, Button } from '@passness/ui';
 import { getAccountCopy } from '@/lib/account-copy';
 import { getIntlLocale } from '@/lib/locale';
 

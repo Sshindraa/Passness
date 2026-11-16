@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'intégration PostgreSQL réels pour G7M-C4-B.
+ * @passness/core — Tests d'intégration PostgreSQL réels pour G7M-C4-B.
  *
  * Valide :
  * 1. Éligibilité stricte : refus avant deadline et sur APPLIED.
@@ -21,7 +21,7 @@ import {
   createDatabase,
   runMigrations,
   type DatabaseClient,
-} from '@uttily/database';
+} from '@passness/database';
 import { handleWebhook } from '../webhook-handler/handle-webhook';
 import type { WebhookHandlerInput } from '../webhook-handler/types';
 import type { RefundResult, CreateRefundParams } from '../payments/types';
@@ -33,7 +33,7 @@ import { executeRefundRequest } from '../refund-request-execution/execute-refund
 import { RefundRequestError } from '../refund-request-execution/errors';
 
 const sourceUrl = process.env.DATABASE_URL ?? 'postgres://uttily:uttily@127.0.0.1:5432/uttily';
-const testDbName = 'uttily_test_g7m_c4b_compensation';
+const testDbName = 'passness_test_g7m_c4b_compensation';
 const shouldSkip = !process.env.DATABASE_URL && process.env.CI !== '1' && process.env.CI !== 'true';
 
 class TestRefundProbeAdapter extends FakeStripeAdapter {

@@ -6,7 +6,7 @@ import type {
   ListPrivacyRequestsFilters,
   ListPrivacyRequestsResult,
   SupportPrivacyRequestItem,
-} from '@uttily/core';
+} from '@passness/core';
 import {
   extendPrivacyDeadlineAction,
   flagPrivacyIdentityCheckAction,

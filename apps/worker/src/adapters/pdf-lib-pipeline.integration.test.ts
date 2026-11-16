@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Test d'intégration PostgreSQL du pipeline avec le vrai PdfLibDocumentRenderer (G5H-C2C-B2).
+ * @passness/worker — Test d'intégration PostgreSQL du pipeline avec le vrai PdfLibDocumentRenderer (G5H-C2C-B2).
  *
  * Ce test utilise le VRAI `PdfLibDocumentRenderer` (pas un fake) avec un
  * `InMemoryObjectStorage` (fake) et un `FakeTransactionalEmailSender` (fake).
@@ -18,19 +18,19 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { sql } from 'drizzle-orm';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
   type IntegrationTestContext,
-} from '@uttily/core/testing';
+} from '@passness/core/testing';
 import {
   InMemoryObjectStorage,
   FakeTransactionalEmailSender,
   executeDocumentPipeline,
   executeTransactionalEmailPipeline,
   type ObjectStorage,
-} from '@uttily/core';
+} from '@passness/core';
 
 import { runTransactionalDocumentsWorkerCycle } from '../worker-cycle';
 import type { WorkerDependencies } from '../worker-cycle';

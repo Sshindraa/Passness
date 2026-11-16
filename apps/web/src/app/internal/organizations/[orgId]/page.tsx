@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getOrganizationSupportDetails, SupportOrganizationNotFoundError } from '@uttily/core';
+import { getOrganizationSupportDetails, SupportOrganizationNotFoundError } from '@passness/core';
 import { OrganizationSupportView } from '@/features/internal';
 import { requireSupportPlatformAdmin } from '@/lib/support-auth';
 

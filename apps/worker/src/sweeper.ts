@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Sweeper et reclaim (G5F, ADR-013 §7).
+ * @passness/worker — Sweeper et reclaim (G5F, ADR-013 §7).
  *
  * Le reclaim des événements PROCESSING avec lease expirée passe par
  * `claimOutboxBatch` (qui filtre déjà `(lease_until IS NULL OR lease_until <= now())`

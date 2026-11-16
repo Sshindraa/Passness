@@ -1,5 +1,5 @@
 /**
- * @uttily/core — G7I Lot 7 release validation gate.
+ * @passness/core — G7I Lot 7 release validation gate.
  *
  * Core transversal integration — Tests d'intégration PostgreSQL transversaux
  * couvrant la chaîne publique complète (search → details → authority → hold →
@@ -17,7 +17,7 @@
 
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -303,7 +303,7 @@ function makeFinancialTermsConfig(connectedAccountId = 'acct_test_123'): Financi
       status: 'NOT_APPLICABLE',
       amountMinor: null,
       rateBps: null,
-      invoiceIssuer: 'Uttily',
+      invoiceIssuer: 'Passness',
     },
     commission: {
       version: 'v1',

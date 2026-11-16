@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B2-B).
+ * @passness/core — Module Pricing Plans (G7P-B2-B).
  *
  * Conversion de date+heure locale → UTC pour un fuseau IANA.
  *

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { ProductAnalyticsError } from '@uttily/core';
+import { ProductAnalyticsError } from '@passness/core';
 import * as dbMod from '@/lib/db';
 import * as maintenance from '@/lib/product-analytics-maintenance';
 import { GET } from './route';
@@ -39,7 +39,7 @@ function successResult() {
 function requestWith(authHeader?: string): Request {
   const headers = new Headers();
   if (authHeader !== undefined) headers.set('Authorization', authHeader);
-  return new Request('https://uttily.test/api/cron/process-product-analytics', {
+  return new Request('https://passness.test/api/cron/process-product-analytics', {
     method: 'GET',
     headers,
   });

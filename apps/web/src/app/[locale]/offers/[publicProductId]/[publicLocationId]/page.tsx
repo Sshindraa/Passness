@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getPublicOfferDetails, PostgresPhotoPublicationGate } from '@uttily/core';
+import { getPublicOfferDetails, PostgresPhotoPublicationGate } from '@passness/core';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import type { PublicUiLocale } from '@/lib/public-search';

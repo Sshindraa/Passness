@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Adapter de production Cloudflare R2 pour ObjectStorage
+ * @passness/worker — Adapter de production Cloudflare R2 pour ObjectStorage
  * (G5H-A, ADR-014 §2.4).
  *
  * Cloudflare R2 expose une API compatible S3. Cet adapter utilise
@@ -15,7 +15,7 @@
  *   une anomalie traitée par le pipeline G5D (Q15 reste ouverte).
  * - Aucun bucket versioning natif (R2 ne le fournit pas).
  * - Aucun téléchargement public ni URL signée dans ce lot (Q9 reste ouverte).
- * - Le checksum SHA-256 hex est stocké dans les custom metadata Uttily, pas
+ * - Le checksum SHA-256 hex est stocké dans les custom metadata Passness, pas
  *   comme `ChecksumSHA256` AWS (qui attend du base64).
  * - Aucune configuration lue au module load.
  * - Aucun logging dans l'adapter.
@@ -34,8 +34,8 @@ import {
   GetObjectCommand,
   type S3ClientConfig,
 } from '@aws-sdk/client-s3';
-import type { ObjectStorage } from '@uttily/core';
-import type { ObjectStoragePutResult, StoredObjectMetadata } from '@uttily/core';
+import type { ObjectStorage } from '@passness/core';
+import type { ObjectStoragePutResult, StoredObjectMetadata } from '@passness/core';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Configuration
@@ -65,14 +65,16 @@ const ACCOUNT_ID_PATTERN = /^[a-zA-Z0-9]{6,64}$/;
 const BUCKET_NAME_PATTERN = /^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$/;
 
 /**
- * Métadonnée personnalisée Uttily pour le checksum SHA-256 hex.
+ * Métadonnée personnalisée Passness pour le checksum SHA-256 hex.
  */
-const METADATA_KEY_CHECKSUM = 'uttily-checksum-sha256';
+const METADATA_KEY_CHECKSUM = 'passness-checksum-sha256';
+const LEGACY_METADATA_KEY_CHECKSUM = 'uttily-checksum-sha256';
 
 /**
- * Métadonnée personnalisée Uttily pour la taille en décimal.
+ * Métadonnée personnalisée Passness pour la taille en décimal.
  */
-const METADATA_KEY_SIZE = 'uttily-size-bytes';
+const METADATA_KEY_SIZE = 'passness-size-bytes';
+const LEGACY_METADATA_KEY_SIZE = 'uttily-size-bytes';
 
 /**
  * Erreur de configuration R2. Ne contient jamais de secret ou credential.
@@ -325,6 +327,8 @@ export class R2ObjectStorage implements ObjectStorage {
       Metadata: {
         [METADATA_KEY_CHECKSUM]: input.checksumSha256,
         [METADATA_KEY_SIZE]: String(input.sizeBytes),
+        [LEGACY_METADATA_KEY_CHECKSUM]: input.checksumSha256,
+        [LEGACY_METADATA_KEY_SIZE]: String(input.sizeBytes),
       },
     });
 
@@ -426,9 +430,11 @@ export class R2ObjectStorage implements ObjectStorage {
       );
     }
 
-    // Checksum depuis les custom metadata Uttily, ou null si absent/invalide.
-    const checksumRaw = metadata?.[METADATA_KEY_CHECKSUM];
-    const checksumSha256 = isValidChecksumHex(checksumRaw) ? checksumRaw : null;
+    // Checksum depuis les custom metadata Passness, ou null si absent/invalide.
+    const checksumSha256 =
+      [metadata?.[METADATA_KEY_CHECKSUM], metadata?.[LEGACY_METADATA_KEY_CHECKSUM]].find(
+        isValidChecksumHex,
+      ) ?? null;
 
     return {
       contentType,

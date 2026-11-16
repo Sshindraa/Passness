@@ -13,7 +13,7 @@ import {
   removeMember,
   countActiveOwners,
   type MembershipRole,
-} from '@uttily/core';
+} from '@passness/core';
 
 export async function listMembersAction(organizationId: string) {
   const user = await getAuthenticatedUser();

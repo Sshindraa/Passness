@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Identity & Organizations (Lot 1).
+ * @passness/core — Module Identity & Organizations (Lot 1).
  *
  * Source de vérité des rôles, permissions et invariants métier.
  * Indépendant de Next.js et de Clerk. Les actions serveur de apps/web
@@ -198,7 +198,7 @@ export * from './notifications';
 // Chantier 14 — Espace Locataire & Post-réservation.
 export * from './customer-bookings';
 
-// Chantier 16 — Back-office Uttily & Support V1.
+// Chantier 16 — Back-office Passness & Support V1.
 export * from './support';
 
 // Chantier 20-A — Contrôle non destructif de readiness LIVE.

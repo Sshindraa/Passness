@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { privacyRequests } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { privacyRequests } from '@passness/database';
 import { writeAuditEntry } from '../../identity/audit';
 import {
   type ExtendPrivacyDeadlineInput,

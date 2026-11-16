@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   retryNotificationAction,
   cancelNotificationAction,
@@ -7,14 +7,14 @@ import {
   reconcilePaymentSupportAction,
 } from './support';
 import * as supportAuth from '@/lib/support-auth';
-import * as core from '@uttily/core';
+import * as core from '@passness/core';
 
 vi.mock('@/lib/support-auth', () => ({
   requireSupportPlatformAdmin: vi.fn(),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     retryNotificationSupport: vi.fn(),
@@ -31,7 +31,7 @@ vi.mock('next/cache', () => ({
 describe('Support Server Actions (Apps/Web)', () => {
   const adminUser = {
     id: 'admin-1111-2222-3333-444444444444',
-    email: 'support@uttily.com',
+    email: 'support@passness.com',
     isPlatformAdmin: true,
     oidcSubject: 'sub_admin',
     emailVerified: true,
@@ -55,9 +55,9 @@ describe('Support Server Actions (Apps/Web)', () => {
       }
     });
 
-    it('renvoie SUPPORT_UNAUTHORIZED si l’utilisateur n’est pas admin Uttily', async () => {
+    it('renvoie SUPPORT_UNAUTHORIZED si l’utilisateur n’est pas admin Passness', async () => {
       vi.spyOn(supportAuth, 'requireSupportPlatformAdmin').mockRejectedValueOnce(
-        new core.AuthorizationError('Action réservée à l’administrateur Uttily.'),
+        new core.AuthorizationError('Action réservée à l’administrateur Passness.'),
       );
 
       const res = await retryNotificationAction('notif-1', 'Test retry');

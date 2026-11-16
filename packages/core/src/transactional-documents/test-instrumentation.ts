@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Instrumentation de test pour vérifier qu'aucun appel externe
+ * @passness/core — Instrumentation de test pour vérifier qu'aucun appel externe
  * (renderer/storage) n'est effectué pendant une transaction active (G5D, ADR-013 §11).
  *
  * NE JAMAIS utiliser en production. Utilitaires de test uniquement.
@@ -13,7 +13,7 @@
  * le callback de transaction et monitor.end() dans un bloc finally.
  */
 
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { DocumentRenderer, ObjectStorage } from './ports';
 import type { RenderedDocument, ObjectStoragePutResult, StoredObjectMetadata } from './types';
 import type { DocumentRenderSnapshotV1 } from './snapshot-types';

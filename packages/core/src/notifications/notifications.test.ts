@@ -20,7 +20,7 @@ import {
   renderReturnReminderCustomer,
 } from './templates';
 import { renderNotificationRecord } from './load-notification-data';
-import type { DbExecutor, NotificationRecord } from '@uttily/database';
+import type { DbExecutor, NotificationRecord } from '@passness/database';
 
 describe('Notifications — Idempotency Keys', () => {
   const bookingId = '00000000-0000-0000-0000-000000000001';
@@ -174,13 +174,13 @@ describe('Notifications — Templates Rendering', () => {
     const invitation = renderOrganizationInvitation({
       organizationName: 'Lyon Vélos Pro',
       roleName: 'Administrateur',
-      acceptUrl: 'https://uttily.com/invitations?token=tok_123',
+      acceptUrl: 'https://passness.com/invitations?token=tok_123',
     });
     expect(invitation.subject).toContain('Invitation à rejoindre Lyon Vélos Pro');
     expect(invitation.html).toContain('Administrateur');
     expect(invitation.html).toContain('Rejoindre l’équipe');
     expect(invitation.html).toContain('7 jours');
-    expect(invitation.text).toContain('https://uttily.com/invitations?token=tok_123');
+    expect(invitation.text).toContain('https://passness.com/invitations?token=tok_123');
   });
 
   it('rend REFUND_ACTION_REQUIRED_MERCHANT', () => {

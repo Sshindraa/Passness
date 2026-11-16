@@ -12,11 +12,11 @@ export async function generateMetadata({ params }: ProTermsPageProps): Promise<M
   const fr = locale === 'fr';
   return {
     title: fr
-      ? 'Conditions Générales Partenaires (Conditions Pro) · Uttily'
-      : 'Partner Terms and Conditions (Pro) · Uttily',
+      ? 'Conditions Générales Partenaires (Conditions Pro) · Passness'
+      : 'Partner Terms and Conditions (Pro) · Passness',
     description: fr
-      ? 'Contrat de distribution et conditions générales applicables aux loueurs professionnels partenaires de la plateforme Uttily.'
-      : 'Marketplace distribution agreement and terms applicable to professional rental operators partnering with Uttily.',
+      ? 'Contrat de distribution et conditions générales applicables aux loueurs professionnels partenaires de la plateforme Passness.'
+      : 'Marketplace distribution agreement and terms applicable to professional rental operators partnering with Passness.',
   };
 }
 
@@ -43,24 +43,25 @@ export default async function ProTermsPage({
       {fr ? (
         <>
           <section>
-            <h2>1. Objet du contrat cadre et rôle d’Uttily</h2>
+            <h2>1. Objet du contrat cadre et rôle d’Passness</h2>
             <p>
               Les présentes Conditions Générales Partenaires (ci-après les «{' '}
               <strong>Conditions Pro</strong> ») régissent les relations contractuelles entre la
-              société <strong>Uttily SAS</strong> (« <strong>Uttily</strong> ») et tout loueur
+              société <strong>Passness SAS</strong> (« <strong>Passness</strong> ») et tout loueur
               professionnel indépendant immatriculé (le « <strong>Loueur</strong> » ou le «{' '}
               <strong>Partenaire</strong> ») ouvrant un compte organisation sur la plateforme.
             </p>
             <p>
-              Uttily met à disposition du Partenaire une suite logicielle opérationnelle (gestion de
-              flotte, gestion des établissements, cockpit de comptoir, tarification dynamique) et
+              Passness met à disposition du Partenaire une suite logicielle opérationnelle (gestion
+              de flotte, gestion des établissements, cockpit de comptoir, tarification dynamique) et
               assure la distribution en ligne de ses offres de location auprès des clients finaux.
             </p>
             <div className="callout">
               <p>
                 <strong>Intermédiation technique :</strong> Le contrat de location d’équipement est
-                conclu directement entre le Loueur et le client locataire. Uttily agit exclusivement
-                en qualité d’intermédiaire technique et d’opérateur de plateforme en ligne.
+                conclu directement entre le Loueur et le client locataire. Passness agit
+                exclusivement en qualité d’intermédiaire technique et d’opérateur de plateforme en
+                ligne.
               </p>
             </div>
           </section>
@@ -125,8 +126,8 @@ export default async function ProTermsPage({
             </p>
             <ul>
               <li>
-                <strong>Commission marketplace Uttily :</strong> Uttily perçoit une commission de{' '}
-                <strong>13 % HT</strong> calculée sur le montant de base de la location (hors
+                <strong>Commission marketplace Passness :</strong> Passness perçoit une commission
+                de <strong>13 % HT</strong> calculée sur le montant de base de la location (hors
                 options additionnelles et suppléments éventuels) ;
               </li>
               <li>
@@ -181,7 +182,7 @@ export default async function ProTermsPage({
             <p>
               Chaque partie peut résilier le contrat sous préavis écrit de 30 jours, sous réserve de
               la bonne exécution des réservations déjà confirmées. En cas de manquement grave
-              (matériel dangereux, annulations récurrentes, fraude), Uttily se réserve le droit de
+              (matériel dangereux, annulations récurrentes, fraude), Passness se réserve le droit de
               suspendre l’accès au compte sans préavis.
             </p>
             <p>
@@ -193,22 +194,23 @@ export default async function ProTermsPage({
       ) : (
         <>
           <section>
-            <h2>1. Purpose of Agreement and Role of Uttily</h2>
+            <h2>1. Purpose of Agreement and Role of Passness</h2>
             <p>
               These Partner Terms and Conditions (the “<strong>Pro Terms</strong>”) govern the
-              contractual relationship between <strong>Uttily SAS</strong> (“<strong>Uttily</strong>
+              contractual relationship between <strong>Passness SAS</strong> (“
+              <strong>Passness</strong>
               ”) and any registered professional rental business (the “<strong>Partner</strong>” or
               “<strong>Rental Operator</strong>”) creating an organization on the platform.
             </p>
             <p>
-              Uttily provides the Partner with an integrated operational software suite (fleet
+              Passness provides the Partner with an integrated operational software suite (fleet
               management, multi-location administration, counter desk cockpit, dynamic pricing) and
               online distribution to end-customers.
             </p>
             <div className="callout">
               <p>
                 <strong>Technical Intermediary:</strong> The rental agreement is formed directly
-                between the Partner and the customer. Uttily acts solely as an online platform
+                between the Partner and the customer. Passness acts solely as an online platform
                 operator and technical intermediary.
               </p>
             </div>
@@ -272,7 +274,7 @@ export default async function ProTermsPage({
             </p>
             <ul>
               <li>
-                <strong>Uttily Marketplace Commission:</strong> Uttily charges a commission of{' '}
+                <strong>Passness Marketplace Commission:</strong> Passness charges a commission of{' '}
                 <strong>13% excl. VAT</strong> calculated on the base rental amount;
               </li>
               <li>

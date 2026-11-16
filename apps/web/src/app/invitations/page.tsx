@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { type MembershipRole } from '@uttily/core';
+import { type MembershipRole } from '@passness/core';
 import { eq, and } from 'drizzle-orm';
-import { organizationInvitations } from '@uttily/database';
+import { organizationInvitations } from '@passness/database';
 import { acceptInvitationAction } from '@/app/actions/invitations';
 
 export default async function InvitationsPage(props: {

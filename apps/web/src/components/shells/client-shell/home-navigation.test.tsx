@@ -18,8 +18,8 @@ vi.mock('next/navigation', () => ({
   useRouter: () => ({ push: vi.fn() }),
 }));
 
-describe('Uttily homepage navigation', () => {
-  it('keeps the Uttily wordmark in Sora Regular', () => {
+describe('Passness homepage navigation', () => {
+  it('keeps the Passness wordmark in Sora Regular', () => {
     const css = readFileSync(new URL('./home-navigation.module.css', import.meta.url), 'utf8');
     const brand = css.match(/\.brand\s*\{([^}]+)\}/)?.[1];
     expect(brand).toContain('font-weight: var(--ut-weight-regular)');
@@ -27,10 +27,10 @@ describe('Uttily homepage navigation', () => {
 
   it('uses the supplied vector symbol with a tight canvas and an accessible home link', () => {
     const html = renderToStaticMarkup(<HomeNavigation />);
-    expect(html).toMatch(/aria-label="Uttily, accueil"[^>]*><img[^>]*alt=""/);
-    expect(html).toContain('src="/images/brand/uttily-logo.svg"');
+    expect(html).toMatch(/aria-label="Passness, accueil"[^>]*><img[^>]*alt=""/);
+    expect(html).toContain('src="/images/brand/passness-logo.svg"');
     const svg = readFileSync(
-      new URL('../../../../public/images/brand/uttily-logo.svg', import.meta.url),
+      new URL('../../../../public/images/brand/passness-logo.svg', import.meta.url),
       'utf8',
     );
     expect(svg).toContain('viewBox="584 528 988 992"');
@@ -87,7 +87,7 @@ describe('Uttily homepage navigation', () => {
   });
   it('renders the French navigation instead of the four reference categories', () => {
     const html = renderToStaticMarkup(<HomeNavigation />);
-    expect(html).toContain('>uttily</span>');
+    expect(html).toContain('>passness</span>');
     expect(html).not.toContain('>airbnb<');
     for (const label of ['>All<', 'Homes', 'Experiences', 'Services', 'Become a host']) {
       expect(html).not.toContain(label);
@@ -100,7 +100,7 @@ describe('Uttily homepage navigation', () => {
     expect(html).not.toContain('>H</span>');
   });
 
-  it('keeps the menu and host links within the existing Uttily routes', () => {
+  it('keeps the menu and host links within the existing Passness routes', () => {
     const html = renderToStaticMarkup(<HomeNavigation />);
     for (const href of [
       '/onboarding/organization',
@@ -135,7 +135,7 @@ describe('Uttily homepage navigation', () => {
     expect(html.match(/<header/g)).toHaveLength(1);
     expect(html).toContain('Contenu conservé');
     expect(html).toContain('<footer');
-    expect(html).toContain('© 2026, Uttily | Tous droits réservés.');
+    expect(html).toContain('© 2026, Passness | Tous droits réservés.');
     expect(html).toContain('Conditions d’utilisation');
     expect(html).toContain('Politique de confidentialité');
     expect(html).toContain('Politique de remboursement');
@@ -148,7 +148,7 @@ describe('Uttily homepage navigation', () => {
         <main>English content</main>
       </ClientShell>,
     );
-    expect(englishHtml).toContain('© 2026, Uttily | All Rights Reserved.');
+    expect(englishHtml).toContain('© 2026, Passness | All Rights Reserved.');
     expect(englishHtml).toContain('Terms of Services');
     expect(englishHtml).toContain('Privacy Policy');
     expect(englishHtml).toContain('Refund Policy');
@@ -166,7 +166,7 @@ describe('Uttily homepage navigation', () => {
     const html = renderToStaticMarkup(<HomeNavigation />);
     expect(html.match(/<details/g)).toHaveLength(1);
     expect(html).not.toContain('Rechercher une destination');
-    expect(html).toContain('/images/brand/uttily-logo.svg');
+    expect(html).toContain('/images/brand/passness-logo.svg');
     expect(html).not.toContain('/images/home-navigation/');
     const source = readFileSync(new URL('./home-navigation.tsx', import.meta.url), 'utf8');
     expect(source).toContain('name="globe"');

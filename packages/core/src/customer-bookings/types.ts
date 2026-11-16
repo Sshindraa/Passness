@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Types du domaine Customer Booking (Chantier 14 / 14.1).
+ * @passness/core — Types du domaine Customer Booking (Chantier 14 / 14.1).
  *
  * Représente la projection orientée locataire des réservations.
  * Contrairement aux vues opérationnelles loueur, ce read-model est strictement

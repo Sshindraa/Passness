@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing (Lot 4).
+ * @passness/core — Module Pricing (Lot 4).
  *
  * Calcul pur des jours civils facturables et du prix d'un brouillon.
  * Aucune dépendance base de données, aucune écriture.

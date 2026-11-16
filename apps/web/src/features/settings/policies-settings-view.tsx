@@ -1,5 +1,5 @@
-import type { CancellationPolicyCode, CancellationPolicyDescription } from '@uttily/core';
-import { Button, Card } from '@uttily/ui';
+import type { CancellationPolicyCode, CancellationPolicyDescription } from '@passness/core';
+import { Button, Card } from '@passness/ui';
 
 export interface PoliciesSettingsViewProps {
   canManage: boolean;

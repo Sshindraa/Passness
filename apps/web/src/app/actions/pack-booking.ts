@@ -1,12 +1,12 @@
 'use server';
 
-import type { ActionResult } from '@uttily/contracts';
+import type { ActionResult } from '@passness/contracts';
 import {
   createAtomicPackHold,
   PackAllocationError,
   recordPackAnalytics,
   calculateMarketplaceFeeSnapshotFromPricing,
-} from '@uttily/core';
+} from '@passness/core';
 import {
   allocations,
   bookingDrafts,
@@ -14,7 +14,7 @@ import {
   productVariants,
   products,
   inventoryItems,
-} from '@uttily/database';
+} from '@passness/database';
 import { eq, inArray } from 'drizzle-orm';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';

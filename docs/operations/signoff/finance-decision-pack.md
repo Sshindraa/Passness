@@ -15,7 +15,7 @@ Ce pack consigne les arbitrages financiers et fiscaux validés par la Direction 
 | `FIN-001` | Settlement merchant & destination charge | `APPROVED` ✅ | Modèle de destination charge mono-loueur avec `settlementMerchantMode: 'PLATFORM'` et `onBehalfOfAccountId: null` validé pour le pilote. |
 | `FIN-002` | Frais marketplace split 13/7 | `APPROVED` ✅ | Règle `split-13-7-v1` (ADR-029) validée pour activation LIVE : base `subtotal + mandatory fees`, commission loueur 13 %, frais client 7 %, calcul et arrondi `HALF_UP_PER_COMPONENT`. Remboursements par delta (ADR-030). |
 | `FIN-003` | Statut fiscal / TVA | `APPROVED` ✅ | Statut de taxe `NOT_APPLICABLE` (franchise en base de TVA / article 293 B du CGI) approuvé pour le premier pilote commercial ; taux et montants TVA à null. |
-| `FIN-004` | Émetteur de facture & documents | `APPROVED` ✅ | Reçus acquittés émis sous la mention d'intermédiation Uttily SAS (`invoiceIssuer: 'Uttily'`) ; le loueur demeure le vendeur exclusif de la location. |
+| `FIN-004` | Émetteur de facture & documents | `APPROVED` ✅ | Reçus acquittés émis sous la mention d'intermédiation Passness SAS (`invoiceIssuer: 'Passness'`) ; le loueur demeure le vendeur exclusif de la location. |
 | `FIN-005` | Documents financiers générés | `APPROVED` ✅ | Reçus de location acquittés (`RENTAL_RECEIPT`) et décomptes de commission (`COMMISSION_STATEMENT`) générés déterministement selon Lot 21-F1. |
 | `FIN-006` | Exécution des refunds | `APPROVED` ✅ | Remboursements 100 % exécutés automatiquement via Stripe ; remboursements partiels fail-closed en attente d'instruction manuelle sous 5 jours ouvrés. |
 | `FIN-007` | Stratégie de caution | `APPROVED` ✅ | Aucune caution sur le PaymentIntent de location (ADR-010) ; caution physique directe au comptoir par le loueur pour le pilote. |
@@ -29,7 +29,7 @@ Ce pack consigne les arbitrages financiers et fiscaux validés par la Direction 
 | `on_behalf_of` | `onBehalfOfAccountId: null` dans le chemin de paiement | Valeur technique courante ; ne vaut pas réponse juridique. |
 | Frais marketplace | `ADR-029` et le registre serveur implémentent `split-13-7-v1` : base `subtotal + mandatory fees`, frais loueur 13 %, frais service client 7 %, arrondi `HALF_UP_PER_COMPONENT`, sans fixe ; snapshots immuables. `ADR-030` propose la politique de remboursement par delta entre états effectifs | Choix produit interne uniquement. `FIN-002` reste `BLOCKED` pour la validation Finance/Juridique de la base, date d'effet, TVA, frais Stripe, refunds et responsabilités. |
 | Taxe | `status: 'NOT_APPLICABLE'`, `amountMinor: null`, `rateBps: null` | **`NOT_APPLICABLE` est une valeur codée, pas une validation fiscale.** `FIN-003` reste ouvert. |
-| Émetteur | `invoiceIssuer: 'Uttily'` dans `apps/web/src/lib/payment-config.ts`, propagé au snapshot fiscal | **`Uttily` n'est pas un émetteur approuvé.** `FIN-004` reste ouvert. |
+| Émetteur | `invoiceIssuer: 'Passness'` dans `apps/web/src/lib/payment-config.ts`, propagé au snapshot fiscal | **`Passness` n'est pas un émetteur approuvé.** `FIN-004` reste ouvert. |
 | Devise | EUR est imposé par les contraintes et le périmètre pilote France/Lyon | Ne pas déduire une règle fiscale d'une devise. |
 | Total | Le PaymentIntent reprend `customerTotalAmountMinor` du snapshot split ; le booking conserve aussi la base marchande pour la lecture Pro | Aucun choix financier ultérieur ne doit réécrire un snapshot confirmé. Les legacy conservent leur total historique. |
 
@@ -108,7 +108,7 @@ location ; aucune implémentation n'est ajoutée ici.
 
 Décrire l'émetteur, la périodicité, la devise, les pièces et le rapprochement de
 la facture/commission partenaire. Une destination charge et un payout Stripe
-ne constituent pas automatiquement une facture commerciale entre Uttily et le
+ne constituent pas automatiquement une facture commerciale entre Passness et le
 loueur.
 
 ## État de clôture du pack

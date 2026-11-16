@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { getOrganizationById, getMembership, requireMembership, can } from '@uttily/core';
+import { getOrganizationById, getMembership, requireMembership, can } from '@passness/core';
 import { updateCompanyLegalSettingsAction } from '@/app/actions/settings';
 import { CompanySettingsView } from '@/features/settings';
 

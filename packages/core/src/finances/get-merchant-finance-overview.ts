@@ -1,5 +1,5 @@
 import { and, desc, eq, isNull, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookings,
   bookingItems,
@@ -11,7 +11,7 @@ import {
   productVariants,
   refunds,
   users,
-} from '@uttily/database';
+} from '@passness/database';
 import { CatalogError } from '../catalog/errors';
 import { parseMarketplaceFeeSnapshot } from '../marketplace-fees';
 import type {

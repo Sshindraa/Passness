@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Revendication d'un batch de compensations (Phase 8, ADR-010 §13).
+ * @passness/core — Revendication d'un batch de compensations (Phase 8, ADR-010 §13).
  *
  * Transaction PostgreSQL courte qui sélectionne les événements outbox
  * `PAYMENT_COMPENSATION_REQUESTED` au statut `PENDING` dont l'échéance est
@@ -14,7 +14,7 @@
  */
 
 import { sql } from 'drizzle-orm';
-import { type DatabaseClient } from '@uttily/database';
+import { type DatabaseClient } from '@passness/database';
 import type { StripeEnvironment } from '../payments/types';
 import { DEFAULT_BATCH_LIMIT, MAX_ATTEMPTS } from './scheduling';
 import { poseLease } from '../outbox-claim/claim-outbox-batch';

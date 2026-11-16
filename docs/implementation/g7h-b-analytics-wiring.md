@@ -179,12 +179,12 @@ Les tests cibles G7H-B sont un sous-ensemble de la suite Core complete.
 ### Full Core gate
 
 - Suite Core complete : 84 fichiers, 2175 tests, 0 échec, 0 skip.
-- Commande : `pnpm --filter @uttily/core test`.
+- Commande : `pnpm --filter @passness/core test`.
 
 ### Full Web gate
 
 - Suite Web complete : 18 fichiers, 305 tests, 0 échec, 0 skip.
-- Commande : `pnpm --filter @uttily/web test`.
+- Commande : `pnpm --filter @passness/web test`.
 
 ### Preuves finales
 
@@ -201,6 +201,6 @@ Les tests cibles G7H-B sont un sous-ensemble de la suite Core complete.
 
 - `pnpm lint` : passe.
 - `pnpm typecheck` : passe (8 projets).
-- `pnpm --filter @uttily/web build` : passe (Next.js 16.2.12).
+- `pnpm --filter @passness/web build` : passe (Next.js 16.2.12).
 - `pnpm exec prettier --check` : passe sur tous les fichiers supportes.
 - `git diff --check` : passe.

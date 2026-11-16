@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Fail-closed helper interne (G5E Round 5, ADR-013 §11).
+ * @passness/core — Fail-closed helper interne (G5E Round 5, ADR-013 §11).
  *
  * Module interne — NON ré-exporté depuis index.ts.
  *
@@ -102,7 +102,7 @@ export class FencingFailureError extends Error {
  *         ligne (lease perdue ou expirée → rollback savepoint).
  */
 export async function failClosedInTransaction(
-  tx: Parameters<Parameters<import('@uttily/database').DatabaseClient['transaction']>[0]>[0],
+  tx: Parameters<Parameters<import('@passness/database').DatabaseClient['transaction']>[0]>[0],
   outboxEventId: string,
   organizationId: string,
   leaseToken: string,

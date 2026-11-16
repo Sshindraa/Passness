@@ -1,4 +1,4 @@
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { FinancialTermsConfig, TermsAcceptanceProof } from '../financial-terms/types';
 import type {
   PaymentIntentStatus,

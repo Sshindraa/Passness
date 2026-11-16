@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import type { BookingStatus } from '@uttily/core';
+import type { BookingStatus } from '@passness/core';
 import { bookingStatusLabel } from '@/lib/operations-helpers';
 import { AmendBookingForm, type AmendBookingFormLineProp } from './amend-booking-form';
-import type { NeutralAmendmentIntent } from '@uttily/core';
+import type { NeutralAmendmentIntent } from '@passness/core';
 
 export interface AmendBookingPageViewProps {
   organizationId: string;

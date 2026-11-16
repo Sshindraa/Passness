@@ -10,13 +10,13 @@ qui reste la suite du lot G8A.
 
 ## Provisionnement
 
-- Neon : branche `staging` du projet `Uttily-dev`, région européenne.
+- Neon : branche `staging` du projet `Passness-dev`, région européenne.
 - R2 : bucket privé `uttily-staging-documents`, juridiction européenne.
 - R2 : identifiant du worker limité au bucket staging avec droits objet de
   lecture/écriture ; l'adaptateur utilise l'endpoint régional EU dérivé de
   `R2_ACCOUNT_ID`.
 - Resend : domaine `sokar.tech` vérifié, expéditeur
-  `Uttily <noreply@sokar.tech>`, template publié de confirmation de réservation.
+  `Passness <noreply@sokar.tech>`, template publié de confirmation de réservation.
 - Aucun secret n'est présent dans le dépôt. Les credentials ont été utilisés
   uniquement hors dépôt et supprimés après le test.
 
@@ -53,7 +53,7 @@ notification `SENT`.
 
 - Clés et fournisseurs LIVE non utilisés.
 - Aucun contournement de Clerk ou authentification factice ajouté au produit.
-- Aucune donnée de carte stockée ou utilisée par Uttily.
+- Aucune donnée de carte stockée ou utilisée par Passness.
 - Le fichier temporaire contenant les credentials de test a été supprimé à la
   fin de la validation.
 

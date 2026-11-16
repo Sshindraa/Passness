@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import type { UnifiedBikeStatusSummary, UnifiedBikeSummary } from '@uttily/core';
+import type { UnifiedBikeStatusSummary, UnifiedBikeSummary } from '@passness/core';
 import {
   formatMoneyAmount,
   getPricingPlanTypeLabel,
   getPricingPlanUnitLabel,
 } from '@/lib/status-presentation';
-import { PageHeader, Card, Badge, LinkButton, Icon } from '@uttily/ui';
-import type { BadgeTone } from '@uttily/ui';
+import { PageHeader, Card, Badge, LinkButton, Icon } from '@passness/ui';
+import type { BadgeTone } from '@passness/ui';
 import {
   getCategoryDisplayLabel,
   getCategoryPresentation,

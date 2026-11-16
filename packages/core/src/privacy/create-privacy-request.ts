@@ -1,5 +1,5 @@
-import type { DbExecutor } from '@uttily/database';
-import { privacyRequests } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
+import { privacyRequests } from '@passness/database';
 import { writeAuditEntry } from '../identity/audit';
 import { computePrivacyResponseDeadline } from './privacy-deadline';
 import type { PrivacyRequest, PrivacyRequestType } from './types';

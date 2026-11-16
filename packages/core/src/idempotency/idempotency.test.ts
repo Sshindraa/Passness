@@ -6,9 +6,9 @@ import {
   assertLocalhost,
   type DatabaseClient,
   type DatabaseTransaction,
-} from '@uttily/database';
-import { idempotencyRecords } from '@uttily/database';
-import * as schema from '@uttily/database';
+} from '@passness/database';
+import { idempotencyRecords } from '@passness/database';
+import * as schema from '@passness/database';
 import { eq, sql } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 import {
@@ -31,7 +31,7 @@ import type { IdempotentPayload, IdempotencyRecordRow } from './types';
  * skip si pas DATABASE_URL en local.
  */
 
-const TEST_DB_NAME = 'uttily_test_idempotency';
+const TEST_DB_NAME = 'passness_test_idempotency';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

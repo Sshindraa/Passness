@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { eq } from 'drizzle-orm';
-import { organizations } from '@uttily/database';
-import { getMerchantFinanceOverview, generateCommissionStatementCsv } from '@uttily/core';
+import { organizations } from '@passness/database';
+import { getMerchantFinanceOverview, generateCommissionStatementCsv } from '@passness/core';
 import { requireFinancialViewerOf } from '@/lib/finances-auth';
 
 export async function GET(
@@ -36,7 +36,7 @@ export async function GET(
       overview,
     });
 
-    const filename = `decompte-commissions-uttily-${overview.period.label.toLowerCase().replace(/\s+/g, '-')}.csv`;
+    const filename = `decompte-commissions-passness-${overview.period.label.toLowerCase().replace(/\s+/g, '-')}.csv`;
 
     return new NextResponse(csvContent, {
       status: 200,

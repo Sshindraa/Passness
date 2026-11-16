@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1 / Chantier 15.1 / Chantier 15.2).
+ * @passness/core — Module Pricing Plans (G7P-B1 / Chantier 15.1 / Chantier 15.2).
  *
  * Validation des horaires d'ouverture et des exceptions de calendrier.
  */

@@ -2,12 +2,12 @@
 
 import { useEffect, useId, useLayoutEffect, useRef, useState, type CSSProperties } from 'react';
 import { useRouter } from 'next/navigation';
-import type { PublicSearchFilterOptions } from '@uttily/core';
-import { Button, Icon, LinkButton } from '@uttily/ui';
+import type { PublicSearchFilterOptions } from '@passness/core';
+import { Button, Icon, LinkButton } from '@passness/ui';
 import { loadHomeSearchOptions } from '@/app/actions/home-search-options';
 import type { PublicSearchFormValues } from '@/lib/public-search';
 import { getPublicCategoryLabel } from '@/lib/public-search-labels';
-import type { IntentProposal } from '@uttily/intelligence';
+import type { IntentProposal } from '@passness/intelligence';
 import { DestinationPanel } from './destination-panel';
 import { EquipmentPanel } from './equipment-panel';
 import { DatesPanel } from './dates-panel';

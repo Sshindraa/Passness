@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   hashToken,
   createSignedInvitationToken,
@@ -249,7 +249,7 @@ describe('invitations tokens & security (Chantier 15.2 / 15.2.1)', () => {
       const { renderNotificationRecord } = await import('../notifications/load-notification-data');
       const testSecret = 'explicit-super-secret-key-for-invitations-32bytes-min!';
       process.env.INVITATION_SECRET = testSecret;
-      process.env.PUBLIC_APP_URL = 'https://app.uttily.fr';
+      process.env.PUBLIC_APP_URL = 'https://passness.com';
 
       const invitationId = 'inv-uuid-abc-123';
       const organizationId = 'org-uuid-xyz-456';

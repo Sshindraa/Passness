@@ -6,7 +6,7 @@ import {
   bookings,
   lockOrganization,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 import type {
   CreatePaymentIntentParams,
   PaymentIntentResult,

@@ -7,12 +7,12 @@ describe('getEmailBrandConfig', () => {
     expect(
       getEmailBrandConfig({
         NODE_ENV: 'production',
-        PUBLIC_APP_URL: 'https://staging.uttily.example',
-        SUPPORT_EMAIL: 'help@staging.uttily.example',
+        PUBLIC_APP_URL: 'https://staging.passness.example',
+        SUPPORT_EMAIL: 'help@staging.passness.example',
       }),
     ).toEqual({
-      publicAppUrl: 'https://staging.uttily.example',
-      supportEmail: 'help@staging.uttily.example',
+      publicAppUrl: 'https://staging.passness.example',
+      supportEmail: 'help@staging.passness.example',
     });
   });
 
@@ -23,15 +23,15 @@ describe('getEmailBrandConfig', () => {
     expect(() =>
       getEmailBrandConfig({
         NODE_ENV: 'production',
-        PUBLIC_APP_URL: 'https://uttily.com',
+        PUBLIC_APP_URL: 'https://passness.com',
       }),
     ).toThrow(/SUPPORT_EMAIL/);
   });
 
   it('conserve un secours explicite uniquement hors production', () => {
     expect(getEmailBrandConfig({ NODE_ENV: 'test' })).toEqual({
-      publicAppUrl: 'https://uttily.com',
-      supportEmail: 'support@uttily.com',
+      publicAppUrl: 'https://passness.com',
+      supportEmail: 'support@passness.com',
     });
   });
 
@@ -40,13 +40,13 @@ describe('getEmailBrandConfig', () => {
       title: 'Test',
       contentHtml: '<p>Contenu</p>',
       brand: {
-        publicAppUrl: 'https://staging.uttily.example',
-        supportEmail: 'help@staging.uttily.example',
+        publicAppUrl: 'https://staging.passness.example',
+        supportEmail: 'help@staging.passness.example',
       },
     });
 
-    expect(html).toContain('href="https://staging.uttily.example"');
-    expect(html).toContain('mailto:help@staging.uttily.example');
-    expect(html).not.toContain('support@uttily.com');
+    expect(html).toContain('href="https://staging.passness.example"');
+    expect(html).toContain('mailto:help@staging.passness.example');
+    expect(html).not.toContain('support@passness.com');
   });
 });

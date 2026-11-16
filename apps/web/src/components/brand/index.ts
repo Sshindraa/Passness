@@ -1,1 +1,1 @@
-export { UttilyBrand } from './uttily-brand';
+export { PassnessBrand } from './passness-brand';

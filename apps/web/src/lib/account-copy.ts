@@ -1,4 +1,4 @@
-import type { CustomerBookingStatus } from '@uttily/core';
+import type { CustomerBookingStatus } from '@passness/core';
 import type { AppLocale } from './locale';
 
 export type AccountCopy = {
@@ -169,7 +169,7 @@ const FR_COPY: AccountCopy = {
       activeDescription:
         'Profitez de votre trajet ! Pensez à restituer l’équipement avant l’heure limite de retour.',
       completedTitle: 'Location terminée',
-      completedDescription: 'L’équipement a été restitué. Merci d’avoir loué avec Uttily !',
+      completedDescription: 'L’équipement a été restitué. Merci d’avoir loué avec Passness !',
       refundPendingTitle: 'Réservation annulée — Remboursement en cours de traitement',
       refundPendingDescription: (amount) =>
         amount
@@ -284,7 +284,7 @@ const EN_COPY: AccountCopy = {
       activeDescription:
         'Enjoy your trip! Remember to return the equipment by the agreed deadline.',
       completedTitle: 'Booking completed',
-      completedDescription: 'The equipment has been returned. Thank you for renting with Uttily!',
+      completedDescription: 'The equipment has been returned. Thank you for renting with Passness!',
       refundPendingTitle: 'Booking cancelled — Refund being processed',
       refundPendingDescription: (amount) =>
         amount

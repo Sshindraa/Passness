@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Pricing Plans (G7P-B1).
+ * @passness/core — Module Pricing Plans (G7P-B1).
  *
  * Types d'entrée/sortie et types internes du moteur de tarification flexible.
  * Aucune dépendance base de données, aucune écriture.

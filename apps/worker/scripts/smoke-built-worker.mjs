@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Harness de smoke test du bundle compilé (G5H-C2C-B4 round 3).
+ * @passness/worker — Harness de smoke test du bundle compilé (G5H-C2C-B4 round 3).
  *
  * Ce harness est un script de développement (jamais importé par la production).
  * Il importe dynamiquement le bundle esbuild `apps/worker/dist/index.js` (le

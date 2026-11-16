@@ -1,12 +1,12 @@
 'use server';
 
 import { and, eq } from 'drizzle-orm';
-import { bookingDrafts, organizationPaymentAccounts } from '@uttily/database';
+import { bookingDrafts, organizationPaymentAccounts } from '@passness/database';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import { getStripeAdapter } from '@/lib/stripe';
 import { loadFinancialTermsConfig, resolveStripeEnvironment } from '@/lib/payment-config';
-import { initiatePayment, type InitiatePaymentResult } from '@uttily/core';
+import { initiatePayment, type InitiatePaymentResult } from '@passness/core';
 
 /**
  * Initie un paiement Stripe pour un brouillon de réservation.

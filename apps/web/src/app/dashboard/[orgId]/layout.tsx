@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { getMembership, requireMembership, getOrganizationById } from '@uttily/core';
+import { getMembership, requireMembership, getOrganizationById } from '@passness/core';
 import { ProShell } from '@/components/shells/pro-shell';
 
 // Layout partagé de la section organisation.

@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-B).
+ * @passness/core — Module Product Analytics (G7H-B).
  *
  * Resolveur d'environnement analytics pur et injectable.
  *

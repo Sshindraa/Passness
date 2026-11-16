@@ -1,12 +1,12 @@
 import { and, desc, eq, inArray, isNull, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookings,
   locations,
   locationOpeningHours,
   locationScheduleExceptions,
   organizations,
-} from '@uttily/database';
+} from '@passness/database';
 import { isValidSlug, slugify } from './slug';
 import { isValidTimeZone } from './time-zone';
 import type {

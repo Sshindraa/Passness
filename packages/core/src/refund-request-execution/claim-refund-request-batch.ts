@@ -1,6 +1,6 @@
 import { sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { parseRefundRequestedEvent } from '@uttily/contracts';
+import type { DatabaseClient } from '@passness/database';
+import { parseRefundRequestedEvent } from '@passness/contracts';
 import type { StripeEnvironment } from '../payments/types';
 import { poseLease } from '../outbox-claim/claim-outbox-batch';
 import { REFUND_REQUEST_SELECTION } from '../outbox-claim/handler-selection';

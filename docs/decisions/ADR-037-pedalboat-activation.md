@@ -18,7 +18,7 @@ la Phase 1, les familles déjà actives ou les données historiques.
 
 ## Décision
 
-Uttily active une seule famille commerciale sous le slug canonique
+Passness active une seule famille commerciale sous le slug canonique
 `pedalboat` :
 
 - statut serveur : `ACTIVE` ;

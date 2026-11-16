@@ -1,4 +1,4 @@
-import { PHOTO_SLOT_TYPES } from '@uttily/contracts';
+import { PHOTO_SLOT_TYPES } from '@passness/contracts';
 import {
   PhotoQualityAssessmentSchema,
   type PhotoQualityAssessment,
@@ -26,7 +26,7 @@ export interface OpenRouterPhotoCoachOptions {
   readonly timeoutMs?: number;
 }
 
-const DEFAULT_MODEL = 'google/gemini-3.8-flash'; // Modèle multimodal vision officiel Uttily (latence faible, haute précision)
+const DEFAULT_MODEL = 'google/gemini-3.8-flash'; // Modèle multimodal vision officiel Passness (latence faible, haute précision)
 const DEFAULT_BASE_URL = 'https://openrouter.ai/api/v1';
 const DEFAULT_TIMEOUT_MS = 25000;
 
@@ -79,8 +79,8 @@ Réponds uniquement en JSON conforme au schéma strict.`;
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://uttily.com',
-          'X-Title': 'Uttily Photo Quality Coach',
+          'HTTP-Referer': 'https://passness.com',
+          'X-Title': 'Passness Photo Quality Coach',
         },
         body: JSON.stringify({
           model: this.model,

@@ -1,6 +1,11 @@
 import { eq } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { auditLog, notifications, organizationInvitations, organizations } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import {
+  auditLog,
+  notifications,
+  organizationInvitations,
+  organizations,
+} from '@passness/database';
 import type { SupportActionContext } from '../types';
 import { NotificationActionError } from './retry-notification';
 
@@ -126,7 +131,7 @@ export async function resendInvitationNotificationSupport(
         attemptCount: 0,
         metadata: {
           invitationId: invitation.id,
-          organizationName: org.publicDisplayName ?? org.legalName ?? 'Uttily',
+          organizationName: org.publicDisplayName ?? org.legalName ?? 'Passness',
           roleName: invitation.role,
         },
       })

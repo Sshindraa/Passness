@@ -1,4 +1,4 @@
-import { listMaintenanceCases } from '@uttily/core';
+import { listMaintenanceCases } from '@passness/core';
 import { requireCatalogViewerOf } from '@/lib/catalog-auth';
 import { MaintenanceListView } from '@/features/fleet';
 

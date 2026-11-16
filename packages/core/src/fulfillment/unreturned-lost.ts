@@ -1,5 +1,5 @@
 import { and, asc, eq, inArray, isNull, or, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   bookingItems,
   bookings,
@@ -7,7 +7,7 @@ import {
   inventoryItems,
   lockOrganization,
   outboxEvents,
-} from '@uttily/database';
+} from '@passness/database';
 import { reserveKey, lockKey, completeKey } from '../idempotency/idempotency';
 import type { IdempotencyRecordRow } from '../idempotency/types';
 import { writeAuditEntry } from '../identity/audit';

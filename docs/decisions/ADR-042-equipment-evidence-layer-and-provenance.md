@@ -2,18 +2,18 @@
 
 - **Statut :** Accepted
 - **Date :** 2026-09-07
-- **Relie à :** [ADR-001](ADR-001-monolithe-modulaire.md), [ADR-008](ADR-008-server-actions-contract.md), [ADR-019](ADR-019-ai-native-global-rental-infrastructure.md), [ADR-031](ADR-031-category-photo-requirements-and-publication-gate.md), [ADR-035](ADR-035-closed-outdoor-equipment-taxonomy.md), [ADR-040](ADR-040-uttily-intelligence-architecture.md), [ADR-041](ADR-041-pack-orchestrator-and-compatibility-graph.md)
+- **Relie à :** [ADR-001](ADR-001-monolithe-modulaire.md), [ADR-008](ADR-008-server-actions-contract.md), [ADR-019](ADR-019-ai-native-global-rental-infrastructure.md), [ADR-031](ADR-031-category-photo-requirements-and-publication-gate.md), [ADR-035](ADR-035-closed-outdoor-equipment-taxonomy.md), [ADR-040](ADR-040-passness-intelligence-architecture.md), [ADR-041](ADR-041-pack-orchestrator-and-compatibility-graph.md)
 
 ---
 
 ## 1. Contexte & Problématique
 
-La Phase 2 a introduit le Photo Quality Coach dans Uttily pour assister les loueurs professionnels lors de la prise de vue et extraire des attributs techniques visibles (`isElectric`, `hasLuggageRack`, `hasTrailerHitch`, `hasChildSeatCompatibleMount`).
+La Phase 2 a introduit le Photo Quality Coach dans Passness pour assister les loueurs professionnels lors de la prise de vue et extraire des attributs techniques visibles (`isElectric`, `hasLuggageRack`, `hasTrailerHitch`, `hasChildSeatCompatibleMount`).
 
 L'enrichissement de l'inventaire par vision par ordinateur (VLM) expose l'architecture à deux risques de conception majeurs :
 
 1. **Confusion entre observation visuelle et compatibilité certifiée** :
-   Ce n'est pas parce qu'un modèle multimodal détecte visuellement ce qui ressemble à un axe traversant ou un crochet d'attelage (`hasTrailerHitch = true`) que cet équipement est mécaniquement et juridiquement compatible avec une remorque enfant donnée. Assimiler une observation probabiliste à une compatibilité matérielle certifiée violerait les engagements de sécurité d'Uttily.
+   Ce n'est pas parce qu'un modèle multimodal détecte visuellement ce qui ressemble à un axe traversant ou un crochet d'attelage (`hasTrailerHitch = true`) que cet équipement est mécaniquement et juridiquement compatible avec une remorque enfant donnée. Assimiler une observation probabiliste à une compatibilité matérielle certifiée violerait les engagements de sécurité d'Passness.
 2. **Veto probabiliste du VLM** :
    Donner à un modèle probabiliste le pouvoir de bloquer unilatéralement la publication d'un équipement (via un statut `REJECTED` infranchissable) inverse l'autorité : un système probabiliste devient censeur métier. Cela réintroduirait la dérive explicitement bannie par l'ADR-019.
 3. **Hygiène et confidentialité des photos d'atelier** :
@@ -23,9 +23,9 @@ L'enrichissement de l'inventaire par vision par ordinateur (VLM) expose l'archit
 
 ## 2. Doctrine Produit Fondamentale
 
-La présente décision grave dans le marbre la doctrine produit d'Uttily pour l'ensemble des systèmes intelligents :
+La présente décision grave dans le marbre la doctrine produit d'Passness pour l'ensemble des systèmes intelligents :
 
-> **« Uttily préfère une information inconnue à une information plausible mais inventée. »**
+> **« Passness préfère une information inconnue à une information plausible mais inventée. »**
 
 Cette doctrine se décline en quatre règles inviolables :
 1. **Observation visuelle ≠ compatibilité certifiée** : Une détection d'image est une observation, pas un fait homologué.
@@ -64,7 +64,7 @@ Nous formalisons trois niveaux de vérité hermétiques pour les caractéristiqu
 
 ### 3.1. Structure de Données de Provenance
 
-Dans `@uttily/contracts` et `@uttily/database` (`productVariants.attributes`) :
+Dans `@passness/contracts` et `@passness/database` (`productVariants.attributes`) :
 
 ```ts
 export type EvidenceLevel = 'AI_OBSERVED' | 'HUMAN_CONFIRMED' | 'SOURCE_VERIFIED';
@@ -82,7 +82,7 @@ export interface EquipmentAttributeEvidence<T = unknown> {
 
 ### 3.2. Règles de Consommation par le CompatibilityGraph
 
-Dans `@uttily/core` (`packages/core/src/packs/compatibility-graph.ts`) :
+Dans `@passness/core` (`packages/core/src/packs/compatibility-graph.ts`) :
 - Pour les accessoires généraux de confort (paniers, sacoches, sonnettes), le niveau `HUMAN_CONFIRMED` ou `AI_OBSERVED` (avec avertissement) peut être toléré.
 - Pour les accessoires **safety-critical** (`CHILD_TRAILER`, `CHILD_SEAT`) :
   - L'accessoire doit être homologué selon une norme officielle (`SOURCE_VERIFIED`).

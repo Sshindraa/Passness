@@ -4,7 +4,7 @@ import {
   getMembership,
   CATALOG_MANAGERS,
   listRecurringManualBlockSeries,
-} from '@uttily/core';
+} from '@passness/core';
 import { requireCatalogViewerOf } from '@/lib/catalog-auth';
 import { FleetListView } from '@/features/fleet';
 

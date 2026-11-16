@@ -1,25 +1,25 @@
-# Vision long terme — Uttily, infrastructure mondiale de l'accès au matériel
+# Vision long terme — Passness, infrastructure mondiale de l'accès au matériel
 
 ## Décision
 
-Le 7 août 2026, Uttily retient l'**option C** comme direction stratégique :
+Le 7 août 2026, Passness retient l'**option C** comme direction stratégique :
 
-> Uttily devient progressivement le système d'exploitation mondial permettant
+> Passness devient progressivement le système d'exploitation mondial permettant
 > de trouver, louer, exploiter et suivre des équipements physiques.
 
 Cette vision combine trois produits complémentaires :
 
-1. **Uttily OS** : le logiciel opérationnel des loueurs professionnels.
-2. **Uttily Marketplace** : la distribution et la réservation de leur offre.
-3. **Uttily Intelligence** : l'optimisation explicable du choix client, du parc,
+1. **Passness OS** : le logiciel opérationnel des loueurs professionnels.
+2. **Passness Marketplace** : la distribution et la réservation de leur offre.
+3. **Passness Intelligence** : l'optimisation explicable du choix client, du parc,
    des prix et des opérations.
 
 Le périmètre commercial reste fermé aux quatre univers outdoor de la
 [taxonomie canonique](equipment-taxonomy.md) ; cette décision ne vise pas à
-faire d'Uttily une marketplace généraliste.
+faire d'Passness une marketplace généraliste.
 
 La trajectoire n'est donc ni une simple marketplace (« Airbnb du matériel »),
-ni un SaaS isolé (« logiciel de caisse pour loueurs »). Uttily construit d'abord
+ni un SaaS isolé (« logiciel de caisse pour loueurs »). Passness construit d'abord
 un excellent système opérationnel, utilise ses données fiables pour alimenter
 une marketplace, puis rend cette offre accessible à des partenaires et à des
 agents logiciels.
@@ -27,7 +27,7 @@ agents logiciels.
 ## Pourquoi cette stratégie peut durer dix ans
 
 Les interfaces et les modèles d'intelligence artificielle changeront. La valeur
-durable d'Uttily doit venir d'actifs plus difficiles à reproduire :
+durable d'Passness doit venir d'actifs plus difficiles à reproduire :
 
 - un inventaire d'exemplaires physiques réellement disponibles ;
 - un historique transactionnel fiable de leur utilisation ;
@@ -38,7 +38,7 @@ durable d'Uttily doit venir d'actifs plus difficiles à reproduire :
 - des contrats machine-readable permettant à plusieurs interfaces de réserver
   sans contourner les règles transactionnelles.
 
-L'IA exploite ces actifs ; elle ne les remplace pas. Uttily ne doit donc jamais
+L'IA exploite ces actifs ; elle ne les remplace pas. Passness ne doit donc jamais
 dépendre d'un modèle, d'un fournisseur ou d'une interface conversationnelle
 unique pour conserver sa proposition de valeur.
 
@@ -46,7 +46,7 @@ unique pour conserver sa proposition de valeur.
 
 ### 1. Equipment Graph
 
-Uttily construit progressivement une connaissance structurée des équipements :
+Passness construit progressivement une connaissance structurée des équipements :
 
 - catégories, variantes et caractéristiques techniques ;
 - usages et activités compatibles ;
@@ -64,7 +64,7 @@ mais à une intention comme :
 > compacte et un budget de 80 €. Quel équipement disponible convient ?
 
 Le résultat attendu est un ensemble cohérent, disponible et explicable, jamais
-une suggestion inventée par un modèle sans validation sur les données Uttily.
+une suggestion inventée par un modèle sans validation sur les données Passness.
 
 ### 2. Digital Equipment Passport
 
@@ -90,7 +90,7 @@ client, loueur, réparateur, fabricant, assureur ou autorité.
 
 ### 3. Rental Intelligence
 
-Uttily Intelligence aide le loueur à prendre de meilleures décisions :
+Passness Intelligence aide le loueur à prendre de meilleures décisions :
 
 - prévoir la demande par magasin, catégorie et période ;
 - détecter une sous-capacité ou une flotte sous-utilisée ;
@@ -109,7 +109,7 @@ humaine et un processus contradictoire.
 
 ### 4. Agent-ready Commerce
 
-Uttily doit pouvoir être utilisé par d'autres interfaces que son propre site :
+Passness doit pouvoir être utilisé par d'autres interfaces que son propre site :
 
 - sites et applications des loueurs ;
 - hôtels, campings, écoles et offices de tourisme ;
@@ -128,7 +128,7 @@ Un agent doit pouvoir, avec le consentement de l'utilisateur :
 7. compléter ou annuler la réservation ;
 8. recevoir les événements de suivi autorisés.
 
-L'autorité reste dans les use cases Uttily et PostgreSQL. Un agent ne peut pas
+L'autorité reste dans les use cases Passness et PostgreSQL. Un agent ne peut pas
 contourner une autorisation, une contrainte de disponibilité, un snapshot de
 prix, une politique ou une étape de confirmation humaine.
 
@@ -152,7 +152,7 @@ supplémentaire, pas une obligation.
 
 ## Expérience loueur cible
 
-Uttily OS reste le point d'entrée de la stratégie. Il doit apporter une valeur
+Passness OS reste le point d'entrée de la stratégie. Il doit apporter une valeur
 autonome, même sans réservation marketplace :
 
 - catalogue, flotte et disponibilité ;
@@ -165,12 +165,12 @@ autonome, même sans réservation marketplace :
 - export et contrôle des données du loueur.
 
 Le loueur choisit ses prix, ses règles, ses canaux et les recommandations qu'il
-accepte. Uttily ne doit pas confisquer la relation commerciale ni rendre les
+accepte. Passness ne doit pas confisquer la relation commerciale ni rendre les
 données opérationnelles captives.
 
 ## Réseau et écosystème futurs
 
-Après validation du cœur OS + marketplace, Uttily pourra connecter :
+Après validation du cœur OS + marketplace, Passness pourra connecter :
 
 - magasins et réseaux multi-sites ;
 - écoles, bases de loisirs et stations ;
@@ -228,7 +228,7 @@ tarification, hold, paiement, retrait, retour et preuve d'état.
 
 ### Horizon 1 — OS + marketplace outdoor spécialisée dense
 
-Faire d'Uttily l'outil quotidien des loueurs et densifier progressivement les
+Faire d'Passness l'outil quotidien des loueurs et densifier progressivement les
 destinations, d'abord en France, puis en Europe.
 
 ### Horizon 2 — Intelligence opérationnelle
@@ -239,7 +239,7 @@ des recommandations explicables à partir de données opérationnelles fiables.
 ### Horizon 3 — Infrastructure de distribution
 
 Ouvrir des contrats partenaires et agent-ready permettant la découverte et la
-réservation depuis plusieurs surfaces, sans affaiblir les invariants Uttily.
+réservation depuis plusieurs surfaces, sans affaiblir les invariants Passness.
 
 ### Horizon 4 — Réseau mondial et circularité
 

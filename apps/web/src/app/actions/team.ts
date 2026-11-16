@@ -9,7 +9,7 @@ import {
   changeMemberRole,
   removeMember,
   type MembershipRole,
-} from '@uttily/core';
+} from '@passness/core';
 
 export async function changeMemberRoleAction(
   organizationId: string,

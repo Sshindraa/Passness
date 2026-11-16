@@ -34,6 +34,24 @@ importers:
       '@clerk/nextjs':
         specifier: ^6.0.0
         version: 6.39.6(next@16.2.12(@playwright/test@1.62.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      '@passness/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      '@passness/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
+      '@passness/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@passness/database':
+        specifier: workspace:*
+        version: link:../../packages/database
+      '@passness/intelligence':
+        specifier: workspace:*
+        version: link:../../packages/intelligence
+      '@passness/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@stripe/connect-js':
         specifier: ^3.4.6
         version: 3.4.6
@@ -46,24 +64,6 @@ importers:
       '@stripe/stripe-js':
         specifier: 5.10.0
         version: 5.10.0
-      '@uttily/config':
-        specifier: workspace:*
-        version: link:../../packages/config
-      '@uttily/contracts':
-        specifier: workspace:*
-        version: link:../../packages/contracts
-      '@uttily/core':
-        specifier: workspace:*
-        version: link:../../packages/core
-      '@uttily/database':
-        specifier: workspace:*
-        version: link:../../packages/database
-      '@uttily/intelligence':
-        specifier: workspace:*
-        version: link:../../packages/intelligence
-      '@uttily/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
       drizzle-orm:
         specifier: ^0.36.0
         version: 0.36.4(@types/react@19.2.17)(postgres@3.4.9)(react@19.2.8)
@@ -110,15 +110,15 @@ importers:
       '@aws-sdk/client-s3':
         specifier: ^3.1103.0
         version: 3.1103.0
+      '@passness/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@passness/database':
+        specifier: workspace:*
+        version: link:../../packages/database
       '@pdf-lib/fontkit':
         specifier: 1.1.1
         version: 1.1.1
-      '@uttily/core':
-        specifier: workspace:*
-        version: link:../../packages/core
-      '@uttily/database':
-        specifier: workspace:*
-        version: link:../../packages/database
       drizzle-orm:
         specifier: ^0.36.0
         version: 0.36.4(@types/react@19.2.17)(postgres@3.4.9)(react@19.2.8)
@@ -186,10 +186,10 @@ importers:
 
   packages/core:
     dependencies:
-      '@uttily/contracts':
+      '@passness/contracts':
         specifier: workspace:*
         version: link:../contracts
-      '@uttily/database':
+      '@passness/database':
         specifier: workspace:*
         version: link:../database
       drizzle-orm:
@@ -236,7 +236,7 @@ importers:
 
   packages/intelligence:
     dependencies:
-      '@uttily/contracts':
+      '@passness/contracts':
         specifier: workspace:*
         version: link:../contracts
       zod:

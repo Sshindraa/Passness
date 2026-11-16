@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-B).
+ * @passness/core — Module Product Analytics (G7H-B).
  *
  * Enregistrement best-effort d'un evenement analytics avec isolation d'erreur.
  *
@@ -31,7 +31,7 @@
  * safe recorder / cablage.
  */
 
-import type { DatabaseClient, DatabaseTransaction } from '@uttily/database';
+import type { DatabaseClient, DatabaseTransaction } from '@passness/database';
 import { ProductAnalyticsError } from './errors';
 import { recordProductAnalyticsEvent } from './record-event';
 import type { ResolvedAnalyticsEnvironment } from './runtime';

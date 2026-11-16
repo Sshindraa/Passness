@@ -1,6 +1,6 @@
 import { and, eq, isNull, ne, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { inventoryItems } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { inventoryItems } from '@passness/database';
 import type { AvailableItemSummary } from './types';
 import { CatalogError } from '../catalog/errors';
 

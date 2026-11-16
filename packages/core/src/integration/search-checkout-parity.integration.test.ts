@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Search & Checkout Parity Integration Test (Chantier 15.2.1).
+ * @passness/core — Search & Checkout Parity Integration Test (Chantier 15.2.1).
  *
  * Prouve la vraie parité décisionnelle entre le read model de recherche
  * (`searchPublicOffers`) et le write model de réservation
@@ -16,7 +16,7 @@
 
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,

@@ -9,9 +9,9 @@ secrets. Il n'introduit ni nouveau service, ni nouvelle source de vérité.
 
 Le drill exécutable est volontairement local : il refuse toute URL dont
 l'hôte n'est pas `localhost`, `127.0.0.1` ou `::1`, exige
-`UTTILY_RECOVERY_DRILL=1`, refuse `NODE_ENV=production`, et ne crée/supprime
-que des bases dont le nom généré commence par `uttily_recovery_source_` ou
-`uttily_recovery_restored_`. Aucun accès Neon, Vercel, Stripe LIVE ou base
+`PASSNESS_RECOVERY_DRILL=1`, refuse `NODE_ENV=production`, et ne crée/supprime
+que des bases dont le nom généré commence par `passness_recovery_source_` ou
+`passness_recovery_restored_`. Aucun accès Neon, Vercel, Stripe LIVE ou base
 réelle n'a été nécessaire pour le drill.
 
 ## Statut de preuve
@@ -40,7 +40,7 @@ Depuis le worktree du chantier, avec une base PostgreSQL/PostGIS locale
 accessible et les dépendances installées :
 
 ```bash
-UTTILY_RECOVERY_DRILL=1 NODE_ENV=test pnpm recovery:restore-drill
+PASSNESS_RECOVERY_DRILL=1 NODE_ENV=test pnpm recovery:restore-drill
 ```
 
 La valeur de `DATABASE_URL` peut être fournie, mais elle doit rester locale.
@@ -90,7 +90,7 @@ consigner durée, point de récupération et limites. Cette étape est une
    cible, le SHA et le résultat sans mettre de secret dans les logs.
 3. **Migration** : exécuter uniquement avec `DATABASE_DIRECT_URL` de
    l'environnement autorisé :
-   `pnpm --filter @uttily/database db:migrate`.
+   `pnpm --filter @passness/database db:migrate`.
 4. **Vérification** : vérifier que la migration attendue est enregistrée par
    Drizzle, lire `/internal/health`, vérifier les erreurs de connexion,
    l'outbox, les leases expirées et les signaux de réconciliation. Pour une

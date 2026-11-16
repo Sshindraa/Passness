@@ -44,7 +44,7 @@ publiquement. Aucune analyse d’image par IA n’est activée.
    - 3.1 [Slots obligatoires (tout vélo)](#31-slots-obligatoires-tout-vélo)
    - 3.2 [Slots complémentaires VAE (non bloquants)](#32-slots-complémentaires-vae-non-bloquants)
    - 3.3 [Contrat de données TypeScript (`BIKE_PHOTO_SLOTS`)](#33-contrat-de-données-typescript-bike_photo_slots)
-4. [Spécification UX : Le Photo Coach Uttily](#4-spécification-ux--le-photo-coach-uttily)
+4. [Spécification UX : Le Photo Coach Passness](#4-spécification-ux--le-photo-coach-passness)
    - 4.1 [Vision et principes fondateurs](#41-vision-et-principes-fondateurs)
    - 4.2 [La boucle utilisateur en 6 étapes](#42-la-boucle-utilisateur-en-6-étapes)
    - 4.3 [Animations vectorielles et overlays anatomiques par slot](#43-animations-vectorielles-et-overlays-anatomiques-par-slot)
@@ -73,9 +73,9 @@ publiquement. Aucune analyse d’image par IA n’est activée.
 
 ### 1.1 Positionnement territorial
 
-Uttily se présente comme un service disponible à l'échelle de la France et ne
+Passness se présente comme un service disponible à l'échelle de la France et ne
 code aucune règle métier spécifique à Lyon. Lyon est toutefois la première zone
-commerciale activée et la première zone dans laquelle Uttily cherche à constituer
+commerciale activée et la première zone dans laquelle Passness cherche à constituer
 une offre réelle.
 
 Une ville n'est pas présentée comme disponible tant qu'aucun loueur professionnel
@@ -135,7 +135,7 @@ ou de staging ne peut devenir une valeur LIVE implicite ; `FIN-002` reste
 
 ### 1.5 État réel et critères de passage au Go Pilote
 
-Aucun loueur pilote n'est engagé à la date de référence (2026-08-27). Uttily peut
+Aucun loueur pilote n'est engagé à la date de référence (2026-08-27). Passness peut
 préparer le contenu modèle, la collecte structurée des informations et la checklist
 d'onboarding, mais ne peut pas déclarer le pilote commercial prêt.
 
@@ -170,7 +170,7 @@ Le passage au **Go pilote commercial** exige au minimum :
 
 La fiche publique doit permettre au client de comprendre immédiatement ce qu'il
 loue, auprès de quel professionnel, et avec quelle apparence et configuration le
-matériel est présenté. Uttily pose une distinction stricte et non négociable :
+matériel est présenté. Passness pose une distinction stricte et non négociable :
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -204,7 +204,7 @@ interprétée comme preuve de l'état d'un vélo remis.
 - Défaut cosmétique ou structurel d'un modèle d'exposition non retouché.
 
 #### Déclencheurs d'obsolescence photo
-Uttily considère les photos d'un produit comme obsolètes et requiert une
+Passness considère les photos d'un produit comme obsolètes et requiert une
 actualisation lors des événements suivants :
 - Changement de modèle commercial ou de millésime / génération ;
 - Variation notable de couleur ou de géométrie de cadre ;
@@ -224,7 +224,7 @@ première de confiance :
 Le badge est un **état strictement calculé et révocable**, jamais une étiquette
 éditoriale statique ou un argument marketing complaisant. Il est explicable au survol/clic :
 
-> *« Uttily a vérifié les informations professionnelles requises et atteste que ce
+> *« Passness a vérifié les informations professionnelles requises et atteste que ce
 > loueur remplit actuellement l'ensemble des conditions d'éligibilité et de
 > publication de la plateforme. »*
 
@@ -235,11 +235,11 @@ Le badge est un **état strictement calculé et révocable**, jamais une étique
 
 #### Prédicats d'éligibilité :
 1. Informations professionnelles obligatoires fournies et identité validée
-   conforme au processus d'onboarding Uttily ;
+   conforme au processus d'onboarding Passness ;
 2. Compte Stripe Connect satisfaisant `stripe_account_operational_for_rental`
    (`charges_enabled`, `payouts_enabled` et absence de blocages dans `requirements`) ;
 3. Au moins un établissement public configuré (adresse, horaires, coordonnées, retrait activé) ;
-4. Processus d'onboarding initial accompagné par l'équipe Uttily validé.
+4. Processus d'onboarding initial accompagné par l'équipe Passness validé.
 
 *Découplage du stock* : L'éligibilité au badge est une propriété identitaire de
 l'organisation. Une rupture temporaire de stock ne retire pas le badge de l'organisation.
@@ -251,7 +251,7 @@ l'organisation. Une rupture temporaire de stock ne retire pas le badge de l'orga
   l'historique, les réservations ni la conformité de l'organisation.
 - **Guides locaux & itinéraires** : valorisation territoriale facultative (non
   bloquante pour la publication). Distinction formelle entre conseil éditorial
-  du loueur, futur itinéraire audité par Uttily, et voirie publique officielle.
+  du loueur, futur itinéraire audité par Passness, et voirie publique officielle.
   Le terme « spot secret » est proscrit.
 
 ### 2.5 Tableau de vérité : Données réelles vs Affichages autorisés & interdits
@@ -481,11 +481,11 @@ export const BIKE_PHOTO_SLOTS: Record<PhotoSlotType, PhotoSlotDefinition> = {
 
 ---
 
-## 4. Spécification UX : Le Photo Coach Uttily
+## 4. Spécification UX : Le Photo Coach Passness
 
 ### 4.1 Vision et principes fondateurs
 
-Le **Photo Coach Uttily** remplace l'écran passif « *Ajoutez 3 photos* » par un
+Le **Photo Coach Passness** remplace l'écran passif « *Ajoutez 3 photos* » par un
 parcours d'apprentissage interactif directement intégré au geste de prise de vue.
 
 L'interface repose sur quatre principes fondateurs :
@@ -504,7 +504,7 @@ L'interface repose sur quatre principes fondateurs :
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                    LES 5 PILIERS DU PHOTO COACH UTTILY                      │
+│                    LES 5 PILIERS DU PHOTO COACH PASSNESS                      │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │ 1. Animations ultra-courtes (1,5–2s) : zéro friction, pédagogie positive.   │
 │ 2. Continuité stricte : dernière frame d'animation == Ghost Overlay caméra. │
@@ -579,7 +579,7 @@ Image présentée en plein cadre avec cases **initialement non cochées** pour c
 #### Étape 5 : Micro-récompense et progression filaire
 Dès utilisation de la photo :
 - Transition fluide (300–500 ms) vers la vignette de progression ;
-- **Construction incrémentale de l'illustration vélo Uttily** :
+- **Construction incrémentale de l'illustration vélo Passness** :
   - Slot 1 → cadre et roues s'affichent en trait plein ;
   - Slot 2 → pédalier et chaîne s'assemblent ;
   - Slot 3 → freins et pneus complètent l'illustration ;

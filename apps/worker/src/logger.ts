@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Logger structuré fermé pour le worker (G5F, ADR-013).
+ * @passness/worker — Logger structuré fermé pour le worker (G5F, ADR-013).
  *
  * Le port `WorkerLogger` expose une méthode typée précise par événement.
  * Chaque méthode n'accepte QUE les champs autorisés pour cet événement,

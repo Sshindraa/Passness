@@ -1,7 +1,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { eq, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { categories, createDatabase } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { categories, createDatabase } from '@passness/database';
 import {
   createInventoryBlock,
   createInventoryItem,

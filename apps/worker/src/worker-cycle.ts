@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Cycle du worker de documents transactionnels (G5F, ADR-013).
+ * @passness/worker — Cycle du worker de documents transactionnels (G5F, ADR-013).
  *
  * Unité testable `runTransactionalDocumentsWorkerCycle` qui orchestre le
  * pipeline de génération documentaire PUIS le pipeline d'email, avec :
@@ -10,7 +10,7 @@
  * - résultats agrégés fermés et typés.
  *
  * Les pipelines G5D (`executeDocumentPipeline`) et G5E
- * (`executeTransactionalEmailPipeline`) depuis `@uttily/core` restent les
+ * (`executeTransactionalEmailPipeline`) depuis `@passness/core` restent les
  * autorités métier : le worker ne duplique pas leur logique.
  *
  * `runWorkerCycle` est un wrapper minimal qui construit les dépendances et
@@ -18,22 +18,22 @@
  * boucle/scheduler.
  */
 
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type {
   DocumentRenderer,
   ObjectStorage,
   TransactionalEmailSender,
   NotificationEmailSender,
   ProcessNotificationBatchResult,
-} from '@uttily/core';
+} from '@passness/core';
 import {
   executeDocumentPipeline,
   executeTransactionalEmailPipeline,
   emitOperationalLog,
   processDueNotifications,
-} from '@uttily/core';
-import type { DocumentPipelineResult, TransactionalEmailPipelineResult } from '@uttily/core';
-import { validateOutboxBatchLimit } from '@uttily/core';
+} from '@passness/core';
+import type { DocumentPipelineResult, TransactionalEmailPipelineResult } from '@passness/core';
+import { validateOutboxBatchLimit } from '@passness/core';
 
 import type { WorkerLogger } from './logger.js';
 import type { WorkerMetricsCollector } from './metrics.js';
@@ -48,7 +48,7 @@ import type { EmailDeliveryFinalizerResult } from './email-delivery-finalizer.js
 
 /**
  * Fonction pipeline de génération de documents, injectée pour la testabilité.
- * Par défaut, pointe vers `executeDocumentPipeline` depuis `@uttily/core`.
+ * Par défaut, pointe vers `executeDocumentPipeline` depuis `@passness/core`.
  */
 export type DocumentPipelineFn = (
   db: DatabaseClient,
@@ -59,7 +59,7 @@ export type DocumentPipelineFn = (
 
 /**
  * Fonction pipeline d'envoi d'emails, injectée pour la testabilité.
- * Par défaut, pointe vers `executeTransactionalEmailPipeline` depuis `@uttily/core`.
+ * Par défaut, pointe vers `executeTransactionalEmailPipeline` depuis `@passness/core`.
  */
 export type EmailPipelineFn = (
   db: DatabaseClient,
@@ -78,7 +78,7 @@ export type EmailFinalizerFn = (
 
 /**
  * Fonction pipeline de notifications, injectée pour la testabilité.
- * Par défaut, pointe vers `processDueNotifications` depuis `@uttily/core`.
+ * Par défaut, pointe vers `processDueNotifications` depuis `@passness/core`.
  */
 export type NotificationPipelineFn = (
   db: DatabaseClient,
@@ -398,7 +398,7 @@ export async function runTransactionalDocumentsWorkerCycle(
 
 /**
  * Wrapper minimal qui construit les dépendances par défaut (vraies fonctions
- * pipeline depuis `@uttily/core`) et appelle `runTransactionalDocumentsWorkerCycle`.
+ * pipeline depuis `@passness/core`) et appelle `runTransactionalDocumentsWorkerCycle`.
  *
  * Les dépendances (db, renderer, storage, sender, logger, metrics) doivent
  * être fournies par l'appelant. Ce wrapper ne construit PAS de fournisseurs

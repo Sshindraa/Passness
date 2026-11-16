@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   serverExternalPackages: ['postgres'],
-  transpilePackages: ['@uttily/core', '@uttily/database', '@uttily/config'],
+  transpilePackages: ['@passness/core', '@passness/database', '@passness/config'],
   images: {
     qualities: [75, 90],
   },

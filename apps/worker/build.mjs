@@ -1,8 +1,8 @@
 /**
- * @uttily/worker — Script de build esbuild.
+ * @passness/worker — Script de build esbuild.
  *
  * Bundule le worker en un artefact Node ESM réellement exécutable, en résolvant
- * les packages workspace (`@uttily/core`, `@uttily/database`, `@uttily/contracts`)
+ * les packages workspace (`@passness/core`, `@passness/database`, `@passness/contracts`)
  * qui sont source-only (main: ./src/index.ts) et donc non chargeables par Node.
  *
  * Seules les dépendances npm natives (non-workspace) sont externalisées :
@@ -12,7 +12,7 @@
  *
  * Tous les chemins sont résolus depuis `import.meta.url` pour garantir que le
  * script fonctionne identiquement depuis la racine du monorepo
- * (`node apps/worker/build.mjs`, `pnpm --filter @uttily/worker build`) ou
+ * (`node apps/worker/build.mjs`, `pnpm --filter @passness/worker build`) ou
  * depuis le répertoire du package. Aucun chemin relatif n'est utilisé pour
  * `rmSync`/`mkdirSync` afin d'éviter toute suppression hors-cible liée au
  * working directory.

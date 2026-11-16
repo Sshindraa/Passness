@@ -17,13 +17,13 @@ describe('UnifiedOnboardingPage (Chantier 6)', () => {
 
   it('calcule la progression 4 étapes avec resolveUnifiedOnboardingProgress', () => {
     expect(pageSource).toContain('resolveUnifiedOnboardingProgress(organizationId, readiness)');
-    expect(source).toContain('Créer ma boutique Uttily');
+    expect(source).toContain('Créer ma boutique Passness');
     expect(source).toContain('stepperTrack');
   });
 
   it('gère l’état de célébration quand la boutique est prête', () => {
     expect(source).toContain('progress.isReadyForReservations');
-    expect(source).toContain('Votre boutique Uttily est prête !');
+    expect(source).toContain('Votre boutique Passness est prête !');
     expect(source).toContain('Accéder à mon Tableau de Bord');
   });
 

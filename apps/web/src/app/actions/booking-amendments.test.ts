@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   previewBookingAmendmentAction,
   confirmBookingAmendmentAction,
@@ -9,8 +9,8 @@ import * as amendmentAuth from '@/lib/amendment-auth';
 import * as auth from '@/lib/auth';
 import * as dbModule from '@/lib/db';
 import * as stripeModule from '@/lib/stripe';
-import * as core from '@uttily/core';
-import type { StripeAdapter } from '@uttily/core';
+import * as core from '@passness/core';
+import type { StripeAdapter } from '@passness/core';
 
 vi.mock('@/lib/amendment-auth', () => ({
   requireAmendmentManagerOf: vi.fn(),
@@ -28,8 +28,8 @@ vi.mock('@/lib/stripe', () => ({
   getStripeAdapter: vi.fn(),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     previewBookingAmendment: vi.fn(),

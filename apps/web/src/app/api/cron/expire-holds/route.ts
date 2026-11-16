@@ -4,7 +4,7 @@ import {
   emitOperationalLog,
   expireBookingDraftsBatch,
   expireSupplementAmendmentsBatch,
-} from '@uttily/core';
+} from '@passness/core';
 
 // Désactive l'optimisation statique : cet endpoint doit toujours s'exécuter
 // dynamiquement (cron).

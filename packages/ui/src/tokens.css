@@ -6,7 +6,7 @@
   font-display: swap;
 }
 
-/* Uttily UI foundation — stable tokens for 21-U0. */
+/* Passness UI foundation — stable tokens for 21-U0. */
 :root {
   color-scheme: light;
 
@@ -19,7 +19,7 @@
   --ut-color-brand-teal-strong: #7ea3ab;
   --ut-color-on-brand: #1c2426;
   --ut-color-brand-white: #ffffff;
-  /* Compatibility names now share the Uttily palette. */
+  /* Compatibility names now share the Passness palette. */
   --ut-color-home-brand: #8cb6bf;
   --ut-color-home-ink: #1c2426;
   --ut-color-home-muted: #546d72;

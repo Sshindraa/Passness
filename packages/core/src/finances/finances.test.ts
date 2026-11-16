@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { getMerchantFinanceOverview } from './get-merchant-finance-overview';
 import { exportFinancesCsv } from './export-finances-csv';
 import { projectPayoutEvent } from './project-payout';

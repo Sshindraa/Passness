@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import type { StripeEnvironment } from '../payments/types';
 import {
   PROFESSIONAL_VERIFICATION_ALGORITHM_VERSION,

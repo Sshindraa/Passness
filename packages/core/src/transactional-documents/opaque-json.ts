@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Validation JSON strict récursivement (G5C, ADR-013).
+ * @passness/core — Validation JSON strict récursivement (G5C, ADR-013).
  *
  * Vérifie qu'une valeur est récursivement sérialisable en JSON STRICT :
  * - primitives : boolean, string, number (fini, pas NaN/Infinity)

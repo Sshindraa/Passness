@@ -15,7 +15,7 @@ import {
 
 const VALID_CONFIG: ResendConfig = {
   apiKey: 're_test_api_key_1234567890',
-  fromEmail: 'Uttily <noreply@test.example.com>',
+  fromEmail: 'Passness <noreply@test.example.com>',
   bookingConfirmedTemplateId: 'tmpl_booking_confirmed_test_123',
 };
 

@@ -1,6 +1,6 @@
 import { and, asc, eq, isNull, sql } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
-import { categories, countries, destinations, destinationTranslations } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
+import { categories, countries, destinations, destinationTranslations } from '@passness/database';
 import { PublicSearchError } from './errors';
 import {
   isCommerciallyActiveEquipmentFamily,

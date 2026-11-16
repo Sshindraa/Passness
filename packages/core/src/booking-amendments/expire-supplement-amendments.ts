@@ -16,7 +16,7 @@ import {
   outboxEvents,
   type DatabaseClient,
   type DatabaseTransaction,
-} from '@uttily/database';
+} from '@passness/database';
 
 export const BOOKING_AMENDMENT_EXPIRED_AGGREGATE_TYPE = 'BOOKING' as const;
 export const BOOKING_AMENDMENT_EXPIRED_EVENT_TYPE = 'BOOKING_AMENDMENT_EXPIRED' as const;

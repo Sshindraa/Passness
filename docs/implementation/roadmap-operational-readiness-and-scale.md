@@ -8,7 +8,7 @@ Git courants avant d'utiliser un état de livraison mentionné ici.
 
 ## 1. Objet
 
-Cette roadmap organise le travail restant pour faire d'Uttily une plateforme
+Cette roadmap organise le travail restant pour faire d'Passness une plateforme
 opérationnelle pour une grande diversité de loueurs professionnels, sans faire
 dépendre la conception du produit d'un premier partenaire particulier.
 
@@ -72,7 +72,7 @@ validée avant l'ouverture de nouveaux chantiers fonctionnels concurrents.
 La refonte frontend du checkout courant est techniquement finalisée : les vues
 d'accueil, de sélection d'organisation et de support interne sont composées
 depuis leurs features et shells canoniques, les façades mortes et assets de
-conception non utilisés ont été retirés, et les exports publics de `@uttily/ui`
+conception non utilisés ont été retirés, et les exports publics de `@passness/ui`
 restent compatibles. Les URLs, redirections historiques, Server Actions,
 permissions, frontières Core, idempotence et isolation tenant n'ont pas été
 modifiées.
@@ -89,13 +89,13 @@ Après rebase exact sur `origin/main` (`aa1350d`), les quatre commits propres so
 `ee382ac`, `04a9b88`, `4426da7` et `200a2f3`. L'arbre fonctionnel est strictement
 identique à la sauvegarde du checkout précédent (`05ac1c3`), sans différence.
 La validation CI parallèle du run
-[#33498404591](https://github.com/Sshindraa/Uttily/actions/runs/33498404591)
+[#33498404591](https://github.com/Sshindraa/Passness/actions/runs/33498404591)
 est entièrement verte, y compris les six shards Core, Database, Build, Quality,
 Verify et Browser acceptance ; ce dernier a validé les E2E authentifiés avec les
 credentials Clerk TEST de la CI. La PR #40 est fusionnée ; la PR #42, issue de
 la tranche photos/maintenance, a ensuite été fusionnée au commit
 `eebaf08` sur `origin/main` après validation verte du run
-[#33504787871](https://github.com/Sshindraa/Uttily/actions/runs/33504787871).
+[#33504787871](https://github.com/Sshindraa/Passness/actions/runs/33504787871).
 `pnpm test:full` n'a pas été relancé localement, conformément à la procédure de
 clôture.
 
@@ -104,7 +104,7 @@ clôture.
 | Niveau | Sens |
 | --- | --- |
 | `P0` | Bloque la stabilisation ou toute ouverture commerciale LIVE. |
-| `P1` | Requis pour présenter Uttily comme OS loueur autonome et opérationnel. |
+| `P1` | Requis pour présenter Passness comme OS loueur autonome et opérationnel. |
 | `P2` | Requis avant passage à l'échelle multi-loueurs et multi-sites. |
 | `P3` | Différenciation, distribution et intelligence après fiabilité du cœur. |
 | `P4` | Expansion catégories, pays et modèles structurels futurs. |
@@ -124,7 +124,7 @@ globale de sortie reste conditionnée par le gate de la section 5.3.
 - supprimer les duplications et anciens fichiers devenus inutiles ;
 - préserver les Server Actions, gardes serveur et frontières Core existantes ;
 - harmoniser les shells Client, Pro et Support ;
-- stabiliser les primitives et exports `@uttily/ui` ;
+- stabiliser les primitives et exports `@passness/ui` ;
 - vérifier les polices, licences, images et assets ajoutés ;
 - réaligner les documents qui décrivent encore un état antérieur.
 
@@ -171,7 +171,7 @@ doivent pas recopier ni réinterpréter ses 31 décisions.
 - valider settlement, frais Stripe, soldes négatifs, chargebacks et litiges ;
 - faire passer l'ADR-030 à `Accepted` uniquement après sign-off ;
 - implémenter ensuite le remboursement split composant par composant ;
-- persister remboursement client, reprise loueur, restitution Uttily et frais
+- persister remboursement client, reprise loueur, restitution Passness et frais
   provider non récupérables ;
 - tester plusieurs amendements et plusieurs origines de paiement ;
 - conserver le fail-closed tant que la preuve provider et la réconciliation ne
@@ -224,7 +224,7 @@ doivent pas recopier ni réinterpréter ses 31 décisions.
 
 ---
 
-## 7. Phase 2 — Uttily OS universel (`P1`)
+## 7. Phase 2 — Passness OS universel (`P1`)
 
 ### 7.1 Expérience générique « Mes équipements »
 
@@ -511,7 +511,7 @@ Le CSV reste un accélérateur optionnel, pas une source de vérité concurrente
 ### 7.5 Réservations de tous les canaux
 
 - création dashboard pour appel, comptoir ou demande manuelle ;
-- blocage d'une réservation prise hors Uttily ;
+- blocage d'une réservation prise hors Passness ;
 - origine et canal d'acquisition ;
 - paiement hors plateforme seulement si autorisé et audité ;
 - notes opérationnelles ;
@@ -621,7 +621,7 @@ alternatives explicites.
 - historique ;
 - consentement, modification et suppression ;
 - préremplissage ;
-- wallets Stripe sans stockage carte Uttily ;
+- wallets Stripe sans stockage carte Passness ;
 - mesurer le temps réel recherche → paiement ;
 - réévaluer par ADR l'authentification obligatoire si elle bloque l'objectif ;
 - récupération d'un checkout interrompu ;
@@ -871,7 +871,7 @@ non activées et les familles hors taxonomie fermée sont exclues.
 
 Un chantier est prioritaire s'il :
 
-1. rend Uttily exploitable par davantage de loueurs ;
+1. rend Passness exploitable par davantage de loueurs ;
 2. réduit le travail par réservation ;
 3. améliore la fiabilité de disponibilité ;
 4. augmente les réservations ou le revenu du parc ;

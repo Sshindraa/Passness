@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Validation stricte de l'email du destinataire (G5E Round 2, ADR-013 §11).
+ * @passness/core — Validation stricte de l'email du destinataire (G5E Round 2, ADR-013 §11).
  *
  * Parseur PUR et FERMÉ : aucune dépendance externe, aucun effet de bord.
  * Les messages d'erreur ne contiennent JAMAIS la valeur reçue (confidentialité).

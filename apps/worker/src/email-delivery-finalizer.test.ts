@@ -1,22 +1,22 @@
 /**
- * @uttily/worker — Tests d'intégration PostgreSQL du finaliseur DB-only
+ * @passness/worker — Tests d'intégration PostgreSQL du finaliseur DB-only
  * des livraisons email (G5H-C2C-A).
  */
 
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { sql as drizzleSql } from 'drizzle-orm';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
   type IntegrationTestContext,
-} from '@uttily/core/testing';
+} from '@passness/core/testing';
 import {
   OUTBOX_MAX_ATTEMPTS as MAX_ATTEMPTS,
   BOOKING_CONFIRMED_SELECTION,
   claimOutboxBatch,
-} from '@uttily/core';
+} from '@passness/core';
 
 import { finalizeEmailDeliveries } from './email-delivery-finalizer';
 

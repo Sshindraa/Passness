@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { applyFulfillmentTransition } from './apply-fulfillment-transition';
 import type {
   FulfillmentOperationSpec,

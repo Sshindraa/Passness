@@ -1,4 +1,4 @@
-# Satoshi — Uttily hero
+# Satoshi — Passness hero
 
 Source: https://www.fontshare.com/fonts/satoshi
 

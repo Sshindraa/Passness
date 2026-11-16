@@ -9,16 +9,16 @@ import {
 
 describe('restore drill guardrails', () => {
   it('requires an explicit drill confirmation and rejects production', () => {
-    expect(() => assertRecoveryDrillEnvironment({})).toThrow('UTTILY_RECOVERY_DRILL=1');
+    expect(() => assertRecoveryDrillEnvironment({})).toThrow('PASSNESS_RECOVERY_DRILL=1');
     expect(() =>
       assertRecoveryDrillEnvironment({
-        UTTILY_RECOVERY_DRILL: '1',
+        PASSNESS_RECOVERY_DRILL: '1',
         NODE_ENV: 'production',
       }),
     ).toThrow('NODE_ENV=production');
     expect(() =>
       assertRecoveryDrillEnvironment({
-        UTTILY_RECOVERY_DRILL: '1',
+        PASSNESS_RECOVERY_DRILL: '1',
         NODE_ENV: 'test',
       }),
     ).not.toThrow();
@@ -36,13 +36,13 @@ describe('restore drill guardrails', () => {
 
   it('accepts only generated local source/restored database names', () => {
     const names = buildDatabaseNames(1_725_000_000_000, 42);
-    expect(names.source).toMatch(/^uttily_recovery_source_/);
-    expect(names.restored).toMatch(/^uttily_recovery_restored_/);
+    expect(names.source).toMatch(/^passness_recovery_source_/);
+    expect(names.restored).toMatch(/^passness_recovery_restored_/);
     expect(databaseUrlForName(DEFAULT_LOCAL_DATABASE_URL, names.source)).toContain(names.source);
-    expect(() => databaseUrlForName(DEFAULT_LOCAL_DATABASE_URL, 'uttily')).toThrow(
+    expect(() => databaseUrlForName(DEFAULT_LOCAL_DATABASE_URL, 'passness')).toThrow(
       'Nom de base de drill invalide',
     );
-    expect(() => databaseUrlForName('postgresql://neon.example/uttily', names.source)).toThrow(
+    expect(() => databaseUrlForName('postgresql://neon.example/passness', names.source)).toThrow(
       'localhost',
     );
   });

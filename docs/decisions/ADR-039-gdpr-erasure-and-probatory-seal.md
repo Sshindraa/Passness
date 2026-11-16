@@ -4,7 +4,7 @@
 
 **Date :** 2026-09-04
 
-**Relie à :** [ADR-006](ADR-006-clerk-oidc.md), [ADR-016](ADR-016-audit-log-append-only-enforcement.md), [ADR-028](ADR-028-back-office-uttily-and-support-v1.md), au lot 21-P1 (fondation RGPD), au lot 21-P1A (cockpit support), au dossier de décision [`docs/operations/21-p1b-scoping-dpo-003-004.md`](../operations/21-p1b-scoping-dpo-003-004.md) et aux décisions souveraines **`DPO-003`** et **`DPO-004`**.
+**Relie à :** [ADR-006](ADR-006-clerk-oidc.md), [ADR-016](ADR-016-audit-log-append-only-enforcement.md), [ADR-028](ADR-028-back-office-passness-and-support-v1.md), au lot 21-P1 (fondation RGPD), au lot 21-P1A (cockpit support), au dossier de décision [`docs/operations/21-p1b-scoping-dpo-003-004.md`](../operations/21-p1b-scoping-dpo-003-004.md) et aux décisions souveraines **`DPO-003`** et **`DPO-004`**.
 
 ---
 
@@ -22,13 +22,13 @@ L'exercice du droit à l'effacement (« droit à l'oubli », article 17 du RGPD)
    La table `audit_log` dispose d'une clé étrangère `audit_log_actor_user_id_users_id_fk` avec `ON DELETE RESTRICT` et d'un trigger PostgreSQL bloquant toute mutation (`BEFORE UPDATE OR DELETE`). Une suppression dure SQL (`DELETE FROM users`) est donc formellement impossible et échouerait dès lors que l'utilisateur a déclenché la moindre action enregistrée.
 
 4. **Annuaire d'identité externe (Clerk)** :
-   Clerk est l'autorité d'identité et de session (ADR-006). Pour garantir que l'utilisateur ne puisse plus jamais s'authentifier ou réactiver sa session, la suppression de l'entité Clerk via son API backend (`users.deleteUser()`) doit être ordonnancée avec la neutralisation dans Uttily.
+   Clerk est l'autorité d'identité et de session (ADR-006). Pour garantir que l'utilisateur ne puisse plus jamais s'authentifier ou réactiver sa session, la suppression de l'entité Clerk via son API backend (`users.deleteUser()`) doit être ordonnancée avec la neutralisation dans Passness.
 
 ---
 
 ## 2. Décision
 
-Uttily adopte un **modèle d'effacement par neutralisation d'identité, dissociation irréversible et scellement d'archive probatoire**.
+Passness adopte un **modèle d'effacement par neutralisation d'identité, dissociation irréversible et scellement d'archive probatoire**.
 
 ### 2.1. Garde-fous préalables à l'effacement (Fail-Closed)
 
@@ -69,7 +69,7 @@ Une table dédiée `privacy_probatory_seals` fige l'acte de scellement et calcul
 Dès la confirmation de la transaction locale, le serveur appelle l'API Clerk Backend :
 `clerkClient.users.deleteUser(originalOidcSubject)`
 
-Si l'utilisateur n'existe plus chez Clerk (code 404 / `ClerkAPIResponseError`), l'événement est considéré comme déjà accompli. Si l'appel échoue temporairement, l'utilisateur demeure de toute façon bloqué côté Uttily car le module d'authentification (`provisionUserFromOidc`) rejette strictement tout utilisateur portant `deleted_at IS NOT NULL` avec une erreur `AccountDeletedError`.
+Si l'utilisateur n'existe plus chez Clerk (code 404 / `ClerkAPIResponseError`), l'événement est considéré comme déjà accompli. Si l'appel échoue temporairement, l'utilisateur demeure de toute façon bloqué côté Passness car le module d'authentification (`provisionUserFromOidc`) rejette strictement tout utilisateur portant `deleted_at IS NOT NULL` avec une erreur `AccountDeletedError`.
 
 ### 2.6. Journalisation d'audit immuable
 

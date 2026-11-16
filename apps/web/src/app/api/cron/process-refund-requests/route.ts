@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { emitOperationalLog, executeRefundRequestBatch } from '@uttily/core';
+import { emitOperationalLog, executeRefundRequestBatch } from '@passness/core';
 import { getDb } from '@/lib/db';
 import { getStripeAdapter } from '@/lib/stripe';
 import { resolveStripeEnvironment } from '@/lib/payment-config';

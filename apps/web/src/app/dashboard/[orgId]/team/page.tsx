@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { and, eq } from 'drizzle-orm';
-import { organizationMemberships, users } from '@uttily/database';
+import { organizationMemberships, users } from '@passness/database';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
 import {
@@ -9,7 +9,7 @@ import {
   can,
   listPendingInvitations,
   type MembershipRole,
-} from '@uttily/core';
+} from '@passness/core';
 import { TeamView, getInvitableRoles } from '@/features/team';
 import { createInvitationAction, revokeInvitationAction } from '@/app/actions/invitations';
 import { changeMemberRoleAction, removeMemberAction } from '@/app/actions/team';

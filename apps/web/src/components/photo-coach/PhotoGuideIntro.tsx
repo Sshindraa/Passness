@@ -1,7 +1,7 @@
 'use client';
 
 import { type ReactElement, useEffect } from 'react';
-import type { PhotoSlotDefinition } from '@uttily/contracts';
+import type { PhotoSlotDefinition } from '@passness/contracts';
 import { PhotoGuideAnimationAdapter } from './adapter';
 import styles from './PhotoGuideIntro.module.css';
 

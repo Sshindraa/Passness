@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Module Product Analytics (G7H-A).
+ * @passness/core — Module Product Analytics (G7H-A).
  *
  * Enregistrement idempotent d'un événement analytics dans le ledger raw.
  *
@@ -14,8 +14,8 @@
  */
 
 import { and, eq } from 'drizzle-orm';
-import type { DbExecutor } from '@uttily/database';
-import { productAnalyticsEvents } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
+import { productAnalyticsEvents } from '@passness/database';
 import { ProductAnalyticsError } from './errors';
 import type { RecordProductAnalyticsEventInput } from './types';
 import {

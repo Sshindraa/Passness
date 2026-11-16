@@ -135,6 +135,8 @@ export interface Article20PortableData {
 
 export interface PersonalDataExport {
   readonly exportedAt: string;
+  readonly passness_export_version: '1.0';
+  /** Keep the v1 alias so existing export consumers continue to read downloads. */
   readonly uttily_export_version: '1.0';
   readonly article15_personal_data_copy: Article15PersonalDataCopy;
   readonly article20_portable_data: Article20PortableData;

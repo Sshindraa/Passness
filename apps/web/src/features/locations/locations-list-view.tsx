@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import type { LocationRecord } from '@uttily/core';
-import { PageHeader, Card, Badge, LinkButton, Icon } from '@uttily/ui';
+import type { LocationRecord } from '@passness/core';
+import { PageHeader, Card, Badge, LinkButton, Icon } from '@passness/ui';
 
 export interface LocationsListViewProps {
   organizationId: string;

@@ -43,7 +43,7 @@ Mode : Recrédit sur le moyen de paiement initial
 
 Les fonds apparaîtront sur votre relevé bancaire sous 3 à 5 jours ouvrés.
 
-L'équipe Uttily
+L'équipe Passness
 `;
 
   return {

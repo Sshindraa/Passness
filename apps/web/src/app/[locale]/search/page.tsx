@@ -9,7 +9,7 @@ import {
   type RankedPackCandidate,
   type SolvedPackCandidate,
   type SolvedPackAlternatives,
-} from '@uttily/core';
+} from '@passness/core';
 import { getDb } from '@/lib/db';
 import {
   applyDefaultSearchDates,

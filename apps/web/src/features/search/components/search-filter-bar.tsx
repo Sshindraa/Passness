@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import type { PublicSearchCategoryOption } from '@uttily/core';
+import type { PublicSearchCategoryOption } from '@passness/core';
 import type { PublicUiLocale } from '@/lib/public-search';
 import { getCategoryPresentation } from '@/features/equipment/category-presentation';
 import styles from './search-filter-bar.module.css';

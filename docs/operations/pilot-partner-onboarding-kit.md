@@ -4,7 +4,7 @@
 **Date d'émission :** 2026-09-04  
 **Référence opérationnelle :** [`pilot-partner-readiness.md`](./pilot-partner-readiness.md) & [`live-operator-checklist.md`](./live-operator-checklist.md)  
 **Destinataire :** Gérant & Responsable d'exploitation du loueur partenaire pilote  
-**Émetteur :** Direction des Opérations & Pôle Juridique — Uttily SAS  
+**Émetteur :** Direction des Opérations & Pôle Juridique — Passness SAS<br>
 **Confidentialité :** Document à usage opérationnel strict. Les données recueillies sont destinées à la configuration de votre espace professionnel, à la génération déterministe de vos contrats de location opposables et au raccordement sécurisé de vos versements bancaires via Stripe Connect.
 
 ---
@@ -12,7 +12,7 @@
 ## ⚡ Parcours Autonome « Express & Léger » (Moins de 5 minutes chrono)
 
 > 💡 **Conçu pour aller vite : Aucun formulaire lourd.**  
-> Vous configurez votre magasin et vos vélos directement depuis votre tableau de bord Uttily (`/dashboard/[votre-magasin]/settings`).
+> Vous configurez votre magasin et vos vélos directement depuis votre tableau de bord Passness (`/dashboard/[votre-magasin]/settings`).
 > 
 > **Seulement 4 informations légales sont obligatoires** pour que vos contrats de location soient valables face aux assurances et aux clients :
 > 1. Votre **Raison sociale** (ou nom d'enseigne)
@@ -26,7 +26,7 @@
 
 ## Volet 1 : Identité Légale du Magasin (Renseigné directement par le Loueur)
 
-*À saisir dans votre espace Uttily : **Menu > Paramètres > Identité Entreprise**.*
+*À saisir dans votre espace Passness : **Menu > Paramètres > Identité Entreprise**.*
 
 | Champ | Statut | Comment le remplir en 30 secondes | Exemple |
 | :--- | :---: | :--- | :--- |
@@ -56,14 +56,14 @@
 | **Fuseau horaire** | Fuseau IANA | `Europe/Paris` |
 | **Téléphone public du magasin** | Numéro affiché aux clients pour le retrait | `[Ex: +33 4 78 00 00 00]` |
 | **Horaires d'ouverture habituels** | Plages d'ouverture par jour (Lundi - Dimanche) | • Lun-Ven : `09h00 - 12h30 / 14h00 - 19h00`<br>• Samedi : `08h30 - 19h30`<br>• Dimanche : `09h00 - 18h00` |
-| **Consignes de retrait (Pickup)** | Instructions données au client à l'arrivée | `[Ex: Se présenter au comptoir atelier avec pièce d'identité et email de confirmation Uttily.]` |
+| **Consignes de retrait (Pickup)** | Instructions données au client à l'arrivée | `[Ex: Se présenter au comptoir atelier avec pièce d'identité et email de confirmation Passness.]` |
 | **Consignes de restitution (Return)** | Instructions pour le retour du matériel | `[Ex: Restitution propre 15 min avant la fermeture. Contrôle contradictoire de transmission et freins.]` |
 
 ---
 
 ## Volet 3 : Inventaire & Flotte d'Équipements Initiale
 
-*Chaque équipement mis en location sur Uttily est tracé de manière unitaire avec son numéro de série afin de garantir l'absence totale de surbooking.*
+*Chaque équipement mis en location sur Passness est tracé de manière unitaire avec son numéro de série afin de garantir l'absence totale de surbooking.*
 
 > 💡 **Conseil de démarrage léger :** Inutile de saisir tout votre parc d'un coup. Pour lancer le pilote rapidement, **2 à 3 vélos représentatifs suffisent** (ex: 2 VAE + 1 vélo mécanique). Vous pourrez en ajouter d'autres à tout moment depuis votre tableau de bord.
 
@@ -88,7 +88,7 @@ Pour chaque modèle de vélo référencé, 3 photographies nettes et sur fond ne
 
 ## Volet 4 : Grille Tarifaire & Conditions Commerciales
 
-*Uttily applique le modèle officiel de commissionnement transparent **Split 13/7** (13 % commission loueur déduite de votre net de location, 7 % frais de service facturés au locataire).*
+*Passness applique le modèle officiel de commissionnement transparent **Split 13/7** (13 % commission loueur déduite de votre net de location, 7 % frais de service facturés au locataire).*
 
 ### 1. Tarifs Publics de Location TTC
 
@@ -134,7 +134,7 @@ Les fonds des réservations confirmées vous sont reversés directement sur votr
 
 ## Engagement de Conformité & Signature
 
-> **Le Partenaire soussigné atteste de l'exactitude des informations d'immatriculation et des éléments de flotte renseignés dans ce dossier, confirme détenir une assurance Responsabilité Civile Professionnelle (RC Pro) en vigueur couvrant l'activité de location de cycles, et accepte les Conditions Générales Partenaires d'Uttily v1.**
+> **Le Partenaire soussigné atteste de l'exactitude des informations d'immatriculation et des éléments de flotte renseignés dans ce dossier, confirme détenir une assurance Responsabilité Civile Professionnelle (RC Pro) en vigueur couvrant l'activité de location de cycles, et accepte les Conditions Générales Partenaires d'Passness v1.**
 >
 > **Fait à :** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_  
 > **Le :** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_  

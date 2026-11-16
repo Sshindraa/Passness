@@ -1,14 +1,14 @@
 /**
- * @uttily/worker — Tests unitaires du sweeper (G5F).
+ * @passness/worker — Tests unitaires du sweeper (G5F).
  *
  * Le sweeper est une orchestration du cycle existant. Les tests vérifient
  * qu'il délègue correctement à `runTransactionalDocumentsWorkerCycle`.
  */
 
 import { describe, it, expect } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
-import type { DocumentRenderer, ObjectStorage, TransactionalEmailSender } from '@uttily/core';
-import type { DocumentPipelineResult, TransactionalEmailPipelineResult } from '@uttily/core';
+import type { DatabaseClient } from '@passness/database';
+import type { DocumentRenderer, ObjectStorage, TransactionalEmailSender } from '@passness/core';
+import type { DocumentPipelineResult, TransactionalEmailPipelineResult } from '@passness/core';
 
 import { runSweeperCycle } from './sweeper';
 import type { WorkerDependencies } from './worker-cycle';

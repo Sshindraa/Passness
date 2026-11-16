@@ -5,7 +5,7 @@ import {
   assertLocalhost,
   type DatabaseClient,
   createDatabase,
-} from '@uttily/database';
+} from '@passness/database';
 import { getEffectiveBooking } from './get-effective-booking';
 import { EffectiveBookingError } from './errors';
 
@@ -52,7 +52,7 @@ import { EffectiveBookingError } from './errors';
  * 34. invariant financier violé → rejet FINANCIAL_INVARIANT_VIOLATION
  */
 
-const TEST_DB_NAME = 'uttily_test_g7m_b1';
+const TEST_DB_NAME = 'passness_test_g7m_b1';
 const url = process.env.DATABASE_URL;
 const ci = process.env.CI === '1' || process.env.CI === 'true';
 

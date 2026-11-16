@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useMemo, useRef, useState } from 'react';
-import type { PublicSearchDestinationOption } from '@uttily/core';
+import type { PublicSearchDestinationOption } from '@passness/core';
 import { destinationDisplayLabel, rankDestinationSuggestions } from '@/lib/destination-suggestions';
 import styles from './search.module.css';
 

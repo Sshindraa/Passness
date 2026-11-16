@@ -66,7 +66,7 @@ Lieu de retour : ${data.locationName}${data.locationAddress ? ` (${data.location
 ${data.locationPhone ? `Contact magasin : ${data.locationPhone}\n` : ''}${data.returnInstructions ? `Consignes de retour : ${data.returnInstructions}\n` : ''}
 Merci de restituer le matériel propre et dans son état initial avec tous ses accessoires.
 
-L'équipe Uttily
+L'équipe Passness
 `;
 
   return {

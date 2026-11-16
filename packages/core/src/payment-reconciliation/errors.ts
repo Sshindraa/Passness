@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Erreurs du module Payment Reconciliation (Phase 7A, ADR-010 §12).
+ * @passness/core — Erreurs du module Payment Reconciliation (Phase 7A, ADR-010 §12).
  *
  * Codes d'erreur fermés pour le moteur de réconciliation des paiements.
  */

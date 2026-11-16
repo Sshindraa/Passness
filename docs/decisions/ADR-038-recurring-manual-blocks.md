@@ -9,7 +9,7 @@
 
 ## Contexte
 
-Uttily sait créer, libérer et afficher un blocage manuel ponctuel
+Passness sait créer, libérer et afficher un blocage manuel ponctuel
 (`MANUAL_BLOCK`) sur un exemplaire. Les fermetures répétitives doivent conserver
 la même autorité transactionnelle et ne doivent ni réinterpréter les horaires
 locaux ni réécrire une période déjà commencée.

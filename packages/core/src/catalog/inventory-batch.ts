@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { and, eq, inArray, isNull } from 'drizzle-orm';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import {
   categories,
   inventoryItems,
@@ -8,12 +8,12 @@ import {
   locations,
   productVariants,
   products,
-} from '@uttily/database';
+} from '@passness/database';
 import {
   isActionErrorCode,
   MAX_BULK_INVENTORY_ITEMS,
   type ActionErrorCode,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 import { AuthorizationError } from '../identity/permissions';
 import { completeKey, failKey, lockKey, reserveKey } from '../idempotency';
 import type { IdempotencyRecordRow } from '../idempotency';

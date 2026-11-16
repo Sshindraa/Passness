@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import Link from 'next/link';
-import type { MerchantFinanceOverview, PayoutAccountStatus, PayoutReadiness } from '@uttily/core';
+import type { MerchantFinanceOverview, PayoutAccountStatus, PayoutReadiness } from '@passness/core';
 import {
   ConnectComponentsProvider,
   ConnectAccountOnboarding,
@@ -14,9 +14,9 @@ import {
   createAccountSessionAction,
   createOnboardingLinkAction,
 } from '@/app/actions/connected-accounts';
-import { PageHeader, Card, Badge, Button, LinkButton } from '@uttily/ui';
-import type { BadgeTone } from '@uttily/ui';
-import { getEmbeddedColors, getEmbeddedFonts, UTTILY_FONT_FAMILY } from '@/lib/typography';
+import { PageHeader, Card, Badge, Button, LinkButton } from '@passness/ui';
+import type { BadgeTone } from '@passness/ui';
+import { getEmbeddedColors, getEmbeddedFonts, PASSNESS_FONT_FAMILY } from '@/lib/typography';
 import {
   DEFAULT_STRIPE_COUNTRY,
   STRIPE_SUPPORTED_COUNTRIES,
@@ -101,7 +101,7 @@ export function FinancesHub({
           overlays: 'dialog',
           variables: {
             ...getEmbeddedColors(),
-            fontFamily: UTTILY_FONT_FAMILY,
+            fontFamily: PASSNESS_FONT_FAMILY,
           },
         },
         fonts: getEmbeddedFonts(),

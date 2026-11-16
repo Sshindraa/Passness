@@ -9,13 +9,13 @@ export interface OrganizationInvitationData {
 }
 
 export function renderOrganizationInvitation(data: OrganizationInvitationData): RenderedEmail {
-  const subject = `Invitation à rejoindre ${data.organizationName} sur Uttily`;
+  const subject = `Invitation à rejoindre ${data.organizationName} sur Passness`;
   const days = data.expiresInDays ?? 7;
 
   const contentHtml = `
     <h1>🤝 Invitation à rejoindre l’équipe</h1>
     <p>Bonjour,</p>
-    <p>Vous avez été invité(e) à rejoindre l’organisation <strong>${escapeHtml(data.organizationName)}</strong> sur Uttily.</p>
+    <p>Vous avez été invité(e) à rejoindre l’organisation <strong>${escapeHtml(data.organizationName)}</strong> sur Passness.</p>
     
     <div class="card">
       <div class="metric-row">
@@ -39,11 +39,11 @@ export function renderOrganizationInvitation(data: OrganizationInvitationData): 
     </p>
   `;
 
-  const text = `Invitation à rejoindre l’équipe Uttily 🤝
+  const text = `Invitation à rejoindre l’équipe Passness 🤝
 
 Bonjour,
 
-Vous avez été invité(e) à rejoindre l’organisation ${data.organizationName} sur Uttily.
+Vous avez été invité(e) à rejoindre l’organisation ${data.organizationName} sur Passness.
 
 Organisation : ${data.organizationName}
 Rôle attribué : ${data.roleName}
@@ -53,7 +53,7 @@ ${data.acceptUrl}
 
 Cette invitation est valable ${days} jours.
 
-L'équipe Uttily
+L'équipe Passness
 `;
 
   return {

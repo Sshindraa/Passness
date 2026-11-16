@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Parser central et validation runtime stricte récursive du
+ * @passness/core — Parser central et validation runtime stricte récursive du
  * snapshot de rendu v1 (G5C, ADR-013).
  *
  * parseDocumentRenderSnapshotV1 valide RÉCURSIVEMENT et STRICTEMENT la forme,
@@ -17,7 +17,7 @@
  *   non safe integer, date non canonique).
  */
 
-import { bookingStatus, taxStatus, inventoryCondition, inventoryStatus } from '@uttily/database';
+import { bookingStatus, taxStatus, inventoryCondition, inventoryStatus } from '@passness/database';
 import { DocumentRenderError } from './errors';
 import { isRecursivelySerializable } from './opaque-json';
 import { isCanonicalIsoTimestamp } from './load-document-render-data';

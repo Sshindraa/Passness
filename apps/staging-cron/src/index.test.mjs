@@ -5,8 +5,8 @@ import { CRON_PATHS, resolveCronTargetUrl, runScheduledJobs } from './index.mjs'
 
 test('normalise une URL HTTPS publique sans query ni slash final', () => {
   assert.equal(
-    resolveCronTargetUrl('https://uttily-staging-uttily.vercel.app/base/?ignored=true#fragment'),
-    'https://uttily-staging-uttily.vercel.app/base',
+    resolveCronTargetUrl('https://passness-staging.vercel.app/base/?ignored=true#fragment'),
+    'https://passness-staging.vercel.app/base',
   );
 });
 
@@ -46,7 +46,7 @@ test('appelle les quatre routes séquentiellement avec le secret partagé', asyn
   );
   assert.equal(calls[0].init.method, 'GET');
   assert.equal(calls[0].init.headers.Authorization, 'Bearer test-secret');
-  assert.equal(calls[0].init.headers['User-Agent'], 'uttily-staging-cron/1');
+  assert.equal(calls[0].init.headers['User-Agent'], 'passness-staging-cron/1');
   assert.deepEqual(
     results,
     CRON_PATHS.map((path) => ({ path, status: 200, ok: true })),

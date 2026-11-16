@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Use case idempotent de création de snapshot de rendu (G5C, ADR-013).
+ * @passness/core — Use case idempotent de création de snapshot de rendu (G5C, ADR-013).
  *
  * Ordre des verrous (documenté) :
  * 1. BEGIN TRANSACTION
@@ -24,7 +24,7 @@
  */
 
 import { sql } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
 import { DocumentRenderError } from './errors';
 import { parseBookingConfirmedV1 } from './booking-confirmed-parser';
 import { loadDocumentRenderData, toCanonicalIsoTimestamp } from './load-document-render-data';

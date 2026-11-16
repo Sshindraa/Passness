@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { ProductAnalyticsSummary } from '@uttily/core';
+import type { ProductAnalyticsSummary } from '@passness/core';
 import {
   buildInternalFunnelView,
   deriveFunnelRatios,

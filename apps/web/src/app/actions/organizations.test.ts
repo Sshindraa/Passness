@@ -1,6 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
-import type { AuthenticatedUser } from '@uttily/core';
-import type { DatabaseClient } from '@uttily/database';
+import type { AuthenticatedUser } from '@passness/core';
+import type { DatabaseClient } from '@passness/database';
 import * as auth from '@/lib/auth';
 import * as dbLib from '@/lib/db';
 import { createOrganizationAction } from './organizations';
@@ -17,8 +17,8 @@ vi.mock('@/lib/db', () => ({
   getDb: vi.fn(),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     createOrganizationForUser: vi.fn(),
@@ -55,7 +55,7 @@ describe('Organizations Server Actions', () => {
   it('appelle createOrganizationForUser et revalide le dashboard en cas de succès', async () => {
     vi.spyOn(auth, 'getAuthenticatedUser').mockResolvedValueOnce(user);
     vi.spyOn(dbLib, 'getDb').mockReturnValueOnce({} as DatabaseClient);
-    const { createOrganizationForUser } = await import('@uttily/core');
+    const { createOrganizationForUser } = await import('@passness/core');
     vi.mocked(createOrganizationForUser).mockResolvedValueOnce({
       organization: {
         id: '11111111-1111-1111-1111-111111111111',

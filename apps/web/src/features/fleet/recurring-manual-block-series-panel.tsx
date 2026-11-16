@@ -6,8 +6,8 @@ import type {
   RecurringManualBlockSeriesMutationResult,
   RecurringManualBlockSeriesView,
   ReleaseRecurringManualBlockOccurrenceResult,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 import {
   deleteRecurringManualBlockSeriesAction,
   releaseRecurringManualBlockOccurrenceAction,

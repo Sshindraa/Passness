@@ -1,6 +1,6 @@
 'use server';
 
-import { listPublicSearchFilterOptions, type PublicSearchFilterOptions } from '@uttily/core';
+import { listPublicSearchFilterOptions, type PublicSearchFilterOptions } from '@passness/core';
 import { getDb } from '@/lib/db';
 
 export async function loadHomeSearchOptions(

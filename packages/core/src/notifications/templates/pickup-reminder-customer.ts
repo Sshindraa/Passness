@@ -66,7 +66,7 @@ Lieu de retrait : ${data.locationName}${data.locationAddress ? ` (${data.locatio
 ${data.locationPhone ? `Contact magasin : ${data.locationPhone}\n` : ''}${data.pickupInstructions ? `Consignes de retrait : ${data.pickupInstructions}\n` : ''}
 N'oubliez pas d'apporter une pièce d'identité en cours de validité.
 
-L'équipe Uttily
+L'équipe Passness
 `;
 
   return {

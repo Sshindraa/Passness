@@ -19,7 +19,7 @@ export interface CommissionStatementOptions {
 /**
  * Génère un décompte officiel de commissions et reversements (format CSV comptable avec BOM UTF-8).
  * Ce document est opposable pour la comptabilité du partenaire loueur et détaille :
- * - Les mentions légales d'Uttily SAS (opérateur technique d'intermédiation)
+ * - Les mentions légales d'Passness SAS (opérateur technique d'intermédiation)
  * - Les mentions légales du partenaire loueur (SIRET, TVA, RCS, siège social)
  * - Les totaux consolidés (brut, commission 13%, remboursements, net reversé)
  * - La ventilation détaillée ligne par ligne
@@ -36,10 +36,10 @@ export function generateCommissionStatementCsv(options: CommissionStatementOptio
   lines.push(escapeCsv('DÉCOMPTE OFFICIEL DE COMMISSIONS ET REVERSEMENTS'));
   lines.push(
     escapeCsv(
-      'Opérateur technique : Uttily SAS · Capital 10 000 € · SIREN 987 654 321 · RCS Paris · TVA FR12987654321',
+      'Opérateur technique : Passness SAS · Capital 10 000 € · SIREN 987 654 321 · RCS Paris · TVA FR12987654321',
     ),
   );
-  lines.push(escapeCsv('Plateforme : Uttily (https://uttily.com) · contact@uttily.com'));
+  lines.push(escapeCsv('Plateforme : Passness (https://passness.com) · contact@passness.com'));
   lines.push('');
 
   // En-tête légal du partenaire loueur
@@ -81,7 +81,7 @@ export function generateCommissionStatementCsv(options: CommissionStatementOptio
     `${escapeCsv('Chiffre d affaires brut (TTC)')};${formatAmount(overview.sales.grossAmountMinor)}`,
   );
   lines.push(
-    `${escapeCsv('Commissions plateforme Uttily')};${formatAmount(overview.commissions.platformAmountMinor)}`,
+    `${escapeCsv('Commissions plateforme Passness')};${formatAmount(overview.commissions.platformAmountMinor)}`,
   );
   lines.push(
     `${escapeCsv('Remboursements & Annulations')};${formatAmount(overview.payments.refundedAmountMinor)}`,
@@ -100,7 +100,7 @@ export function generateCommissionStatementCsv(options: CommissionStatementOptio
     'Produit / Équipement',
     'Client',
     'Montant brut (EUR)',
-    'Commission Uttily (EUR)',
+    'Commission Passness (EUR)',
     'Net reversé (EUR)',
     'Statut',
   ];

@@ -7,7 +7,7 @@ import type {
   OperationalItemCalendar,
   OperationalPlanning,
   OperationalPlanningEvent,
-} from '@uttily/core';
+} from '@passness/core';
 import { formatDateTimeInTimeZone } from '@/lib/operations-helpers';
 import { getCategoryPresentation } from '@/features/equipment/category-presentation';
 import { ItemCalendarPanel } from './item-calendar-panel';

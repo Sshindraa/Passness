@@ -2,7 +2,7 @@
 
 - **Statut** : Accepté
 - **Date** : 2026-08-05
-- **Décideurs** : Porteur produit Uttily, équipe engineering
+- **Décideurs** : Porteur produit Passness, équipe engineering
 - **Relie à** : ADR-005, ADR-013
 - **Clôture** : ADR-013 questions 6, 7 et 14
 
@@ -53,10 +53,10 @@ implémentés après cet ADR ; ils seront livrés dans des lots ultérieurs avec
     applique un garde-fou fail-closed : une `DATABASE_URL` distante sans
     `DATABASE_DIRECT_URL` est rejetée, et une `DATABASE_DIRECT_URL` contenant
     `-pooler` est rejetée. Voir `docs/implementation/environments.md`.
-- **Environnement de développement actuel** : projet Neon `Uttily-dev` (plan
+- **Environnement de développement actuel** : projet Neon `Passness-dev` (plan
   Free, `aws-eu-central-1`, PostgreSQL 16). PostgreSQL local (Docker Compose)
   reste la cible des tests d'intégration destructifs. La base Neon Dev ne
-  contient pas encore le schéma Uttily ; les migrations seront appliquées dans
+  contient pas encore le schéma Passness ; les migrations seront appliquées dans
   une étape séparée après configuration manuelle des secrets.
 
 ### 2.3 Worker
@@ -300,9 +300,9 @@ Resend est le seul fournisseur étudié compatible nativement avec Q14 **dans sa
 d'idempotence de 24 h**. Une politique fail-closed est nécessaire au-delà de cette fenêtre pour
 garantir l'absence de double envoi automatique.
 
-### Comparaison avec le backoff Uttily
+### Comparaison avec le backoff Passness
 
-Le backoff Uttily est `MAX_ATTEMPTS = 5`, backoff exponentiel 30 s → 480 s
+Le backoff Passness est `MAX_ATTEMPTS = 5`, backoff exponentiel 30 s → 480 s
 (`packages/core/src/outbox-claim/scheduling.ts`), soit ~15 min pour les 5 tentatives en
 fonctionnement normal — bien sous 24 h. Le risque n'apparaît qu'en cas d'**indisponibilité prolongée
 du worker** (> 24 h) entre l'acceptation Resend et le commit DB du `providerMessageId`.
@@ -468,7 +468,7 @@ Cet ADR ne livré aucun code. Les lots suivants seront définis ultérieurement 
 
 ### Worker VPS
 
-- Rollback par image Docker taguée N-1 (`docker compose up -d --no-deps uttily-worker` avec la
+- Rollback par image Docker taguée N-1 (`docker compose up -d --no-deps passness-worker` avec la
   version précédente). Le worker est idempotent (outbox) ; un rollback n'entraîne pas de perte
   d'effets déjà persistés.
 

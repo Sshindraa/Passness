@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { DatabaseClient } from '@uttily/database';
+import type { DatabaseClient } from '@passness/database';
 import { createPublicSearchCursorCodec } from './cursor';
 import { PublicSearchError } from './errors';
 import { searchPublicOffers } from './search-offers';

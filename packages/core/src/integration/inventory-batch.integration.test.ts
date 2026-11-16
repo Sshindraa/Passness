@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { eq, sql } from 'drizzle-orm';
-import { categories, createDatabase, inventoryItems, idempotencyRecords } from '@uttily/database';
+import { categories, createDatabase, inventoryItems, idempotencyRecords } from '@passness/database';
 import {
   COMMERCIAL_EQUIPMENT_FAMILY_SLUGS,
   createInventoryItemsBatch,

@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
 import { and, asc, eq, isNull } from 'drizzle-orm';
-import type { DatabaseClient, DbExecutor } from '@uttily/database';
-import { categories, lockOrganization, productVariants, products } from '@uttily/database';
-import { isActionErrorCode, type ActionErrorCode } from '@uttily/contracts';
+import type { DatabaseClient, DbExecutor } from '@passness/database';
+import { categories, lockOrganization, productVariants, products } from '@passness/database';
+import { isActionErrorCode, type ActionErrorCode } from '@passness/contracts';
 import { AuthorizationError } from '../identity/permissions';
 import { CatalogError } from './errors';
 import { isCommerciallyActiveEquipmentFamily, resolveEquipmentFamily } from './equipment-taxonomy';

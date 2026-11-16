@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, type ReactElement } from 'react';
-import type { PhotoQualityAssessment, DetectedEquipmentFeatures } from '@uttily/contracts';
+import type { PhotoQualityAssessment, DetectedEquipmentFeatures } from '@passness/contracts';
 import styles from './PhotoCoachAiFeedback.module.css';
 
 export interface PhotoCoachAiFeedbackProps {

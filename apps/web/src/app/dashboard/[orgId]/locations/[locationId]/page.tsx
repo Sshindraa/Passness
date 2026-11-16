@@ -8,7 +8,7 @@ import {
   listLocationScheduleExceptions,
   requireMembership,
   LOCATION_MANAGERS,
-} from '@uttily/core';
+} from '@passness/core';
 import {
   updateLocationAction,
   upsertLocationScheduleExceptionAction,

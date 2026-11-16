@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Tests unitaires du logger finalizer (G5F).
+ * @passness/worker — Tests unitaires du logger finalizer (G5F).
  */
 
 import { describe, it, expect } from 'vitest';

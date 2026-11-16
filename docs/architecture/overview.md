@@ -2,7 +2,7 @@
 
 ## Décision actuelle
 
-Uttily démarre comme un **monolithe modulaire TypeScript**. L'interface et les endpoints HTTP vivent dans Next.js. Le domaine métier est isolé de Next.js afin de pouvoir introduire une API NestJS ou une application mobile sans réécriture des règles métier.
+Passness démarre comme un **monolithe modulaire TypeScript**. L'interface et les endpoints HTTP vivent dans Next.js. Le domaine métier est isolé de Next.js afin de pouvoir introduire une API NestJS ou une application mobile sans réécriture des règles métier.
 
 ```text
 apps/
@@ -40,7 +40,7 @@ Un module expose une interface publique. Aucun autre module n'importe directemen
 | Base transactionnelle | PostgreSQL managé + PostGIS (Neon, ADR-005) |
 | Fichiers | Stockage objet compatible S3 — Cloudflare R2 juridiction `eu` (ADR-014) |
 | Paiement marketplace | Stripe Connect |
-| Identité | Fournisseur OIDC ; autorisation métier dans Uttily |
+| Identité | Fournisseur OIDC ; autorisation métier dans Passness |
 | Traitement différé | Outbox PostgreSQL + worker (VPS DigitalOcean Frankfurt, ADR-014) |
 | Email transactionnel | Resend (ADR-014) |
 | Erreurs | Sentry ou équivalent |
@@ -92,7 +92,7 @@ Une API NestJS est ajoutée uniquement lorsqu'une API publique, une application 
 
 ## Direction long terme : option C
 
-ADR-019 fixe la direction stratégique : Uttily évolue progressivement vers une
+ADR-019 fixe la direction stratégique : Passness évolue progressivement vers une
 infrastructure mondiale de l'accès au matériel, sans transformer cette ambition
 en périmètre MVP immédiat.
 

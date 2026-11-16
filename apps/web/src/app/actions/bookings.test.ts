@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createBookingDraftAction, mapBookingDraftError } from './bookings';
 import * as auth from '@/lib/auth';
-import * as core from '@uttily/core';
+import * as core from '@passness/core';
 
 vi.mock('@/lib/auth', () => ({
   getAuthenticatedUser: vi.fn(),
@@ -11,8 +11,8 @@ vi.mock('@/lib/db', () => ({
   getDb: vi.fn(() => ({})),
 }));
 
-vi.mock('@uttily/core', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@uttily/core')>();
+vi.mock('@passness/core', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@passness/core')>();
   return {
     ...actual,
     resolvePublicBookingAuthority: vi.fn(),

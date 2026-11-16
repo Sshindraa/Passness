@@ -1,9 +1,9 @@
-name = "uttily-staging-cron"
+name = "passness-staging-cron"
 main = "src/index.mjs"
 compatibility_date = "2026-08-26"
 
 [vars]
-CRON_TARGET_URL = "https://uttily-staging.vercel.app"
+CRON_TARGET_URL = "https://passness-staging.vercel.app"
 
 [triggers]
 crons = ["* * * * *"]

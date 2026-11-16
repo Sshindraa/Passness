@@ -1,7 +1,7 @@
 import React from 'react';
 import { describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { BIKE_PHOTO_SLOTS } from '@uttily/contracts';
+import { BIKE_PHOTO_SLOTS } from '@passness/contracts';
 import {
   FullBikeOverlay,
   DrivetrainOverlay,

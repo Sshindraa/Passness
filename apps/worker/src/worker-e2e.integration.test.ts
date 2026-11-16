@@ -1,5 +1,5 @@
 /**
- * @uttily/worker — Tests E2E PostgreSQL du worker complet (G5F, ADR-013 §11).
+ * @passness/worker — Tests E2E PostgreSQL du worker complet (G5F, ADR-013 §11).
  *
  * 14 scénarios couvrant le worker complet avec les fakes G5C-G5E :
  * 1. nominal, 2. replay, 3. crash après stockage, 4. crash après email,
@@ -15,12 +15,12 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { sql } from 'drizzle-orm';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
   type IntegrationTestContext,
-} from '@uttily/core/testing';
+} from '@passness/core/testing';
 import {
   FakeDeterministicDocumentRenderer,
   InMemoryObjectStorage,
@@ -37,7 +37,7 @@ import {
   type EmailInput,
   type EmailSendResult,
   type TransactionalEmailSender,
-} from '@uttily/core';
+} from '@passness/core';
 
 import { runTransactionalDocumentsWorkerCycle } from './worker-cycle';
 import type { WorkerDependencies } from './worker-cycle';

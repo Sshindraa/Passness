@@ -1,5 +1,5 @@
 /**
- * @uttily/contracts — Définitions sémantiques des slots photo et guide vélo (G8B-3).
+ * @passness/contracts — Définitions sémantiques des slots photo et guide vélo (G8B-3).
  *
  * Narration e-commerce désirable & pragmatique en 3 temps forts :
  * 1. HERO_PROFILE        : Vue Hero profil complet (accroche & proportion)

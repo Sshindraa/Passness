@@ -5,7 +5,7 @@
 
 ## Contexte
 
-Le Lot 2A introduit les catégories de catalogue comme taxonomie globale gérée par l'admin Uttily (décision produit : catégories globales, pas par organisation). L'architecture impose des identifiants UUID v4 générés par PostgreSQL via `gen_random_uuid()` (cf. `docs/architecture/data-model.md`).
+Le Lot 2A introduit les catégories de catalogue comme taxonomie globale gérée par l'admin Passness (décision produit : catégories globales, pas par organisation). L'architecture impose des identifiants UUID v4 générés par PostgreSQL via `gen_random_uuid()` (cf. `docs/architecture/data-model.md`).
 
 La première implémentation du Lot 2A utilisait `Category.id` en `text` avec des IDs déterministes (`gen-surf`, `gen-paddle`, etc.) pour faciliter le seed idempotent. Cela créait une exception non documentée à la convention UUID.
 

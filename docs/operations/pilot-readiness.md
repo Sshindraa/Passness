@@ -79,7 +79,7 @@ La collecte partenaire et l'exécution opérateur sont préparées dans
 [`live-operator-checklist.md`](live-operator-checklist.md).
 
 **Règle absolue 21-P0 :** les valeurs techniques existantes (`v1`,
-`NOT_APPLICABLE`, `invoiceIssuer: Uttily`, taux documenté), les états provider
+`NOT_APPLICABLE`, `invoiceIssuer: Passness`, taux documenté), les états provider
 et le drill local ne valent pas une approbation humaine ou commerciale.
 
 ---
@@ -107,18 +107,18 @@ et le drill local ne valent pas une approbation humaine ou commerciale.
 | Merchant / settlement model | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Finance + Juridique | `settlementMerchantMode: 'PLATFORM'` par défaut (`packages/core/src/connected-accounts/create-connected-account.ts:146`) ; `onBehalfOfAccountId` systématiquement `null` (`apps/web/src/app/actions/payments.ts:105`). Lot 5 décision A (questions 1-6) non rendue. | **Oui** |
 | Commission — règle commerciale | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Finance + Porteur produit | `ADR-029` et le registre serveur implémentent `split-13-7-v1` : base `subtotal + mandatory fees`, 13 % frais loueur + 7 % service client, `HALF_UP_PER_COMPONENT`, sans fixe, snapshots immuables et deltas par composant. Le choix produit ne vaut pas sign-off Finance/Juridique ; base fiscale, TVA, frais Stripe, refunds et date d'effet restent à rendre (`FIN-002`). | **Oui** |
 | TVA / fiscalité — statut de taxe | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Expert-comptable + Juridique | **`status: 'NOT_APPLICABLE'` codé en dur** avec `amountMinor: null` et `rateBps: null` (`apps/web/src/lib/payment-config.ts`). Or Lot 5 décision C demande explicitement au validateur de trancher « si la taxe est `APPLIED` ou `NOT_APPLICABLE` ». Le code pré-décide. Voir C3-F3. | **Oui** |
-| Invoice issuer (émetteur de facture) | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Expert-comptable + Juridique | **`invoiceIssuer: 'Uttily'` codé en dur** (`apps/web/src/lib/payment-config.ts`) et propagé dans `TaxRuleSnapshot`. Lot 5 décision C-2 demande « qui émet la facture ou le reçu de location ». Voir C3-F3. | **Oui** |
-| Reçus / factures (documents) | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Expert-comptable + Juridique | Pipeline de documents transactionnels livré (ADR-013, ADR-015) : génération PDF, snapshot immuable, `tax_status` / `tax_amount_minor` / `tax_rate_bps` transportés (`load-document-render-data.ts:232`, `534`). Mentions légales obligatoires dynamiques Loueur & Uttily SAS intégrées (Lot 21-F1). Prêt pour validation formelle. | **Oui** |
+| Invoice issuer (émetteur de facture) | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Expert-comptable + Juridique | **`invoiceIssuer: 'Passness'` codé en dur** (`apps/web/src/lib/payment-config.ts`) et propagé dans `TaxRuleSnapshot`. Lot 5 décision C-2 demande « qui émet la facture ou le reçu de location ». Voir C3-F3. | **Oui** |
+| Reçus / factures (documents) | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Expert-comptable + Juridique | Pipeline de documents transactionnels livré (ADR-013, ADR-015) : génération PDF, snapshot immuable, `tax_status` / `tax_amount_minor` / `tax_rate_bps` transportés (`load-document-render-data.ts:232`, `534`). Mentions légales obligatoires dynamiques Loueur & Passness SAS intégrées (Lot 21-F1). Prêt pour validation formelle. | **Oui** |
 | Refunds (exécution) | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Finance + Juridique | Worker et cron d'exécution des remboursements (G7M B2B2 / B2B2B) ; compensation intégrale des paiements tardifs (`docs/implementation/g7m-b2b2a-refund-execution.md`, `g7m-c4b-supplement-compensation.md`). `ADR-030` propose le délai, les messages et la résolution manuelle ; l'exécution split par composant reste à construire et valider. | **Oui** |
 | Amendements financiers — mentions légales | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Juridique + Finance | ADR-023 acceptée, G7M C1–C5 implémentés et fusionnés. `ADR-030` propose la base split et les états d'échec ; restent à valider explicitement les mentions légales des documents amendés, la fiscalité des suppléments/remboursements et le délai/message client. | **Oui** |
-| Stripe Connect terms | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Juridique + Finance | Destination charge (ADR-010), onboarding Express France (ADR-024) et embarqué (ADR-025). Acceptation par le partenaire des conditions Stripe Connect non tracée dans la matrice Uttily. | **Oui** |
+| Stripe Connect terms | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Juridique + Finance | Destination charge (ADR-010), onboarding Express France (ADR-024) et embarqué (ADR-025). Acceptation par le partenaire des conditions Stripe Connect non tracée dans la matrice Passness. | **Oui** |
 | Fiscalité hors France | `NOT_APPLICABLE` | `NOT_APPLICABLE` | — | Périmètre pilote = France / Lyon, EUR uniquement (`docs/implementation/mvp-pilot-readiness.md`). Question ouverte G7B-R3 « Fiscalité par pays » reste fermée pour le pilote. | Non |
 
 ## C2.C — Privacy
 
 | Sujet | État technique | État documentaire | Owner du sign-off | Preuve / lien | Bloque pilote |
 | --- | --- | --- | --- | --- | --- |
-| Politique de confidentialité | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | DPO + Juridique | Page publique publiée (`/privacy`, alias `/politique-de-confidentialite`), version `v1`, responsable de traitement, contact DPO (`privacy@uttily.com`), droits des personnes et registre des sous-traitants (Stripe, Clerk, Neon, Cloudflare R2, Resend, Vercel). Prête pour revue DPO. | **Oui** |
+| Politique de confidentialité | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | DPO + Juridique | Page publique publiée (`/privacy`, alias `/politique-de-confidentialite`), version `v1`, responsable de traitement, contact DPO (`privacy@passness.com`), droits des personnes et registre des sous-traitants (Stripe, Clerk, Neon, Cloudflare R2, Resend, Vercel). Prête pour revue DPO. | **Oui** |
 | Finalités | `NOT_APPLICABLE` | `BLOCKED` | DPO | Aucun registre des finalités. Non déductible du code : le code dit *ce qui est fait*, jamais *pour quelle finalité déclarée*. | **Oui** |
 | Rétention — annonce aux personnes | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | DPO | Rétention analytics techniquement implémentée (90 j raw / 24 mois agrégats, ADR-022) et durées contractuelles désormais annoncées dans la politique de confidentialité publiée `/[locale]/privacy` (v1). En attente de validation DPO (`DPO-002`). | **Oui** |
 | Suppression / effacement | `REQUEST_INTAKE_ONLY (Lot 21-P1)` | `BLOCKED` | DPO + Juridique + Engineering | Table `privacy_requests` (migration 0058), formulaire client bilingue `/[locale]/account/privacy` et runbook opérateur livrés. L'effacement/anonymisation effectif et la purge automatisée sont différés au Lot 21-P2 sous condition de l'arbitrage préalable `DPO-003` sur les obligations de conservation légale. | **Oui** |
@@ -143,7 +143,7 @@ et le drill local ne valent pas une approbation humaine ou commerciale.
 | --- | --- | --- | --- | --- | --- |
 | Informations légales entreprise | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Porteur produit + Juridique | Colonnes légales ajoutées sur `organizations` (migration 0057) : SIRET/SIREN avec validation Luhn, numéro de TVA intracommunautaire (calcul automatique et contrôle), forme juridique (`LEGAL_FORMS`), siège social et représentant légal. Écran de gestion dédié avec audit trail (`ORGANIZATION_LEGAL_SETTINGS_UPDATED`). | Non (bloqueur technique levé — Lot 21-O1) |
 | Établissements | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Porteur produit | Jalon `LOCATION` : adresse complète, coordonnées géographiques, `pickupEnabled` et au moins une plage horaire (`onboarding-readiness.ts:60-90`). Aucune pièce justificative d'établissement requise. | Non |
-| Facturation partenaire | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Finance + Expert-comptable | Génération du décompte officiel de commission et de reversement (`generateCommissionStatementCsv`) avec mentions obligatoires Uttily SAS / Loueur et vue loueur `/statement` (Lot 21-F1). Prêt pour validation comptable (`FIN-008`). | Non (bloqueur technique levé — Lot 21-F1) |
+| Facturation partenaire | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Finance + Expert-comptable | Génération du décompte officiel de commission et de reversement (`generateCommissionStatementCsv`) avec mentions obligatoires Passness SAS / Loueur et vue loueur `/statement` (Lot 21-F1). Prêt pour validation comptable (`FIN-008`). | Non (bloqueur technique levé — Lot 21-F1) |
 | Connected Account LIVE readiness | `TECHNICALLY_VERIFIED` | `HUMAN_SIGNOFF_REQUIRED` | Finance + Porteur produit | Jalon `PAYMENTS` : `chargesEnabled \|\| onboardingStatus === 'ENABLED'` (`onboarding-readiness.ts:244`). Garde-fou LIVE en place : `STRIPE_ENVIRONMENT=LIVE` exige `PAYMENTS_LIVE_ENABLED=true` (`payment-config.ts`). Procédure d'onboarding et de vérification documentée dans [`21-ops-stripe-live-activation.md`](../runbooks/21-ops-stripe-live-activation.md). | **Oui** |
 | Stripe LIVE credentials | `TECHNICALLY_VERIFIED` | `PROCEDURE_DOCUMENTED` | Porteur produit + Engineering | Non configurés en dépôt public (règle zéro secret). Procédure d'injection sécurisée Vercel et vérification via `pnpm readiness:live` documentée dans [`21-ops-stripe-live-activation.md`](../runbooks/21-ops-stripe-live-activation.md). | **Oui** |
 | Stripe LIVE webhooks | `TECHNICALLY_VERIFIED` | `PROCEDURE_DOCUMENTED` | Engineering + Porteur produit | Endpoints Platform et Connect livrés avec IP allow-list et vérification signature ; procédure de création Dashboard Stripe documentée dans [`21-ops-stripe-live-activation.md`](../runbooks/21-ops-stripe-live-activation.md). | **Oui** |
@@ -208,7 +208,7 @@ tax: {
   status: 'NOT_APPLICABLE',
   amountMinor: null,
   rateBps: null,
-  invoiceIssuer: 'Uttily',
+  invoiceIssuer: 'Passness',
 },
 ```
 
@@ -303,11 +303,11 @@ aura été rendu par le DPO.
 **Capacité livrée :**  
 Le Lot 21-P1 a implémenté le mécanisme d'accès et d'exportation de données
 personnelles pour les utilisateurs authentifiés :
-1. **Copie intégrale Art. 15 RGPD :** [`buildPersonalDataCopy`](file:///Users/hamza/Projects/Uttily/packages/core/src/privacy/build-personal-data-copy.ts)
+1. **Copie intégrale Art. 15 RGPD :** [`buildPersonalDataCopy`](file:///Users/hamza/Projects/Passness/packages/core/src/privacy/build-personal-data-copy.ts)
    regroupe identité, adresses, réservations, statuts de paiement et consentements
    sans exposer d'identifiants techniques tiers (Stripe Customer/Payment IDs)
    ni d'URLs d'objets R2 signées.
-2. **Portabilité Art. 20 RGPD :** [`buildPortableData`](file:///Users/hamza/Projects/Uttily/packages/core/src/privacy/build-portable-data.ts)
+2. **Portabilité Art. 20 RGPD :** [`buildPortableData`](file:///Users/hamza/Projects/Passness/packages/core/src/privacy/build-portable-data.ts)
    fournit un dataset JSON structuré, couramment utilisé et lisible par machine.
 3. **Endpoint sécurisé :** `/api/account/privacy/export` accessible uniquement à
    l'utilisateur authentifié pour ses propres données.
@@ -341,7 +341,7 @@ case non prouvée reste non cochée. Une case non cochée bloque le pilote.
 
 | Élément | Statut actuel | Preuve / limite | Owner, méthode et prochaine action |
 | --- | --- | --- | --- |
-| Restore mechanism local drill | `PASS` | [`chantier-20b-restore-drill-report.md`](../implementation/chantier-20b-restore-drill-report.md) : PostgreSQL/PostGIS local éphémère, `pg_dump` custom puis `pg_restore`, fixture vérifiée, résultat `PASS`. | Owner recovery ; rejouer localement avec `UTTILY_RECOVERY_DRILL=1 NODE_ENV=test` après changement de migration ; cela ne teste pas production. |
+| Restore mechanism local drill | `PASS` | [`chantier-20b-restore-drill-report.md`](../implementation/chantier-20b-restore-drill-report.md) : PostgreSQL/PostGIS local éphémère, `pg_dump` custom puis `pg_restore`, fixture vérifiée, résultat `PASS`. | Owner recovery ; rejouer localement avec `PASSNESS_RECOVERY_DRILL=1 NODE_ENV=test` après changement de migration ; cela ne teste pas production. |
 | Operation drill "Samedi Type" | `PASS` | [`saturday-drill-report.md`](signoff/saturday-drill-report.md) (Lot 21-S1) : validation E2E 08h00 - 20h30 sur PostgreSQL réel (réservation web, walk-in comptoir, substitution, prolongation GiST, avarie/maintenance, clôture financière et export RGPD). | Engineering + Produit ; commande `pnpm drill:saturday`. Ne teste pas l'environnement LIVE. |
 | Production/provider restore procedure | `TO_VERIFY` | [`chantier-20b-recovery.md`](../implementation/chantier-20b-recovery.md) décrit un runbook, mais la méthode Neon/provider, les droits et une restauration isolée réelle ne sont pas prouvés. | Owner recovery + opérateur Neon ; demander la procédure supportée et les droits, puis consigner une réponse provider et un exercice isolé autorisé. |
 | Provider backup configuration | `TO_VERIFY` | Aucune preuve Neon/provider de fréquence, rétention ou configuration effective n'est présente dans la base. | Owner recovery + opérateur Neon ; vérifier dans le projet provider, conserver une preuve non secrète et documenter fréquence/rétention/propriétaire. |

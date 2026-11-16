@@ -7,11 +7,11 @@ import {
   cancelNotificationSupport,
   resendInvitationNotificationSupport,
   reconcilePaymentSupport,
-} from '@uttily/core';
-import type { ActionResult } from '@uttily/contracts';
+} from '@passness/core';
+import type { ActionResult } from '@passness/contracts';
 
 /**
- * Server Actions pour le Support Interne Uttily.
+ * Server Actions pour le Support Interne Passness.
  * Réservé exclusivement aux administrateurs de la plateforme (fail-closed).
  */
 

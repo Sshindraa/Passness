@@ -1,4 +1,4 @@
-import type { LocationCoordinates, OpeningHourInput } from '@uttily/core';
+import type { LocationCoordinates, OpeningHourInput } from '@passness/core';
 
 export const LOCATION_WEEKDAYS = [
   { value: 0, label: 'Lundi' },

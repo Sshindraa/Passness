@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Moteur transactionnel partagé pour amendements de réservation (G7M-B2-A, G7M-B2-B1).
+ * @passness/core — Moteur transactionnel partagé pour amendements de réservation (G7M-B2-A, G7M-B2-B1).
  *
  * Exécute de manière atomique, tenant-safe et idempotente les mutations d'amendement
  * (NEUTRAL ou REFUND) sur une réservation CONFIRMED.
@@ -11,8 +11,8 @@
 
 import { createHash, randomUUID } from 'node:crypto';
 import { and, asc, eq, inArray, isNull, not, sql, exists, sum } from 'drizzle-orm';
-import type { DatabaseClient, DatabaseTransaction, DbExecutor } from '@uttily/database';
-import { lockOrganization } from '@uttily/database';
+import type { DatabaseClient, DatabaseTransaction, DbExecutor } from '@passness/database';
+import { lockOrganization } from '@passness/database';
 import {
   bookings,
   bookingAmendments,
@@ -27,7 +27,7 @@ import {
   productVariants,
   products,
   refunds,
-} from '@uttily/database';
+} from '@passness/database';
 import {
   BOOKING_AMENDED_AGGREGATE_TYPE,
   BOOKING_AMENDED_EVENT_TYPE,
@@ -35,7 +35,7 @@ import {
   REFUND_REQUESTED_AGGREGATE_TYPE,
   REFUND_REQUESTED_EVENT_TYPE,
   REFUND_REQUESTED_EVENT_VERSION,
-} from '@uttily/contracts';
+} from '@passness/contracts';
 import { reserveKey, lockKey, completeKey, failKey } from '../idempotency/idempotency';
 import { requireMembership, AuthorizationError, LOCATION_MANAGERS } from '../identity/permissions';
 import { rescheduleBookingReminders } from '../notifications/scheduling';

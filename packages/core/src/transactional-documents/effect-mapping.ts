@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Mapping effets → types de documents et clés d'idempotence
+ * @passness/core — Mapping effets → types de documents et clés d'idempotence
  * (G5D, ADR-013 §3, §5).
  *
  * Les 4 effets d'un événement BOOKING_CONFIRMED.v1 :

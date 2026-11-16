@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { BookingSupportDetails } from '@uttily/core';
+import type { BookingSupportDetails } from '@passness/core';
 import { RetryNotificationButton } from './retry-notification-button';
 import styles from './booking-support.module.css';
 
@@ -122,7 +122,7 @@ export function BookingSupportView({ booking }: { booking: BookingSupportDetails
               </strong>
             </div>
 
-            <div className={styles.infoLabel}>Commission Uttily plateforme :</div>
+            <div className={styles.infoLabel}>Commission Passness plateforme :</div>
             <div className={styles.infoVal}>
               {(booking.financial.platformCommissionMinor / 100).toFixed(2)}{' '}
               {booking.financial.currency}

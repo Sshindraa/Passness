@@ -1,5 +1,5 @@
 /**
- * @uttily/core — Tests d'integration PostgreSQL G7H-B (analytics wiring).
+ * @passness/core — Tests d'integration PostgreSQL G7H-B (analytics wiring).
  *
  * Verifie le cablage des trois evenements analytics dans les parcours reels :
  * - BOOKING_ATTEMPTED enregistre avant l'echec metier.
@@ -17,7 +17,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { randomUUID } from 'node:crypto';
 import postgres from 'postgres';
-import { createDatabase, type DatabaseClient } from '@uttily/database';
+import { createDatabase, type DatabaseClient } from '@passness/database';
 import {
   setupIntegrationTestDb,
   shouldSkipIntegrationTests,
@@ -210,7 +210,7 @@ function makeFinancialTermsConfig(connectedAccountId = 'acct_test_123'): Financi
       status: 'NOT_APPLICABLE',
       amountMinor: null,
       rateBps: null,
-      invoiceIssuer: 'Uttily',
+      invoiceIssuer: 'Passness',
     },
     commission: {
       version: 'v1',

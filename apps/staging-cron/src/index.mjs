@@ -5,7 +5,7 @@ export const CRON_PATHS = Object.freeze([
   '/api/cron/process-refund-requests',
 ]);
 
-const USER_AGENT = 'uttily-staging-cron/1';
+const USER_AGENT = 'passness-staging-cron/1';
 
 export function resolveCronTargetUrl(rawTargetUrl) {
   if (!rawTargetUrl || !rawTargetUrl.trim()) {
@@ -61,14 +61,14 @@ export async function runScheduledJobs(env, fetchImpl = fetch, logger = console)
       const result = { path, status: response.status, ok: response.ok };
       results.push(result);
       if (result.ok) {
-        logger.info?.('uttily_staging_cron_result', result);
+        logger.info?.('passness_staging_cron_result', result);
       } else {
-        logger.error?.('uttily_staging_cron_result', result);
+        logger.error?.('passness_staging_cron_result', result);
       }
     } catch {
       const result = { path, status: 0, ok: false };
       results.push(result);
-      logger.error?.('uttily_staging_cron_request_failed', result);
+      logger.error?.('passness_staging_cron_request_failed', result);
     }
   }
 

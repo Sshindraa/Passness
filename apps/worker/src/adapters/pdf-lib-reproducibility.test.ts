@@ -1,11 +1,11 @@
 /**
- * @uttily/worker — Reproductibilité cross-process / cross-TZ / source-vs-dist (G5H-C2C-B2).
+ * @passness/worker — Reproductibilité cross-process / cross-TZ / source-vs-dist (G5H-C2C-B2).
  *
  * Prouve que le rendu PDF est reproductible :
  * 1. Cross-process : deux processus Node séparés produisent les mêmes bytes/checksum.
  * 2. TZ independence : rendu identique sous différents fuseaux horaires.
  * 3. Source vs dist : le rendu depuis le source (tsx) et depuis le dist (node) sont identiques.
- * 4. Build from different cwd : `pnpm --filter @uttily/worker build` et `node build.mjs` produisent un dist fonctionnel.
+ * 4. Build from different cwd : `pnpm --filter @passness/worker build` et `node build.mjs` produisent un dist fonctionnel.
  * 5. No missing runtime deps : `node dist/index.js` échoue avec WorkerConfigurationError (pas ERR_MODULE_NOT_FOUND).
  *
  * Ces tests sont lents (spawning de processus). Utiliser SKIP_REPRODUCIBILITY=1 pour les skipper.
@@ -17,7 +17,7 @@ import { createHash } from 'node:crypto';
 import { writeFileSync, unlinkSync, existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { tmpdir } from 'node:os';
-import type { DocumentRenderSnapshotV1 } from '@uttily/core';
+import type { DocumentRenderSnapshotV1 } from '@passness/core';
 
 import { PdfLibDocumentRenderer } from './pdf-lib-document-renderer';
 
@@ -273,7 +273,7 @@ describe.skipIf(process.env.SKIP_REPRODUCIBILITY === '1')(
     // ── 3. Source vs dist ──
     it('source vs dist : tsx et node dist produisent le même checksum', () => {
       // S'assurer que le dist existe.
-      runCommand('pnpm', ['--filter', '@uttily/worker', 'build']);
+      runCommand('pnpm', ['--filter', '@passness/worker', 'build']);
 
       const sourceResult = runFromSource(templateKey, snapshot);
       const distResult = runFromDist(templateKey, snapshot);
@@ -283,7 +283,7 @@ describe.skipIf(process.env.SKIP_REPRODUCIBILITY === '1')(
     });
 
     it('source vs dist : tous les templates produisent le même checksum', () => {
-      runCommand('pnpm', ['--filter', '@uttily/worker', 'build']);
+      runCommand('pnpm', ['--filter', '@passness/worker', 'build']);
 
       const templates = [
         'booking-confirmation-technical-v1',
@@ -301,7 +301,7 @@ describe.skipIf(process.env.SKIP_REPRODUCIBILITY === '1')(
 
     // ── 4. Build from different cwd ──
     it('build from repo root (pnpm --filter) produit un dist fonctionnel', () => {
-      runCommand('pnpm', ['--filter', '@uttily/worker', 'build']);
+      runCommand('pnpm', ['--filter', '@passness/worker', 'build']);
 
       expect(existsSync(DIST_INDEX)).toBe(true);
 
@@ -323,7 +323,7 @@ describe.skipIf(process.env.SKIP_REPRODUCIBILITY === '1')(
     // ── 5. No missing runtime deps ──
     it('node dist/index.js échoue avec WorkerConfigurationError (pas ERR_MODULE_NOT_FOUND)', () => {
       // S'assurer que le dist existe.
-      runCommand('pnpm', ['--filter', '@uttily/worker', 'build']);
+      runCommand('pnpm', ['--filter', '@passness/worker', 'build']);
 
       let exitCode: number | null = null;
       let stderr = '';

@@ -48,7 +48,7 @@ describe('ResendNotificationEmailSender', () => {
     } as unknown as Resend;
 
     const sender = new ResendNotificationEmailSender(
-      { apiKey: 're_test', fromEmail: 'Uttily <hello@uttily.com>' },
+      { apiKey: 're_test', fromEmail: 'Passness <hello@passness.com>' },
       fakeResend,
     );
 
@@ -62,7 +62,7 @@ describe('ResendNotificationEmailSender', () => {
 
     expect(result.messageId).toBe('msg_resend_123');
     expect(capturedOptions).toBeDefined();
-    expect(capturedOptions?.from).toBe('Uttily <hello@uttily.com>');
+    expect(capturedOptions?.from).toBe('Passness <hello@passness.com>');
     expect(capturedOptions?.to).toBe('client@example.com');
     expect(capturedOptions?.subject).toBe('Confirmation');
     expect(capturedRequestOptions?.idempotencyKey).toBe('notif_idemp_key_1');
@@ -80,7 +80,7 @@ describe('ResendNotificationEmailSender', () => {
     } as unknown as Resend;
 
     const sender = new ResendNotificationEmailSender(
-      { apiKey: 're_test', fromEmail: 'hello@uttily.com' },
+      { apiKey: 're_test', fromEmail: 'hello@passness.com' },
       fakeResend,
     );
 
@@ -114,7 +114,7 @@ describe('ResendNotificationEmailSender', () => {
     } as unknown as Resend;
 
     const sender = new ResendNotificationEmailSender(
-      { apiKey: 're_test', fromEmail: 'hello@uttily.com' },
+      { apiKey: 're_test', fromEmail: 'hello@passness.com' },
       fakeResend,
     );
 
@@ -148,7 +148,7 @@ describe('ResendNotificationEmailSender', () => {
     } as unknown as Resend;
 
     const sender = new ResendNotificationEmailSender(
-      { apiKey: 're_test', fromEmail: 'hello@uttily.com' },
+      { apiKey: 're_test', fromEmail: 'hello@passness.com' },
       fakeResend,
     );
 
@@ -174,7 +174,7 @@ describe('ResendNotificationEmailSender', () => {
     } as unknown as Resend;
 
     const sender = new ResendNotificationEmailSender(
-      { apiKey: 're_test', fromEmail: 'hello@uttily.com' },
+      { apiKey: 're_test', fromEmail: 'hello@passness.com' },
       fakeResend,
     );
 
@@ -200,7 +200,7 @@ describe('ResendNotificationEmailSender', () => {
     } as unknown as Resend;
 
     const sender = new ResendNotificationEmailSender(
-      { apiKey: 're_test', fromEmail: 'hello@uttily.com' },
+      { apiKey: 're_test', fromEmail: 'hello@passness.com' },
       fakeResend,
     );
 

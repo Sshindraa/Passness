@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { DbExecutor } from '@uttily/database';
+import type { DbExecutor } from '@passness/database';
 import { calculateMarketplaceFeeSnapshot } from '../marketplace-fees';
 import { previewBookingCancellation } from './preview-booking-cancellation';
 import { cancelConfirmedBooking } from './cancel-confirmed-booking';
@@ -49,7 +49,7 @@ describe('Chantier 12 — Domaine Annulations & Remboursements V2', () => {
   });
 
   it('rejette les identifiants invalides ou idempotencyKey vide lors de l’annulation', async () => {
-    const fakeClient = {} as unknown as import('@uttily/database').DatabaseClient;
+    const fakeClient = {} as unknown as import('@passness/database').DatabaseClient;
     await expect(
       cancelConfirmedBooking(fakeClient, {
         organizationId: 'not-a-uuid',
@@ -469,7 +469,7 @@ describe('Chantier 12 — Domaine Annulations & Remboursements V2', () => {
         };
         return await cb(txMock);
       },
-    } as unknown as import('@uttily/database').DatabaseClient;
+    } as unknown as import('@passness/database').DatabaseClient;
 
     await expect(
       cancelConfirmedBooking(fakeClient, {
