@@ -229,7 +229,7 @@ describe('Lot 21-P1A — Concurrence, Invariants & Clôture RGPD (Integration)',
     expect(activeItem!.resolution).toBe('REFUSED');
 
     // 3. Attestation de l'envoi de la réponse au demandeur -> passe en COMPLETED
-    const firstNotifiedDate = new Date('2026-09-15T14:00:00Z');
+    const firstNotifiedDate = new Date();
     const responseRes = await recordPrivacyResponseNotification(dbA, {
       requestId: request.id,
       actorUserId: adminUser.id,
@@ -249,7 +249,7 @@ describe('Lot 21-P1A — Concurrence, Invariants & Clôture RGPD (Integration)',
     const retryRes = await recordPrivacyResponseNotification(dbB, {
       requestId: request.id,
       actorUserId: adminUser.id,
-      responseNotifiedAt: new Date('2026-09-25T18:00:00Z'), // Date ultérieure ignorée
+      responseNotifiedAt: new Date(firstNotifiedDate.getTime() + 10_000), // Date ultérieure ignorée
     });
     expect(retryRes.responseNotifiedAt.toISOString()).toBe(firstNotifiedDate.toISOString());
 
@@ -436,7 +436,7 @@ describe('Lot 21-P1A — Concurrence, Invariants & Clôture RGPD (Integration)',
     ).rejects.toThrow('déjà fait l’objet d’une prorogation');
 
     // 4. recordExtensionNotification : conservation du premier timestamp
-    const firstExtNotif = new Date('2026-09-10T09:00:00Z');
+    const firstExtNotif = new Date();
     const notif1 = await recordExtensionNotification(dbA, {
       requestId: request.id,
       actorUserId: adminUser.id,
@@ -447,7 +447,7 @@ describe('Lot 21-P1A — Concurrence, Invariants & Clôture RGPD (Integration)',
     const notifRetry = await recordExtensionNotification(dbB, {
       requestId: request.id,
       actorUserId: adminUser.id,
-      notifiedAt: new Date('2026-09-12T10:00:00Z'), // Date ultérieure ignorée
+      notifiedAt: new Date(firstExtNotif.getTime() + 10_000), // Date ultérieure ignorée
     });
     expect(notifRetry.notifiedAt.toISOString()).toBe(firstExtNotif.toISOString());
 

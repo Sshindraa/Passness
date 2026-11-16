@@ -14,7 +14,9 @@ export function HomePageView({ locale }: { locale: 'fr' | 'en' }): React.ReactEl
           <p className={styles.eyebrow}>
             {fr ? 'Simple et transparent' : 'Simple and transparent'}
           </p>
-          <h2 id="how-it-works-heading">{fr ? 'Comment fonctionne Passness' : 'How Passness works'}</h2>
+          <h2 id="how-it-works-heading">
+            {fr ? 'Comment fonctionne Passness' : 'How Passness works'}
+          </h2>
         </div>
         <div className={styles.stepsGrid}>
           <Card className={styles.stepCard}>
