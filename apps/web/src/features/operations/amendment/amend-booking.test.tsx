@@ -374,14 +374,14 @@ describe('G7M-C5-A — Interface Loueur & Validation de Prévisualisation', () =
   });
   describe('G7M-C5-C : handoff loueur et lien de paiement sécurisé', () => {
     const amendmentId = '11111111-1111-4111-8111-111111111111';
-    const origin = 'https://app.uttily.fr';
+    const origin = 'https://passness.com';
 
     it('1. copie l URL absolue exacte dans le presse-papier et affiche un statut accessible', async () => {
       const mockWriteText = vi.fn().mockResolvedValue(undefined);
       const res = await copyPaymentLinkToClipboard(amendmentId, origin, mockWriteText);
 
       expect(mockWriteText).toHaveBeenCalledWith(
-        'https://app.uttily.fr/checkout/amendment/11111111-1111-4111-8111-111111111111',
+        'https://passness.com/checkout/amendment/11111111-1111-4111-8111-111111111111',
       );
       expect(res.ok).toBe(true);
       expect(res.feedback).toBe('Lien de paiement copié !');

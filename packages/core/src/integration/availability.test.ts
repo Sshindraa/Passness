@@ -1253,6 +1253,6 @@ describe.skipIf(shouldSkipIntegrationTests())('Availability integration — Inve
         actorUserId: setupA.user.id,
       }),
     ).rejects.toMatchObject({ code: 'NOT_FOUND' });
-    expect(itemIds).toHaveLength(8);
+    expect(itemIds).toHaveLength(12);
   });
 });

@@ -152,6 +152,9 @@ async function seedLocation(
   return { locationId: loc.id, publicLocationId: loc.public_id };
 }
 
+// Slots canoniques exigés par la gate de publication vélo (migration 0050).
+const PHOTO_SLOTS = ['HERO_PROFILE', 'THREE_QUARTER_FRONT', 'SECONDARY_VIEW'] as const;
+
 async function seedProduct(orgId: string, categoryId: string, suffix = SUFFIX()) {
   if (!rawSql) throw new Error('rawSql not initialized');
   const sql = rawSql;
@@ -170,12 +173,12 @@ async function seedProduct(orgId: string, categoryId: string, suffix = SUFFIX())
       INSERT INTO product_photos (
         organization_id, product_id, storage_key,
         content_type, byte_size, width_px, height_px, checksum_sha256,
-        sort_order, file_state
+        sort_order, file_state, slot_type
       )
       VALUES (
         ${orgId}, ${product.id}, ${'product-photos/' + suffix + '-' + i},
         'image/jpeg', 102400, 800, 600, ${('000' + i).repeat(16).slice(0, 64)},
-        ${i}, 'AVAILABLE'
+        ${i}, 'AVAILABLE', ${PHOTO_SLOTS[i]!}
       )
     `;
   }
@@ -192,7 +195,7 @@ async function seedVariant(
   const sql = rawSql;
   const variant = await sql`
     INSERT INTO "product_variants" ("product_id", "name", "attributes", "is_active", "currency")
-    VALUES (${productId}, 'Standard', ${JSON.stringify(attributes)}::jsonb, true, 'EUR')
+    VALUES (${productId}, 'Standard', ${JSON.stringify(attributes)}::text::jsonb, true, 'EUR')
     RETURNING "id"
   `.then((r) => r[0]!);
   return { variantId: variant.id };

@@ -141,12 +141,12 @@ describe.skipIf(shouldSkipIntegrationTests())(
 
       expect(result).toMatchObject({
         status: 'RETIRED',
-        updatedCount: 8,
+        updatedCount: 12,
         noOpCount: 0,
       });
       expect(await movementCount(itemIds)).toBe(0);
       const items = await listInventoryItems(db, organizationId);
-      expect(items).toHaveLength(8);
+      expect(items).toHaveLength(12);
       expect(items.every((item) => item.status === 'RETIRED')).toBe(true);
       expect(items.every((item) => item.condition === 'GOOD')).toBe(true);
     });

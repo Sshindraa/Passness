@@ -8,7 +8,7 @@ Passness démarre comme un **monolithe modulaire TypeScript**. L'interface et le
 apps/
   web/                 Interface, Server Components et Route Handlers
   worker/              Consommation d'outbox, emails, documents, webhooks différés. Architecture détaillée dans ADR-013. Worker G5F implémenté et validé. Suite worker : 449 tests au total avec PostgreSQL local (407 passed, 42 skipped sans DATABASE_URL), 0 failed. Artefact Node exécutable (esbuild bundle, `node dist/index.js`). Bundle smoke-testé via harness local (G5H-C2C-B4). Fournisseurs de production choisis par ADR-014 (Cloudflare R2 stockage, Resend email) ; adapter R2 implémenté, testé G5H-A et câblé au worker G5H-C2C-B3 ; adapter Resend implémenté, testé G5H-B et câblé au worker G5H-C2C-B3 ; politique retry < 24 h livrée G5H-C. Packaging local Docker implémenté et validé (statique + runtime G5I-B) : build, inspection, smoke, Compose, démarrage PostgreSQL éphémère + SIGTERM.
-  staging-cron/        Worker Cloudflare du staging : déclenche les quatre routes cron Vercel chaque minute avec un `CRON_SECRET` partagé ; aucun secret applicatif supplémentaire.
+  staging-cron/        Worker Cloudflare du staging : déclenche les quatre routes cron Vercel toutes les 15 minutes avec un `CRON_SECRET` partagé ; aucun secret applicatif supplémentaire.
 
 packages/
   core/                Modules métier et cas d'utilisation

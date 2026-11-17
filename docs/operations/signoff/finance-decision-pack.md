@@ -25,11 +25,11 @@ Ce pack consigne les arbitrages financiers et fiscaux validés par la Direction 
 
 | Sujet | `CURRENT CODE BEHAVIOR` | Interprétation 21-P0 |
 | --- | --- | --- |
-| Merchant | `settlementMerchantMode: 'PLATFORM'` à la création du compte connecté ; destination charge dans ADR-010 | Valeur technique cohérente avec `FIN-001`, déclaré validé le 2026-09-04 ; la preuve du compte LIVE et des responsabilités effectives reste opérationnelle. |
-| `on_behalf_of` | `onBehalfOfAccountId: null` dans le chemin de paiement | Valeur technique cohérente avec l'arbitrage `FIN-001` ; conserver la preuve de validation dans le dossier autorisé. |
-| Frais marketplace | `ADR-029` et le registre serveur implémentent `split-13-7-v1` : base `subtotal + mandatory fees`, frais loueur 13 %, frais service client 7 %, arrondi `HALF_UP_PER_COMPONENT`, sans fixe ; snapshots immuables. `ADR-030` décrit le delta par composant | Le sign-off `FIN-002` est déclaré le 2026-09-04. Le registre canonique maintient toutefois `FIN-002 = BLOCKED` jusqu'à réconciliation de la preuve, de la date d'effet et de la configuration LIVE. |
-| Taxe | `status: 'NOT_APPLICABLE'`, `amountMinor: null`, `rateBps: null` | La valeur code correspond à la décision `FIN-003` déclarée le 2026-09-04 ; toute évolution fiscale doit passer par une nouvelle décision avant mutation du snapshot. |
-| Émetteur | `invoiceIssuer: 'Passness'` dans `apps/web/src/lib/payment-config.ts`, propagé au snapshot fiscal | La décision `FIN-004` est déclarée le 2026-09-04 ; vérifier les mentions et versions dans l'environnement LIVE avant activation. |
+| Merchant | `settlementMerchantMode: 'PLATFORM'` à la création du compte connecté ; destination charge dans ADR-010 | Valeur technique courante ; `FIN-001` reste ouvert. |
+| `on_behalf_of` | `onBehalfOfAccountId: null` dans le chemin de paiement | Valeur technique courante ; ne vaut pas réponse juridique. |
+| Frais marketplace | `ADR-029` et le registre serveur implémentent `split-13-7-v1` : base `subtotal + mandatory fees`, frais loueur 13 %, frais service client 7 %, arrondi `HALF_UP_PER_COMPONENT`, sans fixe ; snapshots immuables. `ADR-030` propose la politique de remboursement par delta entre états effectifs | Choix produit interne uniquement. `FIN-002` reste `BLOCKED` pour la validation Finance/Juridique de la base, date d'effet, TVA, frais Stripe, refunds et responsabilités. |
+| Taxe | `status: 'NOT_APPLICABLE'`, `amountMinor: null`, `rateBps: null` | **`NOT_APPLICABLE` est une valeur codée, pas une validation fiscale.** `FIN-003` reste ouvert. |
+| Émetteur | `invoiceIssuer: 'Passness'` dans `apps/web/src/lib/payment-config.ts`, propagé au snapshot fiscal | **`Passness` n'est pas un émetteur approuvé.** `FIN-004` reste ouvert. |
 | Devise | EUR est imposé par les contraintes et le périmètre pilote France/Lyon | Ne pas déduire une règle fiscale d'une devise. |
 | Total | Le PaymentIntent reprend `customerTotalAmountMinor` du snapshot split ; le booking conserve aussi la base marchande pour la lecture Pro | Aucun choix financier ultérieur ne doit réécrire un snapshot confirmé. Les legacy conservent leur total historique. |
 

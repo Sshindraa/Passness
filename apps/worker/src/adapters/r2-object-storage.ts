@@ -67,12 +67,14 @@ const BUCKET_NAME_PATTERN = /^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$/;
 /**
  * Métadonnée personnalisée Passness pour le checksum SHA-256 hex.
  */
-const METADATA_KEY_CHECKSUM = 'uttily-checksum-sha256';
+const METADATA_KEY_CHECKSUM = 'passness-checksum-sha256';
+const LEGACY_METADATA_KEY_CHECKSUM = 'uttily-checksum-sha256';
 
 /**
  * Métadonnée personnalisée Passness pour la taille en décimal.
  */
-const METADATA_KEY_SIZE = 'uttily-size-bytes';
+const METADATA_KEY_SIZE = 'passness-size-bytes';
+const LEGACY_METADATA_KEY_SIZE = 'uttily-size-bytes';
 
 /**
  * Erreur de configuration R2. Ne contient jamais de secret ou credential.
@@ -325,6 +327,8 @@ export class R2ObjectStorage implements ObjectStorage {
       Metadata: {
         [METADATA_KEY_CHECKSUM]: input.checksumSha256,
         [METADATA_KEY_SIZE]: String(input.sizeBytes),
+        [LEGACY_METADATA_KEY_CHECKSUM]: input.checksumSha256,
+        [LEGACY_METADATA_KEY_SIZE]: String(input.sizeBytes),
       },
     });
 
@@ -427,8 +431,10 @@ export class R2ObjectStorage implements ObjectStorage {
     }
 
     // Checksum depuis les custom metadata Passness, ou null si absent/invalide.
-    const checksumRaw = metadata?.[METADATA_KEY_CHECKSUM];
-    const checksumSha256 = isValidChecksumHex(checksumRaw) ? checksumRaw : null;
+    const checksumSha256 =
+      [metadata?.[METADATA_KEY_CHECKSUM], metadata?.[LEGACY_METADATA_KEY_CHECKSUM]].find(
+        isValidChecksumHex,
+      ) ?? null;
 
     return {
       contentType,

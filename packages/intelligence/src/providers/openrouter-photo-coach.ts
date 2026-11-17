@@ -79,7 +79,7 @@ Réponds uniquement en JSON conforme au schéma strict.`;
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
           'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://uttily.com',
+          'HTTP-Referer': 'https://passness.com',
           'X-Title': 'Passness Photo Quality Coach',
         },
         body: JSON.stringify({

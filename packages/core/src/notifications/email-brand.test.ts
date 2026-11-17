@@ -23,14 +23,14 @@ describe('getEmailBrandConfig', () => {
     expect(() =>
       getEmailBrandConfig({
         NODE_ENV: 'production',
-        PUBLIC_APP_URL: 'https://uttily.com',
+        PUBLIC_APP_URL: 'https://passness.com',
       }),
     ).toThrow(/SUPPORT_EMAIL/);
   });
 
   it('conserve un secours explicite uniquement hors production', () => {
     expect(getEmailBrandConfig({ NODE_ENV: 'test' })).toEqual({
-      publicAppUrl: 'https://uttily.com',
+      publicAppUrl: 'https://passness.com',
       supportEmail: 'support@passness.com',
     });
   });

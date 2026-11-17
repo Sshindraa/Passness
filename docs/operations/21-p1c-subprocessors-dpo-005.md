@@ -4,7 +4,7 @@
 **Statut :** `21-P1C — SUBPROCESSORS_REGISTRY_SIGNED_AND_APPROVED` ✅  
 **Décision opérationnelle de référence :** [`DPO-005`](./decision-registry.md#L55)  
 **Point de contrôle Plan de Déblocage Pilote :** `C2C-07`  
-**Autorités décisionnelles :** DPO & Pôle Juridique Passness SAS  
+**Autorités décisionnelles :** DPO & Pôle Juridique Passness SAS<br>
 **Date d'approbation formelle :** 2026-09-04  
 
 ---
@@ -223,6 +223,6 @@ Pour permettre la clôture définitive du jalon `C2C-07` et autoriser l'ouvertur
 
 > **Je soussigné(e), Délégué(e) à la Protection des Données (DPO) et Représentant Légal d'Passness SAS, certifie avoir examiné les garanties contractuelles, les certifications EU-US Data Privacy Framework, les Clauses Contractuelles Types et les mesures techniques de sécurité des 6 sous-traitants listés ci-dessus, et valide l'inscription de ces prestataires au Registre officiel des sous-traitants d'Passness pour le lancement du pilote commercial.**
 >
-> **Autorité décisionnelle :** Direction / DPO Passness SAS  
+> **Autorité décisionnelle :** Direction / DPO Passness SAS<br>
 > **Date d'effet :** 2026-09-04  
 > **Statut de signature :** `SIGNÉ & APPROUVÉ (Bon pour accord commercial — DPO-005)` ✅

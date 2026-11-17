@@ -53,7 +53,7 @@ Connectez-vous au Dashboard Stripe en mode **LIVE** (le toggle en haut à gauche
 2. Cliquer sur **Ajouter un point de terminaison** (Endpoint).
 3. **URL du point de terminaison :**  
    `https://<DOMAINE_PUBLIC>/api/webhooks/stripe/platform`  
-   *(Exemple : `https://app.uttily.com/api/webhooks/stripe/platform`)*
+   *(Exemple : `https://app.passness.com/api/webhooks/stripe/platform`)*
 4. **Version d'API :** Sélectionner `2026-06-24.dahlia` (version alignée avec `packages/core/src/stripe/client.ts`).
 5. **Événements à écouter (Événements sur votre compte) :**
    - `payment_intent.succeeded`

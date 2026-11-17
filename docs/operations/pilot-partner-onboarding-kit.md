@@ -4,7 +4,7 @@
 **Date d'émission :** 2026-09-04  
 **Référence opérationnelle :** [`pilot-partner-readiness.md`](./pilot-partner-readiness.md) & [`live-operator-checklist.md`](./live-operator-checklist.md)  
 **Destinataire :** Gérant & Responsable d'exploitation du loueur partenaire pilote  
-**Émetteur :** Direction des Opérations & Pôle Juridique — Passness SAS  
+**Émetteur :** Direction des Opérations & Pôle Juridique — Passness SAS<br>
 **Confidentialité :** Document à usage opérationnel strict. Les données recueillies sont destinées à la configuration de votre espace professionnel, à la génération déterministe de vos contrats de location opposables et au raccordement sécurisé de vos versements bancaires via Stripe Connect.
 
 ---

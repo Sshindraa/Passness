@@ -89,13 +89,13 @@ Après rebase exact sur `origin/main` (`aa1350d`), les quatre commits propres so
 `ee382ac`, `04a9b88`, `4426da7` et `200a2f3`. L'arbre fonctionnel est strictement
 identique à la sauvegarde du checkout précédent (`05ac1c3`), sans différence.
 La validation CI parallèle du run
-[#33498404591](https://github.com/Sshindraa/Uttily/actions/runs/33498404591)
+[#33498404591](https://github.com/Sshindraa/Passness/actions/runs/33498404591)
 est entièrement verte, y compris les six shards Core, Database, Build, Quality,
 Verify et Browser acceptance ; ce dernier a validé les E2E authentifiés avec les
 credentials Clerk TEST de la CI. La PR #40 est fusionnée ; la PR #42, issue de
 la tranche photos/maintenance, a ensuite été fusionnée au commit
 `eebaf08` sur `origin/main` après validation verte du run
-[#33504787871](https://github.com/Sshindraa/Uttily/actions/runs/33504787871).
+[#33504787871](https://github.com/Sshindraa/Passness/actions/runs/33504787871).
 `pnpm test:full` n'a pas été relancé localement, conformément à la procédure de
 clôture.
 

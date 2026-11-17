@@ -13,6 +13,7 @@ import type {
 
 const ACCOUNT_ID_RE = /^[a-zA-Z0-9]{6,64}$/;
 const BUCKET_RE = /^[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]$/;
+const LEGACY_CHECKSUM_METADATA_KEY = 'uttily-checksum-sha256';
 
 /** Adapter serveur R2 pour les photos produit. Aucun accès depuis le client. */
 class R2ProductPhotoStorage implements ProductPhotoStorage {
@@ -37,7 +38,10 @@ class R2ProductPhotoStorage implements ProductPhotoStorage {
           ContentType: input.contentType,
           ContentLength: input.sizeBytes,
           IfNoneMatch: '*',
-          Metadata: { 'uttily-checksum-sha256': input.checksumSha256 },
+          Metadata: {
+            'passness-checksum-sha256': input.checksumSha256,
+            [LEGACY_CHECKSUM_METADATA_KEY]: input.checksumSha256,
+          },
         }),
       );
       return { kind: 'CREATED' };
@@ -59,7 +63,10 @@ class R2ProductPhotoStorage implements ProductPhotoStorage {
       if (typeof response.ContentType !== 'string' || typeof response.ContentLength !== 'number') {
         throw new Error('Métadonnées R2 invalides.');
       }
-      const checksum = response.Metadata?.['uttily-checksum-sha256'] ?? null;
+      const checksum =
+        response.Metadata?.['passness-checksum-sha256'] ??
+        response.Metadata?.[LEGACY_CHECKSUM_METADATA_KEY] ??
+        null;
       return {
         contentType: response.ContentType,
         sizeBytes: response.ContentLength,
