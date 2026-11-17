@@ -61,6 +61,9 @@ importers:
       '@vercel/functions':
         specifier: ^3.10.6
         version: 3.10.6(@aws-sdk/credential-provider-web-identity@3.972.73)
+      '@vercel/speed-insights':
+        specifier: ^2.1.0
+        version: 2.1.0(next@16.2.12(@playwright/test@1.62.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
       better-auth:
         specifier: ^1.7.17
         version: 1.7.17(drizzle-orm@0.36.4(@types/react@19.2.17)(kysely@0.29.8)(postgres@3.4.9)(react@19.2.8))(next@16.2.12(@playwright/test@1.62.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(vitest@2.1.9(@types/node@22.20.1))
@@ -1632,6 +1635,32 @@ packages:
   '@vercel/oidc@4.0.6':
     resolution: {integrity: sha512-VlrMq9V20Sts9PRYeeh7d8+QCuTvDgujZ0OyakfEJkM7NpQTW+x2IFvVWGJzg+84RhFFa2kKir6gw5E4EcTsuw==}
     engines: {node: '>= 20'}
+
+  '@vercel/speed-insights@2.1.0':
+    resolution: {integrity: sha512-tkDiIEjjmlwPpTFnOK14hBhsRLMo5yoCeK2Er3AHWlL7WTzHgFSyItps3TOW0HukErUlYlaUeHiVLCyfiE4WAA==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2 || ^3 || ^3.0.0-next.0
+      next: '>= 13'
+      nuxt: '>= 3'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      nuxt:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   '@vitest/expect@2.1.9':
     resolution: {integrity: sha512-UJCIkTBenHeKT1TTlKMJWy1laZewsRIzYighyYiJKZreqtdxSos/S1t+ktRMQWu2CKqaarrkeszJx1cgC5tGZw==}
@@ -3801,6 +3830,11 @@ snapshots:
       '@vercel/cli-config': 0.3.6
       '@vercel/cli-exec': 1.0.1
       jose: 5.10.0
+
+  '@vercel/speed-insights@2.1.0(next@16.2.12(@playwright/test@1.62.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)':
+    optionalDependencies:
+      next: 16.2.12(@playwright/test@1.62.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      react: 19.2.8
 
   '@vitest/expect@2.1.9':
     dependencies:

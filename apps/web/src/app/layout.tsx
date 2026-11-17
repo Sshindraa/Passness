@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import '@passness/ui/tokens.css';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SmoothScroll } from '@/components/smooth-scroll';
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({
       </head>
       <body>
         <SmoothScroll>{children}</SmoothScroll>
+        <SpeedInsights />
       </body>
     </html>
   );
