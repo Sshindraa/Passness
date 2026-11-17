@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { requireSupportPlatformAdmin } from '@/lib/support-auth';
-import { clerkClient } from '@clerk/nextjs/server';
+import { deleteAuthIdentity } from '@/lib/auth-identity';
 import {
   extendPrivacyRequestDeadline,
   flagPrivacyRequestIdentityCheck,
@@ -200,18 +200,7 @@ export async function executeSupportErasureAction(
       requestId,
       actorUserId: user.id,
       deleteExternalIdentity: async (oidcSubject: string) => {
-        try {
-          const client = await clerkClient();
-          await client.users.deleteUser(oidcSubject);
-        } catch (clerkErr) {
-          const isNotFound =
-            clerkErr instanceof Error &&
-            (clerkErr.message.includes('404') ||
-              clerkErr.message.toLowerCase().includes('not found'));
-          if (!isNotFound) {
-            console.error('[SupportPrivacyErasure] Clerk deletion warning:', clerkErr);
-          }
-        }
+        await deleteAuthIdentity(oidcSubject);
       },
     });
     revalidatePath('/internal/privacy');

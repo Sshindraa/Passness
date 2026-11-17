@@ -16,15 +16,15 @@ import {
 import { sql } from 'drizzle-orm';
 
 // ---------------------------------------------------------------------------
-// Mocks : Clerk et getDb.
+// Mocks : session Better Auth et getDb.
 //
-// Les Server Actions dépendent de Clerk (`getAuthenticatedUser` via
-// `currentUser()`) et du singleton `getDb()`. On mocke les deux pour
+// Les Server Actions dépendent de la session Better Auth (`getAuthenticatedUser` via
+// `getSessionIdentity()`) et du singleton `getDb()`. On mocke les deux pour
 // contrôler l'identité et brancher une base de test PostgreSQL réelle.
 // ---------------------------------------------------------------------------
 
-vi.mock('@clerk/nextjs/server', () => ({
-  currentUser: vi.fn<() => Promise<unknown>>(),
+vi.mock('@/lib/auth-session', () => ({
+  getSessionIdentity: vi.fn<() => Promise<unknown>>(),
 }));
 
 // Mock `next/cache` : `revalidatePath` n'est pas disponible hors Next.js runtime.
@@ -40,10 +40,10 @@ vi.mock('@/lib/db', () => ({
   getDb: () => testDb,
 }));
 
-// Mock `@/lib/auth` : `getAuthenticatedUser` utilise `currentUser` (mocké Clerk)
+// Mock `@/lib/auth` : `getAuthenticatedUser` utilise `getSessionIdentity` (mocké)
 // et `getDb` (mocké ci-dessus) pour provisionner l'utilisateur dans la base de test.
 // On délègue au vrai module en important dynamiquement, mais comme les mocks
-// `@clerk/nextjs/server` et `@/lib/db` sont déjà en place, on peut réimporter
+// `@/lib/auth-session` et `@/lib/db` sont déjà en place, on peut réimporter
 // le module réel via `vi.importActual`.
 vi.mock('@/lib/auth', async () => {
   const actual = await vi.importActual<typeof import('@/lib/auth')>('@/lib/auth');
@@ -60,7 +60,7 @@ vi.mock('@passness/core', async () => {
 });
 
 // Importe les actions APRÈS les mocks pour qu'elles utilisent les versions mockées.
-const { currentUser } = await import('@clerk/nextjs/server');
+const { getSessionIdentity } = await import('@/lib/auth-session');
 const {
   prepareBookingAction,
   pickupBookingAction,
@@ -167,7 +167,7 @@ afterAll(async () => {
 
 beforeEach(async () => {
   if (!testDb) return;
-  vi.mocked(currentUser).mockReset();
+  vi.mocked(getSessionIdentity).mockReset();
   vi.mocked(revalidatePath).mockClear();
   // Réinitialise le mock `prepareBooking` : efface l'historique des appels et
   // restaure l'implémentation par défaut (l'implémentation réelle).
@@ -194,25 +194,25 @@ beforeEach(async () => {
 // Helpers de test.
 // ---------------------------------------------------------------------------
 
-function mockClerkUser(user: AuthenticatedUser | null): void {
+function mockSessionUser(user: AuthenticatedUser | null): void {
   if (!user) {
-    vi.mocked(currentUser).mockResolvedValue(null as never);
+    vi.mocked(getSessionIdentity).mockResolvedValue(null as never);
     return;
   }
-  vi.mocked(currentUser).mockResolvedValue({
-    id: user.oidcSubject,
-    primaryEmailAddress: {
-      emailAddress: user.email,
-      verification: { status: user.emailVerified ? 'verified' : 'unverified' },
-    },
+  vi.mocked(getSessionIdentity).mockResolvedValue({
+    subject: user.oidcSubject,
+    email: user.email,
+    emailVerified: user.emailVerified,
+    displayName: null,
+    twoFactorEnabled: true,
   } as never);
 }
 
 async function makeUser(email: string): Promise<AuthenticatedUser> {
   if (!testDb) throw new Error('db not initialized');
   return provisionUserFromOidc(testDb, {
-    oidcSubject: `clerk-${email}`,
-    oidcProvider: 'clerk',
+    oidcSubject: `auth-${email}`,
+    oidcProvider: 'better-auth',
     email,
     emailVerified: true,
   });
@@ -574,7 +574,7 @@ async function seedConfirmedBookingWithOperator(
   const ids = await seedBaseData();
   const operator = await makeUser(`operator-${SUFFIX()}@example.com`);
   await addMember(ids.orgId, operator, role);
-  mockClerkUser(operator);
+  mockSessionUser(operator);
   const booking = await seedConfirmedBooking(ids);
   return { ids, booking, operator, orgId: ids.orgId };
 }
@@ -590,7 +590,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — fulfillment', 
   describe('Authentification', () => {
     it('utilisateur non authentifié → UNAUTHENTICATED', async () => {
       if (!testDb || !rawSql) return;
-      mockClerkUser(null);
+      mockSessionUser(null);
       const fd = makeFormData({
         bookingId: '00000000-0000-0000-0000-000000000001',
         idempotencyKey: 'key-' + SUFFIX(),
@@ -611,7 +611,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — fulfillment', 
       const ids = await seedBaseData();
       // Utilisateur sans membership dans l'org.
       const outsider = await makeUser(`outsider-${SUFFIX()}@example.com`);
-      mockClerkUser(outsider);
+      mockSessionUser(outsider);
       const fd = makeFormData({
         bookingId: '00000000-0000-0000-0000-000000000001',
         idempotencyKey: 'key-' + SUFFIX(),
@@ -628,7 +628,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — fulfillment', 
       const ids = await seedBaseData();
       const operator = await makeUser(`suspended-${SUFFIX()}@example.com`);
       await addMember(ids.orgId, operator, 'STAFF', 'SUSPENDED');
-      mockClerkUser(operator);
+      mockSessionUser(operator);
       const fd = makeFormData({
         bookingId: '00000000-0000-0000-0000-000000000001',
         idempotencyKey: 'key-' + SUFFIX(),
@@ -702,7 +702,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — fulfillment', 
       const owner = await makeUser(`owner-cross-${SUFFIX()}@example.com`);
       await makeOrg(owner, 'Org Cross A');
       const ids2 = await seedBaseData();
-      mockClerkUser(owner);
+      mockSessionUser(owner);
       const fd = makeFormData({
         bookingId: '00000000-0000-0000-0000-000000000001',
         idempotencyKey: 'key-cross-' + SUFFIX(),
@@ -1193,7 +1193,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — fulfillment', 
       vi.mocked(revalidatePath).mockClear();
       const ids = await seedBaseData();
       const outsider = await makeUser(`rvp-forbidden-${SUFFIX()}@example.com`);
-      mockClerkUser(outsider);
+      mockSessionUser(outsider);
       const fd = makeFormData({
         bookingId: '00000000-0000-0000-0000-000000000001',
         idempotencyKey: 'key-' + SUFFIX(),
@@ -1304,7 +1304,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — fulfillment', 
       const ids2 = await seedBaseData();
       const operator = await makeUser(`mt-operator-${SUFFIX()}@example.com`);
       await addMember(ids1.orgId, operator, 'OWNER');
-      mockClerkUser(operator);
+      mockSessionUser(operator);
       const booking = await seedConfirmedBooking(ids1);
 
       // Appelle prepareBooking sur org1.
@@ -1332,7 +1332,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — fulfillment', 
       const ids2 = await seedBaseData();
       const operator = await makeUser(`mt-cross-${SUFFIX()}@example.com`);
       await addMember(ids2.orgId, operator, 'OWNER');
-      mockClerkUser(operator);
+      mockSessionUser(operator);
 
       // Tente prepareBooking sur org2 avec le bookingId de org1.
       // Le use case Core vérifie organizationId : ORGANIZATION_MISMATCH → FORBIDDEN.
@@ -1356,7 +1356,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — fulfillment', 
       // Opérateur membre de org1.
       const operator = await makeUser(`mt-item-${SUFFIX()}@example.com`);
       await addMember(ids1.orgId, operator, 'OWNER');
-      mockClerkUser(operator);
+      mockSessionUser(operator);
 
       // Crée un deuxième booking dans org2 (avec booking_item).
       const ids2 = await seedBaseData();

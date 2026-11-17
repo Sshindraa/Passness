@@ -29,9 +29,8 @@ describe('Chillax typography integration', () => {
     expect(config).toContain("key: 'Access-Control-Allow-Origin', value: '*'");
   });
 
-  it('wires Sora to Clerk and both payment flows without changing payment options', () => {
+  it('wires Sora to both payment flows without changing payment options', () => {
     const layout = readFileSync(new URL('../app/layout.tsx', import.meta.url), 'utf8');
-    expect(layout).toContain('fontFamily: PASSNESS_FONT_FAMILY');
     expect(layout).toContain('rel="preload"');
     for (const file of ['checkout-client.tsx', 'supplement-checkout-client.tsx']) {
       const source = readFileSync(new URL(`../features/checkout/${file}`, import.meta.url), 'utf8');

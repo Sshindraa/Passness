@@ -23,10 +23,11 @@ vi.mock('@/lib/db', () => ({
   getDb: vi.fn(() => ({})),
 }));
 
-vi.mock('@clerk/nextjs', () => ({
-  SignedIn: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-  SignedOut: ({ children }: { children: React.ReactNode }) => <>{children}</>,
-  UserButton: () => null,
+vi.mock('@/lib/auth-client', () => ({
+  authClient: {
+    useSession: () => ({ data: null, isPending: false }),
+    signOut: vi.fn(),
+  },
 }));
 
 vi.mock('@passness/core', async (importOriginal) => {
@@ -231,7 +232,7 @@ describe('PublicOfferPage & OfferBookingForm — SSR et Idempotence', () => {
   it('4. Ne propose pas la connexion au loueur quand le client est déjà connecté', async () => {
     vi.mocked(auth.getAuthenticatedUser).mockResolvedValue({
       id: 'user-1',
-      oidcSubject: 'clerk-user-1',
+      oidcSubject: 'auth-user-1',
       email: 'client@example.com',
       emailVerified: true,
       isPlatformAdmin: false,

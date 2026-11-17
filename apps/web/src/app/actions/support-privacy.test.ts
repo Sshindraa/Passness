@@ -16,14 +16,8 @@ vi.mock('@/lib/support-auth', () => ({
   requireSupportPlatformAdmin: vi.fn(),
 }));
 
-vi.mock('@clerk/nextjs/server', () => ({
-  clerkClient: vi.fn(() =>
-    Promise.resolve({
-      users: {
-        deleteUser: vi.fn(),
-      },
-    }),
-  ),
+vi.mock('@/lib/auth-identity', () => ({
+  deleteAuthIdentity: vi.fn(),
 }));
 
 vi.mock('@passness/core', async (importOriginal) => {

@@ -15,16 +15,12 @@ const STRIPE_TEST_KEY_PREFIXES = {
   STRIPE_SECRET_KEY: 'sk_test_',
   NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: 'pk_test_',
 };
-const CLERK_TEST_KEY_PREFIXES = {
-  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: 'pk_test_',
-  CLERK_SECRET_KEY: 'sk_test_',
-};
-const CLERK_TEST_KEY_SUFFIX_PATTERN = /^[A-Za-z0-9_-]{16,}$/;
-const LOCAL_WEBHOOK_SECRETS = [
-  'CLERK_WEBHOOK_SECRET',
-  'STRIPE_PLATFORM_WEBHOOK_SECRET',
-  'STRIPE_CONNECT_WEBHOOK_SECRET',
-];
+// Authentification locale (ADR-047) : secret de développement fixe et clés Turnstile de test
+// publiées par Cloudflare (toujours valides). Aucune clé externe n'est requise en local.
+const LOCAL_BETTER_AUTH_SECRET = 'passness-local-dev-better-auth-secret-not-for-production';
+const LOCAL_TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
+const LOCAL_TURNSTILE_SECRET_KEY = '1x0000000000000000000000000000000AA';
+const LOCAL_WEBHOOK_SECRETS = ['STRIPE_PLATFORM_WEBHOOK_SECRET', 'STRIPE_CONNECT_WEBHOOK_SECRET'];
 const LOCAL_CRON_SECRET = 'dev-cron-secret-local';
 const LOCAL_PROVIDER_CREDENTIALS = [
   'R2_ACCOUNT_ID',
@@ -90,14 +86,6 @@ export function isLocalDatabaseUrl(value) {
   }
 }
 
-function isValidClerkTestKey(value, prefix) {
-  return (
-    typeof value === 'string' &&
-    value.startsWith(prefix) &&
-    CLERK_TEST_KEY_SUFFIX_PATTERN.test(value.slice(prefix.length))
-  );
-}
-
 /**
  * Construit l'environnement hermétique du workflow local.
  * Les URLs existantes sont contrôlées avant d'être remplacées par les URLs fixes.
@@ -121,13 +109,6 @@ export function createLocalEnvironment(baseEnvironment = process.env) {
     }
   }
 
-  for (const [variable, prefix] of Object.entries(CLERK_TEST_KEY_PREFIXES)) {
-    const value = baseEnvironment[variable];
-    if (!isValidClerkTestKey(value, prefix)) {
-      throw new Error(`configuration Clerk TEST invalide pour ${variable}.`);
-    }
-  }
-
   const sanitizedBaseEnvironment = { ...baseEnvironment };
   // Ne pas laisser fuiter l'ancien taux même lorsqu'il est présent dans le
   // shell appelant : le registre serveur est désormais l'unique autorité.
@@ -144,8 +125,10 @@ export function createLocalEnvironment(baseEnvironment = process.env) {
     STRIPE_SECRET_KEY: baseEnvironment.STRIPE_SECRET_KEY ?? '',
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: baseEnvironment.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? '',
     PUBLIC_APP_URL: LOCAL_PUBLIC_APP_URL,
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: baseEnvironment.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-    CLERK_SECRET_KEY: baseEnvironment.CLERK_SECRET_KEY,
+    BETTER_AUTH_SECRET: LOCAL_BETTER_AUTH_SECRET,
+    BETTER_AUTH_URL: LOCAL_PUBLIC_APP_URL,
+    NEXT_PUBLIC_TURNSTILE_SITE_KEY: LOCAL_TURNSTILE_SITE_KEY,
+    TURNSTILE_SECRET_KEY: LOCAL_TURNSTILE_SECRET_KEY,
     PUBLIC_SEARCH_CURSOR_SECRET: LOCAL_DEV_PUBLIC_SEARCH_CURSOR_SECRET,
     ALLOWED_ORIGINS: '',
     CRON_SECRET: LOCAL_CRON_SECRET,

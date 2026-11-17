@@ -63,9 +63,9 @@ describe('Dashboard — Navigation IA Pro définitive', () => {
     expect(layout).toContain("aria-current={active ? 'page' : undefined}");
   });
 
-  it('le changement de compte déconnecte réellement la session Clerk', () => {
-    expect(layout).toContain('useClerk');
-    expect(layout).toContain("signOut({ redirectUrl: '/sign-in' })");
+  it('le changement de compte déconnecte réellement la session Better Auth', () => {
+    expect(layout).toContain('authClient.signOut()');
+    expect(layout).toContain("window.location.assign('/sign-in')");
     expect(layout).toContain('Changer de compte');
     expect(layout).toContain('<button');
   });

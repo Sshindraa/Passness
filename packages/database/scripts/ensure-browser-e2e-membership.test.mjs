@@ -6,31 +6,29 @@ import {
 
 describe('browser E2E membership fixture guards', () => {
   it('requires the explicit browser E2E marker and a non-production environment', () => {
-    expect(isBrowserE2eEnvironment({ E2E_CLERK_USER_EMAIL: 'e2e+clerk_test@example.com' })).toBe(
-      false,
-    );
+    expect(isBrowserE2eEnvironment({ E2E_USER_EMAIL: 'e2e+e2e@example.com' })).toBe(false);
     expect(() =>
       assertBrowserE2eEnvironment({
         PASSNESS_BROWSER_E2E: '1',
         NODE_ENV: 'production',
-        E2E_CLERK_USER_EMAIL: 'e2e+clerk_test@example.com',
+        E2E_USER_EMAIL: 'e2e+e2e@example.com',
       }),
     ).toThrow(/fixture membership E2E/i);
   });
 
-  it('accepts only a dedicated Clerk test email', () => {
+  it('accepts only a dedicated +e2e test email', () => {
     const validEnvironment = {
       PASSNESS_BROWSER_E2E: '1',
       NODE_ENV: 'test',
-      E2E_CLERK_USER_EMAIL: 'e2e+clerk_test@example.com',
+      E2E_USER_EMAIL: 'e2e+e2e@example.com',
     };
     expect(isBrowserE2eEnvironment(validEnvironment)).toBe(true);
     expect(() => assertBrowserE2eEnvironment(validEnvironment)).not.toThrow();
     expect(() =>
       assertBrowserE2eEnvironment({
         ...validEnvironment,
-        E2E_CLERK_USER_EMAIL: 'person@example.com',
+        E2E_USER_EMAIL: 'person@example.com',
       }),
-    ).toThrow(/adresse Clerk de test/i);
+    ).toThrow(/adresse de test dédiée/i);
   });
 });

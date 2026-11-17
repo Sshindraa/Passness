@@ -31,3 +31,4 @@
 - La PR [`staging → main` #86](https://github.com/Sshindraa/Passness/pull/86) reste ouverte et indépendante du rebranding; elle cible toujours l'ancien commit de base `bb94735` et GitHub la signale actuellement non fusionnable. Le Worker staging n'a pas été redéployé, car Wrangler/Cloudflare ne sont pas disponibles dans cet environnement.
 - Vérifier les domaines d'envoi Resend, l'endpoint webhook Stripe et l'état du Worker avant de basculer ces services. Ces fournisseurs n'ont pas été modifiés ici.
 - Le checkout local principal comporte des changements non committés; ne pas le réinitialiser ni le pousser en bloc. La PR #90 est fusionnée; les étapes restantes sont la redirection DNS Cloudflare, les opérations Worker/Resend/Stripe et le suivi de la PR #86.
+- Clerk est retiré par ADR-047 : plus aucun réglage Clerk à faire pour le renommage.

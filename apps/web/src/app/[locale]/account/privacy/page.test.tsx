@@ -21,10 +21,11 @@ vi.mock('next/navigation', () => ({
   redirect: redirectMock,
 }));
 
-vi.mock('@clerk/nextjs', () => ({
-  useClerk: () => ({
+vi.mock('@/lib/auth-client', () => ({
+  authClient: {
+    useSession: () => ({ data: null, isPending: false }),
     signOut: vi.fn(),
-  }),
+  },
 }));
 
 vi.mock('@passness/core', async () => {

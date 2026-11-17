@@ -1,7 +1,7 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
+import { getSessionIdentity } from '@/lib/auth-session';
 
-const isPublicRoute = createRouteMatcher([
+const PUBLIC_ROUTES = [
   '/',
   '/fr/search(.*)',
   '/en/search(.*)',
@@ -29,17 +29,36 @@ const isPublicRoute = createRouteMatcher([
   '/api/public/search(.*)',
   '/api/public/product-photos(.*)',
   // Les webhooks sont authentifiés par la signature Stripe dans leur route.
-  // Ils doivent rester accessibles sans session Clerk pour que Stripe puisse
+  // Ils doivent rester accessibles sans session Passness pour que Stripe puisse
   // les livrer à l'application.
   '/api/webhooks/stripe(.*)',
   '/sign-in(.*)',
   '/sign-up(.*)',
+  '/forgot-password(.*)',
+  '/reset-password(.*)',
+  '/two-factor(.*)',
+  '/api/auth(.*)',
   '/photo-coach-demo(.*)',
-]);
+].map((pattern) => new RegExp(`^${pattern}$`));
 
-export default clerkMiddleware(async (auth, req) => {
+function isPublicRoute(req: NextRequest): boolean {
+  const { pathname } = req.nextUrl;
+  return PUBLIC_ROUTES.some((re) => re.test(pathname));
+}
+
+export async function proxy(req: NextRequest): Promise<NextResponse> {
   if (!isPublicRoute(req)) {
-    await auth.protect();
+    // Validation complète de la session (base de données) : fail-closed.
+    const identity = await getSessionIdentity().catch(() => null);
+    if (!identity) {
+      if (req.nextUrl.pathname.startsWith('/api/')) {
+        return NextResponse.json({ error: 'UNAUTHENTICATED' }, { status: 401 });
+      }
+      const url = req.nextUrl.clone();
+      url.pathname = '/sign-in';
+      url.search = `?redirect_url=${encodeURIComponent(req.nextUrl.pathname + req.nextUrl.search)}`;
+      return NextResponse.redirect(url);
+    }
   }
 
   const pathname = req.nextUrl.pathname;
@@ -74,7 +93,8 @@ export default clerkMiddleware(async (auth, req) => {
     url.pathname = url.pathname.replace(/\/operations$/, '/bookings');
     return NextResponse.redirect(url);
   }
-});
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],

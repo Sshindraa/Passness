@@ -1,11 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import { Button, Icon, LinkButton } from '@passness/ui';
 import { useEffect, useRef, useState } from 'react';
 import type { AppLocale } from '@/lib/locale';
 import { PassnessBrand } from '@/components/brand';
+import { authClient } from '@/lib/auth-client';
 import { LanguageDialog } from './language-dialog';
 import styles from './home-navigation.module.css';
 
@@ -24,6 +24,7 @@ export function HomeNavigation({
   showAuthAction?: boolean | undefined;
 }): React.JSX.Element {
   const fr = locale === 'fr';
+  const { data: session, isPending } = authClient.useSession();
   const homeHref = fr ? '/' : '/?lang=en';
   const effectiveSignInUrl = signInRedirectUrl ?? homeHref;
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -101,29 +102,42 @@ export function HomeNavigation({
                 <p className={styles.panelTitle}>
                   {fr ? 'Bienvenue chez Passness' : 'Welcome to Passness'}
                 </p>
-                <SignedOut>
-                  <p className={styles.accountHint}>
-                    {fr
-                      ? 'Vos prochaines sorties commencent ici.'
-                      : 'Your next adventure starts here.'}
-                  </p>
-                  {showAuthAction ? (
-                    <LinkButton
-                      href={'/sign-in?redirect_url=' + encodeURIComponent(effectiveSignInUrl)}
-                      className={styles.signIn}
-                      onClick={closeMenus}
-                    >
-                      {fr ? 'Se connecter' : 'Sign in'}
-                      <Icon name="arrow-right" size={17} />
-                    </LinkButton>
-                  ) : null}
-                </SignedOut>
-                <SignedIn>
+                {!isPending && !session ? (
+                  <>
+                    <p className={styles.accountHint}>
+                      {fr
+                        ? 'Vos prochaines sorties commencent ici.'
+                        : 'Your next adventure starts here.'}
+                    </p>
+                    {showAuthAction ? (
+                      <LinkButton
+                        href={'/sign-in?redirect_url=' + encodeURIComponent(effectiveSignInUrl)}
+                        className={styles.signIn}
+                        onClick={closeMenus}
+                      >
+                        {fr ? 'Se connecter' : 'Sign in'}
+                        <Icon name="arrow-right" size={17} />
+                      </LinkButton>
+                    ) : null}
+                  </>
+                ) : null}
+                {session ? (
                   <div className={styles.account}>
-                    <UserButton afterSignOutUrl={effectiveSignInUrl} />
-                    <span>{fr ? 'Gérer mon compte' : 'Manage my account'}</span>
+                    <Link href="/account-security" onClick={closeMenus}>
+                      {fr ? 'Gérer mon compte' : 'Manage my account'}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        void authClient
+                          .signOut()
+                          .then(() => window.location.assign(effectiveSignInUrl));
+                      }}
+                    >
+                      {fr ? 'Se déconnecter' : 'Sign out'}
+                    </button>
                   </div>
-                </SignedIn>
+                ) : null}
               </div>
               <nav
                 className={styles.accountLinks}

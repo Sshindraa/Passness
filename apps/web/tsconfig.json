@@ -11,6 +11,8 @@
     "jsx": "preserve",
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "noEmit": true,
+    "declaration": false,
+    "declarationMap": false,
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"]

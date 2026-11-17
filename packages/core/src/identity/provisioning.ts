@@ -2,14 +2,17 @@ import { eq } from 'drizzle-orm';
 import type { DatabaseClient } from '@passness/database';
 import { users } from '@passness/database';
 import type { AuthenticatedUser } from './types';
-import { AccountDeletedError } from './types';
+import { AccountDeletedError, AccountLinkRefusedError } from './types';
 
 /**
- * Provisioning d'un utilisateur Passness depuis l'identité Clerk (ADR-006, ADR-039).
+ * Provisioning d'un utilisateur Passness depuis l'identité Better Auth (ADR-006, ADR-039, ADR-047).
  *
  * À la première connexion authentifiée, Passness crée un `users` avec
  * oidc_subject + oidc_provider + email. Si l'utilisateur existe déjà
- * (par oidc_subject ou email), il est réutilisé.
+ * par oidc_subject, il est réutilisé. Un `users` créé par invitation (jamais
+ * connecté, `oidc_provider` nul) est rattaché par e-mail, uniquement si l'e-mail
+ * est vérifié. Tout autre compte trouvé par e-mail (`counter`, `clerk` non migré,
+ * autre identité) est refusé : jamais de reprise de compte par e-mail seul.
  *
  * Si le compte a été supprimé / neutralisé (deletedAt !== null), la connexion
  * est strictement rejetée (fail-closed, ADR-039).
@@ -56,13 +59,16 @@ export async function provisionUserFromOidc(
       if (byEmail.deletedAt !== null) {
         throw new AccountDeletedError();
       }
-      // Relie le compte à l'identité OIDC.
+      if (byEmail.oidcProvider !== null || byEmail.oidcSubject !== null || !input.emailVerified) {
+        throw new AccountLinkRefusedError();
+      }
+      // Relie le compte invité à l'identité OIDC.
       const [updated] = await tx
         .update(users)
         .set({
           oidcSubject: input.oidcSubject,
           oidcProvider: input.oidcProvider,
-          emailVerifiedAt: input.emailVerified ? new Date() : byEmail.emailVerifiedAt,
+          emailVerifiedAt: new Date(),
           updatedAt: new Date(),
         })
         .where(eq(users.id, byEmail.id))
@@ -105,7 +111,7 @@ export async function provisionUserFromOidc(
       if (winnerByEmail.deletedAt !== null) {
         throw new AccountDeletedError();
       }
-      return mapUser(winnerByEmail);
+      throw new AccountLinkRefusedError();
     }
 
     throw new Error('Échec de création utilisateur.');

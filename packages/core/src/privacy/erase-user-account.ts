@@ -352,6 +352,7 @@ export async function eraseUserAccount(
         displayName: null,
         oidcSubject: tombstoneSubject,
         oidcProvider: null,
+        legacyClerkId: null,
         isPlatformAdmin: false,
         deletedAt: now,
         updatedAt: now,

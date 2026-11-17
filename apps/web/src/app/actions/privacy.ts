@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { getAuthenticatedUser } from '@/lib/auth';
 import { getDb } from '@/lib/db';
-import { clerkClient } from '@clerk/nextjs/server';
+import { deleteAuthIdentity } from '@/lib/auth-identity';
 import {
   createPrivacyRequest,
   eraseUserAccount,
@@ -85,7 +85,7 @@ export interface EraseAccountActionResult {
 
 /**
  * Server Action pour l'effacement autonome et immédiat de son propre compte (Art. 17 RGPD).
- * Neutralise le compte dans Passness, crée le scellé probatoire et supprime l'identité dans Clerk.
+ * Neutralise le compte dans Passness, crée le scellé probatoire et supprime l'identité d'authentification.
  */
 export async function eraseMyAccountAction(): Promise<
   PrivacyActionResult<EraseAccountActionResult>
@@ -106,18 +106,7 @@ export async function eraseMyAccountAction(): Promise<
       actorUserId: user.id,
       triggerSource: 'SELF_SERVICE',
       deleteExternalIdentity: async (oidcSubject: string) => {
-        try {
-          const client = await clerkClient();
-          await client.users.deleteUser(oidcSubject);
-        } catch (clerkErr) {
-          const isNotFound =
-            clerkErr instanceof Error &&
-            (clerkErr.message.includes('404') ||
-              clerkErr.message.toLowerCase().includes('not found'));
-          if (!isNotFound) {
-            console.error('[PrivacyErasure] Clerk deletion warning:', clerkErr);
-          }
-        }
+        await deleteAuthIdentity(oidcSubject);
       },
     });
 

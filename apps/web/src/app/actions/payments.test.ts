@@ -17,15 +17,15 @@ import type { CreateBookingDraftInput } from '@passness/core';
 import { eq, sql } from 'drizzle-orm';
 
 // ---------------------------------------------------------------------------
-// Mocks : Clerk, getDb, next/cache et @/lib/stripe.
+// Mocks : session Better Auth, getDb, next/cache et @/lib/stripe.
 //
-// initiatePaymentAction dépend de Clerk, du singleton `getDb()` et de
+// initiatePaymentAction dépend de la session Better Auth, du singleton `getDb()` et de
 // `getStripeAdapter()`. On mocke les trois pour contrôler l'identité, brancher
 // une base de test PostgreSQL réelle et substituer le FakeStripeAdapter.
 // ---------------------------------------------------------------------------
 
-vi.mock('@clerk/nextjs/server', () => ({
-  currentUser: vi.fn<() => Promise<unknown>>(),
+vi.mock('@/lib/auth-session', () => ({
+  getSessionIdentity: vi.fn<() => Promise<unknown>>(),
 }));
 
 vi.mock('next/cache', () => ({
@@ -50,7 +50,7 @@ vi.mock('@/lib/stripe', () => ({
   getStripeAdapter: () => fakeAdapter,
 }));
 
-const { currentUser } = await import('@clerk/nextjs/server');
+const { getSessionIdentity } = await import('@/lib/auth-session');
 const { initiatePaymentAction } = await import('./payments');
 
 // ---------------------------------------------------------------------------
@@ -135,7 +135,7 @@ afterAll(async () => {
 
 beforeEach(async () => {
   if (!testDb) return;
-  vi.mocked(currentUser).mockReset();
+  vi.mocked(getSessionIdentity).mockReset();
   // Réinitialise toutes les tables liées au flux de paiement et de réservation.
   await testDb.execute(
     sql`TRUNCATE TABLE
@@ -152,25 +152,25 @@ beforeEach(async () => {
 // Helpers de test.
 // ---------------------------------------------------------------------------
 
-function mockClerkUser(user: AuthenticatedUser | null): void {
+function mockSessionUser(user: AuthenticatedUser | null): void {
   if (!user) {
-    vi.mocked(currentUser).mockResolvedValue(null as never);
+    vi.mocked(getSessionIdentity).mockResolvedValue(null as never);
     return;
   }
-  vi.mocked(currentUser).mockResolvedValue({
-    id: user.oidcSubject,
-    primaryEmailAddress: {
-      emailAddress: user.email,
-      verification: { status: user.emailVerified ? 'verified' : 'unverified' },
-    },
+  vi.mocked(getSessionIdentity).mockResolvedValue({
+    subject: user.oidcSubject,
+    email: user.email,
+    emailVerified: user.emailVerified,
+    displayName: null,
+    twoFactorEnabled: true,
   } as never);
 }
 
 async function makeUser(email: string): Promise<AuthenticatedUser> {
   if (!testDb) throw new Error('db not initialized');
   return provisionUserFromOidc(testDb, {
-    oidcSubject: `clerk-${email}`,
-    oidcProvider: 'clerk',
+    oidcSubject: `auth-${email}`,
+    oidcProvider: 'better-auth',
     email,
     emailVerified: true,
   });
@@ -292,7 +292,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
   () => {
     it('Test 1 : utilisateur non authentifié → FAILURE 401', async () => {
       if (!testDb) return;
-      mockClerkUser(null);
+      mockSessionUser(null);
       const result = await initiatePaymentAction({
         draftId: '00000000-0000-0000-0000-000000000001',
         idempotencyKey: 'init-auth-1',
@@ -308,7 +308,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
     it('Test 2 : brouillon introuvable → FAILURE 404', async () => {
       if (!testDb) return;
       const user = await makeUser('customer-notfound@example.com');
-      mockClerkUser(user);
+      mockSessionUser(user);
       const result = await initiatePaymentAction({
         draftId: '00000000-0000-0000-0000-000000000099',
         idempotencyKey: 'init-notfound-1',
@@ -332,7 +332,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       const draftId = await createHeldDraft(ids, customer.id);
 
       // `other` tente de payer le brouillon de `customer` → FORBIDDEN.
-      mockClerkUser(other);
+      mockSessionUser(other);
       const result = await initiatePaymentAction({
         draftId,
         idempotencyKey: 'init-forbidden-1',
@@ -355,7 +355,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       // paiement avant tout appel provider.
       const draftId = await createHeldDraft(ids, customer.id);
 
-      mockClerkUser(customer);
+      mockSessionUser(customer);
       const result = await initiatePaymentAction({
         draftId,
         idempotencyKey: 'init-noterms-1',
@@ -388,7 +388,7 @@ describe.skipIf(shouldSkipIntegrationTests())(
       void orgB; // orgB créé pour isoler le contexte multi-tenant.
 
       // L'utilisateur de org B tente initiatePaymentAction sur le brouillon de org A.
-      mockClerkUser(userB);
+      mockSessionUser(userB);
       const result = await initiatePaymentAction({
         draftId: draftIdA,
         idempotencyKey: 'init-cross-tenant-1',

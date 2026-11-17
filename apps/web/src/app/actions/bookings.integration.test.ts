@@ -92,7 +92,7 @@ describe.skipIf(shouldSkip)(
       // Customer User
       const user = await sql`
       INSERT INTO "users" ("email", "oidc_subject", "oidc_provider", "display_name")
-      VALUES (${`cust-${tag}@example.com`}, ${`sub-${tag}`}, 'clerk', ${`Cust ${tag}`})
+      VALUES (${`cust-${tag}@example.com`}, ${`sub-${tag}`}, 'better-auth', ${`Cust ${tag}`})
       RETURNING "id"
     `.then((r) => r[0]!);
 
@@ -282,7 +282,7 @@ describe.skipIf(shouldSkip)(
 
       const user2Row = await rawSql`
       INSERT INTO "users" ("email", "oidc_subject", "oidc_provider", "display_name")
-      VALUES ('cust-race2@example.com', 'sub-race2', 'clerk', 'Cust Race 2')
+      VALUES ('cust-race2@example.com', 'sub-race2', 'better-auth', 'Cust Race 2')
       RETURNING "id"
     `.then((r) => r[0]!);
 
