@@ -121,6 +121,7 @@ export function SignInForm(): React.ReactElement {
 }
 
 export function SignUpForm(): React.ReactElement {
+  const redirectUrl = useRedirectUrl();
   const s = useSubmit();
   const { token, onToken, reset } = useCaptcha();
   const [done, setDone] = useState(false);
@@ -134,7 +135,8 @@ export function SignUpForm(): React.ReactElement {
         name: String(form.get('name')),
         email: String(form.get('email')),
         password: String(form.get('password')),
-        callbackURL: '/sign-in?verified=1',
+        // La page /sign-in redirige vers redirect_url une fois connecté (auto sign-in après vérification).
+        callbackURL: `/sign-in?verified=1&redirect_url=${encodeURIComponent(redirectUrl)}`,
         fetchOptions: { headers: captchaHeaders(token) },
       });
       if (res.error) {
