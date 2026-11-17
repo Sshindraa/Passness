@@ -31,6 +31,7 @@ import {
 } from '@passness/core';
 import { fileURLToPath } from 'node:url';
 
+import { WorkerIntervalConfigurationError, resolveWorkerIntervalMs } from './worker-interval.js';
 import type { WorkerDependencies, WorkerCycleOptions } from './worker-cycle.js';
 import { runWorkerCycle } from './worker-cycle.js';
 import type { WorkerLogger } from './logger.js';
@@ -571,6 +572,9 @@ export interface StartWorkerOptions {
   readonly runLoop?: RunLoopFn;
 }
 
+// Défaut production : 1 s. Staging : régler WORKER_INTERVAL_MS (voir .env.example).
+const DEFAULT_WORKER_INTERVAL_MS = 1000;
+
 /**
  * Démarre le worker production : crée les dépendances, branche les signaux,
  * lance la boucle, et assure le cleanup.
@@ -579,7 +583,8 @@ export interface StartWorkerOptions {
  * comportement sans lancer un vrai processus.
  */
 export async function startWorker(options?: StartWorkerOptions): Promise<void> {
-  const intervalMs = options?.intervalMs ?? 1000;
+  const intervalMs =
+    options?.intervalMs ?? resolveWorkerIntervalMs(process.env, DEFAULT_WORKER_INTERVAL_MS);
   const batchLimit = options?.batchLimit ?? 10;
   const createRuntime = options?.createRuntime ?? createWorkerDependenciesFromEnv;
   const signalSource = options?.signalSource ?? processSignalSource;
@@ -658,7 +663,7 @@ const isMainModule = (() => {
 
 if (isMainModule) {
   startWorker().catch((e) => {
-    if (e instanceof WorkerConfigurationError) {
+    if (e instanceof WorkerConfigurationError || e instanceof WorkerIntervalConfigurationError) {
       console.error(`Worker: configuration invalide — ${e.message}`);
     } else {
       console.error('Worker: erreur inattendue lors du démarrage.');
