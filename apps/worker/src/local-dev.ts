@@ -1,10 +1,16 @@
 import type { DatabaseClient } from '@passness/database';
 import { fileURLToPath } from 'node:url';
 
+import {
+  MAX_WORKER_INTERVAL_MS,
+  WorkerIntervalConfigurationError,
+  resolveWorkerIntervalMs,
+} from './worker-interval.js';
+
 const LOCAL_DATABASE_URL = 'postgresql://uttily:uttily@127.0.0.1:5432/uttily';
 const LOCAL_DATABASE_HOSTNAMES = new Set(['localhost', '127.0.0.1', '::1', '[::1]']);
 const DEFAULT_INTERVAL_MS = 5_000;
-export const MAX_LOCAL_WORKER_INTERVAL_MS = 2_147_483_647;
+export const MAX_LOCAL_WORKER_INTERVAL_MS = MAX_WORKER_INTERVAL_MS;
 const BATCH_LIMIT = 10;
 
 class LocalWorkerConfigurationError extends Error {
@@ -41,21 +47,7 @@ export function resolveDatabaseUrl(environment: NodeJS.ProcessEnv) {
 }
 
 export function resolveLocalWorkerIntervalMs(environment: NodeJS.ProcessEnv) {
-  const rawInterval = environment.WORKER_INTERVAL_MS;
-  if (rawInterval === undefined) return DEFAULT_INTERVAL_MS;
-
-  const intervalMs = Number(rawInterval);
-  if (
-    !Number.isInteger(intervalMs) ||
-    !Number.isFinite(intervalMs) ||
-    intervalMs <= 0 ||
-    intervalMs > MAX_LOCAL_WORKER_INTERVAL_MS
-  ) {
-    throw new LocalWorkerConfigurationError(
-      `WORKER_INTERVAL_MS doit être un entier fini strictement positif inférieur ou égal à ${MAX_LOCAL_WORKER_INTERVAL_MS}.`,
-    );
-  }
-  return intervalMs;
+  return resolveWorkerIntervalMs(environment, DEFAULT_INTERVAL_MS);
 }
 
 /** Lance le worker local avec la base locale et des providers exclusivement fake. */
@@ -110,7 +102,10 @@ function isMainModule() {
 
 if (isMainModule()) {
   runLocalWorker().catch((error) => {
-    if (error instanceof LocalWorkerConfigurationError) {
+    if (
+      error instanceof LocalWorkerConfigurationError ||
+      error instanceof WorkerIntervalConfigurationError
+    ) {
       console.error(`Worker local: configuration refusée — ${error.message}`);
     } else {
       console.error('Worker local: échec inattendu ; arrêt sans appel fournisseur.');
