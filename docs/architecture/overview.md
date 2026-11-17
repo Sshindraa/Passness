@@ -43,7 +43,7 @@ Un module expose une interface publique. Aucun autre module n'importe directemen
 | Fichiers | Stockage objet compatible S3 — Cloudflare R2 juridiction `eu` (ADR-014) |
 | Paiement marketplace | Stripe Connect |
 | Identité | Fournisseur OIDC ; autorisation métier dans Passness |
-| Traitement différé | Outbox PostgreSQL + worker (VPS DigitalOcean Frankfurt, ADR-014) |
+| Traitement différé | Outbox PostgreSQL + worker (VPS OVH Allemagne `sokar`, ADR-014) |
 | Email transactionnel | Resend (ADR-014) |
 | Erreurs | Logs JSON structurés et métriques opérationnelles présents ; capture centralisée, alerting et rétention à configurer avant LIVE |
 | Déploiement | Environnements dev, staging et production séparés |

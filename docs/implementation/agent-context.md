@@ -83,7 +83,7 @@ Un même utilisateur peut être client et membre de plusieurs organisations. Les
 - Stockage objet compatible S3 pour photos et documents — Cloudflare R2 juridiction `eu` (ADR-014).
 - Stripe Connect pour les paiements ; aucune carte bancaire n'est stockée par Passness.
 - Fournisseur OIDC (Clerk — ADR-006) pour l'identité ; autorisation métier dans PostgreSQL.
-- Outbox PostgreSQL et worker séparé pour les tâches différées (VPS DigitalOcean Frankfurt, ADR-014).
+- Outbox PostgreSQL et worker séparé pour les tâches différées (VPS OVH Allemagne `sokar`, ADR-014).
 - Email transactionnel via Resend avec idempotence native 24 h + politique fail-closed (ADR-014).
 
 ## Contrat de données
