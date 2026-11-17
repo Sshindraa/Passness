@@ -1,7 +1,7 @@
 # Scheduler cron staging
 
 Ce Worker Cloudflare remplace uniquement les Cron Jobs Vercel incompatibles
-avec le plan Hobby. Il déclenche chaque minute les quatre routes HTTP cron de
+avec le plan Hobby. Il déclenche toutes les 15 minutes les quatre routes HTTP cron de
 l'application Vercel staging, avec le même `CRON_SECRET` partagé.
 
 ## Développement et déploiement

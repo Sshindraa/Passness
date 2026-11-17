@@ -1214,7 +1214,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Availability integration — Inve
     ).rejects.toMatchObject({ code: 'CONFLICT_IDEMPOTENCY' });
   });
 
-  it('blocage manuel : accepte les huit familles et isole les organisations', async () => {
+  it('blocage manuel : accepte les douze familles et isole les organisations', async () => {
     if (!ctx || !db) return;
     const setupA = await setupOrgWithLocation('manual-block-families@example.com', 'Families Org');
     const setupB = await setupOrgWithLocation('manual-block-other@example.com', 'Other Org');
@@ -1253,6 +1253,6 @@ describe.skipIf(shouldSkipIntegrationTests())('Availability integration — Inve
         actorUserId: setupA.user.id,
       }),
     ).rejects.toMatchObject({ code: 'NOT_FOUND' });
-    expect(itemIds).toHaveLength(8);
+    expect(itemIds).toHaveLength(12);
   });
 });

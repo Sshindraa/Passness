@@ -154,7 +154,7 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
   `Passness <noreply@sokar.tech>` et template de confirmation publié.
 - Worker : conteneur `uttily-worker-staging` isolé sur l'hôte staging existant,
   avec credentials R2/Resend hors dépôt et droits minimaux.
-- Scheduler : la configuration source définit `passness-staging-cron` et cible
+- Scheduler : toutes les 15 minutes (`*/15 * * * *`, pour laisser la base Neon se mettre en veille), la configuration source définit `passness-staging-cron` et cible
   `https://passness-staging.vercel.app`. Le déploiement Cloudflare après ce
   renommage n'a pas été vérifié; l'ancien Worker peut encore tourner. Ne pas le
   supprimer avant d'avoir contrôlé le Worker et ses appels `/api/cron/*` avec

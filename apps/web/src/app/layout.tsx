@@ -3,6 +3,7 @@ import { frFR } from '@clerk/localizations';
 import type { Metadata } from 'next';
 import '@passness/ui/tokens.css';
 import { PASSNESS_FONT_FAMILY } from '@/lib/typography';
+import { SmoothScroll } from '@/components/smooth-scroll';
 
 export const metadata: Metadata = {
   title: 'Passness',
@@ -39,13 +40,15 @@ export default function RootLayout({
         <head>
           <link
             rel="preload"
-            href="/fonts/sora/sora-variable.woff2"
+            href="/fonts/chillax/chillax-variable.woff2"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
           />
         </head>
-        <body>{children}</body>
+        <body>
+          <SmoothScroll>{children}</SmoothScroll>
+        </body>
       </html>
     </ClerkProvider>
   );

@@ -2,7 +2,7 @@
 
 **Référence de version :** document vivant ; vérifier le commit courant du dépôt
 avant utilisation. Les anciennes baselines `origin/main = ...` sont historiques.
-**Dernière revue de cohérence :** 2026-09-04
+**Dernière revue de cohérence :** 2026-09-10
 **Statut du pack :** `SIGNOFF = APPROVED` ✅ (Décisions formelles DPO actées le 2026-09-04)
 **Identifiants référencés :** uniquement `DPO-*`
 **Analytics production :** `OFF`
@@ -20,9 +20,12 @@ Ce pack consigne les arbitrages formels validés par le DPO et la Direction pour
 | `DPO-005` | Sous-traitants, DPA & transferts hors-UE | DPO + juridique | `APPROVED` ✅ | 6 sous-traitants (Clerk, Stripe, Neon, Cloudflare, Resend, Vercel) formellement approuvés sous garanties DPF et SCC 2021/914 (dossier 21-P1C validé). |
 | `DPO-006` | Verrou analytics production | DPO + porteur produit | `APPROVED` ✅ | Maintien strict de `PRODUCTION ANALYTICS = OFF` (ADR-022) confirmé pour toute la durée du pilote. |
 
-## DPO decisions required
+## Périmètre documentaire et limites restantes
 
-Le DPO doit répondre explicitement, sans déduire une base juridique du code :
+Les décisions DPO du 2026-09-04 sont enregistrées dans le tableau ci-dessus.
+La cartographie ci-dessous reste un inventaire technique et doit être
+réconciliée avec les paramètres réels des fournisseurs ; elle ne transforme
+pas une capacité technique en avis juridique.
 
 ### Finalités et bases
 
@@ -51,9 +54,13 @@ ledger financier. Le DPO doit distinguer :
 - données qui doivent être conservées ;
 - journalisation de la demande et de son résultat.
 
-Aucun mécanisme d'effacement, d'anonymisation ou de portabilité client n'est
-implémenté dans 21-P0. Les futurs chantiers sont uniquement nommés dans le
-registre ; ils ne sont pas livrés par ce pack.
+L'effacement et la portabilité client sont désormais implémentés :
+`eraseUserAccount` applique le contrat ADR-039 (opération idempotente,
+neutralisation des identifiants directs, scellement probatoire 5/10 ans et
+purge de l'identité externe), tandis que les exports Art. 15 et Art. 20 sont
+fournis par `buildPersonalDataCopy` et `buildPortableData`. Les extensions non
+couvertes par ADR-039 et la rétention effective des fournisseurs restent à
+traiter séparément.
 
 ### Droits et procédures
 
@@ -119,7 +126,8 @@ n'est incluse dans 21-P0.
 
 ## Règle de suite technique
 
-Après décision DPO seulement, ouvrir si nécessaire :
+Après le sign-off DPO, ouvrir uniquement si nécessaire pour une extension du
+périmètre :
 
 - `PRIVACY-ERASURE` pour effacement/anonymisation ;
 - `PRIVACY-EXPORT` pour export/portabilité ;
@@ -127,4 +135,5 @@ Après décision DPO seulement, ouvrir si nécessaire :
 - `PRIVACY-PURPOSES-REGISTRY` pour un registre versionné ;
 - `PRIVACY-ANALYTICS-PRODUCTION` pour une éventuelle activation distincte.
 
-Aucun de ces chantiers n'est implémenté ou activé dans ce pack.
+`PRIVACY-ERASURE` et `PRIVACY-EXPORT` sont déjà livrés pour le périmètre
+ADR-039/21-P1 ; aucune activation de l'analytics PRODUCTION n'est permise.

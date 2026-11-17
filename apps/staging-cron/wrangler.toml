@@ -6,4 +6,4 @@ compatibility_date = "2026-08-26"
 CRON_TARGET_URL = "https://passness-staging.vercel.app"
 
 [triggers]
-crons = ["* * * * *"]
+crons = ["*/15 * * * *"]

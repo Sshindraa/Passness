@@ -2,7 +2,7 @@
 
 **Référence de version :** document vivant ; vérifier le commit courant du dépôt
 avant utilisation. Les anciennes baselines `origin/main = ...` sont historiques.
-**Dernière revue de cohérence :** 2026-09-04  
+**Dernière revue de cohérence :** 2026-09-10
 **Statut du pack :** `SIGNOFF = APPROVED` ✅ (Décisions formelles actées le 2026-09-04)  
 **Identifiants référencés :** uniquement `FIN-*`  
 
@@ -41,13 +41,14 @@ l'environnement.
 
 ## Flux de fonds — matrice minimum
 
-Les cellules décrivent d'abord le comportement technique observé. `À confirmer`
-signale précisément la décision humaine encore attendue ; il ne s'agit pas
-d'une règle inventée.
+Les cellules décrivent d'abord le comportement technique observé. Les décisions
+du 2026-09-04 sont déclarées dans le tableau de sign-off ; les mentions
+« à confirmer » restantes concernent la preuve LIVE, l'exploitation ou une
+extension du périmètre, pas une nouvelle décision inventée ici.
 
 | Scenario | Client | Platform | Connected Account | Commission | Refund/Adjustment | Document generated | Decision IDs |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Paiement normal | Paie le `customerTotalAmountMinor` en EUR : base de location + 7 % de frais de service | Crée le PaymentIntent en destination charge ; reçoit techniquement `platformApplicationFeeAmountMinor = frais loueur + frais service` ; responsabilités commerciales à confirmer | Destination Stripe du loueur ; la projection Pro distingue base, frais loueur et net de location | `split-13-7-v1` est la règle technique courante ; choix produit non validé LIVE par Finance/Juridique | Aucun ajustement initial ; un paiement confirmé est snapshoté et ne doit pas être recalculé | Pipeline outbox pour confirmation/contrat/reçu ; client reçoit le total all-in, loueur voit ses composants | `FIN-001`, `FIN-002`, `FIN-003`, `FIN-004`, `FIN-005` |
+| Paiement normal | Paie le `customerTotalAmountMinor` en EUR : base de location + 7 % de frais de service | Crée le PaymentIntent en destination charge ; reçoit techniquement `platformApplicationFeeAmountMinor = frais loueur + frais service` ; responsabilités commerciales à vérifier contre la preuve LIVE | Destination Stripe du loueur ; la projection Pro distingue base, frais loueur et net de location | `split-13-7-v1` est la règle technique ; le sign-off est déclaré, mais `FIN-002` reste bloqué dans le registre jusqu'à réconciliation | Aucun ajustement initial ; un paiement confirmé est snapshoté et ne doit pas être recalculé | Pipeline outbox pour confirmation/contrat/reçu ; client reçoit le total all-in, loueur voit ses composants | `FIN-001`, `FIN-002`, `FIN-003`, `FIN-004`, `FIN-005` |
 | Annulation à 100 % | Legacy : doit recevoir le montant fixé par la règle de remboursement approuvée ; split : chemin bloqué avant refund | Legacy preview : `refundAmountMinor = totalAmountMinor` et commission historique ; split : `SPLIT_REFUND_UNRESOLVED` | Effet du reverse transfer et support des pertes à confirmer | Legacy : commission historique ; split : composants 13 % / 7 % non proratisés automatiquement | Exécution idempotente legacy ; split sans création/soumission tant que la politique n'est pas signée | Document/message d'annulation ou refund selon catalogue à valider | `FIN-001`, `FIN-002`, `FIN-005`, `FIN-006` |
 | Remboursement partiel | Legacy : reçoit le montant arrondi selon la règle approuvée ; split : chemin bloqué avant refund | Legacy preview : `round(total * pourcentage / 100)` ; split : delta entre états effectifs proposé par `ADR-030` | Traitement du transfert et des frais Stripe à confirmer | Legacy : commission finale proratisée ; split : traitement séparé 13 % / 7 % proposé par `ADR-030` | Montant, flags, délai et conséquences de frais non récupérables à confirmer | Document de refund/avoir éventuel à définir par décision, sans génération nouvelle dans 21-P0 | `FIN-001`, `FIN-002`, `FIN-004`, `FIN-005`, `FIN-006` |
 | Supplément | Paie le delta client final-state de l'amendement via un paiement distinct si le supplément est confirmé | Le chemin G7M réutilise la règle du booking et envoie l'application fee delta technique | Compte connecté et destination sont snapshotés sur `amendment_payments` | Split : delta par composant (`FINAL_STATE_DELTA_PER_COMPONENT`) ; legacy : projection historique | Les deltas négatifs/refunds split restent bloqués tant que `FIN-002` et `ADR-030` ne sont pas signés ; succès tardif traité selon le chemin applicable | Snapshots/amendment documents techniquement possibles ; document, mentions et TVA restent à valider | `FIN-002`, `FIN-003`, `FIN-004`, `FIN-005`, `FIN-006` |
@@ -114,5 +115,8 @@ loueur.
 ## État de clôture du pack
 
 `FINANCE PACK = PASS` signifie que les questions, valeurs courantes, scénarios
-et prochaines actions sont exposés sans défaut caché. Aucun `FIN-*` n'est
-`APPROVED` dans ce dépôt.
+et prochaines actions sont exposés sans défaut caché. Les décisions `FIN-001`
+à `FIN-008` sont déclarées `APPROVED` dans le pack le 2026-09-04. Le registre
+canonique conserve `FIN-002 = BLOCKED` jusqu'à la réconciliation documentaire et
+la preuve de configuration LIVE ; aucun paiement commercial ne doit être activé
+sur la seule base de ce pack.

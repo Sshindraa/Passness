@@ -124,7 +124,7 @@ async function movementCount(itemIds: string[]): Promise<number> {
 describe.skipIf(shouldSkipIntegrationTests())(
   'mise à jour groupée de l’état physique — PostgreSQL',
   () => {
-    it('accepte les huit familles sans toucher au statut, au lieu ni aux mouvements', async () => {
+    it('accepte les douze familles sans toucher au statut, au lieu ni aux mouvements', async () => {
       if (!db) return;
       const { organizationId, locationId } = await createOrganization('all-families@example.com');
       const itemIds: string[] = [];
@@ -142,12 +142,12 @@ describe.skipIf(shouldSkipIntegrationTests())(
 
       expect(result).toMatchObject({
         condition: 'FAIR',
-        updatedCount: 8,
+        updatedCount: 12,
         noOpCount: 0,
       });
       expect(await movementCount(itemIds)).toBe(0);
       const items = await listInventoryItems(db, organizationId);
-      expect(items).toHaveLength(8);
+      expect(items).toHaveLength(12);
       expect(items.every((item) => item.condition === 'FAIR')).toBe(true);
       expect(items.every((item) => item.status === 'ACTIVE')).toBe(true);
       expect(items.every((item) => item.currentLocationId === locationId)).toBe(true);

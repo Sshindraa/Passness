@@ -128,7 +128,7 @@ async function movementCount(itemIds: string[]): Promise<number> {
 }
 
 describe.skipIf(shouldSkipIntegrationTests())('transfert groupé d’exemplaires — PostgreSQL', () => {
-  it('transfère les exemplaires des huit familles actives', async () => {
+  it('transfère les exemplaires des douze familles actives', async () => {
     if (!db) return;
     const { organizationId, sourceLocationId, destinationLocationId } = await createOrganization(
       'all-families@example.com',
@@ -146,13 +146,13 @@ describe.skipIf(shouldSkipIntegrationTests())('transfert groupé d’exemplaires
       idempotencyKey: 'all-active-families-transfer',
     });
 
-    expect(result.transferredCount).toBe(8);
+    expect(result.transferredCount).toBe(12);
     expect(result.noOpCount).toBe(0);
-    expect(result.movementIds).toHaveLength(8);
-    expect(await movementCount(itemIds)).toBe(8);
+    expect(result.movementIds).toHaveLength(12);
+    expect(await movementCount(itemIds)).toBe(12);
 
     const items = await listInventoryItems(db, organizationId);
-    expect(items).toHaveLength(8);
+    expect(items).toHaveLength(12);
     expect(items.every((item) => item.currentLocationId === destinationLocationId)).toBe(true);
     expect(items.every((item) => item.condition === 'GOOD' && item.status === 'ACTIVE')).toBe(true);
   });

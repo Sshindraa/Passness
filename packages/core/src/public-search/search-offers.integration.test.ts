@@ -152,6 +152,9 @@ async function seedLocation(
   return { locationId: loc.id, publicLocationId: loc.public_id };
 }
 
+// Slots canoniques exigés par la gate de publication vélo (migration 0050).
+const PHOTO_SLOTS = ['HERO_PROFILE', 'THREE_QUARTER_FRONT', 'SECONDARY_VIEW'] as const;
+
 async function seedProduct(orgId: string, categoryId: string, suffix = SUFFIX()) {
   if (!rawSql) throw new Error('rawSql not initialized');
   const sql = rawSql;
@@ -170,12 +173,12 @@ async function seedProduct(orgId: string, categoryId: string, suffix = SUFFIX())
       INSERT INTO product_photos (
         organization_id, product_id, storage_key,
         content_type, byte_size, width_px, height_px, checksum_sha256,
-        sort_order, file_state
+        sort_order, file_state, slot_type
       )
       VALUES (
         ${orgId}, ${product.id}, ${'product-photos/' + suffix + '-' + i},
         'image/jpeg', 102400, 800, 600, ${('000' + i).repeat(16).slice(0, 64)},
-        ${i}, 'AVAILABLE'
+        ${i}, 'AVAILABLE', ${PHOTO_SLOTS[i]!}
       )
     `;
   }
@@ -183,12 +186,16 @@ async function seedProduct(orgId: string, categoryId: string, suffix = SUFFIX())
   return { productId: product.id, publicProductId: product.public_id };
 }
 
-async function seedVariant(productId: string, _suffix = SUFFIX()) {
+async function seedVariant(
+  productId: string,
+  _suffix = SUFFIX(),
+  attributes: Record<string, unknown> = {},
+) {
   if (!rawSql) throw new Error('rawSql not initialized');
   const sql = rawSql;
   const variant = await sql`
-    INSERT INTO "product_variants" ("product_id", "name", "is_active", "currency")
-    VALUES (${productId}, 'Standard', true, 'EUR')
+    INSERT INTO "product_variants" ("product_id", "name", "attributes", "is_active", "currency")
+    VALUES (${productId}, 'Standard', ${JSON.stringify(attributes)}::text::jsonb, true, 'EUR')
     RETURNING "id"
   `.then((r) => r[0]!);
   return { variantId: variant.id };
@@ -213,9 +220,13 @@ async function seedInventory(
 }
 
 async function seedCategory() {
+  return seedCategoryBySlug('kayak');
+}
+
+async function seedCategoryBySlug(slug: string) {
   if (!rawSql) throw new Error('rawSql not initialized');
   const sql = rawSql;
-  const cat = await sql`SELECT "id" FROM "categories" WHERE "slug" = 'kayak' LIMIT 1`.then(
+  const cat = await sql`SELECT "id" FROM "categories" WHERE "slug" = ${slug} LIMIT 1`.then(
     (r) => r[0]!,
   );
   return { categoryId: cat.id };
@@ -335,7 +346,7 @@ function searchInput(
 async function seedOfferGroup(
   orgId: string,
   categoryId: string,
-  overrides: { lat?: number; lon?: number; withPlan?: boolean } = {},
+  overrides: { lat?: number; lon?: number; withPlan?: boolean; bikeSubtype?: string } = {},
 ): Promise<{
   locationId: string;
   publicLocationId: string;
@@ -348,7 +359,11 @@ async function seedOfferGroup(
     lon: overrides.lon ?? 6.12,
   });
   const prod = await seedProduct(orgId, categoryId);
-  const variant = await seedVariant(prod.productId);
+  const variant = await seedVariant(
+    prod.productId,
+    undefined,
+    overrides.bikeSubtype ? { subtype: overrides.bikeSubtype } : {},
+  );
   await seedInventory(orgId, variant.variantId, loc.locationId);
   if (overrides.withPlan) {
     const planId = await seedPlan({
@@ -410,6 +425,42 @@ describe.skipIf(shouldSkipIntegrationTests())('searchPublicOffers — intégrati
     expect(result.items[0]!.price.currency).toBe('EUR');
     expect(result.items[0]!.price.totalAmountMinor).toBe(5350);
     expect(result.items[0]!.price.planType).toBe('DAILY');
+  });
+
+  it('filtre les offres de la famille bike par sous-type de variante', async () => {
+    if (!db || !rawSql) return;
+    const dest = await seedDestination();
+    const { orgId } = await seedOrg();
+    const { categoryId } = await seedCategoryBySlug('bike');
+    const mtb = await seedOfferGroup(orgId, categoryId, {
+      lon: 6.12,
+      withPlan: true,
+      bikeSubtype: 'mtb',
+    });
+    const city = await seedOfferGroup(orgId, categoryId, {
+      lon: 6.13,
+      withPlan: true,
+      bikeSubtype: 'city',
+    });
+
+    const result = await testSearch(
+      db,
+      searchInput(dest.publicId, TIME_RANGE_9_11, {
+        categoryId,
+        bikeSubtype: 'mtb',
+      }),
+    );
+
+    expect(result.items.map((item) => item.publicProductId)).toEqual([mtb.publicProductId]);
+
+    const cityResult = await testSearch(
+      db,
+      searchInput(dest.publicId, TIME_RANGE_9_11, {
+        categoryId,
+        bikeSubtype: 'city',
+      }),
+    );
+    expect(cityResult.items.map((item) => item.publicProductId)).toEqual([city.publicProductId]);
   });
 
   it('ne retourne rien quand le produit est bloqué par une réservation ACTIVE', async () => {
@@ -1119,6 +1170,7 @@ describe.skipIf(shouldSkipIntegrationTests())('searchPublicOffers — intégrati
       canonicalLocale: 'fr',
       canonicalIntent: TIME_RANGE_9_11,
       categoryId: null,
+      bikeSubtype: null,
       viewport: null,
       contractVersion: PUBLIC_SEARCH_CONTRACT_VERSION,
     });
@@ -1134,6 +1186,7 @@ describe.skipIf(shouldSkipIntegrationTests())('searchPublicOffers — intégrati
         canonicalLocale: 'fr',
         canonicalIntent: TIME_RANGE_9_11,
         categoryId: null,
+        bikeSubtype: null,
         viewport: null,
         contractVersion: PUBLIC_SEARCH_CONTRACT_VERSION,
       }),
