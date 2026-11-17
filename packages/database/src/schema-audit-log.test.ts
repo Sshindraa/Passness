@@ -166,8 +166,8 @@ describe('Validation statique du journal Drizzle', () => {
     }>;
   };
 
-  it('contient exactement 63 entrées', () => {
-    expect(journal.entries.length).toBe(63);
+  it('contient exactement 64 entrées', () => {
+    expect(journal.entries.length).toBe(64);
   });
 
   it('préserve 0030_audit_log_append_only à l idx 29', () => {
