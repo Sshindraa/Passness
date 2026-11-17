@@ -138,7 +138,11 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
 
 ## Staging
 
-- Web : Vercel (preview / staging).
+- Web : projet Vercel `passness-staging`; l'alias `https://passness-staging.vercel.app`
+  est attaché à la branche `staging`. L'ancien alias `uttily-staging.vercel.app`
+  reste attaché pour compatibilité. Le domaine public `passness.com` sert encore
+  le déploiement de `main` avec l'ancien titre; voir
+  [`passness-rename-migration.md`](../operations/passness-rename-migration.md).
 - Base : Neon (branche de staging), région européenne.
 - Documents : bucket Cloudflare R2 privé `uttily-staging-documents`,
   juridiction européenne ; l'endpoint régional est dérivé par l'adaptateur et
@@ -150,10 +154,11 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
   `Passness <noreply@sokar.tech>` et template de confirmation publié.
 - Worker : conteneur `uttily-worker-staging` isolé sur l'hôte staging existant,
   avec credentials R2/Resend hors dépôt et droits minimaux.
-- Scheduler : Worker Cloudflare `passness-staging-cron`, déclenché toutes les 15 minutes
-  sur le plan Workers Free ; il appelle séquentiellement les quatre routes
-  `/api/cron/*` avec `CRON_SECRET`. Les Cron Jobs Vercel sont désactivés pour
-  rester compatible avec le plan Hobby.
+- Scheduler : toutes les 15 minutes (`*/15 * * * *`, pour laisser la base Neon se mettre en veille), la configuration source définit `passness-staging-cron` et cible
+  `https://passness-staging.vercel.app`. Le déploiement Cloudflare après ce
+  renommage n'a pas été vérifié; l'ancien Worker peut encore tourner. Ne pas le
+  supprimer avant d'avoir contrôlé le Worker et ses appels `/api/cron/*` avec
+  `CRON_SECRET`. Les Cron Jobs Vercel restent désactivés pour le plan Hobby.
 - Variables : configurées dans le projet Vercel et Neon.
 - Aucune donnée de production.
 - Le premier smoke test connecté R2/Resend/worker est consigné dans

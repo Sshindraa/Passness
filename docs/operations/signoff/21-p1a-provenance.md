@@ -42,7 +42,7 @@ origin/main (commit 01236001fd81e1777e20c582789e579bc7da235c)
 
 ## 2. Preuves PostgreSQL réelles de Concurrence, Invariants & Clôture
 
-Conformément à `AGENTS.md`, la gestion de la concurrence critique et les garanties d'atomicité transactionnelle ont été éprouvées sur un moteur PostgreSQL réel (`setupIntegrationTestDb`) dans [`packages/core/src/integration/privacy-concurrency.integration.test.ts`](file:///Users/hamza/Projects/Uttily/packages/core/src/integration/privacy-concurrency.integration.test.ts) (**7 suites d'intégration réelles réussies**) :
+Conformément à `AGENTS.md`, la gestion de la concurrence critique et les garanties d'atomicité transactionnelle ont été éprouvées sur un moteur PostgreSQL réel (`setupIntegrationTestDb`) dans [`packages/core/src/integration/privacy-concurrency.integration.test.ts`](file:///Users/hamza/Projects/Passness/packages/core/src/integration/privacy-concurrency.integration.test.ts) (**7 suites d'intégration réelles réussies**) :
 
 | Preuve testée | Scénario & Mécanisme | Résultat PostgreSQL réel |
 | --- | --- | --- |

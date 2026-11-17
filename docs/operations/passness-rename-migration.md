@@ -1,42 +1,33 @@
-# Migration Uttily → Passness : ce qui reste hors du dépôt
+# Renommage Uttily → Passness : état au 16 novembre 2026
 
-Le code, les noms de paquets (`@passness/*`), les variables de dev/test (`PASSNESS_*`), les textes
-visibles, la documentation, les images et fichiers sont renommés. Les identifiants ci-dessous
-gardent volontairement `uttily` : ils désignent des ressources externes ou des données déjà
-persistées. Les renommer dans le code sans migrer la ressource casserait staging ou la production.
+## Déjà basculé
 
-## Exceptions conservées dans le dépôt
+- Le code visible, les paquets (`@passness/*`), les textes, les emails, les images et les noms de fichiers utilisent Passness.
+- Le dépôt GitHub et le dossier local sont renommés en Passness; `origin` pointe sur `Sshindraa/Passness`.
+- Les bases PostgreSQL temporaires de GitHub Actions utilisent maintenant des identifiants Passness; elles sont recréées à chaque workflow et ne partagent aucun volume local ou de production.
+- Le projet Vercel staging est `passness-staging`. L'alias vérifié `passness-staging.vercel.app` est attaché à la branche `staging` et sert la version Passness. L'ancien alias Vercel reste attaché pour préserver les consommateurs existants.
+- Le code Wrangler porte le nom `passness-staging-cron` et cible `https://passness-staging.vercel.app`. Le Worker Cloudflare n'a pas été redéployé ni vérifié après ce changement.
 
-| Identifiant conservé | Où | Pourquoi | Condition pour renommer |
-| --- | --- | --- | --- |
-| `https://uttily.com`, `app.uttily.com`, `app.uttily.fr` (URLs du site) | e-mails, tests, `email-brand.ts`, docs | URL publique de l'application ; `passness.com` n'héberge pas encore le site (parking IONOS) | application déployée et servie sur `passness.com`, redirections depuis `uttily.com` |
-| `uttily-staging.vercel.app`, projet Vercel `uttily-staging` | `wrangler.toml`, docs | URL et projet Vercel réels | projet Vercel renommé, puis cible du cron mise à jour |
-| `uttily-staging-cron`, `uttily_staging_cron_*` | `wrangler.toml`, User-Agent, logs | Worker Cloudflare déployé ; alertes éventuelles sur ces événements | nouveau Worker déployé, ancien supprimé |
-| `uttily-worker-staging`, `uttily-worker:staging-*`, `/opt/uttily`, `systemd/uttily-worker.service` | docs | conteneur, image et chemins du VPS partagé | validation explicite, fenêtre de maintenance |
-| `uttily-(staging\|production)-(photos\|documents)` | docs, test de readiness | buckets R2 (non renommables) | nouveau bucket + copie des objets + bascule |
-| `uttily-checksum-sha256`, `uttily-size-bytes` | `r2-object-storage.ts`, `product-photo-storage.ts` | métadonnées des objets R2 existants | lecture des deux clés, réécriture, puis retrait de l'ancienne |
-| `uttily_export_version` | export RGPD (`route.ts`, `types.ts`) | champ de contrat consommé hors du dépôt | ajout additif de `passness_export_version`, puis retrait |
-| `anonymized.uttily.local` | `erase-user-account.ts` | e-mails d'effacement déjà écrits en base | migration SQL des lignes `erased-*`, après revue |
-| `uttily:uttily`, base `uttily`, volume `uttily-postgres-data` | `docker-compose.yml`, `.env.example`, CI, scripts | rôle, base et volume Postgres locaux ; renommer perd les données locales | dump local, recréation, mise à jour des `.env` des développeurs |
-| `uttily-staging-e2e+clerk_test@…`, `uttily-demo-rental`, « Uttily Demo Rental » | docs | utilisateur Clerk de test et organisation de démo en staging | renommer dans Clerk et en base, puis mettre à jour les docs |
-| `Sshindraa/Uttily`, `/Users/hamza/Projects/Uttily` | liens docs | dépôt GitHub et dossier local | renommer le dépôt (GitHub redirige), puis le dossier |
-| commentaires de `drizzle/0002,0004,0008,0010_*.sql` | migrations | migrations appliquées, on ne les modifie pas | jamais |
+## Identifiants conservés volontairement
 
-## Ordre recommandé hors dépôt
+| Référence | Pourquoi elle reste | Étape avant retrait |
+| --- | --- | --- |
+| `uttily:uttily`, base `uttily`, volume `uttily-postgres-data` et URLs locales | Ils correspondent à la base et au volume locaux existants. Changer ces valeurs sans migration peut laisser le volume inaccessible. | Sauvegarder, recréer ou migrer la base, puis mettre à jour les `.env` locaux. |
+| `uttily-checksum-sha256`, `uttily-size-bytes` | Des objets R2 existants portent ces métadonnées. Le code écrit les clés Passness et les anciennes clés, et lit les deux formats. | Recenser et réécrire les objets; retirer les anciennes clés après la période de compatibilité. |
+| `uttily_export_version` | C'est le champ v1 déjà consommé par des téléchargements/clients existants. L'export émet maintenant les champs Passness et Uttily. | Confirmer la migration des consommateurs avant de retirer l'alias v1. |
+| `anonymized.uttily.local` | Des adresses de suppression sont déjà persistées dans PostgreSQL. | Revoir et migrer ces lignes avant de changer la génération. |
+| Noms des buckets R2 `uttily-*` | Ce sont des ressources Cloudflare existantes, pas des alias de marque. | Créer les buckets Passness, copier et contrôler les objets, basculer la configuration puis conserver l'ancien bucket durant la rétention prévue. |
+| `uttily-worker-staging`, `/opt/uttily`, `systemd/uttily-worker.service` et l'ancien Worker Cloudflare | Ces noms désignent des ressources déjà déployées sur le VPS/Cloudflare. Leur état actuel n'a pas pu être confirmé. | Vérifier l'hôte et Cloudflare, déployer la nouvelle configuration, contrôler la santé, puis retirer l'ancienne ressource dans une fenêtre de maintenance. |
+| Compte Clerk `uttily-staging-e2e+clerk_test@…`, `uttily-demo-rental`, `Uttily Demo Rental` | Ce sont des identifiants de test externes potentiellement utilisés dans Clerk et la base staging. | Renommer les objets dans Clerk et PostgreSQL avant d'actualiser les fixtures et la documentation. |
+| Commentaires dans `drizzle/0002`, `0004`, `0008`, `0010` | Ils font partie de migrations déjà appliquées; les réécrire altérerait l'historique du schéma. | Les conserver comme provenance historique. |
+| Anciennes URLs et noms dans les comptes-rendus de déploiement | Ils décrivent l'état réel au moment des tests. | Les conserver dans les comptes-rendus historiques; mettre à jour les runbooks actifs séparément. |
+| Slug d'équipe Vercel `uttily` et métadonnées des anciens déploiements | Le renommage du projet n'a pas renommé l'équipe ni les enregistrements historiques. | Le slug d'équipe nécessite une action distincte dans les réglages Vercel; les métadonnées de déploiement restent historiques. |
 
-1. Domaine : adresses `@passness.com` faites (Cloudflare Email Routing, PR de remplacement dans le
-   code). Reste le site : DNS web `passness.com`, redirections depuis `uttily.com`, puis remplacement
-   des URLs dans le code.
-2. Stripe : mettre à jour l'URL du webhook plateforme (`…/api/webhooks/stripe/platform`) avant de
-   changer de domaine public, puis vérifier la signature en staging.
-3. Vercel : renommer le projet staging, ajuster `CRON_TARGET_URL`, redéployer le Worker cron.
-4. Cloudflare : déployer `passness-staging-cron`, supprimer l'ancien Worker.
-5. R2 : créer les buckets `passness-*`, copier les objets, ajouter la lecture des deux clés de
-   métadonnées, basculer, supprimer les anciens buckets après période de retenue.
-6. VPS staging : recréer `passness-worker-staging` avec `docker run` (mêmes options :
-   `--init --read-only --cap-drop ALL --security-opt no-new-privileges:true`, 512 Mo, 1 CPU, tmpfs
-   `/tmp`), nouveau tag d'image, puis déplacer `/home/deploy/uttily-staging-worker`. Ne rien faire
-   sur la production ni sur les ressources Suppernote du même hôte sans validation.
-7. Base : migrer les e-mails `anonymized.uttily.local`, puis ajouter `passness_export_version`.
-8. Clerk/GitHub/local : utilisateur de test, organisation de démo, dépôt GitHub, dossier local, base
-   Postgres locale.
+## Production et opérations restantes
+
+- `passness.com` sert maintenant la marque Passness depuis la fusion de rebranding `8f1eb31`; le déploiement Vercel production correspondant est `dpl_GfgYd6MTBhbD5NZBCXBmHNqsbrCW`.
+- Le domaine `uttily.com` est configuré dans Vercel avec une redirection permanente 301 vers `passness.com`, mais Cloudflare continue de servir l'ancien site en HTTP 200. Le DNS est délégué à Cloudflare et la configuration Vercel le signale `misconfigured`: les IP publiques actuelles sont `172.67.212.136` et `104.21.83.44`; Vercel recommande pour l'apex les enregistrements A `216.198.79.1` et `64.29.17.1`. Aucun accès Cloudflare n'est disponible dans cette session. Appliquer ces enregistrements en mode DNS-only ou créer une règle de redirection Cloudflare, puis vérifier que `uttily.com` renvoie effectivement un 301.
+- La CI GitHub Actions de la PR de rebranding (`43779089564`, commit `b20d7bf`) et la CI après fusion sur `main` (`43779702567`, commit `8f1eb31`) passent tous leurs jobs.
+- La PR [`staging → main` #86](https://github.com/Sshindraa/Passness/pull/86) reste ouverte et indépendante du rebranding; elle cible toujours l'ancien commit de base `bb94735` et GitHub la signale actuellement non fusionnable. Le Worker staging n'a pas été redéployé, car Wrangler/Cloudflare ne sont pas disponibles dans cet environnement.
+- Vérifier les domaines d'envoi Resend, l'endpoint webhook Stripe et l'état du Worker avant de basculer ces services. Ces fournisseurs n'ont pas été modifiés ici.
+- Le checkout local principal comporte des changements non committés; ne pas le réinitialiser ni le pousser en bloc. La PR #90 est fusionnée; les étapes restantes sont la redirection DNS Cloudflare, les opérations Worker/Resend/Stripe et le suivi de la PR #86.

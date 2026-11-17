@@ -249,7 +249,7 @@ describe('Lot 21-P1A — Concurrence, Invariants & Clôture RGPD (Integration)',
     const retryRes = await recordPrivacyResponseNotification(dbB, {
       requestId: request.id,
       actorUserId: adminUser.id,
-      responseNotifiedAt: new Date(firstNotifiedDate.getTime() + 10 * 24 * 60 * 60 * 1000), // Date ultérieure ignorée
+      responseNotifiedAt: new Date(firstNotifiedDate.getTime() + 10_000), // Date ultérieure ignorée
     });
     expect(retryRes.responseNotifiedAt.toISOString()).toBe(firstNotifiedDate.toISOString());
 
@@ -447,7 +447,7 @@ describe('Lot 21-P1A — Concurrence, Invariants & Clôture RGPD (Integration)',
     const notifRetry = await recordExtensionNotification(dbB, {
       requestId: request.id,
       actorUserId: adminUser.id,
-      notifiedAt: new Date(firstExtNotif.getTime() + 2 * 24 * 60 * 60 * 1000), // Date ultérieure ignorée
+      notifiedAt: new Date(firstExtNotif.getTime() + 10_000), // Date ultérieure ignorée
     });
     expect(notifRetry.notifiedAt.toISOString()).toBe(firstExtNotif.toISOString());
 

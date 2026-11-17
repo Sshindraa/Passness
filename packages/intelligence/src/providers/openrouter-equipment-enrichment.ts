@@ -136,7 +136,7 @@ export class OpenRouterEquipmentEnrichmentProvider implements EquipmentEnrichmen
         method: 'POST',
         headers: {
           Authorization: `Bearer ${this.apiKey}`,
-          'HTTP-Referer': 'https://uttily.com',
+          'HTTP-Referer': 'https://passness.com',
           'X-Title': 'Passness Equipment Intelligence',
           'Content-Type': 'application/json',
         },

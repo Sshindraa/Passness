@@ -5,7 +5,7 @@
 **Décisions opérationnelles concernées :**  
 - **`DPO-003`** : Périmètre des données effaçables, pseudonymisables ou conservées, et gestion des exceptions légales — **ARBITRÉ : Suppression immédiate compte Clerk, conservation sous scellé probatoire 5 ans (contrats/réservations Art. 2224 Code civil) et scellé comptable 10 ans (factures Art. L. 123-22 Code de commerce).**  
 - **`DPO-004`** : Périmètre, formats, délais et exclusions des exports d'accès (Art. 15) et de portabilité (Art. 20) — **ARBITRÉ : Format JSON standardisé, exclusion stricte des secrets techniques et identifiants Stripe, séparation copie intégrale Art. 15 et dataset portable Art. 20.**  
-**Autorités décisionnelles :** DPO & Pôle Juridique Passness (Arbitrages validés le 2026-09-04).  
+**Autorités décisionnelles :** DPO & Pôle Juridique Passness (Arbitrages validés le 2026-09-04).<br>
 **Habilitation technique :** Les arbitrages `DPO-003` et `DPO-004` étant formellement actés, l'équipe d'ingénierie est autorisée à concevoir le plan technique d'exécution et d'automatisation de l'effacement (`PRIVACY-ERASURE` / Lot 21-P2).  
 
 ---

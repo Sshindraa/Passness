@@ -178,7 +178,7 @@ async function seedProduct(orgId: string, categoryId: string, suffix = SUFFIX())
       VALUES (
         ${orgId}, ${product.id}, ${'product-photos/' + suffix + '-' + i},
         'image/jpeg', 102400, 800, 600, ${('000' + i).repeat(16).slice(0, 64)},
-        ${i}, 'AVAILABLE', ${PHOTO_SLOTS[i]}
+        ${i}, 'AVAILABLE', ${PHOTO_SLOTS[i]!}
       )
     `;
   }

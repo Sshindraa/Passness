@@ -306,11 +306,11 @@ aura été rendu par le DPO.
 **Capacité livrée :**  
 Le Lot 21-P1 a implémenté le mécanisme d'accès et d'exportation de données
 personnelles pour les utilisateurs authentifiés :
-1. **Copie intégrale Art. 15 RGPD :** [`buildPersonalDataCopy`](file:///Users/hamza/Projects/Uttily/packages/core/src/privacy/build-personal-data-copy.ts)
+1. **Copie intégrale Art. 15 RGPD :** [`buildPersonalDataCopy`](file:///Users/hamza/Projects/Passness/packages/core/src/privacy/build-personal-data-copy.ts)
    regroupe identité, adresses, réservations, statuts de paiement et consentements
    sans exposer d'identifiants techniques tiers (Stripe Customer/Payment IDs)
    ni d'URLs d'objets R2 signées.
-2. **Portabilité Art. 20 RGPD :** [`buildPortableData`](file:///Users/hamza/Projects/Uttily/packages/core/src/privacy/build-portable-data.ts)
+2. **Portabilité Art. 20 RGPD :** [`buildPortableData`](file:///Users/hamza/Projects/Passness/packages/core/src/privacy/build-portable-data.ts)
    fournit un dataset JSON structuré, couramment utilisé et lisible par machine.
 3. **Endpoint sécurisé :** `/api/account/privacy/export` accessible uniquement à
    l'utilisateur authentifié pour ses propres données.

@@ -1,7 +1,7 @@
 # G8A-0 — Preuve du smoke test connecté
 
 **Date** : 2026-08-26  
-**Environnement** : staging Vercel, base Neon production de `Passness-dev`  
+**Environnement** : staging Vercel, base Neon production de `Passness-dev`<br>
 **Fournisseurs** : Clerk TEST, Stripe TEST uniquement
 
 ## Identité et périmètre
@@ -27,7 +27,7 @@ de test. La projection Connect a confirmé `charges_enabled=true`, `payouts_enab
 
 ## Vérifications de livraison
 
-- [CI complète GitHub Actions](https://github.com/Sshindraa/Uttily/actions/runs/33003910905) : verte, qualité, build, PostgreSQL, Web et worker.
+- [CI complète GitHub Actions](https://github.com/Sshindraa/Passness/actions/runs/33003910905) : verte, qualité, build, PostgreSQL, Web et worker.
 - [Déploiement Vercel staging](https://vercel.com/uttily/uttily-staging/G1w2ffUJyMrnbCD8Po1td3V4fU8a) : `READY`.
 - [Application staging](https://uttily-staging.vercel.app) : parcours exécuté sur l'alias stable.
 

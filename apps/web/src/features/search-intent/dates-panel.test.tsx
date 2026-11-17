@@ -5,10 +5,25 @@ import { initialSelection } from './search-state';
 
 describe('DatesPanel', () => {
   it('renders inclusive dates without making up pickup times', () => {
+    const start = new Date();
+    start.setDate(start.getDate() + 10);
+    const end = new Date(start);
+    end.setDate(end.getDate() + 1);
+    const formatLocalDate = (date: Date) =>
+      `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    const startDate = formatLocalDate(start);
+    const endDate = formatLocalDate(end);
+    const expectedStartLabel = new Intl.DateTimeFormat('fr', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    }).format(new Date(`${startDate}T12:00:00Z`));
     const html = renderToStaticMarkup(
       <DatesPanel
         locale="fr"
-        selection={{ ...initialSelection(), startDate: '2099-09-12', endDate: '2099-09-13' }}
+        selection={{ ...initialSelection(), startDate, endDate }}
         onChange={() => {}}
         onDone={() => {}}
       />,
@@ -20,7 +35,7 @@ describe('DatesPanel', () => {
     expect(html).toContain('± 14 jours');
     expect(html).not.toContain('type="date"');
     expect(html).not.toContain('type="time"');
-    expect(html).toContain('aria-label="samedi 12 septembre 2099"');
+    expect(html).toContain(`aria-label="${expectedStartLabel}"`);
   });
 
   it('keeps both optional time inputs empty until the user chooses their hours', () => {
