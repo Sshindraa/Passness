@@ -8,7 +8,8 @@ let cached: DatabaseClient | null = null;
  */
 export function getDb(): DatabaseClient {
   if (!cached) {
-    cached = createDatabase();
+    // Chaque instance serverless Vercel a son pool : 3 connexions suffisent.
+    cached = createDatabase(undefined, { max: 3 });
   }
   return cached;
 }

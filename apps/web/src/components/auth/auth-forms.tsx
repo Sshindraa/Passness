@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import QRCode from 'qrcode';
 import { Alert, Button, Field, Input } from '@passness/ui';
 import { authClient } from '@/lib/auth-client';
 import { safeRedirectPath } from '@/lib/safe-redirect';
-import { captchaHeaders, captchaRequired, Turnstile } from './turnstile';
+import { captchaHeaders, captchaRequired, Turnstile, useCaptcha } from './turnstile';
 import styles from './auth-forms.module.css';
 
 type Result = { error?: { message?: string | undefined; code?: string | undefined } | null };
@@ -52,13 +52,13 @@ export function SignInForm(): React.ReactElement {
   const redirectUrl = useRedirectUrl();
   const verified = useSearchParams().get('verified') === '1';
   const s = useSubmit();
-  const [token, setToken] = useState<string | null>(null);
-  const onToken = useCallback((t: string | null) => setToken(t), []);
+  const { token, onToken, reset } = useCaptcha();
 
   const submit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     void s.run(async () => {
+      reset(); // un jeton Turnstile ne sert qu'une fois
       const res: Result = await authClient.signIn.email({
         email: String(form.get('email')),
         password: String(form.get('password')),
@@ -121,20 +121,22 @@ export function SignInForm(): React.ReactElement {
 }
 
 export function SignUpForm(): React.ReactElement {
+  const redirectUrl = useRedirectUrl();
   const s = useSubmit();
-  const [token, setToken] = useState<string | null>(null);
-  const onToken = useCallback((t: string | null) => setToken(t), []);
+  const { token, onToken, reset } = useCaptcha();
   const [done, setDone] = useState(false);
 
   const submit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     void s.run(async () => {
+      reset(); // un jeton Turnstile ne sert qu'une fois
       const res: Result = await authClient.signUp.email({
         name: String(form.get('name')),
         email: String(form.get('email')),
         password: String(form.get('password')),
-        callbackURL: '/sign-in?verified=1',
+        // La page /sign-in redirige vers redirect_url une fois connecté (auto sign-in après vérification).
+        callbackURL: `/sign-in?verified=1&redirect_url=${encodeURIComponent(redirectUrl)}`,
         fetchOptions: { headers: captchaHeaders(token) },
       });
       if (res.error) {
@@ -190,14 +192,14 @@ export function SignUpForm(): React.ReactElement {
 
 export function ForgotPasswordForm(): React.ReactElement {
   const s = useSubmit();
-  const [token, setToken] = useState<string | null>(null);
-  const onToken = useCallback((t: string | null) => setToken(t), []);
+  const { token, onToken, reset } = useCaptcha();
   const [done, setDone] = useState(false);
 
   const submit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const email = String(new FormData(e.currentTarget).get('email'));
     void s.run(async () => {
+      reset(); // un jeton Turnstile ne sert qu'une fois
       await authClient.requestPasswordReset({
         email,
         redirectTo: '/reset-password',

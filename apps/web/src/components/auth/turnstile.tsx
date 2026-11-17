@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 declare global {
   interface Window {
@@ -45,4 +45,19 @@ export const captchaRequired = Boolean(SITE_KEY);
 
 export function captchaHeaders(token: string | null): Record<string, string> {
   return token ? { 'x-captcha-response': token } : {};
+}
+
+/** Jeton Turnstile à usage unique : `reset` le vide et relance le widget avant chaque envoi. */
+export function useCaptcha(): {
+  token: string | null;
+  onToken: (t: string | null) => void;
+  reset: () => void;
+} {
+  const [token, setToken] = useState<string | null>(null);
+  const onToken = useCallback((t: string | null) => setToken(t), []);
+  const reset = useCallback(() => {
+    setToken(null);
+    window.turnstile?.reset();
+  }, []);
+  return { token, onToken, reset };
 }
