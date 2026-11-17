@@ -8,7 +8,7 @@ describe('DatesPanel', () => {
     const html = renderToStaticMarkup(
       <DatesPanel
         locale="fr"
-        selection={{ ...initialSelection(), startDate: '2026-09-12', endDate: '2026-09-13' }}
+        selection={{ ...initialSelection(), startDate: '2099-09-12', endDate: '2099-09-13' }}
         onChange={() => {}}
         onDone={() => {}}
       />,
@@ -20,7 +20,7 @@ describe('DatesPanel', () => {
     expect(html).toContain('± 14 jours');
     expect(html).not.toContain('type="date"');
     expect(html).not.toContain('type="time"');
-    expect(html).toContain('aria-label="samedi 12 septembre 2026"');
+    expect(html).toContain('aria-label="samedi 12 septembre 2099"');
   });
 
   it('keeps both optional time inputs empty until the user chooses their hours', () => {

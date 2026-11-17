@@ -245,14 +245,14 @@ describe.skipIf(shouldSkipIntegrationTests())('Planning — visibilité des bloc
       to,
     });
     const manualEvents = planning.events.filter((event) => event.type === 'MANUAL_BLOCK');
-    expect(manualEvents).toHaveLength(8);
+    expect(manualEvents).toHaveLength(12);
     expect(new Set(manualEvents.map((event) => event.categorySlug))).toEqual(new Set(slugs));
     expect(planning.stats).toMatchObject({
       totalRentals: 0,
       totalPickups: 0,
       totalReturns: 0,
       totalMaintenances: 0,
-      totalManualBlocks: 8,
+      totalManualBlocks: 12,
     });
   });
 });
