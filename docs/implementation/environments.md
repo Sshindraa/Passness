@@ -150,7 +150,7 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
   `Passness <noreply@sokar.tech>` et template de confirmation publié.
 - Worker : conteneur `uttily-worker-staging` isolé sur l'hôte staging existant,
   avec credentials R2/Resend hors dépôt et droits minimaux.
-- Scheduler : Worker Cloudflare `uttily-staging-cron`, déclenché chaque minute
+- Scheduler : Worker Cloudflare `passness-staging-cron`, déclenché toutes les 15 minutes
   sur le plan Workers Free ; il appelle séquentiellement les quatre routes
   `/api/cron/*` avec `CRON_SECRET`. Les Cron Jobs Vercel sont désactivés pour
   rester compatible avec le plan Hobby.
