@@ -21,7 +21,10 @@ describe('resolveWorkerIntervalMs (WORKER_INTERVAL_MS)', () => {
 
   it('valide : accepte la borne maximale de setTimeout', () => {
     expect(
-      resolveWorkerIntervalMs({ WORKER_INTERVAL_MS: String(MAX_WORKER_INTERVAL_MS) }, PROD_DEFAULT_MS),
+      resolveWorkerIntervalMs(
+        { WORKER_INTERVAL_MS: String(MAX_WORKER_INTERVAL_MS) },
+        PROD_DEFAULT_MS,
+      ),
     ).toBe(MAX_WORKER_INTERVAL_MS);
   });
 
