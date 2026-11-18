@@ -107,7 +107,7 @@ vélo cargo (`cargo`). Ils restent des sous-types de variante et ne créent pas
 de catégories commerciales séparées. Le filtre repose sur
 `product_variants.attributes.subtype`, sans migration des catégories
 existantes. Les vélos non annotés restent disponibles via la famille générale
-« Vélos ». Voir [`ADR-047`](../decisions/ADR-047-bike-subtype-filters.md).
+« Vélos ». Voir [`ADR-049`](../decisions/ADR-049-bike-subtype-filters.md).
 
 ## Registre fermé côté serveur
 
