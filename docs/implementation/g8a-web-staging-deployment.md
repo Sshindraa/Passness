@@ -58,7 +58,7 @@ utilisés.
   rôles applicatifs restent autoritaires côté base Passness.
 - **Stripe Connect** : compte TEST prêt et destinations webhook actives sur
   `/api/webhooks/stripe/connect` et `/api/webhooks/stripe/platform`.
-- **Worker** : conteneur `uttily-worker-staging` sur l'hôte staging existant,
+- **Worker** : conteneur `passness-worker-staging` sur l'hôte staging existant,
   construit avec `Dockerfile.worker`, non-root, limites CPU/mémoire et fichier
   d'environnement hors dépôt. R2 est limité au bucket staging EU et Resend aux
   droits d'envoi.
