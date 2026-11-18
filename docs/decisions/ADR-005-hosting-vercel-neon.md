@@ -31,7 +31,7 @@ Le présent ADR reste la décision d'hébergement Web + DB (Vercel + Neon). L'
 [ADR-014](ADR-014-production-providers-and-worker-deployment.md) ajoute, sans
 remplacer ADR-005 :
 
-- le déploiement du worker sur un VPS DigitalOcean Frankfurt (conteneur Docker Node 24) ;
+- le déploiement du worker sur un VPS OVH (Allemagne) (conteneur Docker Node 24) ;
 - le fournisseur de stockage objet (Cloudflare R2, juridiction `eu`) ;
 - le fournisseur d'email transactionnel (Resend) ;
 - la stratégie de secrets du worker et la topologie complète Web/DB/worker.

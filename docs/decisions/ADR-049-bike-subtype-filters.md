@@ -1,4 +1,6 @@
-# ADR-047 — Filtres publics des sous-types de vélo
+# ADR-049 — Filtres publics des sous-types de vélo
+
+> Ce document était numéroté ADR-047, comme l'ADR de migration Better Auth. Il est renuméroté ADR-049 pour lever le doublon. Le contenu n'a pas changé.
 
 **Statut :** Accepted
 

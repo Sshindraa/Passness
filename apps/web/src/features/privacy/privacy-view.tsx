@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useClerk } from '@clerk/nextjs';
+import { authClient } from '@/lib/auth-client';
 import type { PrivacyRequestSummary, PrivacyRequestType } from '@passness/core';
 import { Card, Badge, PageHeader, Icon } from '@passness/ui';
 import type { BadgeTone } from '@passness/ui';
@@ -173,7 +173,6 @@ function getRequestTypeLabel(type: PrivacyRequestType, fr: boolean): string {
 
 export function PrivacyView({ locale, requests }: PrivacyViewProps): React.ReactElement {
   const fr = locale === 'fr';
-  const { signOut } = useClerk();
 
   const [requestType, setRequestType] = useState<PrivacyRequestType>('ACCESS');
   const [details, setDetails] = useState('');
@@ -193,7 +192,8 @@ export function PrivacyView({ locale, requests }: PrivacyViewProps): React.React
 
   async function handleSignOutAfterErasure(): Promise<void> {
     try {
-      await signOut({ redirectUrl: `/${locale}` });
+      await authClient.signOut();
+      window.location.href = `/${locale}`;
     } catch {
       window.location.href = `/${locale}`;
     }
@@ -544,8 +544,8 @@ export function PrivacyView({ locale, requests }: PrivacyViewProps): React.React
           <div className={styles.transparencyContent}>
             <p>
               {fr
-                ? 'Passness s’appuie sur des prestataires qualifiés pour assurer son service : Clerk (authentification), Stripe (paiement sécurisé), Neon (base de données), Cloudflare (stockage sécurisé), Resend (emails transactionnels) et Vercel (infrastructure).'
-                : 'Passness relies on qualified service providers to operate: Clerk (authentication), Stripe (secure payments), Neon (database), Cloudflare (secure storage), Resend (transactional emails) and Vercel (infrastructure).'}
+                ? 'Passness s’appuie sur des prestataires qualifiés pour assurer son service : Passness (authentification, hébergée chez Neon et Vercel), Stripe (paiement sécurisé), Neon (base de données), Cloudflare (stockage sécurisé), Resend (emails transactionnels) et Vercel (infrastructure).'
+                : 'Passness relies on qualified service providers to operate: Passness (authentication, hosted with Neon and Vercel), Stripe (secure payments), Neon (database), Cloudflare (secure storage), Resend (transactional emails) and Vercel (infrastructure).'}
             </p>
             <p>
               {fr
@@ -596,8 +596,8 @@ export function PrivacyView({ locale, requests }: PrivacyViewProps): React.React
               </h3>
               <p>
                 {fr
-                  ? 'Vos identifiants personnels directs ont été détruits dans notre base de données et votre session Clerk a été révoquée. Conformément aux arbitrages DPO (DPO-003 & DPO-004), les données relatives à vos transactions passées sont placées sous scellé probatoire et ne sont plus exploitables commercialement :'
-                  : 'Your direct personal identifiers have been destroyed in our database and your Clerk session has been revoked. In accordance with DPO arbitrations (DPO-003 & DPO-004), past transactional data has been placed under evidentiary seal:'}
+                  ? 'Vos identifiants personnels directs ont été détruits dans notre base de données et vos sessions ont été révoquées. Conformément aux arbitrages DPO (DPO-003 & DPO-004), les données relatives à vos transactions passées sont placées sous scellé probatoire et ne sont plus exploitables commercialement :'
+                  : 'Your direct personal identifiers have been destroyed in our database and your sessions have been revoked. In accordance with DPO arbitrations (DPO-003 & DPO-004), past transactional data has been placed under evidentiary seal:'}
               </p>
               <ul className={styles.sealedDatesList}>
                 <li>
@@ -639,8 +639,8 @@ export function PrivacyView({ locale, requests }: PrivacyViewProps): React.React
             <div className={styles.dangerContent}>
               <p>
                 {fr
-                  ? 'La suppression de votre compte est irréversible. Dès validation, votre adresse email, votre nom et vos identifiants d’authentification sont immédiatement détruits dans notre base de données et auprès de notre fournisseur d’identité Clerk.'
-                  : 'Deleting your account is irreversible. Upon confirmation, your email address, name, and authentication credentials will be immediately destroyed in our database and with Clerk.'}
+                  ? 'La suppression de votre compte est irréversible. Dès validation, votre adresse email, votre nom et vos identifiants d’authentification sont immédiatement détruits dans notre base de données.'
+                  : 'Deleting your account is irreversible. Upon confirmation, your email address, name, and authentication credentials will be immediately destroyed in our database.'}
               </p>
 
               <div className={styles.dangerNotice}>

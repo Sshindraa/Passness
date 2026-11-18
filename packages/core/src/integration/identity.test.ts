@@ -23,6 +23,8 @@ import {
   createInvitation,
   acceptInvitation,
   provisionUserFromOidc,
+  isTwoFactorRequired,
+  AccountLinkRefusedError,
   DuplicateInvitationError,
   verifySignedInvitationToken,
   hashToken,
@@ -108,8 +110,8 @@ async function createUser(
   email: string,
 ): Promise<AuthenticatedUser> {
   const user = await provisionUserFromOidc(db, {
-    oidcSubject: `clerk-${email}`,
-    oidcProvider: 'clerk',
+    oidcSubject: `auth-${email}`,
+    oidcProvider: 'better-auth',
     email,
     emailVerified: true,
   });
@@ -455,23 +457,75 @@ describe.skipIf(shouldSkipIntegrationTests())('Identity integration — multi-te
     expect(second.id).toBe(first.id);
   });
 
-  it('provisioning : relie un utilisateur existant par email', async () => {
+  it('provisioning : ne reprend jamais un compte déjà lié à une identité, même avec le même e-mail', async () => {
     if (!ctx || !db) return;
-    const first = await provisionUserFromOidc(db, {
-      oidcSubject: 'clerk-a',
-      oidcProvider: 'clerk',
+    await provisionUserFromOidc(db, {
+      oidcSubject: 'auth-a',
+      oidcProvider: 'better-auth',
       email: 'link@example.com',
       emailVerified: true,
     });
-    // Même email, oidc_subject différent (changement de provider par ex.)
-    const second = await provisionUserFromOidc(db, {
-      oidcSubject: 'clerk-b',
-      oidcProvider: 'clerk',
-      email: 'link@example.com',
+    await expect(
+      provisionUserFromOidc(db, {
+        oidcSubject: 'auth-b',
+        oidcProvider: 'better-auth',
+        email: 'link@example.com',
+        emailVerified: true,
+      }),
+    ).rejects.toBeInstanceOf(AccountLinkRefusedError);
+  });
+
+  it('provisioning : refuse de rattacher un compte counter ou un compte Clerk non migré par e-mail', async () => {
+    if (!ctx || !db) return;
+    await db.insert(users).values([
+      { email: 'counter@example.com', oidcProvider: 'counter', oidcSubject: 'counter-1' },
+      { email: 'clerk@example.com', oidcProvider: 'clerk', oidcSubject: 'user_clerk_1' },
+    ]);
+    for (const email of ['counter@example.com', 'clerk@example.com']) {
+      await expect(
+        provisionUserFromOidc(db, {
+          oidcSubject: `auth-${email}`,
+          oidcProvider: 'better-auth',
+          email,
+          emailVerified: true,
+        }),
+      ).rejects.toBeInstanceOf(AccountLinkRefusedError);
+    }
+    const [counter] = await db.select().from(users).where(eq(users.email, 'counter@example.com'));
+    expect(counter?.oidcSubject).toBe('counter-1');
+  });
+
+  it('provisioning : rattache un compte invité (jamais connecté) uniquement si l’e-mail est vérifié', async () => {
+    if (!ctx || !db) return;
+    await db.insert(users).values({ email: 'invited@example.com' });
+    await expect(
+      provisionUserFromOidc(db, {
+        oidcSubject: 'auth-invited',
+        oidcProvider: 'better-auth',
+        email: 'invited@example.com',
+        emailVerified: false,
+      }),
+    ).rejects.toBeInstanceOf(AccountLinkRefusedError);
+    const linked = await provisionUserFromOidc(db, {
+      oidcSubject: 'auth-invited',
+      oidcProvider: 'better-auth',
+      email: 'invited@example.com',
       emailVerified: true,
     });
-    expect(second.id).toBe(first.id);
-    expect(second.oidcSubject).toBe('clerk-b');
+    expect(linked.oidcSubject).toBe('auth-invited');
+  });
+
+  it('2FA obligatoire pour un membre actif ou un administrateur plateforme, pas pour un client', async () => {
+    if (!ctx || !db) return;
+    const owner = await createUser(db, 'owner-2fa@example.com');
+    const customer = await createUser(db, 'customer-2fa@example.com');
+    const admin = await createUser(db, 'admin-2fa@example.com');
+    await db.update(users).set({ isPlatformAdmin: true }).where(eq(users.id, admin.id));
+    await createOrganizationForUser(db, owner, { legalName: 'Org 2FA' });
+
+    expect(await isTwoFactorRequired(db, owner.id)).toBe(true);
+    expect(await isTwoFactorRequired(db, admin.id)).toBe(true);
+    expect(await isTwoFactorRequired(db, customer.id)).toBe(false);
   });
 
   it('provisioning : deux synchronisations concurrentes créent un seul utilisateur', async () => {

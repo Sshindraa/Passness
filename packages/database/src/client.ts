@@ -38,11 +38,26 @@ export type DbExecutor =
  *
  * L'URL est lue depuis DATABASE_URL. En local, utiliser docker-compose.yml
  * (PostgreSQL 16 + PostGIS). En staging/production, fournie par Neon.
+ *
+ * `max` borne le pool (défaut 10 : worker). Le web le réduit (ex. 3) car chaque
+ * instance Vercel ouvre son propre pool. Neon : endpoint `-pooler` (PgBouncer
+ * transaction mode) ; les prepared statements protocolaires sont supportés
+ * (PgBouncer >= 1.22), donc `prepare` reste à sa valeur par défaut.
+ * `idle_timeout` ferme les connexions inactives pour laisser le compute Neon
+ * se mettre en veille ; `max_lifetime` recycle les connexions anciennes.
  */
-export function createDatabase(databaseUrl: string = process.env.DATABASE_URL ?? '') {
+export function createDatabase(
+  databaseUrl: string = process.env.DATABASE_URL ?? '',
+  options: { max?: number } = {},
+) {
   if (!databaseUrl) {
     throw new Error('DATABASE_URL is required to create a database client.');
   }
-  const queryClient = postgres(databaseUrl, { max: 10 });
+  const queryClient = postgres(databaseUrl, {
+    max: options.max ?? 10,
+    idle_timeout: 20,
+    connect_timeout: 10,
+    max_lifetime: 60 * 30,
+  });
   return drizzle(queryClient, { schema });
 }

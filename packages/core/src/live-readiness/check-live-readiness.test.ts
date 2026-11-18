@@ -24,8 +24,8 @@ function fakeLiveEnv(): Record<string, string> {
     STRIPE_WEBHOOK_IP_ALLOWLIST: '54.187.174.169,54.187.205.235',
     STRIPE_WEBHOOK_RATE_LIMIT_VERIFIED: 'true',
     DATABASE_URL: 'postgresql://user:pass@host:5432/db',
-    CLERK_SECRET_KEY: 'sk_live_fake_clerk_secret_key_sufficient_length',
-    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: 'pk_live_fake_clerk_publishable_key_sufficient_length',
+    BETTER_AUTH_SECRET: 'fake-better-auth-secret-sufficient-length-0123456789',
+    TURNSTILE_SECRET_KEY: 'fake-turnstile-secret',
     INVITATION_SECRET: 'a'.repeat(44), // Base64 of 32+ bytes
     CRON_SECRET: 'b'.repeat(44),
     PUBLIC_SEARCH_CURSOR_SECRET: 'c'.repeat(44),
@@ -74,17 +74,6 @@ describe('checkLiveReadiness', () => {
     expect(report.ready).toBe(false);
     const stripe = report.required.find((r) => r.name === 'STRIPE_SECRET_KEY');
     expect(stripe?.status).toBe('INVALID_PREFIX');
-  });
-
-  it('Clerk TEST dans config LIVE → INVALID_PREFIX', () => {
-    const env = fakeLiveEnv();
-    env.CLERK_SECRET_KEY = 'sk_test_wrong_clerk_env';
-
-    const report = checkLiveReadiness(env);
-
-    expect(report.ready).toBe(false);
-    const clerk = report.required.find((r) => r.name === 'CLERK_SECRET_KEY');
-    expect(clerk?.status).toBe('INVALID_PREFIX');
   });
 
   it('INVITATION_SECRET trop court → TOO_SHORT', () => {

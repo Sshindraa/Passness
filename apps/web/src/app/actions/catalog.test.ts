@@ -23,15 +23,15 @@ import {
 import { eq, sql } from 'drizzle-orm';
 
 // ---------------------------------------------------------------------------
-// Mocks : Clerk et getDb.
+// Mocks : session Better Auth et getDb.
 //
-// Les Server Actions dépendent de Clerk (`getAuthenticatedUser` via
-// `currentUser()`) et du singleton `getDb()`. On mocke les deux pour
+// Les Server Actions dépendent de la session Better Auth (`getAuthenticatedUser` via
+// `getSessionIdentity()`) et du singleton `getDb()`. On mocke les deux pour
 // contrôler l'identité et brancher une base de test PostgreSQL réelle.
 // ---------------------------------------------------------------------------
 
-vi.mock('@clerk/nextjs/server', () => ({
-  currentUser: vi.fn<() => Promise<unknown>>(),
+vi.mock('@/lib/auth-session', () => ({
+  getSessionIdentity: vi.fn<() => Promise<unknown>>(),
 }));
 
 // Mock `next/cache` : `revalidatePath` n'est pas disponible hors Next.js runtime.
@@ -48,10 +48,10 @@ vi.mock('@/lib/db', () => ({
   getDb: () => testDb,
 }));
 
-// Mock `@/lib/auth` : `getAuthenticatedUser` utilise `currentUser` (mocké Clerk)
+// Mock `@/lib/auth` : `getAuthenticatedUser` utilise `getSessionIdentity` (mocké)
 // et `getDb` (mocké ci-dessus) pour provisionner l'utilisateur dans la base de test.
 // On délègue au vrai module en important dynamiquement, mais comme les mocks
-// `@clerk/nextjs/server` et `@/lib/db` sont déjà en place, on peut réimporter
+// `@/lib/auth-session` et `@/lib/db` sont déjà en place, on peut réimporter
 // le module réel via `vi.importActual`.
 vi.mock('@/lib/auth', async () => {
   const actual = await vi.importActual<typeof import('@/lib/auth')>('@/lib/auth');
@@ -59,7 +59,7 @@ vi.mock('@/lib/auth', async () => {
 });
 
 // Importe les actions APRÈS les mocks pour qu'elles utilisent les versions mockées.
-const { currentUser } = await import('@clerk/nextjs/server');
+const { getSessionIdentity } = await import('@/lib/auth-session');
 const {
   createProductAction,
   updateProductAction,
@@ -170,7 +170,7 @@ beforeEach(async () => {
   // ou SKIP_INTEGRATION_TESTS=1, et le setup throw si la base est injoignable.
   // Conservé par défense en profondeur.
   if (!testDb) return;
-  vi.mocked(currentUser).mockReset();
+  vi.mocked(getSessionIdentity).mockReset();
   // TRUNCATE réinitialise les tables (RESTART IDENTITY). Les catégories
   // seedées ne sont pas tronquées.
   await testDb.execute(
@@ -182,25 +182,25 @@ beforeEach(async () => {
 // Helpers de test.
 // ---------------------------------------------------------------------------
 
-function mockClerkUser(user: AuthenticatedUser | null): void {
+function mockSessionUser(user: AuthenticatedUser | null): void {
   if (!user) {
-    vi.mocked(currentUser).mockResolvedValue(null as never);
+    vi.mocked(getSessionIdentity).mockResolvedValue(null as never);
     return;
   }
-  vi.mocked(currentUser).mockResolvedValue({
-    id: user.oidcSubject,
-    primaryEmailAddress: {
-      emailAddress: user.email,
-      verification: { status: user.emailVerified ? 'verified' : 'unverified' },
-    },
+  vi.mocked(getSessionIdentity).mockResolvedValue({
+    subject: user.oidcSubject,
+    email: user.email,
+    emailVerified: user.emailVerified,
+    displayName: null,
+    twoFactorEnabled: true,
   } as never);
 }
 
 async function makeUser(email: string): Promise<AuthenticatedUser> {
   if (!testDb) throw new Error('db not initialized');
   return provisionUserFromOidc(testDb, {
-    oidcSubject: `clerk-${email}`,
-    oidcProvider: 'clerk',
+    oidcSubject: `auth-${email}`,
+    oidcProvider: 'better-auth',
     email,
     emailVerified: true,
   });
@@ -293,7 +293,7 @@ const EMPTY_PREV = { ok: true as const, data: null as never };
 describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière catalogue', () => {
   it('utilisateur non authentifié → UNAUTHENTICATED', async () => {
     if (!testDb) return;
-    mockClerkUser(null);
+    mockSessionUser(null);
     const categoryId = await getCategoryId();
     const fd = makeFormData({
       categoryId,
@@ -316,7 +316,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     const { organizationId } = await makeOrg(owner, 'Staff Org');
     const staff = await makeUser('staff@example.com');
     await addMember(organizationId, staff, 'STAFF');
-    mockClerkUser(staff);
+    mockSessionUser(staff);
 
     const categoryId = await getCategoryId();
     const fd = makeFormData({
@@ -336,7 +336,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     const { organizationId } = await makeOrg(owner, 'Manager Org');
     const manager = await makeUser('manager@example.com');
     await addMember(organizationId, manager, 'MANAGER');
-    mockClerkUser(manager);
+    mockSessionUser(manager);
 
     const categoryId = await getCategoryId();
     const fd = makeFormData({
@@ -356,7 +356,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-fake@example.com');
     await makeOrg(owner, 'Real Org A');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
     // L'utilisateur est OWNER de orgA mais pas de orgB.
     const fd = makeFormData({
       categoryId: await getCategoryId(),
@@ -380,7 +380,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-slug@example.com');
     const { organizationId } = await makeOrg(owner, 'Slug Conflict Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     // Premier produit.
@@ -407,7 +407,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-pub@example.com');
     const { organizationId } = await makeOrg(owner, 'Publish Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     // Crée un produit sans description (incomplet pour la publication).
@@ -432,7 +432,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-transfer@example.com');
     const { organizationId, locationId } = await makeOrg(owner, 'Transfer Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -482,7 +482,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-val@example.com');
     const { organizationId } = await makeOrg(owner, 'Validation Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     const fd = makeFormData({
@@ -519,7 +519,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
 
     // ownerA (manager de orgA) tente d'update le produit de orgB
     // en passant organizationId = orgA au binding mais productId = produit de orgB.
-    mockClerkUser(ownerA);
+    mockSessionUser(ownerA);
     const fd = makeFormData({
       productId: productB.id,
       name: 'Hijacked Name',
@@ -538,7 +538,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-notfound@example.com');
     const { organizationId } = await makeOrg(owner, 'Not Found Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const fd = makeFormData({
       productId: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
@@ -559,7 +559,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-idem@example.com');
     const { organizationId, locationId } = await makeOrg(owner, 'Idempotency Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -602,7 +602,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-enum@example.com');
     const { organizationId, locationId } = await makeOrg(owner, 'Enum Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -636,7 +636,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-update@example.com');
     const { organizationId } = await makeOrg(owner, 'Update Success Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -661,7 +661,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-archive@example.com');
     const { organizationId } = await makeOrg(owner, 'Archive Success Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -689,7 +689,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-deact@example.com');
     const { organizationId } = await makeOrg(owner, 'Deactivate Success Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -720,7 +720,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     if (!testDb) return;
     const owner = await makeUser('owner-retire@example.com');
     const { organizationId, locationId } = await makeOrg(owner, 'Retire Success Org');
-    mockClerkUser(owner);
+    mockSessionUser(owner);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -759,7 +759,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     const { organizationId } = await makeOrg(owner, 'Variant Create Org');
     const manager = await makeUser('variant-create-mgr@example.com');
     await addMember(organizationId, manager, 'MANAGER');
-    mockClerkUser(manager);
+    mockSessionUser(manager);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -788,7 +788,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     const { organizationId } = await makeOrg(owner, 'Variant Update Org');
     const manager = await makeUser('variant-update-mgr@example.com');
     await addMember(organizationId, manager, 'MANAGER');
-    mockClerkUser(manager);
+    mockSessionUser(manager);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -818,7 +818,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     const { organizationId, locationId } = await makeOrg(owner, 'Inventory Create Org');
     const manager = await makeUser('inventory-create-mgr@example.com');
     await addMember(organizationId, manager, 'MANAGER');
-    mockClerkUser(manager);
+    mockSessionUser(manager);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {
@@ -850,7 +850,7 @@ describe.skipIf(shouldSkipIntegrationTests())('Server Actions — frontière cat
     const { organizationId } = await makeOrg(owner, 'Restore Success Org');
     const manager = await makeUser('restore-mgr@example.com');
     await addMember(organizationId, manager, 'MANAGER');
-    mockClerkUser(manager);
+    mockSessionUser(manager);
 
     const categoryId = await getCategoryId();
     const product = await createProduct(testDb, {

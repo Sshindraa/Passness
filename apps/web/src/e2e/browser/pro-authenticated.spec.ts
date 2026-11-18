@@ -1,5 +1,4 @@
 import { expect, test, type Page, type TestInfo } from '@playwright/test';
-import { clerk } from '@clerk/testing/playwright';
 
 type ProSurface = {
   name: string;
@@ -104,12 +103,7 @@ async function findOrganizationId(page: Page): Promise<string> {
   await page.goto('/dashboard', { waitUntil: 'domcontentloaded' });
   const dashboardHeading = page.getByRole('heading', { name: 'Vos organisations' });
   if (!(await dashboardHeading.isVisible().catch(() => false))) {
-    const email = process.env.E2E_CLERK_USER_EMAIL;
-    if (!email) throw new Error('Clerk TEST browser credentials are not configured.');
-    await page.goto('/', { waitUntil: 'domcontentloaded' });
-    await clerk.signOut({ page });
-    await clerk.signIn({ page, emailAddress: email });
-    await page.goto('/dashboard', { waitUntil: 'domcontentloaded' });
+    throw new Error('Session E2E absente : relancez le projet « Auth setup ».');
   }
   await expect(dashboardHeading).toBeVisible();
   const organizationRow = page.getByRole('article').filter({ hasText: 'test-org-dev' });

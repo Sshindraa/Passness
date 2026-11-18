@@ -1,8 +1,6 @@
-import { ClerkProvider } from '@clerk/nextjs';
-import { frFR } from '@clerk/localizations';
 import type { Metadata } from 'next';
 import '@passness/ui/tokens.css';
-import { PASSNESS_FONT_FAMILY } from '@/lib/typography';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SmoothScroll } from '@/components/smooth-scroll';
 
 export const metadata: Metadata = {
@@ -10,8 +8,7 @@ export const metadata: Metadata = {
   description: 'Plateforme B2B2C de location d\u2019équipements.',
 };
 
-// Force le rendu dynamique : l'application dépend de Clerk (runtime config)
-// et ne peut pas être prerenderée statiquement sans clés valides.
+// Rendu dynamique : l'application lit la session à chaque requête.
 export const dynamic = 'force-dynamic';
 
 export default function RootLayout({
@@ -20,36 +17,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }): React.ReactElement {
   return (
-    <ClerkProvider
-      localization={frFR}
-      appearance={{
-        variables: {
-          fontFamily: PASSNESS_FONT_FAMILY,
-          colorPrimary: 'var(--ut-color-primary)',
-          colorText: 'var(--ut-color-ink-strong)',
-          colorTextSecondary: 'var(--ut-color-ink-muted)',
-          colorBackground: 'var(--ut-color-surface)',
-          colorInputBackground: 'var(--ut-color-surface)',
-          colorInputText: 'var(--ut-color-ink-strong)',
-          colorDanger: 'var(--ut-color-danger)',
-          colorNeutral: 'var(--ut-color-ink-strong)',
-        },
-      }}
-    >
-      <html lang="fr">
-        <head>
-          <link
-            rel="preload"
-            href="/fonts/chillax/chillax-variable.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-        </head>
-        <body>
-          <SmoothScroll>{children}</SmoothScroll>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="fr">
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/chillax/chillax-variable.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body>
+        <SmoothScroll>{children}</SmoothScroll>
+        <SpeedInsights />
+      </body>
+    </html>
   );
 }

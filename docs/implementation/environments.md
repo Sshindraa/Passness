@@ -152,7 +152,7 @@ et via le fournisseur d'hébergement (Vercel / Neon) pour staging et production.
   lectures passent par les routes applicatives contrôlées.
 - Emails : domaine Resend `sokar.tech` vérifié, expéditeur
   `Passness <noreply@sokar.tech>` et template de confirmation publié.
-- Worker : conteneur `uttily-worker-staging` isolé sur l'hôte staging existant,
+- Worker : conteneur `passness-worker-staging` isolé sur l'hôte staging existant,
   avec credentials R2/Resend hors dépôt et droits minimaux.
 - Scheduler : toutes les 15 minutes (`*/15 * * * *`, pour laisser la base Neon se mettre en veille), la configuration source définit `passness-staging-cron` et cible
   `https://passness-staging.vercel.app`. Le déploiement Cloudflare après ce

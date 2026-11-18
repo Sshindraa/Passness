@@ -1,12 +1,12 @@
 'use client';
 
-import { useClerk } from '@clerk/nextjs';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import type * as React from 'react';
 import { Icon } from '@passness/ui';
 import { PassnessBrand } from '@/components/brand';
+import { authClient } from '@/lib/auth-client';
 import styles from './pro-shell.module.css';
 
 type ProShellProps = {
@@ -60,13 +60,13 @@ export function ProShell({
   const [mobileViewport, setMobileViewport] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const { signOut } = useClerk();
   const links = navItems.map((item) => ({ ...item, href: item.href(orgId) }));
 
   const handleChangeAccount = async (): Promise<void> => {
     setIsSigningOut(true);
     try {
-      await signOut({ redirectUrl: '/sign-in' });
+      await authClient.signOut();
+      window.location.assign('/sign-in');
     } catch {
       // Le bouton reste disponible si le provider échoue temporairement.
       setIsSigningOut(false);

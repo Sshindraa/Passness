@@ -1,6 +1,6 @@
 # ADR-006 — Authentification via Clerk (OIDC)
 
-- **Statut** : accepté
+- **Statut** : remplacé par [ADR-047](ADR-047-better-auth-migration.md) (2026-11-05) ; les règles non négociables restent en vigueur
 - **Date** : 2026-07-27
 
 ## Contexte

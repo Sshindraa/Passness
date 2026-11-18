@@ -14,7 +14,7 @@ worker provider-neutral) et a laissé ouvertes les questions 6 (fournisseur de s
 (fournisseur d'email transactionnel) et 14 (exigence d'idempotence du fournisseur email).
 
 La phase G5G-A a produit une évaluation préparatoire
-(`docs/implementation/g5g-provider-and-vps-assessment.md`) auditant le VPS DigitalOcean Frankfurt,
+(`docs/implementation/g5g-provider-and-vps-assessment.md`) auditant le VPS d'hébergement du worker (depuis remplacé par un VPS OVH, voir §2.3),
 comparant les fournisseurs de stockage objet et d'email transactionnel, et estimant les coûts. Le
 porteur produit a validé les décisions suivantes, enregistrées dans le présent ADR.
 
@@ -61,7 +61,8 @@ implémentés après cet ADR ; ils seront livrés dans des lots ultérieurs avec
 
 ### 2.3 Worker
 
-- Hébergement sur le VPS DigitalOcean Frankfurt identifié par l'alias `sokar`.
+- Hébergement sur le VPS OVH (Allemagne) identifié par l'alias `sokar`. L'audit G5G-A portait
+  sur un ancien VPS DigitalOcean Frankfurt, abandonné : DigitalOcean ne fait plus partie de la stack.
 - La cohabitation avec les workloads existants (sokar/goldbot) est acceptée pour le MVP.
 - Exécution dans un conteneur **Node.js 24** avec Docker Compose.
 - Des limites CPU et mémoire explicites devront être définies et validées pendant le lot de
@@ -343,7 +344,7 @@ Vercel Pro (Web, Next.js)
 Neon Launch (PostgreSQL + PostGIS, aws-eu-central-1, accès public TLS)
    ▲  lit outbox, persiste résultats
    │
-VPS DigitalOcean Frankfurt (sokar, conteneur Docker Node 24)
+VPS OVH Allemagne (sokar, conteneur Docker Node 24)
    ├── worker lit outbox, génère documents
    ├── worker écrit objets → Cloudflare R2 (juridiction eu, bucket privé, S3-compatible)
    └── worker envoie emails → Resend (Idempotency-Key = providerIdempotencyKey)
@@ -375,7 +376,7 @@ Tous les prix sont en USD, issus des pages officielles consultées le 2026-08-05
 | --- | --- | --- |
 | Vercel | Pro | 20 $ (+20 $ usage credit inclus) |
 | Neon | Launch | ~15-18 $ (≈100 CU-h × 0,106 $ + 20 Go × 0,35 $/Go) |
-| VPS DigitalOcean | existant (sokar) | 0 $ marginal (déjà payé) |
+| VPS OVH | existant (sokar) | 0 $ marginal (déjà payé) |
 | Cloudflare R2 | Standard | ~0 $ au démarrage (free tier 10 Go + 1M Class A + 10M Class B, egress gratuit) |
 | Resend | Pro | 20 $ (50 000 emails inclus, 0,90 $/1 000 en dépassement) |
 
@@ -488,10 +489,9 @@ Neon :
 - https://neon.com/docs/introduction/regions
 - https://neon.com/docs/extensions/postgis
 
-DigitalOcean :
+OVHcloud VPS :
 
-- https://www.digitalocean.com/pricing/droplets
-- https://docs.digitalocean.com/products/droplets/details/availability/
+- https://www.ovhcloud.com/fr/vps/
 
 Cloudflare R2 :
 

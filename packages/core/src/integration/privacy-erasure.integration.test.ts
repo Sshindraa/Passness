@@ -171,6 +171,8 @@ describe('Lot 21-P2: Privacy Erasure & Probatory Seal (PostgreSQL Integration)',
   }
 
   it('exécute l’effacement, la pseudonymisation et le scellement probatoire avec intégrité référentielle', async () => {
+    // Un seul instant pour que blocked_* contienne customer_* (contrainte booking_drafts)
+    const frozenNow = Date.now();
     if (!ctx) return;
     const f = await createFixture();
 
@@ -182,10 +184,10 @@ describe('Lot 21-P2: Privacy Erasure & Probatory Seal (PostgreSQL Integration)',
         locationId: f.loc.id,
         customerUserId: f.user.id,
         status: 'CONVERTED',
-        customerStartAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000),
-        customerEndAt: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000),
-        blockedStartAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000),
-        blockedEndAt: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000),
+        customerStartAt: new Date(frozenNow - 14 * 24 * 60 * 60 * 1000),
+        customerEndAt: new Date(frozenNow - 12 * 24 * 60 * 60 * 1000),
+        blockedStartAt: new Date(frozenNow - 14 * 24 * 60 * 60 * 1000),
+        blockedEndAt: new Date(frozenNow - 12 * 24 * 60 * 60 * 1000),
         timezone: 'Europe/Paris',
         prepBufferMinutes: 30,
         cleanupBufferMinutes: 30,
@@ -198,7 +200,7 @@ describe('Lot 21-P2: Privacy Erasure & Probatory Seal (PostgreSQL Integration)',
         taxAmountMinor: 0,
         cancellationPolicySnapshot: { policy: 'FLEXIBLE' },
         billableUnitCount: 2,
-        expiresAt: new Date(Date.now() + 30 * 60 * 1000),
+        expiresAt: new Date(frozenNow + 30 * 60 * 1000),
       })
       .returning();
 
@@ -239,10 +241,10 @@ describe('Lot 21-P2: Privacy Erasure & Probatory Seal (PostgreSQL Integration)',
         draftId: draft.id,
         paymentId: payment.id,
         status: 'CLOSED',
-        customerStartAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000),
-        customerEndAt: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000),
-        blockedStartAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000),
-        blockedEndAt: new Date(Date.now() - 12 * 24 * 60 * 60 * 1000),
+        customerStartAt: new Date(frozenNow - 14 * 24 * 60 * 60 * 1000),
+        customerEndAt: new Date(frozenNow - 12 * 24 * 60 * 60 * 1000),
+        blockedStartAt: new Date(frozenNow - 14 * 24 * 60 * 60 * 1000),
+        blockedEndAt: new Date(frozenNow - 12 * 24 * 60 * 60 * 1000),
         prepBufferMinutes: 30,
         cleanupBufferMinutes: 30,
         billableUnit: 'DAY',

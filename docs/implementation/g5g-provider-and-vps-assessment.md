@@ -10,6 +10,10 @@ ADR-005 ni ADR-013, et ne ferme aucune question ouverte.
 > « Décisions validées par ADR-014 » ci-dessous distingue les décisions fermées des sujets reportés.
 > Le présent document conserve son rôle d'évaluation préparatoire ; ADR-014 est la décision
 > exécutoire.
+>
+> **Mise à jour 2026-11-18** : DigitalOcean ne fait plus partie de la stack. `sokar` est
+> désormais un VPS OVH en Allemagne. Les sections ci-dessous décrivant l'audit de l'ancien VPS
+> DigitalOcean sont historiques.
 
 ## 0. Décisions validées par ADR-014
 
@@ -19,7 +23,7 @@ ADR-005 ni ADR-013, et ne ferme aucune question ouverte.
 | --- | --- |
 | Web | Vercel Pro pour le MVP commercial ; Hobby pour dev/staging uniquement |
 | Base de données | Neon Launch, région `aws-eu-central-1`, accès public TLS, rôles PostgreSQL séparés Web/worker/migrations, pas d'IP Allow Rules au MVP |
-| Worker | VPS DigitalOcean Frankfurt `sokar`, conteneur Docker Node 24, limites CPU/RAM à valider au déploiement, logs JSON comme seule observabilité au premier déploiement |
+| Worker | VPS OVH Allemagne `sokar`, conteneur Docker Node 24, limites CPU/RAM à valider au déploiement, logs JSON comme seule observabilité au premier déploiement |
 | Stockage objet (Q6) | Cloudflare R2, juridiction `eu`, bucket privé, API compatible S3, clés applicatives opaques/immuables/versionnées, `putIfAbsent` conditionnel, anomalie fail-closed si checksum différent |
 | Email transactionnel (Q7) | Resend (Resend Pro pour le lancement commercial ; Free en dev/staging) |
 | Idempotence email (Q14) | Resend supporte `providerIdempotencyKey` nativement dans la fenêtre de 24 h ; politique validée : retry automatique strictement < 24 h, puis fail-closed et intervention manuelle |
@@ -50,7 +54,7 @@ worker n'est pas actuellement déployable en production tant que les adapters R2
 déploiement VPS ne sont pas livrés. `createWorkerDependenciesFromEnv` continue de lever
 `WorkerConfigurationError`.
 
-## 1. État du VPS DigitalOcean
+## 1. État de l'ancien VPS DigitalOcean (historique)
 
 Un audit SSH en lecture seule a été effectué sur deux VPS DigitalOcean (droplets, région FRA1
 Frankfurt), accessibles via les alias SSH `pmbtc` et `sokar`. L'adresse publique est masquée
@@ -104,7 +108,7 @@ Recommandation (justifications succinctes) :
 
 - Next.js Web : Vercel (inchangé vs ADR-005).
 - PostgreSQL/PostGIS : Neon EU (région `aws-eu-central-1` Frankfurt, inchangé vs ADR-005).
-- Worker Node 24 : VPS DigitalOcean Frankfurt (FRA1), coût marginal 0 €.
+- Worker Node 24 : VPS OVH Allemagne (`sokar`), coût marginal 0 €.
 - Stockage objet : fournisseur S3-compatible européen (recommandation section 4).
 - Email transactionnel : fournisseur externe (recommandation section 5).
 - Stripe : inchangé.

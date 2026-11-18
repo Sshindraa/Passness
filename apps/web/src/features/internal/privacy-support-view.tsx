@@ -256,7 +256,7 @@ export function PrivacySupportView({ initialData, filters }: PrivacySupportViewP
       if (res.ok) {
         setActionMessage({
           ok: true,
-          text: `Effacement exécuté avec succès : compte pseudonymisé, identité Clerk purgée, scellé probatoire créé (conservation civile jusqu’au ${new Date(res.data.civilRetentionUntil).toLocaleDateString('fr-FR')}, comptable jusqu’au ${new Date(res.data.accountingRetentionUntil).toLocaleDateString('fr-FR')}). Statut passé à DÉCISION PRÊTE (SATISFAITE).`,
+          text: `Effacement exécuté avec succès : compte pseudonymisé, identité d’authentification purgée, scellé probatoire créé (conservation civile jusqu’au ${new Date(res.data.civilRetentionUntil).toLocaleDateString('fr-FR')}, comptable jusqu’au ${new Date(res.data.accountingRetentionUntil).toLocaleDateString('fr-FR')}). Statut passé à DÉCISION PRÊTE (SATISFAITE).`,
         });
         setErasureConfirmOpen(false);
         router.refresh();
@@ -832,9 +832,10 @@ export function PrivacySupportView({ initialData, filters }: PrivacySupportViewP
                       }}
                     >
                       Cette action irréversible pseudonymise le compte utilisateur dans la base de
-                      données, purge le compte dans Clerk, calcule et scelle les données conservées
-                      au titre des obligations probatoires (5 ans civil / 10 ans comptable), et
-                      passe la demande en « DÉCISION PRÊTE » avec résolution SATISFAITE.
+                      données, supprime l’identité d’authentification, calcule et scelle les données
+                      conservées au titre des obligations probatoires (5 ans civil / 10 ans
+                      comptable), et passe la demande en « DÉCISION PRÊTE » avec résolution
+                      SATISFAITE.
                     </p>
                     {!erasureConfirmOpen ? (
                       <button

@@ -435,6 +435,20 @@
       "when": 1788107362012,
       "tag": "0062_activate_wingfoil_category",
       "breakpoints": true
+    },
+    {
+      "idx": 62,
+      "version": "7",
+      "when": 1788107363012,
+      "tag": "0063_better_auth_identity",
+      "breakpoints": true
+    },
+    {
+      "idx": 63,
+      "version": "7",
+      "when": 1794873600000,
+      "tag": "0064_pg_stat_statements",
+      "breakpoints": true
     }
   ]
 }

@@ -21,14 +21,8 @@ vi.mock('next/cache', () => ({
   revalidatePath: vi.fn(),
 }));
 
-vi.mock('@clerk/nextjs/server', () => ({
-  clerkClient: vi.fn(() =>
-    Promise.resolve({
-      users: {
-        deleteUser: deleteUserMock,
-      },
-    }),
-  ),
+vi.mock('@/lib/auth-identity', () => ({
+  deleteAuthIdentity: deleteUserMock,
 }));
 
 vi.mock('@passness/core', async () => {
@@ -132,7 +126,7 @@ describe('Privacy Server Actions', () => {
 
       eraseUserAccountMock.mockImplementation(async (_db, options) => {
         if (options.deleteExternalIdentity) {
-          await options.deleteExternalIdentity('user_clerk_123');
+          await options.deleteExternalIdentity('user_auth_123');
         }
         return {
           ok: true,
@@ -164,7 +158,7 @@ describe('Privacy Server Actions', () => {
           triggerSource: 'SELF_SERVICE',
         }),
       );
-      expect(deleteUserMock).toHaveBeenCalledWith('user_clerk_123');
+      expect(deleteUserMock).toHaveBeenCalledWith('user_auth_123');
     });
   });
 });

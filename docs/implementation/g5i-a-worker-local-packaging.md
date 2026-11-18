@@ -260,7 +260,7 @@ docker compose -f docker-compose.worker.yml up -d --no-build
 > Toutes les étapes ci-dessous sont marquées « NON EXÉCUTÉE dans G5I-A ».
 > Elles seront exécutées lors du lot de déploiement réel, pas dans G5I-A.
 
-1. **NON EXÉCUTÉE** — SSH vers `sokar` (VPS DigitalOcean Frankfurt).
+1. **NON EXÉCUTÉE** — SSH vers `sokar` (VPS OVH Allemagne).
 2. **NON EXÉCUTÉE** — Vérifier Docker + Docker Compose (déjà présents selon
    G5G).
 3. **NON EXÉCUTÉE** — Copier `Dockerfile.worker`, `docker-compose.worker.yml`

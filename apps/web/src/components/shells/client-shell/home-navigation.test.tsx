@@ -1,5 +1,4 @@
 import { readFileSync } from 'node:fs';
-import type { ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it, vi } from 'vitest';
 import { HomeNavigation } from './home-navigation';
@@ -8,10 +7,14 @@ import { LanguageDialog } from './language-dialog';
 import HomePage from '@/app/page';
 
 const session = vi.hoisted(() => ({ signedIn: false }));
-vi.mock('@clerk/nextjs', () => ({
-  SignedIn: ({ children }: { children: ReactNode }) => (session.signedIn ? children : null),
-  SignedOut: ({ children }: { children: ReactNode }) => (session.signedIn ? null : children),
-  UserButton: () => <span>Gestion du compte Clerk</span>,
+vi.mock('@/lib/auth-client', () => ({
+  authClient: {
+    useSession: () => ({
+      data: session.signedIn ? { user: { id: 'u1' } } : null,
+      isPending: false,
+    }),
+    signOut: vi.fn(),
+  },
 }));
 vi.mock('next/navigation', () => ({
   usePathname: () => '/',
@@ -121,7 +124,7 @@ describe('Passness homepage navigation', () => {
     expect(renderToStaticMarkup(<HomeNavigation />)).toContain('Se connecter');
     session.signedIn = true;
     const html = renderToStaticMarkup(<HomeNavigation />);
-    expect(html).toContain('Gestion du compte Clerk');
+    expect(html).toContain('Gérer mon compte');
     expect(html).not.toContain('Se connecter');
     session.signedIn = false;
   });
